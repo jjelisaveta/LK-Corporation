@@ -1,0 +1,133 @@
+<!--Jelisaveta Jevtic 2018/0127-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POPRAVI.com</title>
+    <link rel="stylesheet" href="stilPrihvatanje.css">
+</head>
+<script>
+    function ukloniPopravku(button) {
+        var zahtev = button.parentNode.parentNode.parentNode.parentNode.parentNode;
+        zahtev.parentNode.removeChild(zahtev);
+        console.log(zahtev);
+    }
+</script>
+
+<body>
+    <div id="header">
+        <img src="slike/logoMali.png">
+    </div>
+    <div id="menu">
+        <a href="pretrazivanje.html">Rezerviši termin</a>
+        <a href="aktivnapopravka.html">U toku</a>
+        <a href="istorija.html">Istorija</a>
+        <a href="prikazKlijenata.html">Pregled klijenata</a>
+        <a href="prikazMajstora.html">Pregled majstora</a>
+        <a href="prihvatanjeMajstora.html">Zahtevi majstora</a>
+        <div class="dropdown">
+            <button class="dropbtn">Moj nalog</button>
+            <div class="dropdown-content">
+                <a href="logovanje.html">Logovanje</a>
+                <a href="registrovanje.html">Registracija</a>
+            </div>
+        </div>
+        <div id="user">
+            <img src="slike/profilna.png" alt="korisnicka slika">
+            <a href="pretrazivanje.html">Administrator</a>
+        </div>
+    </div>
+    <div id="sredina">
+        <div id="zahtevi">
+            <div class="zahtev">
+                <table>
+                    <tr>
+                        <td id="userimg"><img src="slike/profilna.png"></td>
+                        <td style="width:38%;">
+                            <h1>
+                                Pera Perić
+                            </h1>
+                            <h3>
+                                peraperic@gmail.com
+                            </h3>
+                            <h3>
+                                064/1234567
+                            </h3>
+                        </td>
+                        <td>
+                            <textarea name="emailArea" class="emailArea" cols="50" rows="10" placeholder="Posalji email:"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="prihvati">
+                                <button type="button" onclick="ukloniPopravku(this)">
+                                    prihvati
+                                </button>
+                            </div>
+                            <div class="odbij">
+                                <button type="button" onclick="ukloniPopravku(this)">
+                                    odbij
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="emailButton">
+                                pošalji
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="zahtev">
+                <table>
+                    <tr>
+                        <td id="userimg"><img src="slike/profilna.png"></td>
+                        <td style="width:38%;">
+                            <h1>
+                                Žika Žikić
+                            </h1>
+                            <h3>
+                                zika123@gmail.com
+                            </h3>
+                            <h3>
+                                064/7654321
+                            </h3>
+                        </td>
+                        <td>
+                            <textarea name="emailArea" class="emailArea" cols="50" rows="10" placeholder="Posalji email:"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="prihvati">
+                                <button type="button" onclick="ukloniPopravku(this)">
+                                    prihvati
+                                </button>
+                            </div>
+                            <div class="odbij">
+                                <button type="button" onclick="ukloniPopravku(this)">
+                                    odbij
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="emailButton">
+                                pošalji
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div id="footer">
+        LK Corporation © 2021
+    </div>
+</body>
+
+</html>

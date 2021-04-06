@@ -1,0 +1,314 @@
+body {
+    background-color: #e8e6d9;
+    position: relative;
+    overflow: auto;
+}
+#menu {
+    width:15%;
+    height: 100%;
+    background-color:#2b2b2b;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding-top:120px;
+    float:left;
+    border:0;
+    text-align: center;
+    margin:0;
+}
+
+#menu a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: Arial;
+    color: #818181;
+    display: block;
+  }
+  
+#menu a:hover {
+    color: #f1f1f1;
+}
+
+
+#user {
+    height:8%;
+    width:100%;
+    position: absolute;
+    display:flex;
+    flex-direction: row;
+    bottom:16%; 
+    
+    padding: 6px 8px 6px 16px;
+}
+
+#user img {
+    border-color: transparent;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+}
+
+#user a {
+    font-size:15px;
+    font-family: Arial;
+    color: orange;
+    padding-left:10px;
+    padding-top:20px;
+    text-align: center;
+}
+
+
+#header {
+    margin-left:15%;
+    width: 85%;
+    height: 10%;
+    top:0px;
+    float:left;
+    text-align: center;
+}
+
+#header img{
+    width:20%;
+}
+
+#header h1 {
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 50px;
+    color:orange;
+}
+
+
+#footer { 
+    position: fixed;
+    bottom:0;
+    width:85%;
+    height: 5%;
+    margin-left: 15%;
+    text-align: center;
+    color: #818181;
+    font-family: 'Courier New';
+    z-index: 0;
+}
+
+.dropbtn {
+    background-color: #2b2b2b;
+    color: #818181;
+    padding: 6px 8px 6px 16px;
+    font-size: 25px;
+    border: none;
+}
+  
+.dropdown {
+    position : relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2b2b2b;
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown-content a:hover {
+    color: rgb(255, 255, 255);
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+      color: white;
+}
+
+
+#sredina{
+    position: relative;
+    z-index: 2;
+    margin-left: 15%;
+    width:85%;
+}
+
+#zahtevi{
+    margin-left: 5%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 90%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    background-color: #e8e6d9; 
+}
+
+.zahtev{
+    display: flex;
+    flex-direction: row;
+    /*position: relative;*/
+    width: 100%;
+}
+
+.zahtev h3{
+    font-family: Arial;
+    font-size: 20px;
+}
+
+.zahtev h4{
+    font-family: Arial;
+    font-size: 16px;
+}
+
+.zahtev h1{
+    font-family: Arial;
+    font-size: 24px;
+}
+
+#zahtevi table{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    width:80%;
+    background-color: #c8c6b9;
+    border-radius: 30px;
+    font-size: larger;
+    vertical-align: middle;
+    position: relative;
+}
+    
+#zahtevi pre{
+    /*margin-left: -15%;*/
+    font-size: larger;
+    text-align: left;
+}
+
+#zahtevi td{
+    font-size: larger;
+    text-align: left;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+#userimg {
+    width: 15%;
+}
+
+#zahtevi tr{
+   /* height: 5%;*/
+    vertical-align: middle;
+
+}
+
+#zahtevi img{
+    /*margin-left: 5%;*/
+    width:100%;
+    border-radius: 15px;
+    vertical-align: middle;
+}
+
+.prihvati button{
+    float:left;
+    border: none;
+    border-radius: 30px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 50%;
+    background-color: #03ac13;
+    font-weight: bolder;;
+    color: #d8d6c9;
+    padding: 5px 5px 5px 5px;
+}
+
+.odbij button{
+    float:left;
+    border: none;
+    border-radius: 30px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 50%;
+    background-color: red;
+    font-weight: bolder;;
+    color: #d8d6c9;
+    padding: 5px 5px 5px 5px;
+}
+
+#sredina{
+    position: relative;
+    z-index: 2;
+}
+
+#footer{ 
+    bottom:0;
+    width:85%;
+    height: 5%;
+    margin-left: 15%;
+    text-align: center;
+    color: #818181;
+    font-family: 'Courier New';
+    z-index: 0;
+}
+
+
+
+.komentarinput{
+    width: 70%;
+    text-align: left;
+    background-color:rgb(233, 233, 240);
+    resize: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.ukloni button{
+    float:left;
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    padding: 5px 5px 5px 5px;
+    background-color: red;
+    font-weight: bolder;;
+    color: #d8d6c9;
+}
+
+.komentardugme {
+    border:none;
+    border-radius: 10px;
+    background-color: #989689;
+    font-weight: bolder;
+    padding: 5px 5px 5px 5px;
+}
+
+.komentartd{
+    width: 50%;
+    border-radius: 15px;
+    padding: 10px;
+    
+}
+
+.komentarLabel {
+    font-family: 'New Courier';
+    font-size:16px;
+}
+
+.ocenaLabel{
+    border:none;
+    background-color:  #c8c6b9;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.ocenaDugme{
+    border:none;
+    background-color:  #c8c6b9;
+    font-size: xx-large;
+}
+
+/* kraj istorije */

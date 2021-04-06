@@ -1,0 +1,238 @@
+
+body {
+    background-color: #e8e6d9;
+}
+
+
+#header {
+    width:100%;
+    height:8%;
+    top:0px;
+    float:left;
+    text-align: center;
+}
+
+#header img{
+   /** position: fixed;
+    top:0px;
+    right:0px;*/
+    width:20%;
+    
+}
+
+#header h1 {
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 50px;
+    color:orange;
+}
+
+#content {
+    width: 100%;
+    height:80%;
+    float:left;
+    text-align: center;
+}
+
+#content h3 {
+    margin-top:5%;
+    font-family: Arial;
+    font-style: italic;
+    color:darkslategray;
+}
+
+#content a{
+    text-decoration: none;
+}
+
+#emailid {
+    width: 20%;
+    padding: 10px;
+
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    margin-top: 2%;
+    font-size: 15px;
+}
+
+#emailid:hover {
+    cursor:text;
+}
+
+#idpass:hover {
+    cursor:text;
+}
+
+#emailid:focus {
+    outline: none;
+} 
+
+#idDugme {
+    border: none;
+    border-radius: 15px;
+    padding: 8px;
+    width: 15%;
+    margin-top: 20px;
+    background-color: #888679;
+    cursor:pointer;
+    font-family: Arial;
+    font-weight: bolder;
+    color: #282619;
+}
+
+#idDugme:hover{
+    background-color: #484639;;
+}
+
+#idDugmeR {
+    border: none;
+    border-radius: 15px;
+    padding: 8px;
+    width: 15%;
+    margin-top: 10px;
+
+    background-color: #888679;
+    cursor:pointer;
+    font-family: Arial;
+    font-weight: bolder;
+    color: #282619;
+}
+
+#content label {
+    color: #282619;
+    font-family: Arial;
+    font-size:15px;
+}
+
+#radioMajstor, #radioKorisnik:after {
+    color:black;
+}
+
+#idpass{
+    width: 20%;
+    padding: 10px;
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    margin-top: 2%;
+    font-size: 15px;  
+}
+
+#p1 {
+    font-family: Arial;
+    font-size: 14px;
+    color: #282619;
+    text-decoration: none;
+}
+
+#p1:hover {
+    color: orange;
+    cursor: pointer;
+}
+
+#p2:hover {
+    color: orange;
+    cursor: pointer;
+}
+
+#p2{ 
+    margin-top: -9px;
+    font-family: Arial;
+    font-size: 14px;
+    color: #282619;
+}
+
+#idpass:focus{outline: none;}
+
+#txtinput:focus {
+    outline:none;
+}
+#imeId:focus{
+    outline: none;
+}
+#prezimeId:focus{
+outline: none;
+}
+#telefonId:focus{outline: none;}
+#imeId{
+    width: 9%;
+    padding: 8px;
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+   
+    font-size: 15px;
+}
+#prezimeId{
+    width: 9%;
+    padding: 8px;
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+   
+    font-size: 15px;
+}
+#telefonId{
+    width: 20%;
+  
+    padding: 8px;
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    margin-top: 1%;
+    font-size: 15px;  
+}
+#adresaId{  width: 20%;
+    padding: 8px;
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    margin-top: 1%;
+    font-size: 15px;  }
+#emailid2:focus{outline: none;}
+#idpass2:focus{outline: none;}
+#adresaId:focus{outline: none;}
+#h3{margin-bottom: -2%;}
+#emailid2{
+    width: 20%;
+    padding:8px;
+
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    margin-top: 1%;
+    font-size: 15px;
+}
+
+#idpass2 {
+    width: 20%;
+    padding: 8px;
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    margin-top: 1%;
+    font-size: 15px;  
+    margin-bottom: 1%;
+}
+#footer { 
+    position: fixed;
+    bottom:0;
+    width:100%;
+    height: 5%;
+ 
+    background-color: e8e6d9;;
+    float:left;
+    text-align: center;
+    color: #818181;
+    font-family: 'Courier New';
+}
+

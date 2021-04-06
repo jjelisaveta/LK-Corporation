@@ -1,0 +1,204 @@
+
+body {
+    background-color: #e8e6d9;
+    position: relative;
+    overflow: auto;
+}
+#menu {
+    width:15%;
+    height: 100%;
+    background-color:#2b2b2b;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding-top:120px;
+    float:left;
+    border:0;
+    text-align: center;
+    margin:0;
+}
+
+#menu a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: Arial;
+    color: #818181;
+    display: block;
+  }
+  
+#menu a:hover {
+    color: #f1f1f1;
+}
+
+
+#user {
+    height:8%;
+    width:100%;
+    position: absolute;
+    display:flex;
+    flex-direction: row;
+    bottom:16%; 
+    
+    padding: 6px 8px 6px 16px;
+}
+
+#user img {
+    border-color: transparent;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+}
+
+#user a {
+    font-size:15px;
+    font-family: Arial;
+    color: orange;
+    padding-left:10px;
+    padding-top:20px;
+    text-align: center;
+}
+
+
+#header {
+    margin-left:15%;
+    width: 85%;
+    height: 10%;
+    top:0px;
+    float:left;
+    text-align: center;
+}
+
+#header img{
+    width:20%;
+}
+
+#header h1 {
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 50px;
+    color:orange;
+}
+#footer { 
+    position: fixed;
+    bottom:0;
+    width:85%;
+    height: 5%;
+    margin-left: 15%;
+    text-align: center;
+    color: #818181;
+    font-family: 'Courier New';
+    z-index: 0;
+}
+
+.dropbtn {
+    background-color: #2b2b2b;
+    color: #818181;
+    padding: 6px 8px 6px 16px;
+    font-size: 25px;
+    border: none;
+}
+  
+.dropdown {
+    position : relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2b2b2b;
+    z-index: 1;
+}
+  
+.dropdown-content a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+.dropdown-content a:hover {
+    color: rgb(255, 255, 255);
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+      color: white;
+}
+
+#kalendar{
+    margin-left: 15%;
+    display:flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    width:85%;
+    float: left;
+}
+
+#kalendar table{
+    /* margin-left: 12.5%; */
+    flex-wrap:nowrap;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+#kalendar form{
+    text-align: center;
+    margin-left: 2.5%;
+}
+
+#kalendar td{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    /* height: 500%; */
+}
+
+#kalendar button{
+    border: 3px solid #484639;
+    border-radius: 10px;
+    outline: none;
+}
+
+.terminne{
+    width: 200px;
+    height: 100px;
+    background-color: rgb(236, 226, 217);
+}
+
+.terminda{
+    width: 200px;
+    height: 100px;
+    background-color:#23cc33;
+}
+
+#donji_deo{
+    position: relative;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    float: left;
+    padding-top: 10px;
+}
+
+#donji_deo label {
+    font-family: Arial;
+    font-size: 14px;
+    color: #2b2b2b;
+}
+
+#donji_deo input {
+    border: none;
+    border-radius: 5px;
+}
+
+.terminzauzet{
+    width: 200px;
+    height: 100px;
+    background-color:#6290c8;
+    vertical-align:top;
+}

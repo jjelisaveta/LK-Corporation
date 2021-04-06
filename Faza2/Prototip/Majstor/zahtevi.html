@@ -1,0 +1,151 @@
+<!--Luka Stojanovic 2018/0053-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POPRAVI.com</title>
+    <link rel="stylesheet" href="stilZahtevi.css">
+</head>
+<script>
+    function ukloniPopravku(button) {
+        var zahtev = button.parentNode.parentNode.parentNode.parentNode.parentNode;
+        zahtev.parentNode.removeChild(zahtev);
+        console.log(zahtev);
+    }
+</script>
+
+<body>
+    <div id="header">
+        <img src="slike/logoMali.png">
+    </div>
+    <div id="menu">
+        <a href="pretrazivanje.html">Rezerviši termin</a>
+        <a href="aktivnapopravka.html">U toku</a>
+        <a href="istorija.html">Istorija</a>
+        <a href="zahtevi.html">Zahtevi</a>
+        <a href="kalendar.html">Kalendar</a>
+        <a href="mojeUsluge.html">Moje usluge</a>
+        <a href="dodavanjeusluga.html">Dodaj uslugu</a>
+        <div class="dropdown">
+            <button class="dropbtn">Moj nalog</button>
+            <div class="dropdown-content">
+                <a href="logovanje.html">Uloguj se</a>
+                <a href="registrovanje.html">Registruj se</a>
+            </div>
+        </div>
+          <div id="user">
+              <img src="slike/Kalu.jpg" alt="korisnicka slika">
+              <a href="pretrazivanje.html">Majstor Bob</a>
+          </div>
+    </div>
+    <div id="sredina">
+        <div id="zahtevi">
+            <div class="zahtev">
+                <table>
+                    <tr>
+                        <td id="userimg"><img src="slike/profilna.png"></td>
+                        <td>
+                            <h1>
+                                Marija Kilibarda
+                            </h1>
+                            <h3>
+                                Ulica gladnih 125, Beograd
+                            </h3>
+                            <h4>
+                                Pokvarila mi se masina. Slabo nesto prima vodu.
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="prihvati">
+                                <button type="button" onclick="ukloniPopravku(this)">
+                                    prihvati
+                                </button>
+                            </div>
+                            <div class="odbij">
+                                <button type="button" onclick="ukloniPopravku(this)">
+                                    odbij
+                                </button>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+            <div class="zahtev">
+                <table>
+                    <tr>
+                        <td id="userimg"><img src="slike/profilna.png"></td>
+                        <td>
+                            <h1>
+                                Marija Kilibarda
+                            </h1>
+                            <h3>
+                                Ulica gladnih 125, Beograd
+                            </h3>
+                            <h4>
+                                Pokvarila mi se masina. Slabo nesto prima vodu
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="prihvati">
+                                <button type="button" onclick="ukloniPopravku(this)">
+                                    prihvati
+                                </button>
+                            </div>
+                            <div class="odbij">
+                                <button type="button" onclick="ukloniPopravku(this)">
+                                    odbij
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="zahtev">
+                <table>
+                    <tr>
+                        <td id="userimg"><img src="slike/slika.png"></td>
+                        <td>
+                            <h1>
+                                Luka Serbedzija
+                            </h1>
+                            <h3>
+                                Trg Oslobodjenja 1, Beograd
+                            </h3>
+                            <h4>
+                                Hitno!!! WC solja pusta vodu i klati se.
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="prihvati">
+                                <button type="button" onclick="ukloniPopravku(this)">
+                                    prihvati
+                                </button>
+                            </div>
+                            <div class="odbij">
+                                <button type="button" onclick="ukloniPopravku(this)">
+                                    odbij
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div id="footer">
+        LK Corporation © 2021
+    </div>
+</body>
+
+</html>

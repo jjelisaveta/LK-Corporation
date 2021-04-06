@@ -1,0 +1,97 @@
+<!--Luka Stojanovic 2018/0053-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POPRAVI.com</title>
+    <link rel="stylesheet" href="stilKalendar.css">
+</head>
+
+
+<script>
+    function myFunction(objButton) {
+        objButton.classList.toggle("terminda")
+        console.log("proslo")
+    }
+</script>
+
+<body>
+    <div id="header">
+        <img src="slike/logoMali.png">
+    </div>
+    <div id="menu">
+        <a href="pretrazivanje.html">Rezerviši termin</a>
+        <a href="aktivnapopravka.html">U toku</a>
+        <a href="istorija.html">Istorija</a>
+        <a href="zahtevi.html">Zahtevi</a>
+        <a href="kalendar.html">Kalendar</a>
+        <a href="mojeUsluge.html">Moje usluge</a>
+        <a href="dodavanjeusluga.html">Dodaj uslugu</a>
+        <div class="dropdown">
+            <button class="dropbtn">Moj nalog</button>
+            <div class="dropdown-content">
+                <a href="logovanje.html">Uloguj se</a>
+                <a href="registrovanje.html">Registruj se</a>
+            </div>
+        </div>
+          <div id="user">
+              <img src="slike/Kalu.jpg" alt="korisnicka slika">
+              <a href="pretrazivanje.html">Majstor Bob</a>
+          </div>
+    </div>
+    <div id="kalendar">
+        <table>
+            <tr>
+                <th colspan="3">
+                    <button class="terminne" onclick="myFunction(this)">00:00 - 02:00</button>
+                    <button class="terminne" onclick="myFunction(this)">08:00 - 10:00</button>
+                    <button class="terminne" onclick="myFunction(this)">16:00 - 18:00</button>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="3">
+                    <button class="terminne" onclick="myFunction(this)">02:00 - 04:00</button>
+                    <button class="terminzauzet">10:00 - 12:00<br>Marija Kilibarda<br>Ulica gladnih 125, Beograd<br>masina za ves
+                    </button>
+                    <button class="terminne" onclick="myFunction(this)">18:00 - 20:00</button>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="3">
+                    <button class="terminne" onclick="myFunction(this)">04:00 - 06:00</button>
+                    <button class="terminzauzet">12:00 - 14:00<br>Marija Kilibarda<br>Ulica gladnih 125, Beograd<br>masina za sudove</button>
+                    <button class="terminne" onclick="myFunction(this)">20:00 - 22:00</button>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="3">
+                    <button class="terminne" onclick="myFunction(this)">06:00 - 08:00</button>
+                    <button class="terminne" onclick="myFunction(this)">14:00 - 16:00</button>
+                    <button class="terminne" onclick="myFunction(this)">22:00 - 24:00</button>
+                </th>
+            </tr>
+        </table>
+        <div id="donji_deo">
+            <table>
+                <tr>
+                    <td colspan="3">
+                        <form id="datum">
+                            <label for="Datum">Datum</label><br>
+                            <input type="date" id="datuminput" value="21.03.2021."><br>
+                        </form>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <div id="footer">
+        LK Corporation © 2021
+    </div>
+</body>
+
+</html>
