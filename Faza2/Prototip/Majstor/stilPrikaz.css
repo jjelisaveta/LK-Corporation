@@ -140,9 +140,10 @@ body {
     z-index: 1;
     position: fixed;
     padding-left: 20px;
-    border-top-left-radius: 70px;
-    border-bottom-left-radius: 70px;
-    top: 0%;
+    padding-top: 50px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    top: 0px;
     right: 0px;
     height: 100%;
     width: 30%;
@@ -160,6 +161,7 @@ body {
     display: flex;
     flex-direction:column;
     justify-content:center;
+    margin-top:10%;
 }
 #lol{
     position: fixed;
@@ -179,6 +181,11 @@ body {
     margin-bottom: 2%;
     margin-top: 10%;
 }
+
+#termini {
+    margin-left: 10%;
+}
+
 #filters #LabelaProblema{
     background-color: #2b2b2b;
     font-family: Arial;
@@ -200,9 +207,7 @@ body {
     display: flex;
     flex-direction:row;
     justify-content:space-evenly;
-   /* padding-left: 30%;
-    padding-right: 30%;*/
-    margin-top: 15%;
+    margin-top: 10%;
 } 
 
 .slider{
@@ -220,8 +225,16 @@ body {
     display: flex;
     flex-direction:row;
     justify-content:space-evenly;
-    margin-bottom: 6%;
+    margin-bottom: 10%;
+    margin-top:10%;
 }
+
+#cars {
+    width:50%;
+    height: 30px;
+    border-radius: 10px;
+}
+
 .closebtn {
     position: absolute;
     top: 2px;
@@ -350,6 +363,21 @@ body {
     height: 100%;
     /*padding: 5px 5px 5px 5px;*/
   
+}
+
+#opisProblema {
+    border:none;
+    resize:none;
+    border-radius: 5px;
+    margin:10px;
+    padding: 5px;
+}
+
+.statistika {
+    width: 33%;
+    border: solid #2b2b2b;
+    margin-left: 10px;
+    border-radius: 15px;
 }
 
 .odbij label{
@@ -529,20 +557,47 @@ body {
     font-size: 15px;
 }
 
+#tekstSlanje{
+    font-family: Arial;
+    font-size:16px;
+    color: #2b2b2b;
+    text-align: center;
+    margin:10px;
+}
+
 #sfposalji{
     border:none;
     outline:none;
-    border-radius: 15px;
-    padding: 10px;
+    border-bottom-left-radius:10px;
+    border-top-left-radius: 10px;
+    padding: 20px;
     background-color: orange;
     font-weight: bolder;
-    width:40%;
+    width:70%;
+    margin-bottom:10px;
+    float:left;
+}
+
+#svedugme{
+    border:none;
+    outline:none;
+    border-bottom-right-radius:10px;
+    border-top-right-radius: 10px;
+    padding: 20px;
+    width:30%;
+    float:left;
+    font-weight: bolder;
+    background-color: gray;
+    margin-bottom:10px;
 }
 
 #sivodugme{
-    border:none;
+    width:100%;
+    border: none;
     outline:none;
-    border-radius: 15px;
-    padding: 10px;
-    width:15%;
+    border-radius: 10px;
+    background-color: orange;
+    margin:20px;
+    padding:15px;
+    font-weight: bolder;
 }

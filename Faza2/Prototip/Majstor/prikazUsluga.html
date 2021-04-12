@@ -41,7 +41,26 @@
 <span style="font-size:30px;cursor:pointer;top: 30px;right: 30px;z-index: 1;position: fixed;" onclick="openNav()">&#9776;</span>
 
 <div id="JovanSredina">
+    
     <div id="zahtevi">
+        <div class="zahtev">
+            <table>
+                <tr>
+                    <td rowspan="2" style="width:40%;">
+                        <textarea id="opisProblema" name="opisProblema" rows="7" cols="50" placeholder="Opis problema:"></textarea>
+                    </td>
+                    <td>
+                        <h3 id=tekstSlanje>Pošaljite poruku svim odabranim majstorima i rešite svoj problem u najkraćem roku!</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:60%;">    
+                        <button type="button" id="sfposalji"onClick="uncheck()" >Rezerviši</button>
+                        <button type="button" id="svedugme" onClick="check()">Odaberi sve </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div class="zahtev">
             <table>
                 <tr>
@@ -54,7 +73,7 @@
                             Dvadeset godina iskustva u popravljanju veš mašina, <br> radimo sa svim modelima! Dolazimo kod vas u najkracem roku.
                         </h4>
                     </td>
-                    <td style="border-bottom: solid;border-left: solid ; width:33%;">
+                    <td class="statistika">
                         <h3>
                             Majstora preporucuje: 82% <br> <br>
                             Prosecno vreme reakcije:02:25 <br> <br>
@@ -89,7 +108,7 @@
                             Dvadeset godina iskustva u popravljanju veš mašina, <br> radimo sa svim modelima! Dolazimo kod vas u najkracem roku.
                         </h4>
                     </td>
-                    <td style="border-bottom: solid;border-left: solid ; width:33%;">
+                    <td class="statistika">
                         <h3>
                             Majstora preporucuje: 82% <br> <br>
                             Prosecno vreme reakcije:02:25 <br> <br>
@@ -112,6 +131,7 @@
                 </tr>
             </table>
     </div>
+    
 </div>
 
 <script>
@@ -127,10 +147,10 @@ function closeNav() {
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="margin-left: 90%;">&times;</a>
        <form action="/action_page.php">  
         <div id="tabela">
-                <label for="termin" id="danUsluge">DATUM</label>
+                <label for="termin" id="danUsluge">Datum:</label>
                 <input type="date" id="termin" name="termin">
         </div>
-        <table>
+        <table id="termini">
             <tr>
                 <td><input type="checkbox" id="0"><label for="0" class="satnice"> 00:00 - 02:00</label></td>
                 <td><input type="checkbox" id="2"><label for="2" class="satnice"> 02:00 - 04:00</label></td>
@@ -152,11 +172,6 @@ function closeNav() {
                 <td><input type="checkbox" id="22"><label for="4" class="satnice"> 22:00 - 00:00</label></td>
             </tr>
         </table>
-        
-<!--        <div class="slidecontainer">
-            <input type="range" min="1.0" max="5.0" value="2.5" class="slider" id="ocena">
-            <p>Prosecna ocena: <span id="mojaOcena"></span></p>
-        </div>-->
         <div class="slidecontainer">
             <input type="range" min="0" max="12000" value="6000" class="slider" id="SkalaCena">
             <p style="color: white; font-family: Arial; text-align-last: center;">Maksimalna cena: <span id="cena"></s-pan></p>
@@ -177,13 +192,11 @@ function closeNav() {
                 <option value="c6">vremenu odziva opadajuce</option>
             </select>
         </div>
-        <textarea id="w3review" name="w3review" rows="5" cols="30" placeholder="Opis problema" style="margin-left: 5px;"></textarea>
+        
         <div id="posaljiDugme">
             <button type="button"  id="sivodugme" onClick="window.location='prikazUsluga.html';">
-            Pretrazi termine
+                Pretraži termine
             </button>
-            <button type="button" id="sfposalji"onClick="uncheck()" >Posalji </button>
-            <button type="button" id="sivodugme" onClick="check()">Odaberi sve </button>
         </div>
         <script>
             var slider = document.getElementById("ocena");
