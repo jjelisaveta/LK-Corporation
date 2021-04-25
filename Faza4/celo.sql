@@ -1,12 +1,15 @@
-CREATE TABLE `kalendar` (
-  `idMaj` int NOT NULL,
-  `idTer` int NOT NULL,
-  `idRez` int DEFAULT NULL,
-  PRIMARY KEY (`idMaj`),
-  KEY `fk_idTer_idx` (`idTer`),
-  KEY `fk_idRez_idx` (`idRez`),
-  CONSTRAINT `fk_idRez_kalendar` FOREIGN KEY (`idRez`) REFERENCES `rezervacija` (`idRez`) ON UPDATE CASCADE,
-  CONSTRAINT `fk_idTer_kalendar` FOREIGN KEY (`idTer`) REFERENCES `termin` (`idTer`) ON UPDATE CASCADE
+
+CREATE TABLE `uloga` (
+  `idUloga` int NOT NULL,
+  `naziv` varchar(45) NOT NULL,
+  PRIMARY KEY (`idUloga`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `termin` (
+  `idTer` int NOT NULL AUTO_INCREMENT,
+  `datumVreme` datetime NOT NULL,
+  PRIMARY KEY (`idTer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `korisnik` (
@@ -21,7 +24,18 @@ CREATE TABLE `korisnik` (
   `odobren` varchar(1) NOT NULL,
   PRIMARY KEY (`idKor`),
   KEY `fkUlogaKorisnik_idx` (`uloga`),
-  CONSTRAINT `fk_Uloga_korisnik` FOREIGN KEY (`uloga`) REFERENCES `uloga` (`iduloga`) ON UPDATE CASCADE
+  CONSTRAINT `fk_Uloga_korisnik` FOREIGN KEY (`uloga`) REFERENCES `uloga` (`idUloga`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `zahtev` (
+  `idZah` int NOT NULL AUTO_INCREMENT,
+  `idKor` int NOT NULL,
+  `opis` longtext NOT NULL,
+  `idTer` int NOT NULL,
+  `vremeSlanja` datetime NOT NULL,
+  PRIMARY KEY (`idZah`),
+  KEY `fk_IdKor_idx` (`idKor`),
+  CONSTRAINT `fk_IdKor_zahtev` FOREIGN KEY (`idKor`) REFERENCES `korisnik` (`idKor`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `rezervacija` (
@@ -34,23 +48,23 @@ CREATE TABLE `rezervacija` (
   CONSTRAINT `fk_idRez_rezervacija` FOREIGN KEY (`idRez`) REFERENCES `zahtev` (`idZah`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `kalendar` (
+  `idMaj` int NOT NULL,
+  `idTer` int NOT NULL,
+  `idRez` int DEFAULT NULL,
+  PRIMARY KEY (`idMaj`),
+  KEY `fk_idTer_idx` (`idTer`),
+  KEY `fk_idRez_idx` (`idRez`),
+  CONSTRAINT `fk_idRez_kalendar` FOREIGN KEY (`idRez`) REFERENCES `rezervacija` (`idRez`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_idTer_kalendar` FOREIGN KEY (`idTer`) REFERENCES `termin` (`idTer`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE `tag` (
   `idTag` int NOT NULL,
   `opis` varchar(45) NOT NULL,
   PRIMARY KEY (`idTag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `termin` (
-  `idTer` int NOT NULL AUTO_INCREMENT,
-  `datumVreme` datetime NOT NULL,
-  PRIMARY KEY (`idTer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `uloga` (
-  `iduloga` int NOT NULL,
-  `naziv` varchar(45) NOT NULL,
-  PRIMARY KEY (`iduloga`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `usluga` (
   `idUsl` int NOT NULL,
@@ -72,7 +86,7 @@ CREATE TABLE `usluga-tag` (
   CONSTRAINT `fk_idUsl_usluga-tag` FOREIGN KEY (`idUsl`) REFERENCES `usluga` (`idUsl`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `uslugaostvarena` (
+CREATE TABLE `usluga-ostvarena` (
   `idUslOstv` int NOT NULL,
   `idUsl` int NOT NULL,
   `komentar` longtext,
@@ -86,13 +100,4 @@ CREATE TABLE `uslugaostvarena` (
   CONSTRAINT `fk_idUsl_uslugaOtvorena` FOREIGN KEY (`idUsl`) REFERENCES `usluga` (`idUsl`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `zahtev` (
-  `idZah` int NOT NULL AUTO_INCREMENT,
-  `idKor` int NOT NULL,
-  `opis` longtext NOT NULL,
-  `idTer` int NOT NULL,
-  `vremeSlanja` datetime NOT NULL,
-  PRIMARY KEY (`idZah`),
-  KEY `fk_IdKor_idx` (`idKor`),
-  CONSTRAINT `fk_IdKor_zahtev` FOREIGN KEY (`idKor`) REFERENCES `korisnik` (`idKor`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
