@@ -19,6 +19,7 @@ CREATE TABLE `korisnik` (
   `email` varchar(45) NOT NULL,
   `brojTelefona` varchar(15) NOT NULL,
   `lozinka` varchar(20) NOT NULL,
+  `adresa` varchar(101) NOT NULL,
   `slika` longtext,
   `uloga` int NOT NULL,
   `odobren` varchar(1) NOT NULL,

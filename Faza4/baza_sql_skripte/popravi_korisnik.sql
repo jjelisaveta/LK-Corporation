@@ -32,6 +32,7 @@ CREATE TABLE `korisnik` (
   `slika` longtext,
   `uloga` int NOT NULL,
   `odobren` varchar(1) NOT NULL,
+  `adresa` varchar(101) NOT NULL,
   PRIMARY KEY (`idKor`),
   KEY `fkUlogaKorisnik_idx` (`uloga`),
   CONSTRAINT `fk_Uloga_korisnik` FOREIGN KEY (`uloga`) REFERENCES `uloga` (`iduloga`) ON UPDATE CASCADE
