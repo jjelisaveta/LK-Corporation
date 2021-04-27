@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `popravi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `popravi`;
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: popravi
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,13 +31,13 @@ CREATE TABLE `korisnik` (
   `email` varchar(45) NOT NULL,
   `brojTelefona` varchar(15) NOT NULL,
   `lozinka` varchar(20) NOT NULL,
-  `slika` longtext,
-  `uloga` int NOT NULL,
-  `odobren` varchar(1) NOT NULL,
   `adresa` varchar(101) NOT NULL,
+  `slika` longtext,
+  `idUlo` int NOT NULL,
+  `odobren` varchar(1) NOT NULL,
   PRIMARY KEY (`idKor`),
-  KEY `fkUlogaKorisnik_idx` (`uloga`),
-  CONSTRAINT `fk_Uloga_korisnik` FOREIGN KEY (`uloga`) REFERENCES `uloga` (`iduloga`) ON UPDATE CASCADE
+  KEY `fkUlogaKorisnik_idx` (`idUlo`),
+  CONSTRAINT `fk_Uloga_korisnik` FOREIGN KEY (`idUlo`) REFERENCES `uloga` (`idUlo`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -57,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-24 18:40:11
+-- Dump completed on 2021-04-27 16:21:18

@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `popravi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `popravi`;
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: popravi
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,13 +18,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `uslugaostvarena`
+-- Table structure for table `usluga-ostvarena`
 --
 
-DROP TABLE IF EXISTS `uslugaostvarena`;
+DROP TABLE IF EXISTS `usluga-ostvarena`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `uslugaostvarena` (
+CREATE TABLE `usluga-ostvarena` (
   `idUslOstv` int NOT NULL,
   `idUsl` int NOT NULL,
   `komentar` longtext,
@@ -38,12 +40,12 @@ CREATE TABLE `uslugaostvarena` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `uslugaostvarena`
+-- Dumping data for table `usluga-ostvarena`
 --
 
-LOCK TABLES `uslugaostvarena` WRITE;
-/*!40000 ALTER TABLE `uslugaostvarena` DISABLE KEYS */;
-/*!40000 ALTER TABLE `uslugaostvarena` ENABLE KEYS */;
+LOCK TABLES `usluga-ostvarena` WRITE;
+/*!40000 ALTER TABLE `usluga-ostvarena` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usluga-ostvarena` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-24 18:40:12
+-- Dump completed on 2021-04-27 16:21:16
