@@ -1,0 +1,9 @@
+U MySQL Workbench alatu koji je koriscen za pravljenje baze, i generisanje ie i er dijagrama ne postoji opcija 0..1 i 0..N za multiplikativnost veza.
+Veze:
+korisnik-rezervacija na strani rezervacije
+rezervacija-kalendar na strani kalendar
+termin-zahtev na strani zahtev
+rezervacija-uslugaOstvarena na strani uslugaOstvarena
+korisnik-usluga na strani usluga
+usluga-uslugaOstvarena na strani uslugaOstvarena
+multiplikativnost treba da bude 0..N
