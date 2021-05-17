@@ -1,0 +1,7 @@
+Komanda za kreiranje simbolickog linka ka za folder projekta:
+mklink /J C:\xampp\htdocs\projekat C:\Users\Luka\Desktop\Proba\projekat
+
+U fajlu httpd.conf izmeniti linije DocumentRoot da budu 
+C:\xampp\htdocs\projekat\public
+
+Projekat se otvara na adresi localhost
