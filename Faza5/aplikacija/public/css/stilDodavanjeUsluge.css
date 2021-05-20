@@ -1,0 +1,74 @@
+
+body {
+    background-color: #e8e6d9;
+    position: relative;
+    overflow: auto;
+}
+
+#opisId {
+    resize: none;
+    padding: 8px;
+  
+    border:none;
+
+    border-radius: 20px;
+    margin-top: 1%;
+    font-size: 15px;  
+}
+
+#naslovId {
+    padding: 8px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    margin-top: 1%;
+    font-size: 15px;  
+}
+
+#cenaId {
+    padding: 8px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    margin-top: 1%;
+    font-size: 15px;  
+}
+
+#selectId{
+    padding: 8px;
+	border: 2px solid orange;
+    border-radius: 20px;
+    margin-top: 1%;
+    font-size: 15px;  
+}
+
+.plus {
+	border: 2px solid orange;
+	border-radius: 15px;
+	background-color: #a8a699;
+	/*margin:10px;*/
+	text-align: center;
+	vertical-align:center;
+	font-weight:bolder;
+	padding:4px;
+}
+
+.red {
+	margin-top:1%;
+}
+
+#tagId{outline: none;}
+#cenaId{outline:none}
+#naslovId:focus{outline:none;}
+#opisId:focus{outline:none;}
+#selectId:focus{outline: none;}
+#idDugmeR {
+    background-color: orange;
+    border: none;
+    border-radius: 15px;
+    padding: 11px;
+    margin-top: 20px;
+    cursor:pointer;
+    font-family: Arial;
+    font-weight: bolder;
+}
