@@ -69,7 +69,7 @@ body {
     height: 100%;
     width: 0;
     position: fixed; 
-    z-index: 2; 
+    z-index: 5; 
     left: 0;
     top: 0;
     background-color: rgba(44,44,44, 0.95); 
