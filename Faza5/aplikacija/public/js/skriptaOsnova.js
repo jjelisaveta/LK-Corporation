@@ -5,4 +5,3 @@ function otvoriMeni() {
 function zatvoriMeni() {
     document.getElementById("meniMali").style.width = "0%";
 }
-
