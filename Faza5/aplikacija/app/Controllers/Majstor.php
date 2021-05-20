@@ -14,6 +14,7 @@ namespace App\Controllers;
  * @author Windows User
  */
 use App\Models\UslugaModel;
+use App\Models\TagModel;
 
 class Majstor extends BaseController {
     
@@ -29,18 +30,21 @@ class Majstor extends BaseController {
     
     
     public function dodajUslugu(){
-        $this->prikaz("dodavanjeusluga",[]);
         
+        $tagModel = new TagModel();
+        $tagovi = $tagModel->findAll();
         
-       // echo($this->request->getVar("naslov"));
-       
-        //redirect()->to(site_url("Majstor/novaUsluga"));
+        $this->prikaz("dodavanjeusluga",['tagovi'=>$tagovi]);      
     }
     
     public function novaUsluga(){
         
         //napraviti uslugaModel i to ubaciti u bazu posle provere ispravnosti podataka
         
+        $t = $this->request->getVar('izabraniTagovi');
+        $tagovi = explode("#", $t);
+        
+        /*
         $uslugaModel = new UslugaModel();
         $uslugaModel->save([
             'idUsl'=>1,
@@ -49,19 +53,13 @@ class Majstor extends BaseController {
             'cena'=>$this->request->getVar('cena'),
             'idMaj'=>1
         ]);
-        
-        
-        echo ("dodata je nova usluga:");
-        echo($this->request->getVar("naslov"));
-        echo($this->request->getVar('opis'));
-        echo($this->request->getVar("cena"));
-        
+        */
         
     }
     
     public function mojeUsluge(){
-        
-        $uslugaModel = new UslugaModel();
-        echo ($uslugaModel->getInsertId());
+        $this->prikaz("mojeUsluge",[]);
+  
+       
     }
 }

@@ -72,3 +72,20 @@ body {
     font-family: Arial;
     font-weight: bolder;
 }
+
+#tagovi {
+	margin:10px;
+}
+
+
+#tagovi button {
+	border: 2px solid darkslategray;
+	border-radius: 20px;
+	background-color: none;
+	color: darkslategray;
+	font-family: Arial;
+	font-size:16px;
+	outline: none;
+	padding:5px;
+	margin:10px;
+}

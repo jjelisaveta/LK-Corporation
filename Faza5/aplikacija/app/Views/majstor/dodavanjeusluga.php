@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilOsnova.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilDodavanjeUsluge.css">
 	<script src="<?php echo base_url(); ?>/js/skriptaOsnova.js"></script>
+	<script src="<?php echo base_url(); ?>/js/skriptaDodavanjeUsluge.js"></script>
 </head>
 
 <body>
@@ -33,20 +34,31 @@
 								<div class="row red text-center">
 									<div class="offset-2 col-8 offset-md-4 col-md-4 offset-md-4 offset-2">
 										<input class="col-5" type="number" name="cena" id="cenaId" placeholder="Cena">
-										<select class="col-5" name="tagovi" id="selectId" >  
-											<option value="" >Kupatilo</option>
-											<option value="">Masina za ves</option>
-											<option value="">Kuhinja</option>
-											<option value="">Frizider</option>
+										<select class="col-5" name="t" id="selectId" >  
+											<option value="default">--Izaberi--</option>
+											<?php if(isset($tagovi))
+											foreach ($tagovi as $tag) { ?>
+											<option value="<?php echo $tag['opis'] ?>"><?php echo $tag['opis'] ?></option>
+											<?php } ?>
 											 
 										</select>
-										<button type="submit" class="col-1 plus" >+ </button>
+										<input type="hidden" id="izabraniTagovi" name="izabraniTagovi">
+										<button id="plus" type="button" class="col-1 plus">+ </button>
+									</div>
+								</div>
+
+								<div class="row">
+									<div  class="offset-2 col-8 offset-md-4 col-md-4 offset-md-4 offset-2">
+										<div name="tagovi" id="tagovi">
+											
+										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="offset-2 col-8 offset-md-4 col-md-4 text-center offset-2">
 										<a href="mojeUsluge.html">   
-											<input class="col-11"type="submit" value="Dodaj" id="idDugmeR" onclick="">
+											<button id="idDugmeR" class="col-11" type="submit" onclick="dodajTag()"> Dodaj</button>
+
 										</a>
 									</div>
 								</div>
