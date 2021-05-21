@@ -25,6 +25,9 @@
 
             <div id="termini">
                 <?php
+                if (!isset($date)) {
+                    $date = "GRESKA";
+                }
                 if (isset($termini)) {
                     $i = 0;
                     foreach ($termini as $key) {
@@ -40,7 +43,14 @@
             </div>
             <div id="donji_deo" class="">
                 <form id="datum">
-                    <input type="date" id="datuminput" value="21.03.2021">
+                    <input type="date" id="datuminput" value=<?php echo $date ?>>
+                    <?php
+                    if (isset($kalendar)) {
+                        foreach ($kalendar as $kal) {
+                            echo $kal->idTer;
+                        }
+                    }
+                    ?>
                 </form>
             </div>
         </div>
