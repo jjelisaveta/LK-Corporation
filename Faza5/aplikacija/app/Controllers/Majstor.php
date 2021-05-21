@@ -20,6 +20,7 @@ use App\Models\TerminModel;
 use App\Models\UslugaModel;
 use App\Models\TagModel;
 use CodeIgniter\Model;
+use phpDocumentor\Reflection\Types\Array_;
 
 class Majstor extends BaseController
 {
@@ -78,6 +79,7 @@ class Majstor extends BaseController
         if (!isset($date)) {
             $date = date("Y-m-d");
         }
+        $idMaj = 1;
         $termini = [];
         for ($i = 0; $i < 4; $i++) {
             for ($j = 0; $j < 3; $j++) {
@@ -91,20 +93,36 @@ class Majstor extends BaseController
         $data["termini"] = $termini;
         $data["date"] = $date;
         $this->prikaz("kalendar", $data);
-        $this->promeniDatum($date);
+        $radi = $this->dohvatiRadneTermineInternal($idMaj, $date);
+        foreach ($radi as $ter) {
+            echo "<script>updateTermin('$ter');</script>";
+        }
+
     }
 
-    public function promeniDatum($date)
+    private function dohvatiRadneTermineInternal($idMaj, $date)
     {
-        echo "<script>console.log('promena');</script>";
+        $ret = array();
         $kalendarModel = new KalendarModel();
-        $kalendar = $kalendarModel->dohvatiMajstorSlobodan(1, $date);
+        $kalendar = $kalendarModel->dohvatiMajstorSlobodan($idMaj, $date);
         foreach ($kalendar as $kal) {
             $niz = explode(" ", $kal->datumVreme);
             $niz = explode("-", $niz[1]);
             $id = "dugme" . (intval($niz[0]));
-            echo "<script>updateTermin('$id');</script>";
+            array_push($ret, $id);
         }
+        return $ret;
+    }
+
+    public function dohvatiRadneTermine()
+    {
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return json_encode([]);
+        }
+        $date = $this->request->getVar('date');
+        return json_encode($this->dohvatiRadneTermineInternal(1, $date));
     }
 
 }
