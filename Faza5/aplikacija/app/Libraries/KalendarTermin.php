@@ -7,13 +7,21 @@ namespace App\Libraries;
 class KalendarTermin
 {
     private $terminText;
+    private $id;
+    private $class;
 
-    function __construct($terminText)
+    function __construct($terminText, $id, $class)
     {
-        $this->terminText=$terminText;
+        $this->terminText = $terminText;
+        $this->id = $id;
+        $this->class = $class;
     }
-    function view(){
+
+    function view()
+    {
         $data['terminText'] = $this->terminText;
-        echo view('majstor/terminKalendar',$data);
+        $data['id'] = $this->id;
+        $data['class'] = $this->class;
+        echo view('majstor/terminKalendar', $data);
     }
 }

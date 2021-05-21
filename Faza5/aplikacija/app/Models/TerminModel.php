@@ -8,7 +8,7 @@ class TerminModel extends Model
     protected $returnType = 'array';
 
 
-    protected $allowedFields = ['opis'];   //polja koja se menjaju
+    protected $allowedFields = ['datumVreme'];   //polja koja se menjaju
 
 }
 

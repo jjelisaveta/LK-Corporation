@@ -16,8 +16,10 @@ namespace App\Controllers;
 
 use App\Models\Kalendar;
 use App\Models\KalendarModel;
+use App\Models\TerminModel;
 use App\Models\UslugaModel;
 use App\Models\TagModel;
+use CodeIgniter\Model;
 
 class Majstor extends BaseController
 {
@@ -73,26 +75,36 @@ class Majstor extends BaseController
     public function kalendar($date = null)
     {
 
-        $termini = [];
-        for ($i = 0; $i < 4; $i++) {
-            for ($j = 0; $j < 3; $j++) {
-                $termin = new \App\Libraries\KalendarTermin((($i * 3 + $j) * 2) . "-" . (($i * 3 + $j) * 2 + 2));
-                array_push($termini, $termin);
-            }
-        }
-        $kalendarModel = new KalendarModel();
-//        $kalendarModel->save([
-//            'idMaj' => 1,
-//            'idTer' => 19
-//        ]);
-        $kalendar = $kalendarModel->Where("idMaj", 1)->findAll();
         if (!isset($date)) {
             $date = date("Y-m-d");
         }
+        $termini = [];
+        for ($i = 0; $i < 4; $i++) {
+            for ($j = 0; $j < 3; $j++) {
+                $vreme = str_pad((($i * 3 + $j) * 2), 2, '0', STR_PAD_LEFT) . ":" . "00";
+                $id = "dugme" . (($i * 3 + $j) * 2);
+                $class = "terminne";
+                $termin = new \App\Libraries\KalendarTermin($vreme, $id, $class);
+                array_push($termini, $termin);
+            }
+        }
         $data["termini"] = $termini;
         $data["date"] = $date;
-        $data["kalendar"] = $kalendar;
         $this->prikaz("kalendar", $data);
+        $this->promeniDatum($date);
+    }
+
+    public function promeniDatum($date)
+    {
+        echo "<script>console.log('promena');</script>";
+        $kalendarModel = new KalendarModel();
+        $kalendar = $kalendarModel->dohvatiMajstorSlobodan(1, $date);
+        foreach ($kalendar as $kal) {
+            $niz = explode(" ", $kal->datumVreme);
+            $niz = explode("-", $niz[1]);
+            $id = "dugme" . (intval($niz[0]));
+            echo "<script>updateTermin('$id');</script>";
+        }
     }
 
 }

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilDodavanjeUsluge.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilKalendar.css">
     <script src="<?php echo base_url(); ?>/js/skriptaOsnova.js"></script>
+    <script src="<?php echo base_url(); ?>/js/skriptaKalendar.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -43,14 +44,7 @@
             </div>
             <div id="donji_deo" class="">
                 <form id="datum">
-                    <input type="date" id="datuminput" value=<?php echo $date ?>>
-                    <?php
-                    if (isset($kalendar)) {
-                        foreach ($kalendar as $kal) {
-                            echo $kal->idTer;
-                        }
-                    }
-                    ?>
+                    <input type="date" id="datuminput" onchange="promenaKalendar(this)" value=<?php echo $date ?>>
                 </form>
             </div>
         </div>
