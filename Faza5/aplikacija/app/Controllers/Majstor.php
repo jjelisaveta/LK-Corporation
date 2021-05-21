@@ -74,7 +74,7 @@ class Majstor extends BaseController
 
     public function kalendar($date = null)
     {
-
+        echo "<script>console.log('poslao zahtev');</script>";
         if (!isset($date)) {
             $date = date("Y-m-d");
         }
