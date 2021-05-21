@@ -25,78 +25,11 @@
         
     <div class="row">
         <div id="usluga" class="offset-0 col-12 offset-md-2 col-md-10">
-            <div class="row">
-                <div class="offset-1 col-10">
-                    <table class="uslugaPrikaz">
-                        <tr>
-                            <td class="slikaMajstora"><img src="<?php echo base_url(); ?>/slike/Kalu.jpg" ></td>
-                            <td class="opisUsluge">
-                                <h1>
-                                    Majstor Bob - Popravke masine za ves
-                                </h1>
-                                <hr/>
-                                <h3>
-                                    Visedecenijsko iskustvo u otklanjanju kvarova svih vrsti sa ves masina.Mogu potvrditi i mnogobrojne zadovoljne musterije. Cena provereno niza od konkurencije..
-                                </h3>
-                                <h5>
-                                    veš mašina, kupatilo
-                                </h5>
-                                <button type="submit" onclick="window.location='izmenaUsluge.html';">
-                                    Izmeni
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="offset-1 col-10">
-                    <table class="uslugaPrikaz">
-                        <tr>
-                            <td class="slikaMajstora"><img src="<?php echo base_url(); ?>/slike/Kalu.jpg" ></td>
-                            <td class="opisUsluge">
-                                <h1>
-                                    Majstor Bob - Popravke masine za ves
-                                </h1>
-                                <hr/>
-                                <h3>
-                                    Visedecenijsko iskustvo u otklanjanju kvarova svih vrsti sa ves masina.Mogu potvrditi i mnogobrojne zadovoljne musterije. Cena provereno niza od konkurencije..
-                                </h3>
-                                <h5>
-                                    veš mašina, kupatilo
-                                </h5>
-                                <button type="submit" onclick="window.location='izmenaUsluge.html';">
-                                    Izmeni
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="offset-1 col-10">
-                    <table class="uslugaPrikaz">
-                        <tr>
-                            <td class="slikaMajstora"><img src="<?php echo base_url(); ?>/slike/Kalu.jpg" ></td>
-                            <td class="opisUsluge">
-                                <h1>
-                                    Majstor Bob - Popravke masine za ves
-                                </h1>
-                                <hr/>
-                                <h3>
-                                    Visedecenijsko iskustvo u otklanjanju kvarova svih vrsti sa ves masina.Mogu potvrditi i mnogobrojne zadovoljne musterije. Cena provereno niza od konkurencije..
-                                </h3>
-                                <h5>
-                                    veš mašina, kupatilo
-                                </h5>
-                                <button type="submit" onclick="window.location='izmenaUsluge.html';">
-                                    Izmeni
-                                </button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+            <?php 
+                foreach($usluge as $usluga) {
+                    echo view_cell("\App\Libraries\MojaUslugaMajstor::prikazUsluge",['naslov'=>$usluga->naziv,'opis'=> $usluga->opis]);
+                }
+            ?>
         </div>
     </div>
     </div>

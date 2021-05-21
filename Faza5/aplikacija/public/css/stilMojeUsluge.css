@@ -48,9 +48,10 @@ body {
     width: 90%;
 }
 
-.opisUsluge h3{
+.opisUsluge p {
     text-align: left;
     font-size: 18px;
+    word-break: break-all;
 }
 
 
@@ -70,5 +71,9 @@ body {
     width:90%;
     background-color: orange;
     font-weight: bolder;
+}
+
+#usluga {
+    width:100%;
 }
 
