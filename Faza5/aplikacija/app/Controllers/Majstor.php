@@ -85,7 +85,7 @@ class Majstor extends BaseController
 //            'idMaj' => 1,
 //            'idTer' => 19
 //        ]);
-        $kalendar = $kalendarModel->getWhere("idMaj", 1);
+        $kalendar = $kalendarModel->Where("idMaj", 1)->findAll();
         if (!isset($date)) {
             $date = date("Y-m-d");
         }
