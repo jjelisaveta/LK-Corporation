@@ -97,7 +97,35 @@ class Majstor extends BaseController
         foreach ($radi as $ter) {
             echo "<script>updateTermin('$ter');</script>";
         }
+        $rezervisan = $this->dohvatiRezervacijeInternal($idMaj, $date);
+        foreach ($rezervisan as $ter) {
+            echo "<script>rezervisi('$ter');</script>";
+        }
+    }
 
+    private function dohvatiRezervacijeInternal($idMaj, $date)
+    {
+        $kalendarModel = new KalendarModel();
+        $ret = array();
+        $kalendarModel = new KalendarModel();
+        $kalendar = $kalendarModel->dohvatiMajstorRezervisan($idMaj, $date);
+        foreach ($kalendar as $kal) {
+            $niz = explode(" ", $kal->datumVreme);
+            $niz = explode("-", $niz[1]);
+            $id = "dugme" . (intval($niz[0]));
+            array_push($ret, $id);
+        }
+        return $ret;
+    }
+    public function dohvatiRezervacije($date)
+    {
+        $var = $this->request->getMethod();
+        if ($var != 'get') {
+            //potrebno popraviti da se salje error 500
+            return json_encode([]);
+        }
+//        $date = $this->request->getVar('date');
+        return json_encode($this->dohvatiRezervacijeInternal(1, $date));
     }
 
     private function dohvatiRadneTermineInternal($idMaj, $date)

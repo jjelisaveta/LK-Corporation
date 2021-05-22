@@ -19,5 +19,13 @@ class KalendarModel extends Model
             ->findAll();
     }
 
+    public function dohvatiMajstorRezervisan($idMaj, $date)
+    {
+        return $this->join('termin', 'idTer')->where('idMaj', $idMaj)
+            ->where('datumVreme BETWEEN "' . date('Y-m-d', strtotime($date)) . '" and "' . date('Y-m-d H:i', strtotime($date . "23:59")) . '"')
+            ->where('idRez is NOT NULL')
+            ->findAll();
+    }
+
 
 }
