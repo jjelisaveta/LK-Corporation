@@ -44,7 +44,10 @@
             </div>
             <div id="donji_deo" class="">
                 <form id="datum">
-                    <input type="date" id="datuminput" onchange="promenaKalendar(this)" value=<?php echo $date ?>>
+                    <input type="date" id="datuminput" onchange="promenaKalendar(this)"
+                           min=<?php echo $date ?>
+                           max=<?php echo date('Y-m-d', strtotime($date . ' + 30 days')) ?>
+                           value=<?php echo $date ?>>
                 </form>
             </div>
         </div>
