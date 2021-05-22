@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilDodavanjeUsluge.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilKalendar.css">
     <script src="<?php echo base_url(); ?>/js/skriptaOsnova.js"></script>
+    <script src="<?php echo base_url(); ?>/js/skriptaKalendar.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -25,6 +26,9 @@
 
             <div id="termini">
                 <?php
+                if (!isset($date)) {
+                    $date = "GRESKA";
+                }
                 if (isset($termini)) {
                     $i = 0;
                     foreach ($termini as $key) {
@@ -40,7 +44,10 @@
             </div>
             <div id="donji_deo" class="">
                 <form id="datum">
-                    <input type="date" id="datuminput" value="21.03.2021">
+                    <input type="date" id="datuminput" onchange="promenaKalendar(this)"
+                           min=<?php echo $date ?>
+                           max=<?php echo date('Y-m-d', strtotime($date . ' + 30 days')) ?>
+                           value=<?php echo $date ?>>
                 </form>
             </div>
         </div>
