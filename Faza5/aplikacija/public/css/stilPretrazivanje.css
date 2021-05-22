@@ -1,0 +1,79 @@
+#sadrzaj {
+    margin-top:10%;
+    height:80%;
+    float:left;
+    text-align: center;
+
+}
+
+#sadrzaj h3 {
+    font-size:20px;
+    font-weight:550;
+    margin-top:8%;
+    font-family: Arial;
+    font-style: italic;
+    color:#4b4b4b;
+}
+
+#poljePretraga {
+    width: 50%;
+    padding: 8px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    margin-top: 2%;
+    font-size: 15px;
+    
+}
+
+#poljePretraga:focus {
+    outline:none;
+}
+
+#dugmePretraga {
+    margin-left: -40px;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+    outline: none;
+}
+
+#dugmePretraga img {
+    height: 95%;
+}
+
+#dugmePretraga img:hover {
+    height: 100%;
+}
+
+#tagovi{
+    margin-top:5%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+#tagovi button {
+    border-radius: 20px;
+    background: transparent;
+    color: #2b2b2b;
+    border-color: #2b2b2b;
+    border-style: solid;
+    font-size: 16px;
+    padding:5px;
+    padding-top: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#tagovi button:focus {
+    outline: none;
+    background-color: darkgray;
+}
+
+#tagovi button:hover{
+    background-color: darkgray;
+}
+

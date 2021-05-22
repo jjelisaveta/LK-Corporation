@@ -114,7 +114,7 @@ DROP TABLE IF EXISTS `tag`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tag` (
-  `idTag` int NOT NULL,
+  `idTag` int NOT NULL AUTO_INCREMENT,
   `opis` varchar(45) NOT NULL,
   PRIMARY KEY (`idTag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -183,7 +183,7 @@ DROP TABLE IF EXISTS `usluga`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usluga` (
-  `idUsl` int NOT NULL,
+  `idUsl` int NOT NULL AUTO_INCREMENT,
   `naziv` varchar(45) NOT NULL,
   `opis` longtext NOT NULL,
   `cena` double NOT NULL,
