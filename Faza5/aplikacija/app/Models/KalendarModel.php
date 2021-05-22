@@ -8,6 +8,7 @@ class KalendarModel extends Model
 {
     protected $table = "kalendar";
     protected $returnType = "object";
+    protected $primaryKey = 'idKal';
     protected $allowedFields = ['idMaj', 'idTer', 'idRez'];
 
     public function dohvatiMajstorSlobodan($idMaj, $date)

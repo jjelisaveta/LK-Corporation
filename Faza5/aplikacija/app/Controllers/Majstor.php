@@ -115,7 +115,6 @@ class Majstor extends BaseController
     }
 
 
-
     public function dohvatiRadneTermine($date)
     {
         $var = $this->request->getMethod();
@@ -127,6 +126,80 @@ class Majstor extends BaseController
         return json_encode($this->dohvatiRadneTermineInternal(1, $date));
     }
 
+    private function dodajRadniTerminInternal($idMaj, $date, $id)
+    {
+        $terminModel = new TerminModel();
+        $datumVreme = $date . " " . $id . ":00:00";
+        $termin = $terminModel->where("datumVreme", $datumVreme)->first();
+        if ($termin == []) {
+            $terminModel->save([
+                "datumVreme" => $datumVreme
+            ]);
+            $idTer = $terminModel->getInsertID();
+        } else {
+            $idTer = $termin->idTer;
+        }
+        $kalendarModel = new KalendarModel();
+        $kalendarTermin = $kalendarModel->where("idMaj", $idMaj)->where("idTer", $idTer)->first();
+        if ($kalendarTermin != null) {
+            return "GRESKA termin vec postoji";
+        }
+        $kalendarModel->save([
+            'idMaj' => $idMaj,
+            'idTer' => $idTer,
+        ]);
+        return "OK";
+    }
+
     public function dodajRadniTermin()
+    {
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return "zahtev mora biti post";
+        }
+        $idMaj = 1;
+        $date = $this->request->getVar("datum");
+        $id = $this->request->getVar("index");
+        return $this->dodajRadniTerminInternal($idMaj, $date, $id);
+    }
+
+    private function skiniRadniTerminInternal($idMaj, $date, $id)
+    {
+        $terminModel = new TerminModel();
+        $datumVreme = $date . " " . $id . ":00:00";
+        $termin = $terminModel->where("datumVreme", $datumVreme)->first();
+        if ($termin == []) {
+            $terminModel->save([
+                "datumVreme" => $datumVreme
+            ]);
+            $idTer = $terminModel->getInsertID();
+        } else {
+            $idTer = $termin->idTer;
+        }
+        $kalendarModel = new KalendarModel();
+        $kalendarTermin = $kalendarModel->where("idMaj", $idMaj)->where("idTer", $idTer)->first();
+        if ($kalendarTermin == null) {
+            return "GRESKA termin ne postoji";
+        }
+        if ($kalendarTermin->idRez != null) {
+            return "GRESKA termin je rezervisan";
+        }
+        $kalendarModel->delete($kalendarTermin->idKal);
+        return "OK";
+    }
+
+    public function skiniRadniTermin()
+    {
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return "zahtev mora biti post";
+        }
+        $idMaj = 1;
+        $date = $this->request->getVar("datum");
+        $id = $this->request->getVar("index");
+        return $this->skiniRadniTerminInternal($idMaj, $date, $id);
+    }
 
 }
