@@ -114,6 +114,8 @@ class Majstor extends BaseController
         return $ret;
     }
 
+
+
     public function dohvatiRadneTermine($date)
     {
         $var = $this->request->getMethod();
@@ -124,5 +126,7 @@ class Majstor extends BaseController
 //        $date = $this->request->getVar('date');
         return json_encode($this->dohvatiRadneTermineInternal(1, $date));
     }
+
+    public function dodajRadniTermin()
 
 }
