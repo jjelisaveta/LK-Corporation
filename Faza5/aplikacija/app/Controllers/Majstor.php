@@ -114,14 +114,14 @@ class Majstor extends BaseController
         return $ret;
     }
 
-    public function dohvatiRadneTermine()
+    public function dohvatiRadneTermine($date)
     {
         $var = $this->request->getMethod();
-        if ($var != 'post') {
+        if ($var != 'get') {
             //potrebno popraviti da se salje error 500
             return json_encode([]);
         }
-        $date = $this->request->getVar('date');
+//        $date = $this->request->getVar('date');
         return json_encode($this->dohvatiRadneTermineInternal(1, $date));
     }
 
