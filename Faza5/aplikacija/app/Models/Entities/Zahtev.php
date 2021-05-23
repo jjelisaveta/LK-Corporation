@@ -66,8 +66,9 @@ class Zahtev
         return $this->opis;
     }
 
+
     /**
-     * Set sadrzaj.
+     * Set opis.
      *
      * @param string $opis
      *
@@ -77,6 +78,29 @@ class Zahtev
     {
         $this->opis = $opis;
         return this;
+    }
+
+    /**
+     * Set sadrzaj.
+     *
+     * @param Korisnik \App\Models\Entities\Korisnik|null $idKor
+     *
+     * @return Zahtev
+     */
+    public function setIdkor(\App\Models\Entities\Korisnik $idKor = null)
+    {
+        $this->idkor = $idKor;
+        return this;
+    }
+
+    /**
+     * Get idkor.
+     *
+     * @return \App\Models\Entities\Korisnik|null
+     */
+    public function getIdkor()
+    {
+        return $this->idkor;
     }
 
 }

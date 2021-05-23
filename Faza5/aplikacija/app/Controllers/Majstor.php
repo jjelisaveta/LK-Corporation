@@ -49,7 +49,6 @@ class Majstor extends BaseController
         //redirect()->to(site_url("Majstor/novaUsluga"));
     }
 
-       
 
     public function novaUsluga()
     {
@@ -83,7 +82,7 @@ class Majstor extends BaseController
 
         return redirect()->to(site_url("Majstor/mojeUsluge"));
     }
-    
+
     public function dohvatiTagove()
     {
         $u = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)
@@ -94,8 +93,9 @@ class Majstor extends BaseController
            // echo gettype($tag);
            echo $tag->getOpis();
         }*/
+
     }
-    
+
     public function mojeUsluge()
     {
         $uslugaModel = new UslugaModel();
@@ -108,13 +108,13 @@ class Majstor extends BaseController
 
         $this->prikaz("mojeUsluge", ['usluge' => $usluge]);
     }
-    
+
     public function prikazMajstora()
     {
         //majstor - ime, prezime
         //dohvatanje komentara iz baze 
         //dohvatanje usluga
-        $this->prikaz("prikazMajstora",[]);
+        $this->prikaz("prikazMajstora", []);
     }
 
     public function kalendar($date = null)
@@ -149,13 +149,18 @@ class Majstor extends BaseController
 
     private function dohvatiOpisRezervacije($idRez)
     {
-        $zahtevModel = new ZahtevModel();
-        $ret = $zahtevModel->dohvatiCeoOpis($idRez);
-        return $ret;
-//        $em = $this->doctrine->em;
-//        $zahtev = $em->getRepository(Zahtev::class)->find($idRez);
-//        echo "<script>console.log('$zahtev->getOpis()')</script>";
-//        return $zahtev->getOpis();
+//        $zahtevModel = new ZahtevModel();
+//        $ret = $zahtevModel->dohvatiCeoOpis($idRez);
+//        return $ret;
+        $em = $this->doctrine->em;
+        $zahtev = $em->getRepository(Zahtev::class)->find($idRez);
+        $korisnik = $zahtev->getIdkor();
+        $opis = $zahtev->getOpis();
+        $ime = $korisnik->getIme();
+        $prezime = $korisnik->getPrezime();
+        $adresa = $korisnik->getAdresa();
+        $opis = $ime . " " . $prezime . ";" . $opis . ";" . $adresa;
+        return $opis;
     }
 
 

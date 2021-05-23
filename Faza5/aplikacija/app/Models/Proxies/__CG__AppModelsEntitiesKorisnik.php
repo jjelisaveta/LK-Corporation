@@ -200,6 +200,14 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdkor', []);
 
         return parent::getIdkor();
+
+    public function setIme($ime)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIme', [$ime]);
+
+        return parent::setIme($ime);
+
     }
 
     /**
@@ -216,7 +224,7 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
     /**
      * {@inheritDoc}
      */
-    public function getEmail(): string
+	 public function getEmail(): string
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', []);
@@ -244,11 +252,20 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLozinka', []);
 
         return parent::getLozinka();
+	}
+	
+    public function setPrezime($prezime)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrezime', [$prezime]);
+
+        return parent::setPrezime($prezime);
     }
 
     /**
      * {@inheritDoc}
      */
+<<<<<<< HEAD
     public function getAdresa(): string
     {
 
@@ -348,11 +365,12 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
     /**
      * {@inheritDoc}
      */
-    public function setAdresa(string $adresa): void
+
+    public function setAdresa(string $adresa = NULL)
+
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdresa', [$adresa]);
-
         parent::setAdresa($adresa);
     }
 
