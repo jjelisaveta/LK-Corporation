@@ -16,25 +16,25 @@
     <title>POPRAVI.com</title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilOsnova.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilMojeUsluge.css">
-	<script src="<?php echo base_url(); ?>/js/skriptaOsnova.js"></script>
+    <script src="<?php echo base_url(); ?>/js/skriptaOsnova.js"></script>
 </head>
 
 <body>
 
-    <div class="container-fluid">
-        
+<div class="container-fluid">
+
     <div class="row">
         <div id="usluga" class="offset-0 col-12 offset-md-2 col-md-10">
-            <?php 
-                foreach($usluge as $usluga) {
-                    echo view_cell("\App\Libraries\MojaUslugaMajstor::prikazUsluge",['naslov'=>$usluga->naziv,'opis'=> $usluga->opis]);
-                }
+            <?php
+            foreach ($usluge as $usluga) {
+                echo view_cell("\App\Libraries\MojaUslugaMajstor::prikazUsluge", ['naslov' => $usluga->naziv, 'opis' => $usluga->opis, 'id' => $usluga->idUsl]);
+            }
             ?>
         </div>
     </div>
-    </div>
-    
-    
+</div>
+
+
 </body>
 
 </html>
