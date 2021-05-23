@@ -14,7 +14,7 @@
                     <h5>
                         tagovi kad se doda doctirne
                     </h5>
-                    <button type="submit" onclick="window.location='izmeniUslugu/'+$id;">
+                    <button onclick="window.location='izmeniUslugu/'+<?= $id ?>;">
                         Izmeni
                     </button>
                 </td>

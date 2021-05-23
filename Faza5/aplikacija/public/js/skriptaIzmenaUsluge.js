@@ -1,7 +1,8 @@
-function dodajText(naslov, opis, cena, tagovi) {
+function dodajText(id, naslov, opis, cena, tagovi) {
     $("#naslovId").val(naslov);
     $("#opisId").val(opis);
     $("#cenaId").val(cena);
+    $("#idUsluge").val(id);
     tagovi = JSON.parse(tagovi);
     console.log(tagovi);
     tagovi.forEach(tag => {

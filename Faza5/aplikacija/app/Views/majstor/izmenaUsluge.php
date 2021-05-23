@@ -23,7 +23,7 @@
 
     <div class="row">
         <div id="sadrzaj" class="offset-0 col-12 offset-md-2 col-md-10">
-            <form id="content" action="novaUsluga" method="POST">
+            <form id="content" action="../izmenaUsluge" method="POST">
                 <div class="row">
                     <input class="offset-2 col-8 offset-md-4 col-md-4" type="text" name="naslov" id="naslovId">
                 </div>
@@ -45,6 +45,7 @@
 
                         </select>
                         <input type="hidden" id="izabraniTagovi" name="izabraniTagovi">
+                        <input type="hidden" id="idUsluge" name="id">
                         <button id="plus" type="button" class="col-1 plus">+</button>
                     </div>
                 </div>
@@ -58,8 +59,8 @@
                 </div>
                 <div class="row">
                     <div class="offset-2 col-8 offset-md-4 col-md-4 text-center offset-2">
-                        <a href="mojeUsluge.html">
-                            <button id="idDugmeR" class="col-11" type="submit"> Dodaj</button>
+                        <a href="#">
+                            <button id="idDugmeR" class="col-11" type="submit"> Izmeni</button>
 
                         </a>
                     </div>

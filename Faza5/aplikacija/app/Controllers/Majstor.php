@@ -261,7 +261,30 @@ class Majstor extends BaseController
         $usluga = $uslugaModel->where('idUsl', $id)->first();
         $this->prikaz("izmenaUsluge", ['tagovi' => $tagovi]);
         $tags = json_encode(["doctrine"]);
-        echo "<script>dodajText('$usluga->naziv','$usluga->opis','$usluga->cena','$tags') </script>";
+        echo "<script>dodajText('$id','$usluga->naziv','$usluga->opis','$usluga->cena','$tags') </script>";
+    }
+
+    public function izmenaUsluge()
+    {
+        print_r($_POST);
+
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return "zahtev mora biti post";
+        }
+        $idMaj = 1;
+        $naslov = $this->request->getVar("naslov");
+        $opis = $this->request->getVar("opis");
+        $cena = $this->request->getVar("cena");
+        $id = $this->request->getVar("id");
+        $uslugaModel = new UslugaModel();
+        $uslugaModel->update($id, [
+            'naziv' => $naslov,
+            'opis' => $opis,
+            'cena' => $cena
+        ]);
+        return redirect()->to(site_url("Majstor/mojeUsluge"));
     }
 
 
