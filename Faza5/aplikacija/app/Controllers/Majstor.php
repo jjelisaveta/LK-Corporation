@@ -85,12 +85,14 @@ class Majstor extends BaseController
     
     public function dohvatiTagove()
     {
-        $u = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)
-                ->find(['idUsl'=>19]);
-        $tagovi = $u->dohvatiTagove();
+        $u = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)
+                ->find(1);
+        /*$tagovi = $u->dohvatiTagove();
         foreach($tagovi as $tag){
             echo $tag['opis'];
-        }
+        }*/
+        
+        echo $u->getIme();
     }
     
     public function mojeUsluge()
@@ -111,7 +113,7 @@ class Majstor extends BaseController
         //majstor - ime, prezime
         //dohvatanje komentara iz baze 
         //dohvatanje usluga
-        $this->prikaz("prikazMajstora",[])
+        $this->prikaz("prikazMajstora",[]);
     }
 
     public function kalendar($date = null)

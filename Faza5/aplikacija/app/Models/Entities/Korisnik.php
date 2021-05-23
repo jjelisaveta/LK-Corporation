@@ -86,6 +86,10 @@ class Korisnik
      * })
      */
     private $idulo;
+    
+    public function getIme(){
+        return $this->ime;
+    }
 
 
 }
