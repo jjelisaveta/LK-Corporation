@@ -47,15 +47,16 @@ class Majstor extends BaseController
         //redirect()->to(site_url("Majstor/novaUsluga"));
     }
 
-        
-    public function novaUsluga() {
+
+    public function novaUsluga()
+    {
         //ispravnost podataka
 
         $t = $this->request->getVar('izabraniTagovi');
         $tagovi = explode("#", $t);
 
         /*dodati redove u Usluga-Tag i proveriti ispravnost podataka*/
-        
+
         $uslugaModel = new UslugaModel();
         $uslugaModel->save([
             'naziv' => $this->request->getVar('naslov'),
@@ -63,33 +64,34 @@ class Majstor extends BaseController
             'cena' => $this->request->getVar('cena'),
             'idMaj' => 1                                        //izmeni
         ]);
-        
+
         $tagModel = new TagModel();
         $uslugaTagModel = new UslugaTagModel();
         $t = $this->request->getVar('izabraniTagovi');
         $tagovi = explode("#", $t);
         $idUsluge = $uslugaModel->getInsertID();
-        foreach ($tagovi as $tag){
-           
+        foreach ($tagovi as $tag) {
+
             $uslugaTagModel->save([
                 'idUsl' => $idUsluge,
                 'idTag' => $tagModel->dohvatiId($tag)->idTag
             ]);
         }
-        
-       return redirect()->to(site_url("Majstor/mojeUsluge"));
+
+        return redirect()->to(site_url("Majstor/mojeUsluge"));
     }
-    
-    public function mojeUsluge(){
+
+    public function mojeUsluge()
+    {
         $uslugaModel = new UslugaModel();
-        $usluge = $uslugaModel->where('idMaj',1)->findAll();  //stavi id ulogovanog korisnika
-       /* $uslugaTagModel = new UslugaTagModel();
-        $tagModel = new TagModel();
-        foreach ($usluge as $usluga){
-            $tagoviId = $uslugaTagModel->where('idUsl', $usluga->idUsl)->findAll();
-        }*/
-        
-        $this->prikaz("mojeUsluge",['usluge'=>$usluge]);
+        $usluge = $uslugaModel->where('idMaj', 1)->findAll();  //stavi id ulogovanog korisnika
+        /* $uslugaTagModel = new UslugaTagModel();
+         $tagModel = new TagModel();
+         foreach ($usluge as $usluga){
+             $tagoviId = $uslugaTagModel->where('idUsl', $usluga->idUsl)->findAll();
+         }*/
+
+        $this->prikaz("mojeUsluge", ['usluge' => $usluge]);
     }
 
     public function kalendar($date = null)
@@ -136,6 +138,7 @@ class Majstor extends BaseController
         }
         return $ret;
     }
+
     public function dohvatiRezervacije($date)
     {
         $var = $this->request->getMethod();
@@ -248,5 +251,18 @@ class Majstor extends BaseController
         $id = $this->request->getVar("index");
         return $this->skiniRadniTerminInternal($idMaj, $date, $id);
     }
+
+
+    public function izmeniUslugu($id)
+    {
+        $tagModel = new TagModel();
+        $tagovi = $tagModel->findAll();
+        $uslugaModel = new UslugaModel();
+        $usluga = $uslugaModel->where('idUsl', $id)->first();
+        $this->prikaz("izmenaUsluge", ['tagovi' => $tagovi]);
+        $tags = json_encode(["doctrine"]);
+        echo "<script>dodajText('$usluga->naziv','$usluga->opis','$usluga->cena','$tags') </script>";
+    }
+
 
 }
