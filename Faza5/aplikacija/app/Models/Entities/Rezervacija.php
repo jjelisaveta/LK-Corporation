@@ -37,6 +37,8 @@ class Rezervacija
      * })
      */
     private $idmaj;
+    
+    
 
 
 }
