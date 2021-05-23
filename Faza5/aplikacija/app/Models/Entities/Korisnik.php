@@ -96,140 +96,97 @@ class Korisnik
     {
         return $this->ime;
     }
-    
-    function getIdkor(): int {
+
+    function getIdkor(): int
+    {
         return $this->idkor;
     }
 
-    function getPrezime(): string {
+    function getPrezime(): string
+    {
         return $this->prezime;
     }
 
-    function getEmail(): string {
+    function getEmail(): string
+    {
         return $this->email;
     }
 
-    function getBrojtelefona(): string {
+    function getBrojtelefona(): string
+    {
         return $this->brojtelefona;
     }
 
-    function getLozinka(): string {
+    function getLozinka(): string
+    {
         return $this->lozinka;
     }
 
-    function getAdresa(): string {
+    function getAdresa(): string
+    {
         return $this->adresa;
     }
 
-    function getSlika(): ?string {
+    function getSlika(): ?string
+    {
         return $this->slika;
     }
 
-    function getOdobren(): string {
+    function getOdobren(): string
+    {
         return $this->odobren;
     }
 
-    public function getIdulo(): \App\Models\Entities\Uloga {
+    public function getIdulo(): \App\Models\Entities\Uloga
+    {
         return $this->idulo;
     }
 
-    function setIdkor(int $idkor): void {
+    function setIdkor(int $idkor): void
+    {
         $this->idkor = $idkor;
     }
 
-    function setPrezime(string $prezime): void {
+    function setPrezime(string $prezime): void
+    {
         $this->prezime = $prezime;
     }
 
-    function setEmail(string $email): void {
+    function setEmail(string $email): void
+    {
         $this->email = $email;
     }
 
-    function setBrojtelefona(string $brojtelefona): void {
+    function setBrojtelefona(string $brojtelefona): void
+    {
         $this->brojtelefona = $brojtelefona;
     }
 
-    function setLozinka(string $lozinka): void {
+    function setLozinka(string $lozinka): void
+    {
         $this->lozinka = $lozinka;
     }
 
-    function setAdresa(string $adresa): void {
+    function setAdresa(string $adresa): void
+    {
         $this->adresa = $adresa;
     }
 
-    function setSlika(?string $slika): void {
+    function setSlika(?string $slika): void
+    {
         $this->slika = $slika;
     }
 
-    function setOdobren(string $odobren): void {
+    function setOdobren(string $odobren): void
+    {
         $this->odobren = $odobren;
     }
 
-    function setIdulo(\App\Models\Entities\Uloga $idulo): void {
+    function setIdulo(\App\Models\Entities\Uloga $idulo): void
+    {
         $this->idulo = $idulo;
     }
 
 
-
-    /**
-     * Set ime.
-     *
-     * @param string $ime
-     *
-     * @return Korisnik
-     */
-    public function setIme($ime)
-    {
-        $this->ime = $ime;
-        return this;
-    }
-
-    /**
-     * Get prezime.
-     *
-     * @return string
-     */
-    public function getPrezime()
-    {
-        return $this->prezime;
-    }
-
-
-    /**
-     * Set prezime.
-     *
-     * @param string $prezime
-     *
-     * @return Korisnik
-     */
-    public function setPrezime($prezime)
-    {
-        $this->prezime = $prezime;
-        return this;
-    }
-
-    /**
-     * Get adresa.
-     *
-     * @return string|null
-     */
-    public function getAdresa()
-    {
-        return $this->adresa;
-    }
-
-
-    /**
-     * Set adresa.
-     *
-     * @param string|null $adresa
-     *
-     * @return Korisnik
-     */
-    public function setAdresa(string $adresa = null)
-    {
-        $this->adresa = $adresa;
-        return $this;
-    }
 }
 

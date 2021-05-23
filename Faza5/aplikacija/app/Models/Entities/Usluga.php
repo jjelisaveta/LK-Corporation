@@ -3,6 +3,7 @@
 namespace App\Models\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
+use \App\Models\Entities\Tag;
 
 /**
  * Usluga
@@ -51,67 +52,86 @@ class Usluga
      * })
      */
     private $idmaj;
-    
-     /**
-     * @ORM\ManyToMany(targetEntity="\App\Models\Entities\Tag", inversedBy="usluge")
-     * @ORM\JoinTable(name="usluga-tag")
-     */
-     protected $tagovi;
 
-    
-    public function __construct() {
+    /**
+     *
+     * @var Tag[]
+     *
+     * Many Usluga have Many Tags.
+     * @ORM\ManyToMany(targetEntity="Tag")
+     * @ORM\JoinTable(name="uslugatag",
+     *      joinColumns={@ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="idTag", referencedColumnName="idTag")}
+     *      )
+     */
+    private $tagovi;
+
+
+    public function __construct()
+    {
         $this->tagovi = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    
-    public function getIdusl(): int {
+
+    public function getIdusl(): int
+    {
         return $this->idusl;
     }
 
-    public function getNaziv(): string {
+    public function getNaziv(): string
+    {
         return $this->naziv;
     }
 
-    public function getOpis(): string {
+    public function getOpis(): string
+    {
         return $this->opis;
     }
 
-    public function getCena(): float {
+    public function getCena(): float
+    {
         return $this->cena;
     }
 
-    public function getIdmaj(): \App\Models\Entities\Korisnik {
+    public function getIdmaj(): \App\Models\Entities\Korisnik
+    {
         return $this->idmaj;
     }
 
-    public function getTagovi() {
+    public function getTagovi()
+    {
         return $this->tagovi;
     }
 
-    public function setIdusl(int $idusl): void {
+    public function setIdusl(int $idusl): void
+    {
         $this->idusl = $idusl;
     }
 
-    public function setNaziv(string $naziv): void {
+    public function setNaziv(string $naziv): void
+    {
         $this->naziv = $naziv;
     }
 
-    public function setOpis(string $opis): void {
+    public function setOpis(string $opis): void
+    {
         $this->opis = $opis;
     }
 
-    public function setCena(float $cena): void {
+    public function setCena(float $cena): void
+    {
         $this->cena = $cena;
     }
 
-    public function setIdmaj(\App\Models\Entities\Korisnik $idmaj): void {
+    public function setIdmaj(\App\Models\Entities\Korisnik $idmaj): void
+    {
         $this->idmaj = $idmaj;
     }
 
-    public function setTagovi($tagovi): void {
+    public function setTagovi($tagovi): void
+    {
         $this->tagovi = $tagovi;
     }
-
 
 
 }
