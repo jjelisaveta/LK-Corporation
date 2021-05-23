@@ -88,4 +88,76 @@ class Korisnik
     private $idulo;
 
 
+    /**
+     * Get ime.
+     *
+     * @return string
+     */
+    public function getIme()
+    {
+        return $this->ime;
+    }
+
+
+    /**
+     * Set ime.
+     *
+     * @param string $ime
+     *
+     * @return Korisnik
+     */
+    public function setIme($ime)
+    {
+        $this->ime = $ime;
+        return this;
+    }
+
+    /**
+     * Get prezime.
+     *
+     * @return string
+     */
+    public function getPrezime()
+    {
+        return $this->prezime;
+    }
+
+
+    /**
+     * Set prezime.
+     *
+     * @param string $prezime
+     *
+     * @return Korisnik
+     */
+    public function setPrezime($prezime)
+    {
+        $this->prezime = $prezime;
+        return this;
+    }
+
+    /**
+     * Get adresa.
+     *
+     * @return string|null
+     */
+    public function getAdresa()
+    {
+        return $this->adresa;
+    }
+
+
+    /**
+     * Set adresa.
+     *
+     * @param string|null $adresa
+     *
+     * @return Korisnik
+     */
+    public function setAdresa(string $adresa = null)
+    {
+        $this->adresa = $adresa;
+        return this;
+    }
 }
+

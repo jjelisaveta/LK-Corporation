@@ -128,13 +128,21 @@ class Majstor extends BaseController
 
     private function dohvatiOpisRezervacije($idRez)
     {
-        $zahtevModel = new ZahtevModel();
-        $ret = $zahtevModel->dohvatiCeoOpis($idRez);
-        return $ret;
-//        $em = $this->doctrine->em;
-//        $zahtev = $em->getRepository(Zahtev::class)->find($idRez);
-//        echo "<script>console.log('$zahtev->getOpis()')</script>";
-//        return $zahtev->getOpis();
+//        $zahtevModel = new ZahtevModel();
+//        $ret = $zahtevModel->dohvatiCeoOpis($idRez);
+//        return $ret;
+        $em = $this->doctrine->em;
+        $zahtev = $em->getRepository(Zahtev::class)->find($idRez);
+        $korisnik = $zahtev->getIdkor();
+        $opis = $zahtev->getOpis();
+        $ime = $korisnik->getIme();
+//        $ime = "ime";
+//        $prezime = "prezime";
+        $adresa = "adresa";
+        $prezime = $korisnik->getPrezime();
+//        $adresa = $korisnik->getAdersa();
+        $opis = $ime . " " . $prezime . ";" . $opis . ";" . $adresa;
+        return $opis;
     }
 
 
