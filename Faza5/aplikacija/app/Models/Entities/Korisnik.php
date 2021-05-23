@@ -86,11 +86,6 @@ class Korisnik
      * })
      */
     private $idulo;
-    
-    public function getIme(){
-        return $this->ime;
-    }
-
 
     /**
      * Get ime.
@@ -161,7 +156,7 @@ class Korisnik
     public function setAdresa(string $adresa = null)
     {
         $this->adresa = $adresa;
-        return this;
+        return $this;
     }
 }
 
