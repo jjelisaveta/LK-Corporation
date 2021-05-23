@@ -148,9 +148,9 @@ class Gost extends BaseController
                 $this->prikazi($stranica,$data);
             }else{
                 $putanja = '';
-  //              if($this->request->getVar('izaberiSliku') != null){
+/*               if($this->request->getVar('izaberiSliku') != null){
                     $putanja = $this->uzmiPutanju();
- //               }
+                }*/
                 $uloga = 0;
                 if($this->request->getVar('adresa') == 'Korisnik'){
                     $uloga = 1;

@@ -1,4 +1,7 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
+
 
 use CodeIgniter\Model;
 
@@ -10,5 +13,5 @@ class KorisnikModel extends Model
 
 
     protected $allowedFields = ['idKor', 'ime', 'prezime', 'email', 'brojTelefona', 'lozinka', 'adresa', 'slika', 'idUlo', 'odobren'];   
-    
+
 }

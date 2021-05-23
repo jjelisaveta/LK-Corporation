@@ -5,12 +5,13 @@ class TagModel extends Model
 {
         protected $table      = 'tag';
         protected $primaryKey = 'idTag';
-        protected $returnType = 'array';
+        protected $returnType = 'object';
         
-        
-        protected $allowedFields = ['opis'];   //polja koja se menjaju
+        protected $allowedFields = ['datumVreme'];   //polja koja se menjaju
          
+        public function dohvatiId($opis){
+            return $this->like('opis',$opis)->first();
+        }
 }
         
     
-

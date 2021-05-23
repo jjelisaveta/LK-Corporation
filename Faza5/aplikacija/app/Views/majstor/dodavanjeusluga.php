@@ -1,4 +1,4 @@
-<!--Stefan Pajovic 2018/0287-->
+<!--Jelisaveta Jevtic 2018/0127-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +39,7 @@
 											<option value="default">--Izaberi--</option>
 											<?php if(isset($tagovi))
 											foreach ($tagovi as $tag) { ?>
-											<option value="<?php echo $tag['opis'] ?>"><?php echo $tag['opis'] ?></option>
+											<option value="<?php echo $tag->opis ?>"><?php echo $tag->opis ?></option>
 											<?php } ?>
 											 
 										</select>
@@ -58,7 +58,7 @@
 								<div class="row">
 									<div class="offset-2 col-8 offset-md-4 col-md-4 text-center offset-2">
 										<a href="mojeUsluge.html">   
-											<button id="idDugmeR" class="col-11" type="submit" onclick="dodajTag()"> Dodaj</button>
+											<button id="idDugmeR" class="col-11" type="submit"> Dodaj</button>
 
 										</a>
 									</div>
