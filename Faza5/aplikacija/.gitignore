@@ -31,7 +31,8 @@ Database.php
 
 # Linux
 *~
-
+.env 
+app\Config\Database.php
 # KDE directory preferences
 .directory
 

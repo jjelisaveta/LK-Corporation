@@ -54,7 +54,9 @@ class Gost extends BaseController
     }
     public function loginSubmit(){
         $stranica = 'gost/Logovanje';
-    /*    $this->prikazi($stranica,[]);*/
+        if (!$_POST){
+            return $this->prikazi($stranica, []);
+        }
         helper(['form']);
         $data = [];
         if($this->request->getMethod() == 'post'){
@@ -100,6 +102,9 @@ class Gost extends BaseController
     
     public function registrujSe(){                  //tek treba da se radi
         $stranica = 'gost/Registrovanje';
+          if (!$_POST){
+            return $this->prikazi($stranica, []);
+        }
         helper(['form']);
         $data = [];
         if($this->request->getMethod() == 'post'){
@@ -147,7 +152,7 @@ class Gost extends BaseController
                 $data['LoseEmail'] = 'Već postoji korisnik sa zadatom e-adresom';
                 $this->prikazi($stranica,$data);
             }else{
-                $putanja = '';
+                $putanja = ''; 
 /*               if($this->request->getVar('izaberiSliku') != null){
                     $putanja = $this->uzmiPutanju();
                 }*/
