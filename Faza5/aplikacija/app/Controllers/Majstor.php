@@ -23,14 +23,13 @@ class Majstor extends BaseController
     protected function prikaz($stranica, $podaci)
     {
         $podaci['controller'] = "Majstor";
-        $podaci['ime'] = 'Code';
-        $podaci['prezime'] = 'Igniter';
+        $podaci['ime'] = $this->session->get('Korisnik')->ime;
+        $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
         echo view("osnova/header");
         echo view("majstor/meni", $podaci);
         echo view("majstor/$stranica", $podaci);
         echo view("osnova/footer");
     }
-    
     
     public function dodajUslugu(){
         
@@ -78,4 +77,5 @@ class Majstor extends BaseController
         $this->prikaz("kalendar", $data);
     }
 
+    
 }

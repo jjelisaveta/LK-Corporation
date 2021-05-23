@@ -1,0 +1,140 @@
+body {
+    background-color: #e8e6d9;    
+}
+
+.row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.okvir {
+    padding: 10px;
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    font-size: 15px;  
+}
+
+#content {
+    width: 100%;
+    text-align: center;
+}
+
+#content h3 {
+    margin-top:5%;
+    font-style: italic;
+    color:darkslategray;
+    margin-bottom: 5%;
+}
+
+#content a{
+    text-decoration: none;
+}
+
+#emailid {
+    font-size: 15px;
+}
+
+#emailid:focus {
+    outline: none;
+} 
+
+#idDugme:hover{
+    background-color: #484639;;
+}
+/*#idDugme {
+    border: none;
+    border-radius: 15px;
+    padding: 8px;
+    width: 15%;
+    margin-top: 20px;
+    background-color: #888679;
+    cursor:pointer;
+    font-family: Arial;
+    font-weight: bolder;
+    color: #282619;
+}*/
+
+#dugmeSlika:hover{
+    background-color: #484639;;
+}
+
+#idDugmeR:hover{
+    background-color: #484639;;
+}
+
+
+
+.dugmic {
+    border: none;
+    border-radius: 15px;
+    padding: 8px;
+    width: 15%;
+    margin-top: 20px;
+    background-color: #888679;
+    cursor:pointer;
+    text-align: center;
+    font-family: Arial;
+    font-weight: bolder;
+    color: #282619;
+}
+
+#content label {
+    color: #282619;
+    font-family: Arial;
+    font-size:15px;
+}
+
+#radioMajstor, #radioKorisnik:after {
+    color:black;
+}
+
+#p1, #p2 {
+    font-family: Arial;
+    font-size: 14px;
+    color: #282619;
+    text-decoration: none;
+    margin:0;
+}
+
+#p1:hover, #p2:hover  {
+    color: orange;
+    cursor: pointer;
+}
+
+#idpass:focus {
+    outline: none;
+}
+
+#txtinput:focus {
+    outline:none;
+}
+
+#izaberiSliku{
+    text-align: center;
+}
+
+.custom-file-label {
+     padding: 10px;
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    font-size: 15px;  
+}
+
+.custom-file-input {
+    padding: 10px;
+    padding-right: 10px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    font-size: 15px; 
+}
+
+.abx {
+    background-color: #e8e6d9;
+    margin-bottom:50px;
+    z-index:3;
+}
