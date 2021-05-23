@@ -56,4 +56,27 @@ class Zahtev
     private $idter;
 
 
+    /**
+     * Get opis.
+     *
+     * @return string
+     */
+    public function getOpis()
+    {
+        return $this->opis;
+    }
+
+    /**
+     * Set sadrzaj.
+     *
+     * @param string $opis
+     *
+     * @return Zahtev
+     */
+    public function setOpis($opis)
+    {
+        $this->opis = $opis;
+        return this;
+    }
+
 }
