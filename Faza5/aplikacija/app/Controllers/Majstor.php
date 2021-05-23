@@ -86,14 +86,14 @@ class Majstor extends BaseController
     
     public function dohvatiTagove()
     {
-        $u = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)
-                ->find(1);
-        /*$tagovi = $u->dohvatiTagove();
-        foreach($tagovi as $tag){
-            echo $tag['opis'];
-        }*/
+        $u = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)
+                ->find(19);
+        $tagovi = $u->getTagovi();
         
-        echo $u->getIme();
+       /* foreach($tagovi as $tag){
+           // echo gettype($tag);
+           echo $tag->getOpis();
+        }*/
     }
     
     public function mojeUsluge()

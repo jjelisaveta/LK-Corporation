@@ -28,12 +28,9 @@ class Tag
      */
     private $opis;
     
-  
     
     /**
-     * @ORM\OneToMany(targetEntity="App\Models\Entities\UslugaTag", 
-     * mappedBy="idTag",
-     * cascade={"persist","remove"}, orphanRemoval=TRUE )
+     * @ORM\ManyToMany(targetEntity="\App\Models\Entities\Usluga", mappedBy="tagovi")
      */
     protected $usluge;
 
@@ -42,6 +39,30 @@ class Tag
         $this->usluge = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
+    public function getIdtag(): int {
+        return $this->idtag;
+    }
+
+    public function getOpis(): string {
+        return $this->opis;
+    }
+
+    public function getUsluge() {
+        return $this->usluge;
+    }
+
+    public function setIdtag(int $idtag): void {
+        $this->idtag = $idtag;
+    }
+
+    public function setOpis(string $opis): void {
+        $this->opis = $opis;
+    }
+
+    public function setUsluge($usluge): void {
+        $this->usluge = $usluge;
+    }
 
 
 }

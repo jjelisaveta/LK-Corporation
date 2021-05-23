@@ -52,14 +52,11 @@ class Usluga
      */
     private $idmaj;
     
-    
-    
-    /**
-     * @ORM\OneToMany(targetEntity="App\Models\Entities\UslugaTag", 
-     * mappedBy="idUsl",
-     * cascade={"persist","remove"} )
+     /**
+     * @ORM\ManyToMany(targetEntity="\App\Models\Entities\Tag", inversedBy="usluge")
+     * @ORM\JoinTable(name="usluga-tag")
      */
-    protected $tagovi;
+     protected $tagovi;
 
     
     public function __construct() {
@@ -67,9 +64,54 @@ class Usluga
     }
 
     
-    public function dohvatiTagove()
-    {
-        return $this->tagovi->toArray();
+    public function getIdusl(): int {
+        return $this->idusl;
     }
+
+    public function getNaziv(): string {
+        return $this->naziv;
+    }
+
+    public function getOpis(): string {
+        return $this->opis;
+    }
+
+    public function getCena(): float {
+        return $this->cena;
+    }
+
+    public function getIdmaj(): \App\Models\Entities\Korisnik {
+        return $this->idmaj;
+    }
+
+    public function getTagovi() {
+        return $this->tagovi;
+    }
+
+    public function setIdusl(int $idusl): void {
+        $this->idusl = $idusl;
+    }
+
+    public function setNaziv(string $naziv): void {
+        $this->naziv = $naziv;
+    }
+
+    public function setOpis(string $opis): void {
+        $this->opis = $opis;
+    }
+
+    public function setCena(float $cena): void {
+        $this->cena = $cena;
+    }
+
+    public function setIdmaj(\App\Models\Entities\Korisnik $idmaj): void {
+        $this->idmaj = $idmaj;
+    }
+
+    public function setTagovi($tagovi): void {
+        $this->tagovi = $tagovi;
+    }
+
+
 
 }

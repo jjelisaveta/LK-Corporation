@@ -176,4 +176,217 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getIme()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIme', []);
+
+        return parent::getIme();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdkor(): int
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getIdkor();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdkor', []);
+
+        return parent::getIdkor();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPrezime(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrezime', []);
+
+        return parent::getPrezime();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEmail(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', []);
+
+        return parent::getEmail();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBrojtelefona(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrojtelefona', []);
+
+        return parent::getBrojtelefona();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLozinka(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLozinka', []);
+
+        return parent::getLozinka();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAdresa(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdresa', []);
+
+        return parent::getAdresa();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSlika(): ?string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlika', []);
+
+        return parent::getSlika();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOdobren(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOdobren', []);
+
+        return parent::getOdobren();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdulo(): \App\Models\Entities\Uloga
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdulo', []);
+
+        return parent::getIdulo();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdkor(int $idkor): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdkor', [$idkor]);
+
+        parent::setIdkor($idkor);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPrezime(string $prezime): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrezime', [$prezime]);
+
+        parent::setPrezime($prezime);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEmail(string $email): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', [$email]);
+
+        parent::setEmail($email);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setBrojtelefona(string $brojtelefona): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrojtelefona', [$brojtelefona]);
+
+        parent::setBrojtelefona($brojtelefona);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLozinka(string $lozinka): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLozinka', [$lozinka]);
+
+        parent::setLozinka($lozinka);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAdresa(string $adresa): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdresa', [$adresa]);
+
+        parent::setAdresa($adresa);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSlika(?string $slika): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlika', [$slika]);
+
+        parent::setSlika($slika);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOdobren(string $odobren): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOdobren', [$odobren]);
+
+        parent::setOdobren($odobren);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdulo(\App\Models\Entities\Uloga $idulo): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdulo', [$idulo]);
+
+        parent::setIdulo($idulo);
+    }
+
 }

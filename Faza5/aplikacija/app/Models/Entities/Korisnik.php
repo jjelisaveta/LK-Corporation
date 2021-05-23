@@ -90,6 +90,79 @@ class Korisnik
     public function getIme(){
         return $this->ime;
     }
+    
+    function getIdkor(): int {
+        return $this->idkor;
+    }
+
+    function getPrezime(): string {
+        return $this->prezime;
+    }
+
+    function getEmail(): string {
+        return $this->email;
+    }
+
+    function getBrojtelefona(): string {
+        return $this->brojtelefona;
+    }
+
+    function getLozinka(): string {
+        return $this->lozinka;
+    }
+
+    function getAdresa(): string {
+        return $this->adresa;
+    }
+
+    function getSlika(): ?string {
+        return $this->slika;
+    }
+
+    function getOdobren(): string {
+        return $this->odobren;
+    }
+
+    public function getIdulo(): \App\Models\Entities\Uloga {
+        return $this->idulo;
+    }
+
+    function setIdkor(int $idkor): void {
+        $this->idkor = $idkor;
+    }
+
+    function setPrezime(string $prezime): void {
+        $this->prezime = $prezime;
+    }
+
+    function setEmail(string $email): void {
+        $this->email = $email;
+    }
+
+    function setBrojtelefona(string $brojtelefona): void {
+        $this->brojtelefona = $brojtelefona;
+    }
+
+    function setLozinka(string $lozinka): void {
+        $this->lozinka = $lozinka;
+    }
+
+    function setAdresa(string $adresa): void {
+        $this->adresa = $adresa;
+    }
+
+    function setSlika(?string $slika): void {
+        $this->slika = $slika;
+    }
+
+    function setOdobren(string $odobren): void {
+        $this->odobren = $odobren;
+    }
+
+    function setIdulo(\App\Models\Entities\Uloga $idulo): void {
+        $this->idulo = $idulo;
+    }
+
 
 
 }

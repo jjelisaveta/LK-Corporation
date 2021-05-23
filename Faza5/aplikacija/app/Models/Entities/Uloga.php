@@ -28,5 +28,8 @@ class Uloga
      */
     private $naziv;
 
+    public function getNaziv(){
+        return $this->naziv;
+    }
 
 }

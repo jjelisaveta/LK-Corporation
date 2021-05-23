@@ -176,4 +176,15 @@ class Uloga extends \App\Models\Entities\Uloga implements \Doctrine\ORM\Proxy\Pr
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getNaziv()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNaziv', []);
+
+        return parent::getNaziv();
+    }
+
 }
