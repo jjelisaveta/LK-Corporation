@@ -14,6 +14,7 @@ namespace App\Controllers;
  * @author Windows User
  */
 
+use App\Models\Entities\Zahtev;
 use App\Models\Kalendar;
 use App\Models\KalendarModel;
 use App\Models\TerminModel;
@@ -120,9 +121,17 @@ class Majstor extends BaseController
         }
         $rezervisan = $this->dohvatiRezervacijeInternal($idMaj, $date);
         foreach ($rezervisan as $ter) {
-            echo "<script>rezervisi('$ter');</script>";
+            echo "<script>rezervisi('$ter[0]','$ter[1]');</script>";
         }
     }
+
+    private function dohvatiOpisRezervacije($idRez)
+    {
+        $em = $this->doctrine->em;
+        $zahtev = $em->getRepository(Zahtev::class)->find($idRez);
+        return $zahtev->opis;
+    }
+
 
     private function dohvatiRezervacijeInternal($idMaj, $date)
     {
@@ -134,7 +143,7 @@ class Majstor extends BaseController
             $niz = explode(" ", $kal->datumVreme);
             $niz = explode("-", $niz[1]);
             $id = "dugme" . (intval($niz[0]));
-            array_push($ret, $id);
+            array_push($ret, [$id, $this->dohvatiOpisRezervacije($kal->idRez)]);
         }
         return $ret;
     }

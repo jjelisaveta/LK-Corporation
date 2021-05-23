@@ -22,10 +22,10 @@ function promenaKalendar(input) {
     xmlhttp2.send();
     xmlhttp2.onreadystatechange = function () {
         if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
-            var xx = JSON.parse(xmlhttp2.responseText.split('\n')[0]);
-            console.log(xx);
-            for (id in xx) {
-                rezervisi(xx[id]);
+            var rezervacije = JSON.parse(xmlhttp2.responseText.split('\n')[0]);
+            console.log(rezervacije[0]);
+            for (i = 0; i < rezervacije.length; i++) {
+                rezervisi(rezervacije[i][0], rezervacije[i][1]);
             }
         }
     }
@@ -37,13 +37,21 @@ function updateTermin(id) {
     $("#" + id).toggleClass("terminda");
 }
 
-function rezervisi(id) {
+function rezervisi(id, text) {
     console.log(id);
     $("#" + id).toggleClass("terminzauzet");
+    $("#" + id).text(text);
 }
 
 function resetTermine() {
     $(".dugme").attr("class", "btn-lg col-3 col-md-2 dugme terminne");
+    console.log("reset")
+    for (i = 0; i < 10; i += 2) {
+        $("#dugme0" + i).text("0" + i + ":00");
+    }
+    for (i = 10; i < 24; i += 2) {
+        $("#dugme" + i).text(i + ":00");
+    }
     console.log("resetova");
 }
 

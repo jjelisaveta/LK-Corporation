@@ -8,23 +8,23 @@ class Doctrine
 {
     public $em = null;
 
-  
+
     public function __construct()
     {
         $dbConfig = config('Config\Database');
         $db = $dbConfig->{$dbConfig->defaultGroup};
-        
+
         $isDevMode = ENVIRONMENT !== 'production';
 
         $entityDir = APPPATH . 'Models'.DIRECTORY_SEPARATOR.'Entities';
-        $proxyDir = APPPATH . 'Models'.DIRECTORY_SEPARATOR.'Proxies'; 
-        
+        $proxyDir = APPPATH . 'Models'.DIRECTORY_SEPARATOR.'Proxies';
+
         if (ENVIRONMENT !== 'production') {
-            $cache = new \Doctrine\Common\Cache\ArrayCache;   
+            $cache = new \Doctrine\Common\Cache\ArrayCache;
         } else {
             $cache = new \Doctrine\Common\Cache\ApcCache;
-        } 
-        
+        }
+
         $useSimpleAnnotationReader = false;
         $config = Setup::createAnnotationMetadataConfiguration(
             [$entityDir],
@@ -33,7 +33,7 @@ class Doctrine
             null,
             $useSimpleAnnotationReader
         );
-        
+
         $config->setProxyNamespace('App\Models\Proxies');
 
 
@@ -46,7 +46,7 @@ class Doctrine
             'charset'  => $db['charset'],
             'port'     => $db['port'],
         ];
-                
+
         $this->em = EntityManager::create($connection, $config);
     }
-} 
+}
