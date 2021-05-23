@@ -40,7 +40,10 @@ function updateTermin(id) {
 function rezervisi(id, text) {
     console.log(id);
     $("#" + id).toggleClass("terminzauzet");
-    $("#" + id).text(text);
+    var txt = text.split(";");
+    console.log(text);
+    console.log(txt);
+    $("#" + id).html(txt[0] + "<br>" + txt[1] + "<br>" + txt[2]);
 }
 
 function resetTermine() {

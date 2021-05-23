@@ -21,6 +21,7 @@ use App\Models\TerminModel;
 use App\Models\UslugaModel;
 use App\Models\TagModel;
 use App\Models\UslugaTagModel;
+use App\Models\ZahtevModel;
 use CodeIgniter\Model;
 use phpDocumentor\Reflection\Types\Array_;
 
@@ -127,9 +128,13 @@ class Majstor extends BaseController
 
     private function dohvatiOpisRezervacije($idRez)
     {
-        $em = $this->doctrine->em;
-        $zahtev = $em->getRepository(Zahtev::class)->find($idRez);
-        return $zahtev->opis;
+        $zahtevModel = new ZahtevModel();
+        $ret = $zahtevModel->dohvatiCeoOpis($idRez);
+        return $ret;
+//        $em = $this->doctrine->em;
+//        $zahtev = $em->getRepository(Zahtev::class)->find($idRez);
+//        echo "<script>console.log('$zahtev->getOpis()')</script>";
+//        return $zahtev->getOpis();
     }
 
 
