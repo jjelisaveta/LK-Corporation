@@ -323,12 +323,23 @@ class Majstor extends BaseController
         $opis = $this->request->getVar("opis");
         $cena = $this->request->getVar("cena");
         $id = $this->request->getVar("id");
-        $uslugaModel = new UslugaModel();
-        $uslugaModel->update($id, [
-            'naziv' => $naslov,
-            'opis' => $opis,
-            'cena' => $cena
-        ]);
+        $tagovi = explode(';', $this->request->getVar("izabraniTagovi"));
+        $tags = [];
+        $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findAll();
+        foreach ($tagovi as $tag) {
+            foreach ($allTags as $tg) {
+                if ($tg->getOpis() == $tag) {
+                    array_push($tags, $tg);
+                    break;
+                }
+            }
+        }
+        $usluga = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->find($id);
+        $usluga->setTagovi($tags);
+        $usluga->setNaziv($naslov);
+        $usluga->setCena($cena);
+        $usluga->setOpis($opis);
+        $this->doctrine->em->flush();
         return redirect()->to(site_url("Majstor/mojeUsluge"));
     }
 
