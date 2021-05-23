@@ -82,16 +82,12 @@ class Majstor extends BaseController
         return redirect()->to(site_url("Majstor/mojeUsluge"));
     }
 
-    public function dohvatiTagove()
+    public function dohvatiTagove($idUsl)
     {
         $u = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)
-            ->find('19');
+            ->find($idUsl);
         $tagovi = $u->getTagovi();
-        $poruke = "";
-        foreach ($tagovi as $tag) {
-            $poruke = $poruke . $tag->getOpis();
-        }
-        return $poruke;
+        return $tagovi;
         /* foreach($tagovi as $tag){
             // echo gettype($tag);
             echo $tag->getOpis();
@@ -303,7 +299,12 @@ class Majstor extends BaseController
         $uslugaModel = new UslugaModel();
         $usluga = $uslugaModel->where('idUsl', $id)->first();
         $this->prikaz("izmenaUsluge", ['tagovi' => $tagovi]);
-        $tags = json_encode(["doctrine"]);
+        $tagovi = $this->dohvatiTagove($id);
+        $tags = [];
+        foreach ($tagovi as $tag) {
+            array_push($tags, $tag->getOpis());
+        }
+        $tags = json_encode($tags);
         echo "<script>dodajText('$id','$usluga->naziv','$usluga->opis','$usluga->cena','$tags') </script>";
     }
 
@@ -321,12 +322,23 @@ class Majstor extends BaseController
         $opis = $this->request->getVar("opis");
         $cena = $this->request->getVar("cena");
         $id = $this->request->getVar("id");
-        $uslugaModel = new UslugaModel();
-        $uslugaModel->update($id, [
-            'naziv' => $naslov,
-            'opis' => $opis,
-            'cena' => $cena
-        ]);
+        $tagovi = explode(';', $this->request->getVar("izabraniTagovi"));
+        $tags = [];
+        $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findAll();
+        foreach ($tagovi as $tag) {
+            foreach ($allTags as $tg) {
+                if ($tg->getOpis() == $tag) {
+                    array_push($tags, $tg);
+                    break;
+                }
+            }
+        }
+        $usluga = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->find($id);
+        $usluga->setTagovi($tags);
+        $usluga->setNaziv($naslov);
+        $usluga->setCena($cena);
+        $usluga->setOpis($opis);
+        $this->doctrine->em->flush();
         return redirect()->to(site_url("Majstor/mojeUsluge"));
     }
 
