@@ -24,7 +24,7 @@ class UslugaTag
     /**
      * @var \App\Models\Entities\Tag
      *
-     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Tag")
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Tag", inversedBy="usluge")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idTag", referencedColumnName="idTag")
      * })
@@ -34,9 +34,9 @@ class UslugaTag
     /**
      * @var \App\Models\Entities\Usluga
      *
-     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Usluga")
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Usluga", inversedBy="tagovi")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl")
+     *   @ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl", nullable=FALSE)
      * })
      */
     private $idusl;

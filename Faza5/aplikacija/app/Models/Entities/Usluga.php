@@ -51,6 +51,25 @@ class Usluga
      * })
      */
     private $idmaj;
+    
+    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Models\Entities\UslugaTag", 
+     * mappedBy="idUsl",
+     * cascade={"persist","remove"} )
+     */
+    protected $tagovi;
 
+    
+    public function __construct() {
+        $this->tagovi = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    
+    public function dohvatiTagove()
+    {
+        return $this->tagovi->toArray();
+    }
 
 }

@@ -22,7 +22,7 @@ use App\Models\TagModel;
 use App\Models\UslugaTagModel;
 use CodeIgniter\Model;
 use phpDocumentor\Reflection\Types\Array_;
-
+use App\Models\Entities;
 
 class Majstor extends BaseController
 {
@@ -48,7 +48,8 @@ class Majstor extends BaseController
     }
 
         
-    public function novaUsluga() {
+    public function novaUsluga() 
+    {
         //ispravnost podataka
 
         $t = $this->request->getVar('izabraniTagovi');
@@ -80,7 +81,18 @@ class Majstor extends BaseController
        return redirect()->to(site_url("Majstor/mojeUsluge"));
     }
     
-    public function mojeUsluge(){
+    public function dohvatiTagove()
+    {
+        $u = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)
+                ->find(['idUsl'=>19]);
+        $tagovi = $u->dohvatiTagove();
+        foreach($tagovi as $tag){
+            echo $tag['opis'];
+        }
+    }
+    
+    public function mojeUsluge()
+    {
         $uslugaModel = new UslugaModel();
         $usluge = $uslugaModel->where('idMaj',1)->findAll();  //stavi id ulogovanog korisnika
        /* $uslugaTagModel = new UslugaTagModel();
@@ -90,6 +102,14 @@ class Majstor extends BaseController
         }*/
         
         $this->prikaz("mojeUsluge",['usluge'=>$usluge]);
+    }
+    
+    public function prikazMajstora()
+    {
+        //majstor - ime, prezime
+        //dohvatanje komentara iz baze 
+        //dohvatanje usluga
+        $this->prikaz("prikazMajstora",[])
     }
 
     public function kalendar($date = null)

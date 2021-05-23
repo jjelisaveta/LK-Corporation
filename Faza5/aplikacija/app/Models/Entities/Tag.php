@@ -27,6 +27,21 @@ class Tag
      * @ORM\Column(name="opis", type="string", length=45, nullable=false)
      */
     private $opis;
+    
+  
+    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Models\Entities\UslugaTag", 
+     * mappedBy="idTag",
+     * cascade={"persist","remove"}, orphanRemoval=TRUE )
+     */
+    protected $usluge;
+
+    
+    public function __construct() {
+        $this->usluge = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
 
 }
