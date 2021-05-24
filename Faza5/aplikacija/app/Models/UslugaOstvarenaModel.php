@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 class UslugaOstvarenaModel extends Model
 
 {
-    protected $table = 'usluga-ostvarena';
+    protected $table = 'uslugaostvarena';
     protected $primaryKey = 'idUslOstv';
     protected $returnType = 'object';
 

@@ -6,16 +6,15 @@ use App\Models\UslugaOstvarenaModel;
 use App\Models\RezervacijaModel;
 use App\Models\KorisnikModel;
 use App\Models\UslugaModel;
+
 class Klijent extends BaseController
 {
-    
-    public function index()
-	{
-		return view('welcome_message');
-	}
-	
 
-	
+    public function index()
+    {
+        return view('welcome_message');
+    }
+
 
     protected function prikaz($stranica, $podaci)
     {
@@ -27,29 +26,33 @@ class Klijent extends BaseController
         echo view("klijent/$stranica", $podaci);
         echo view("osnova/footer");
     }
-    public function istorija(){
-        
+
+    public function istorija()
+    {
+
         $uslugaOstvareneModel = new UslugaOstvarenaModel();
 
-        $uslugaModel= new UslugaModel();
-        $korisniciModel= new KorisnikModel();
-        $rezervacijaModel= new RezervacijaModel();
-        $this->prikaz("istorija",['uslugeOst'=>$uslugaOstvareneModel,'usluge'=>$uslugaModel,'korisnici'=>$korisniciModel,
-        'rezervacije'=>$rezervacijaModel]);      
+        $uslugaModel = new UslugaModel();
+        $korisniciModel = new KorisnikModel();
+        $rezervacijaModel = new RezervacijaModel();
+        $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
+            'rezervacije' => $rezervacijaModel]);
 
 
     }
+
     public function sacuvajKomentar()
     {
-      
-      $id=(int) $this->request->getVar('hidden');
-     
-       $uslugaOstvareneModel = new UslugaOstvarenaModel();
-       $data = [
-        'komentar' => $this->request->getVar('komentar')
-    ];
-    
-       $uslugaOstvareneModel->update($id,$data);
 
+        $id = (int)$this->request->getVar('hidden');
+
+        $uslugaOstvareneModel = new UslugaOstvarenaModel();
+        $data = [
+            'komentar' => $this->request->getVar('komentar')
+        ];
+
+        $uslugaOstvareneModel->update($id, $data);
+
+        print_r($_POST);
     }
 }
