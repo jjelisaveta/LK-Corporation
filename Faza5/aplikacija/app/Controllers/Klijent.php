@@ -25,10 +25,10 @@ class Klijent extends BaseController
     }
     public function istorija(){
         
-        //  $tagModel = new TagModel();
-        //  $tagovi = $tagModel->findAll();
-        $nesto=[];
-        $this->prikaz("istorija",['nesto'=>$nesto]);      
+        $uslugaOstvareneModel = new UslugaOstvarenaModel();
+
+        $uslugeOstvarene = $uslugaOstvareneModel->where('idMaj',1)->findAll(); 
+        $this->prikaz("istorija",['uslugeOstvarene'=>$uslugeOstvarene]);      
 
         // echo($this->request->getVar("naslov"));
         //redirect()->to(site_url("Majstor/novaUsluga"));

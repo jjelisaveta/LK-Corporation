@@ -1,4 +1,4 @@
-<!-- <h2>Neka kita</h2> -->
+
 Luka Stojanovic 2018/0053
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +9,7 @@ Luka Stojanovic 2018/0053
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POPRAVI.com</title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilOsnova.css">
-    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilIstorija.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilIstorija.css">
 </head>
 
 
@@ -53,56 +53,29 @@ Luka Stojanovic 2018/0053
 </script>
 
 <body>
-   
-<!-- <div class="container-fluid">
-    <div id="sredina">
-        <div id="zahtevi">
-            <div class="zahtev">
-                <table>
-                    <tr>
-                        <td id="userimg"><img src="slike/profilna.png"></td>
-                        <td>
-                            <h1>
-                                Majstor A
-                            </h1>
-                            <h3>
-                                20.05.2020.
-                            </h3>
-                            <h4>
-                                masina za ves
-                            </h4>
-                        </td>
-                        <td class="komentartd">
-                            <form class="Komentar">
-                                <label class="komentarLabel"></label><br>
-                                <textarea type="text" placeholder="Komentar:" class="komentarinput" rows="4"
-                                    cols="25"></textarea>
-                            </form>
-                            <button class="komentardugme" onclick="deleteTextArea(this)">Sacuvaj komentar</button>
-                            <label class="ocenaLabel"></label>
-                            <button class="ocenaDugme" onclick="myFunction(this)">+</button>
-                            <button class="ocenaDugme" onclick="myFunction(this)"> -</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <div class="ukloni">
-                                <button type="button" onclick="ukloniPopravku(this)">
-                                    ukloni iz istorije
-                                </button>
-                            </div>
-                        </td>
+   <div class="container-fluid">
+       <div class="sredina">
 
-                    </tr>
-                </table>
-        
-   
-  
-            </div>
+       <div class="zahtevi">
+       <div class="row">
+        <div id="usluga" class="offset-0 col-12 offset-md-2 col-md-10">
+            <?php 
+                foreach($uslugeOstvarene as $uslugaOstvarena) {
+                    $uslugaModel = new UslugaModel();
+                    $usluge = $uslugaModel->find($uslugaOstvarena->idUsl);
+                    
+                    echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge",['imeMajstor'=>$usluga->naziv,'opis'=> $usluga->opis]);
+                }
+            ?>
         </div>
+    </div>
 
-    </div> 
-  </div> -->
+
+
+       </div>
+       </div>
+   </div>
+
 </body>
 
 </html>
