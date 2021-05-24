@@ -1,5 +1,5 @@
 
-Luka Stojanovic 2018/0053
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +10,8 @@ Luka Stojanovic 2018/0053
     <title>POPRAVI.com</title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilOsnova.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilIstorija.css">
+    <script src="<?php echo base_url(); ?>/js/skriptaIstorija.js"></script>
+   
 </head>
 
 
@@ -39,10 +41,8 @@ Luka Stojanovic 2018/0053
 
 <script>
     function deleteTextArea(button) {
-        var element = button.parentNode.parentNode.getElementsByClassName("komentarinput")[0];
-        var label = button.parentNode.parentNode.getElementsByClassName("komentarLabel")[0];
-        label.innerHTML = element.value;
-        element.parentNode.removeChild(element);
+        var element = button.parentNode.parentNode.getElementsByClassName("komentarinput")[0].disabled=true;
+
         button.parentNode.removeChild(button);
     }
     function ukloniPopravku(button) {
@@ -54,20 +54,29 @@ Luka Stojanovic 2018/0053
 
 <body>
    <div class="container-fluid">
-       <div class="sredina">
-
-       <div class="zahtevi">
+       
+       <div id="zahtevi">
        <div class="row">
-        <div id="usluga" class="offset-0 col-12 offset-md-2 col-md-10">
+        <div id="zahtev" class="offset-0 col-12 offset-md-2 col-md-10">
             <?php 
+             $uslugeOstvarene=$uslugeOst->findall();
+
                 foreach($uslugeOstvarene as $uslugaOstvarena) {
-                    $uslugaModel = new UslugaModel();
-                    $usluge = $uslugaModel->find($uslugaOstvarena->idUsl);
+             
+                 
+                    $usluga = $usluge->find($uslugaOstvarena->idUsl);
+                    $korisnik=$korisnici->find($usluga->idMaj);
+                    $rezervacija = $rezervacije->find($uslugaOstvarena->idRez);
                     
-                    echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge",['imeMajstor'=>$usluga->naziv,'opis'=> $usluga->opis]);
+                    echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge",['imeMajstor'=>$korisnik->ime,'datumPopravke'=> $rezervacija->vremeOdgovora
+                    ,'komentar'=>$uslugaOstvarena->komentar,'ocena'=>$uslugaOstvarena->ocena,'id'=>$uslugaOstvarena->idUslOstv]);
                 }
+         
             ?>
-        </div>
+               <script>
+   pogasi();
+    </script>
+ 
     </div>
 
 

@@ -1,8 +1,10 @@
 <?php namespace App\Libraries;
 
-class MojaUslugaMajstor {
+class UslugaIstorija {
     
-    public function prikazUsluge($naslov, $opis){
-        return view("klijent/komponente/uslugaIstorija", ['naslov' => $naslov, 'opis' => $opis]);
+    public function prikazUsluge($imeMajstor, $datumPopravke,$komentar,$ocena,$id){
+        return view("klijent/komponente/uslugaIstorija", ['imeMajstor' => $imeMajstor, 'datumPopravke' => $datumPopravke,'komentar'=>$komentar,
+        'ocena'=>$ocena,'id'=>$id]);
     }
 }
+

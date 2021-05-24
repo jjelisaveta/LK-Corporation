@@ -2,6 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\UslugaOstvarenaModel;
+use App\Models\RezervacijaModel;
+use App\Models\KorisnikModel;
+use App\Models\UslugaModel;
 class Klijent extends BaseController
 {
     
@@ -27,10 +31,25 @@ class Klijent extends BaseController
         
         $uslugaOstvareneModel = new UslugaOstvarenaModel();
 
-        $uslugeOstvarene = $uslugaOstvareneModel->where('idMaj',1)->findAll(); 
-        $this->prikaz("istorija",['uslugeOstvarene'=>$uslugeOstvarene]);      
+        $uslugaModel= new UslugaModel();
+        $korisniciModel= new KorisnikModel();
+        $rezervacijaModel= new RezervacijaModel();
+        $this->prikaz("istorija",['uslugeOst'=>$uslugaOstvareneModel,'usluge'=>$uslugaModel,'korisnici'=>$korisniciModel,
+        'rezervacije'=>$rezervacijaModel]);      
 
-        // echo($this->request->getVar("naslov"));
-        //redirect()->to(site_url("Majstor/novaUsluga"));
+
+    }
+    public function sacuvajKomentar()
+    {
+      
+      $id=(int) $this->request->getVar('hidden');
+     
+       $uslugaOstvareneModel = new UslugaOstvarenaModel();
+       $data = [
+        'komentar' => $this->request->getVar('komentar')
+    ];
+    
+       $uslugaOstvareneModel->update($id,$data);
+
     }
 }

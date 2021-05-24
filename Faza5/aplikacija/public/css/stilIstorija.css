@@ -5,31 +5,21 @@ body {
 }
 
 
+
 #sredina{
     position: relative;
     z-index: 2;
-    margin-left: 15%;
-    width:85%;
+
+ 
 }
 
-#zahtevi{
-    margin-left: 5%;
-    margin-top: 10%;
-    margin-bottom: 5%;
-    width:90%;
-    height:100%;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-around;
-    position: relative;
-    background-color: #e8e6d9; 
-}
 
 .zahtev{
+
     display: flex;
     flex-direction: row;
     /*position: relative;*/
-    width: 100%;
+  
 }
 
 .zahtev h3{
@@ -48,10 +38,7 @@ body {
 }
 
 #zahtevi table{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2%;
-    width:80%;
+     
     background-color: #c8c6b9;
     border-radius: 30px;
     font-size: larger;
@@ -60,7 +47,7 @@ body {
 }
     
 #zahtevi pre{
-    /*margin-left: -15%;*/
+
     font-size: larger;
     text-align: left;
 }
@@ -73,7 +60,8 @@ body {
 }
 
 #userimg {
-    width: 15%;
+    width: 18%;
+    
 }
 
 #zahtevi tr{
@@ -82,7 +70,7 @@ body {
 
 }
 #zahtevi img{
-    /*margin-left: 5%;*/
+   margin-top: 0px;
     width:100%;
     border-radius: 15px;
     vertical-align: middle;
@@ -121,6 +109,7 @@ body {
 }
 
 
+
 .komentarinput{
     width: 70%;
     text-align: left;
@@ -133,9 +122,12 @@ body {
 .ukloni button{
     float:left;
     border: none;
-    border-radius: 30px;
+    height: 30px;
+    border-radius: 32px;
     width: 100%;
-    padding: 5px 5px 5px 5px;
+    font-size: 20px;
+    vertical-align: center;
+    padding: 2px 2px 2px 2px;
     background-color: red;
     font-weight: bolder;;
     color: #d8d6c9;
@@ -152,7 +144,7 @@ body {
 .komentartd{
     width: 50%;
     border-radius: 15px;
-    padding: 10px;
+    padding: 5px;
     
 }
 
@@ -168,6 +160,7 @@ body {
     font-weight: bolder;
 }
 .ocenaDugme{
+
     border:none;
     background-color:  #c8c6b9;
     font-size: xx-large;

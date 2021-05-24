@@ -5,10 +5,8 @@ class UslugaOstvarenaModel extends Model
 
 {
     protected $table = 'usluga-ostvarena';
-    protected $primaryKey = 'idUslOstvTag';
+    protected $primaryKey = 'idUslOstv';
     protected $returnType = 'object';
 
-    $UslugaOstvarenaModel = new UslugaOstvarenaModel();
-    $ostvareneUsluge = $UslugaOstvarenaModel->findAll();
     protected $allowedFields = ['idUsl','komentar','ocena','obrisano','idRez'];   //polja koja se menjaju
 }
