@@ -51,7 +51,7 @@ class Usluga
      *   @ORM\JoinColumn(name="idMaj", referencedColumnName="idKor")
      * })
      */
-    private $idmaj;
+    public $idmaj;
 
     /**
      *

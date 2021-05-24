@@ -11,6 +11,7 @@ namespace App\Controllers;
 use App\Models\Entities\Zahtev;
 use App\Models\Kalendar;
 use App\Models\KalendarModel;
+use App\Models\Repositories\UslugaOstvarenaRepository;
 use App\Models\TerminModel;
 use App\Models\UslugaModel;
 use App\Models\TagModel;
@@ -91,26 +92,38 @@ class Majstor extends BaseController
 
     public function mojeUsluge()
     {
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj'=>1]);
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => 1]);
 
         $this->prikaz("mojeUsluge", ['usluge' => $usluge]);
+    }
+
+
+    public function dohvatiOStvareneUsluge($id)
+    {
+        $usluge = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
+        $naziv = [];
+        foreach ($usluge as $usluga) {
+            array_push($naziv, $usluga->getIdrez()->idRez->getOpis());
+        }
+
+        return "poruka" . json_encode($naziv);
     }
 
     public function prikazMajstora()
     {
         $id = 1;
-        
+
         $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj'=>$id]);
-        
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
+
         /*$upit = $em->createQuery("select o from \App\Models\Entities\UslugaOstvarena o JOIN o.idusl u WHERE u.idmaj=?1");
         $upit->setParameter(1, $id);
         $ostvarene = $upit->getResult();
         $ostvatene = $this->doctrine->em->getRepository(\App\Models\Entities\UslugaOstvarena::class)->find;*/
-        
-        
-        $this->prikaz("detaljnijiPrikazMajstora", ['majstor'=>$majstor, 'usluge'=>$usluge, 'ostvarene'=>$ostvarene]);
-      
+
+
+        $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene]);
+
     }
 
     public function kalendar($date = null)

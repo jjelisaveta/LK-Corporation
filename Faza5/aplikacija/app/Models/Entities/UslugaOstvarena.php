@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UslugaOstvarena
  *
- * @ORM\Table(name="uslugaostvarena", indexes={@ORM\Index(name="fk_idRez_uslugaOstvarena_idx", columns={"idRez"}), @ORM\Index(name="fk_idUsl_uslugaOtvorena_idx", columns={"idUsl"})})
- * @ORM\Entity
+ * @ORM\Table(name="uslugaostvarena", indexes={@ORM\Index(name="fk_idRez_uslugaOstvarena_idx", columns={"id"}), @ORM\Index(name="fk_idUsl_uslugaOtvorena_idx", columns={"idUsl"})})
+ * @ORM\Entity(repositoryClass="App\Models\Repositories\UslugaOstvarenaRepository")
  */
 class UslugaOstvarena
 {
@@ -42,82 +42,81 @@ class UslugaOstvarena
      */
     private $obrisano;
 
-    /*
+    /**
      * @var \App\Models\Entities\Rezervacija
-     *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Rezervacija")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idRez", referencedColumnName="idRez")
-     * })
-     * 
-     * proveriti ovo
-     
-    private $idrez;*/
-    
-    /*
-     * @var \App\Models\Entities\Rezervacija
-     * 
-     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Rezervacija")
-     * @JoinColumn(name="idRez", referencedColumnName="idRez")
-     
-    private $idrez;*/
-    
+     * @ORM\JoinColumn(name="idRez", referencedColumnName="id")
+     */
+
+    private $idrez;
+
+
     /**
      * @var \App\Models\Entities\Usluga
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Usluga")
      * @ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl")
      */
     private $idusl;
-    
-    public function getIduslostv(): int {
+
+    public function getIduslostv(): int
+    {
         return $this->iduslostv;
     }
 
-    public function getKomentar(): ?string {
+    public function getKomentar(): ?string
+    {
         return $this->komentar;
     }
 
-    public function getOcena(): ?string {
+    public function getOcena(): ?string
+    {
         return $this->ocena;
     }
 
-    public function getObrisano(): string {
+    public function getObrisano(): string
+    {
         return $this->obrisano;
     }
 
-    public function getIdrez(): \App\Models\Entities\Rezervacija {
+    public function getIdrez(): \App\Models\Entities\Rezervacija
+    {
         return $this->idrez;
     }
 
-    public function getIdusl(): \App\Models\Entities\Usluga {
+    public function getIdusl(): \App\Models\Entities\Usluga
+    {
         return $this->idusl;
     }
 
-    public function setIduslostv(int $iduslostv): void {
+    public function setIduslostv(int $iduslostv): void
+    {
         $this->iduslostv = $iduslostv;
     }
 
-    public function setKomentar(?string $komentar): void {
+    public function setKomentar(?string $komentar): void
+    {
         $this->komentar = $komentar;
     }
 
-    public function setOcena(?string $ocena): void {
+    public function setOcena(?string $ocena): void
+    {
         $this->ocena = $ocena;
     }
 
-    public function setObrisano(string $obrisano): void {
+    public function setObrisano(string $obrisano): void
+    {
         $this->obrisano = $obrisano;
     }
 
-    public function setIdrez(\App\Models\Entities\Rezervacija $idrez): void {
+    public function setIdrez(\App\Models\Entities\Rezervacija $idrez): void
+    {
         $this->idrez = $idrez;
     }
 
-    public function setIdusl(\App\Models\Entities\Usluga $idusl): void {
+    public function setIdusl(\App\Models\Entities\Usluga $idusl): void
+    {
         $this->idusl = $idusl;
     }
-
-
 
 
 }
