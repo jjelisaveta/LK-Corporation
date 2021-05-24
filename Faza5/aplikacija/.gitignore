@@ -23,15 +23,14 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-.env
-Database.php
 
 # Windows shortcuts
 *.lnk
 
 # Linux
 *~
-
+.env 
+App\Config\Database.php
 # KDE directory preferences
 .directory
 

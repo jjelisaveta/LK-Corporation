@@ -43,6 +43,7 @@
                 <div class="padajuciSadrzaj">
                     <a href="logovanje.html">Uloguj se</a>
                     <a href="registrovanje.html">Registruj se</a>
+                    <a href="izlogujSe.html"> Izloguje se </a>
                 </div>
             </div>
                 <div id="korisnik">

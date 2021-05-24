@@ -34,7 +34,11 @@ class Database extends Config
 		'DSN'      => '',
 		'hostname' => 'localhost',
 		'username' => 'root',
+<<<<<<< HEAD
 		'password' => '123',
+=======
+		'password' => '1234',
+>>>>>>> c7fc5f7a1b36cc050029c294a9195335b41be496
 		'database' => 'popravi',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
@@ -47,7 +51,7 @@ class Database extends Config
 		'compress' => false,
 		'strictOn' => false,
 		'failover' => [],
-		'port'     => 3308,
+		'port'     => 3306,
 	];
 
 	/**
