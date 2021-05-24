@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UslugaOstvarena
  *
- * @ORM\Table(name="usluga-ostvarena", indexes={@ORM\Index(name="fk_idRez_uslugaOstvarena_idx", columns={"idRez"}), @ORM\Index(name="fk_idUsl_uslugaOtvorena_idx", columns={"idUsl"})})
+ * @ORM\Table(name="uslugaostvarena", indexes={@ORM\Index(name="fk_idRez_uslugaOstvarena_idx", columns={"idRez"}), @ORM\Index(name="fk_idUsl_uslugaOtvorena_idx", columns={"idUsl"})})
  * @ORM\Entity
  */
 class UslugaOstvarena
@@ -42,25 +42,82 @@ class UslugaOstvarena
      */
     private $obrisano;
 
-    /**
+    /*
      * @var \App\Models\Entities\Rezervacija
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Rezervacija")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idRez", referencedColumnName="idRez")
      * })
-     */
-    private $idrez;
-
+     * 
+     * proveriti ovo
+     
+    private $idrez;*/
+    
+    /*
+     * @var \App\Models\Entities\Rezervacija
+     * 
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Rezervacija")
+     * @JoinColumn(name="idRez", referencedColumnName="idRez")
+     
+    private $idrez;*/
+    
     /**
      * @var \App\Models\Entities\Usluga
-     *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Usluga")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl")
-     * })
+     * @ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl")
      */
     private $idusl;
+    
+    public function getIduslostv(): int {
+        return $this->iduslostv;
+    }
+
+    public function getKomentar(): ?string {
+        return $this->komentar;
+    }
+
+    public function getOcena(): ?string {
+        return $this->ocena;
+    }
+
+    public function getObrisano(): string {
+        return $this->obrisano;
+    }
+
+    public function getIdrez(): \App\Models\Entities\Rezervacija {
+        return $this->idrez;
+    }
+
+    public function getIdusl(): \App\Models\Entities\Usluga {
+        return $this->idusl;
+    }
+
+    public function setIduslostv(int $iduslostv): void {
+        $this->iduslostv = $iduslostv;
+    }
+
+    public function setKomentar(?string $komentar): void {
+        $this->komentar = $komentar;
+    }
+
+    public function setOcena(?string $ocena): void {
+        $this->ocena = $ocena;
+    }
+
+    public function setObrisano(string $obrisano): void {
+        $this->obrisano = $obrisano;
+    }
+
+    public function setIdrez(\App\Models\Entities\Rezervacija $idrez): void {
+        $this->idrez = $idrez;
+    }
+
+    public function setIdusl(\App\Models\Entities\Usluga $idusl): void {
+        $this->idusl = $idusl;
+    }
+
+
 
 
 }

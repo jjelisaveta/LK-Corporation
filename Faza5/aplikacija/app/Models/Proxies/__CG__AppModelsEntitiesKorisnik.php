@@ -179,17 +179,6 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
     /**
      * {@inheritDoc}
      */
-    public function getIme()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIme', []);
-
-        return parent::getIme();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getIdkor(): int
     {
         if ($this->__isInitialized__ === false) {
@@ -200,6 +189,17 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdkor', []);
 
         return parent::getIdkor();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIme(): string
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIme', []);
+
+        return parent::getIme();
     }
 
     /**
@@ -299,6 +299,17 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdkor', [$idkor]);
 
         parent::setIdkor($idkor);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIme(string $ime): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIme', [$ime]);
+
+        parent::setIme($ime);
     }
 
     /**

@@ -27,7 +27,9 @@
         <div id="usluga" class="offset-0 col-12 offset-md-2 col-md-10">
             <?php
             foreach ($usluge as $usluga) {
-                echo view_cell("\App\Libraries\MojaUslugaMajstor::prikazUsluge", ['naslov' => $usluga->naziv, 'opis' => $usluga->opis, 'id' => $usluga->idUsl]);
+                echo view_cell("\App\Libraries\MojaUslugaMajstor::prikazUsluge", ['naslov' => $usluga->getNaziv(), 
+                    'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
+                    'tagovi'=>$usluga->getTagovi()]);
             }
             ?>
         </div>

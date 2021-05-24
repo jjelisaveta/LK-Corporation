@@ -11,10 +11,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <title>POPRAVI.com</title>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilOsnova.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilDodavanjeUsluge.css">
-
-	<script src="<?php echo base_url(); ?>/js/skriptaOsnova.js"></script>
 	<script src="<?php echo base_url(); ?>/js/skriptaDodavanjeUsluge.js"></script>
 </head>
 

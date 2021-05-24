@@ -8,12 +8,6 @@
 
 namespace App\Controllers;
 
-/**
- * Description of Majstor
- *
- * @author Windows User
- */
-
 use App\Models\Entities\Zahtev;
 use App\Models\Kalendar;
 use App\Models\KalendarModel;
@@ -93,32 +87,30 @@ class Majstor extends BaseController
             $poruke = $poruke . $tag->getOpis();
         }
         return $poruke;
-        /* foreach($tagovi as $tag){
-            // echo gettype($tag);
-            echo $tag->getOpis();
-         }*/
-
     }
 
     public function mojeUsluge()
     {
-        $uslugaModel = new UslugaModel();
-        $usluge = $uslugaModel->where('idMaj', 1)->findAll();  //stavi id ulogovanog korisnika
-        /* $uslugaTagModel = new UslugaTagModel();
-         $tagModel = new TagModel();
-         foreach ($usluge as $usluga){
-             $tagoviId = $uslugaTagModel->where('idUsl', $usluga->idUsl)->findAll();
-         }*/
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj'=>1]);
 
         $this->prikaz("mojeUsluge", ['usluge' => $usluge]);
     }
 
     public function prikazMajstora()
     {
-        //majstor - ime, prezime
-        //dohvatanje komentara iz baze 
-        //dohvatanje usluga
-        $this->prikaz("prikazMajstora", []);
+        $id = 1;
+        
+        $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj'=>$id]);
+        
+        /*$upit = $em->createQuery("select o from \App\Models\Entities\UslugaOstvarena o JOIN o.idusl u WHERE u.idmaj=?1");
+        $upit->setParameter(1, $id);
+        $ostvarene = $upit->getResult();
+        $ostvatene = $this->doctrine->em->getRepository(\App\Models\Entities\UslugaOstvarena::class)->find;*/
+        
+        
+        $this->prikaz("detaljnijiPrikazMajstora", ['majstor'=>$majstor, 'usluge'=>$usluge, 'ostvarene'=>$ostvarene]);
+      
     }
 
     public function kalendar($date = null)
