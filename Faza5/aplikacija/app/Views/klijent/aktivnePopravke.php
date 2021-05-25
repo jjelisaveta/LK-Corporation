@@ -13,44 +13,35 @@
 </head>
 
 
-
-
-
 <body>
 <div class="container-fluid">
+    <div class="row zahtevi">
+        <?php
+        $num = 4;
+        $uslugeOstvarene = $uslugeOst->findall();
 
-    <div id="zahtevi">
-        <div class="row">
-            <div id="zahtev" class="offset-0 col-12 offset-md-2 col-md-10">
-                <?php
-                $uslugeOstvarene = $uslugeOst->findall();
+        foreach ($uslugeOstvarene as $uslugaOstvarena) {
+            $nadjenZahtev = null;
+            if ($uslugaOstvarena->obrisano == 1) continue;
+            $zahtev = $zahtevi->find($uslugaOstvarena->idRez);
 
-                foreach ($uslugeOstvarene as $uslugaOstvarena) {
-                    $nadjenZahtev=null;
-                    if ($uslugaOstvarena->obrisano==1) continue;
-                     $zahtev=$zahtevi->find($uslugaOstvarena->idRez);
-                   
-                     if (!isset($zahtev)) continue;
-                         if ($zahtev->idKor==$idKor){
-                     $nadjenZahtev=$zahtev;
-                     }
-                     if ($nadjenZahtev==null) continue;
-                     $termin=$termini->find($nadjenZahtev->idTer);
-                     if (new DateTime() > new DateTime($termin->datumVreme)) continue;
-                     
-                     $usluga = $usluge->find($uslugaOstvarena->idUsl);
-                     $korisnik = $korisnici->find($usluga->idMaj);
-                     
+            if (!isset($zahtev)) continue;
+            if ($zahtev->idKor == $idKor) {
+                $nadjenZahtev = $zahtev;
+            }
+            if ($nadjenZahtev == null) continue;
+            $termin = $termini->find($nadjenZahtev->idTer);
+            if (new DateTime() > new DateTime($termin->datumVreme)) continue;
 
-                    echo view_cell("\App\Libraries\AktivnaPopravka::prikazUsluge", ['imeMajstor' => $korisnik->ime, 'datumPopravke' => $termin->datumVreme,'opis'=>$nadjenZahtev->opis
-                    ]);
-                }
+            $usluga = $usluge->find($uslugaOstvarena->idUsl);
+            $korisnik = $korisnici->find($usluga->idMaj);
 
-                ?>
-            
-            </div>
-
-        </div>
+            echo view_cell("\App\Libraries\AktivnaPopravka::prikazUsluge",
+                ['imeMajstor' => $korisnik->ime, 'datumPopravke' => $termin->datumVreme, 'opis' => $nadjenZahtev->opis, 'num' => $num]);
+            $num += 4;
+            $num = $num % 8;
+        }
+        ?>
     </div>
 </div>
 
