@@ -27,14 +27,14 @@ body {
     font-size: 20px;
 }
 
-.zahtev h4{
+td h4{
     font-family: Arial;
     font-size: 16px;
 }
 
-.zahtev h1{
+td h1{
     font-family: Arial;
-    font-size: 24px;
+    font-size: 26px;
 }
 
 #zahtevi table{
@@ -60,7 +60,7 @@ body {
 }
 
 #userimg {
-    width: 18%;
+    width: 20%;
     
 }
 
@@ -138,13 +138,13 @@ body {
     border-radius: 10px;
     background-color: #989689;
     font-weight: bolder;
-    padding: 5px 5px 5px 5px;
+    padding: 2px 2px 2px 2px;
 }
 
 .komentartd{
     width: 50%;
     border-radius: 15px;
-    padding: 5px;
+    padding: 3px;
     
 }
 

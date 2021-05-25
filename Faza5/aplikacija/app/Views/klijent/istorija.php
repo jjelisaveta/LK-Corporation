@@ -23,18 +23,27 @@
     }
 
     function myFunction(objButton) {
+      
         var label = objButton.parentNode.parentNode.getElementsByClassName("ocenaLabel")[0];
         var da = objButton.parentNode.parentNode.getElementsByClassName("ocenaDugme")[0];
         var ne = objButton.parentNode.parentNode.getElementsByClassName("ocenaDugme")[1];
+        var hid=objButton.parentNode.parentNode.getElementsByClassName("hidden3")[0];
+        
         label.innerHTML = objButton.innerHTML;
+       
         da.parentNode.removeChild(da);
         ne.parentNode.removeChild(ne);
+        
         if (label.innerHTML == "+") {
             label.style.color = "green"
+            hid.value=1;
+          
         } else {
             label.style.color = "red"
+            hid.value=0;
+      
         }
-        console.log("proslo")
+       
     }
 </script>
 

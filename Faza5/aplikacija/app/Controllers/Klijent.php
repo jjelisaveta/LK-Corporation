@@ -50,9 +50,43 @@ class Klijent extends BaseController
         $data = [
             'komentar' => $this->request->getVar('komentar')
         ];
-
+        
         $uslugaOstvareneModel->update($id, $data);
+       
+        return redirect()->to(site_url("Klijent/istorija"));
+        // $uslugaOstvareneModel = new UslugaOstvarenaModel();
+        // $uslugaModel = new UslugaModel();
+        // $korisniciModel = new KorisnikModel();
+        // $rezervacijaModel = new RezervacijaModel();
+        // $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
+        //     'rezervacije' => $rezervacijaModel]);
 
-        print_r($_POST);
+    }
+    
+    public function sacuvajOcenu()
+    {
+
+        $id = (int)$this->request->getVar('hidden2');
+
+        $uslugaOstvareneModel = new UslugaOstvarenaModel();
+        $data = [
+            'ocena' =>(int) $this->request->getVar('hidden3')
+        ];
+        
+        $uslugaOstvareneModel->update($id, $data);
+        return redirect()->to(site_url("Klijent/istorija"));
+  
+    }
+    public function obrisiIstorija()
+    {
+        $id = (int)$this->request->getVar('hidden2');
+
+        $uslugaOstvareneModel = new UslugaOstvarenaModel();
+        $uslugaOstvareneModel->delete($id);
+ 
+        return redirect()->to(site_url("Klijent/istorija"));
+        // $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
+        //     'rezervacije' => $rezervacijaModel]);
+
     }
 }

@@ -12,4 +12,5 @@ textovi =document.getElementsByClassName('komentarinput');
       textovi[i].parentNode.parentNode.getElementsByClassName("komentardugme")[0]);
   }  
 }
+
 }
