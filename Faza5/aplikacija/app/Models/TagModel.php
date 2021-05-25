@@ -7,8 +7,7 @@ class TagModel extends Model
         protected $primaryKey = 'idTag';
         protected $returnType = 'object';
         
-        
-        protected $allowedFields = ['opis'];   //polja koja se menjaju
+        protected $allowedFields = ['datumVreme'];   //polja koja se menjaju
          
         public function dohvatiId($opis){
             return $this->like('opis',$opis)->first();

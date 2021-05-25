@@ -1,0 +1,163 @@
+
+body {
+    background-color: #e8e6d9;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+}#info table {
+    border:none;
+    border-radius: 20px;
+    background-color: orange;
+    width:100%;
+}
+
+.slikaMajstora {
+    width:20%;
+    padding:10px;
+}
+
+.slikaMajstora img {
+    width: 100%;
+    border-radius: 40px;
+}
+
+.ocene {
+    border-left: 1px solid black;
+    width:35%;
+}
+
+.podaci h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.podaci p {
+    font-size: 16px;
+}
+
+.ocene h3 {
+    font-size: 16px;
+    margin: 5px;
+}
+
+.ocene h1 b {
+    font-size:20px;
+}
+
+.komentarii {
+    width: 100%;
+    float:left;
+}
+
+.komentarii table {
+    background-color: khaki;
+    width:40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 1%;
+    border: none;
+    border-radius: 15px;
+    float:left;
+}
+
+.slikaKorisnika {
+    width: 15%;
+    padding: 5px;
+}
+
+.komentarii h1 {
+    padding: 5px;
+    font-size:16px;
+}
+
+.komentarii h4 {
+    padding: 5px;
+    font-style: italic;
+    font-size: 14px;
+    text-align: right;
+}
+
+.prikazMajstora {
+    position: relative;
+    z-index: 2;
+    background-color: #e8e6d9;
+}
+
+body {
+    background-color: #e8e6d9;
+    position: relative;
+    overflow: auto;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.uslugaPrikaz {
+    border-radius: 40px;
+    vertical-align: middle;
+    background-color:#c8c6b9;
+	text-align: center;
+	z-index:2;
+	position:relative;
+}
+
+.slikaMajstora {
+    width:15%;
+    padding:10px;
+}
+
+.slikaMajstora img {
+    width: 100%;
+    border-radius: 40px;
+}
+
+.opisUsluge {
+    padding:5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.opisUslige td{
+    text-align: center;
+}
+
+.opisUsluge h1{
+    font-size: 24px;
+    text-align: center;
+    padding: 5px;
+}
+
+.opisUsluge hr {
+    background-color: orange;
+    width: 90%;
+}
+
+.opisUsluge p {
+    text-align: left;
+    font-size: 18px;
+    word-break: break-all;
+}
+
+
+.opisUsluge h5 {
+    text-align: left;
+    font-family:'Courier New';
+    font-size: 14px;
+}
+
+.opisUsluge button {
+    text-align: center;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    padding:10px;
+    margin-bottom: 10px;
+    width:90%;
+    background-color: orange;
+    font-weight: bolder;
+}
+
+#usluga {
+    width:100%;
+}

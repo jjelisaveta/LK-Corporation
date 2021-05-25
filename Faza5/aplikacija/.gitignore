@@ -29,7 +29,8 @@ $RECYCLE.BIN/
 
 # Linux
 *~
-
+.env 
+app/Config/Database.php
 # KDE directory preferences
 .directory
 
@@ -43,7 +44,9 @@ $RECYCLE.BIN/
 # as it poses a security risk.
 .env
 .vagrant
+app/Config/Database.php
 Vagrantfile
+.gitignore
 
 #-------------------------
 # Temporary Files
