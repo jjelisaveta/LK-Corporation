@@ -1,0 +1,88 @@
+body {
+    background-color: #e8e6d9;
+    position: relative;
+    overflow: auto;
+}
+
+
+
+#sredina{
+    position: relative;
+    z-index: 2;
+
+ 
+}
+
+
+.zahtev{
+
+    display: flex;
+    flex-direction: row;
+    /*position: relative;*/
+  
+}
+
+.zahtev h3{
+    font-family: Arial;
+    font-size: 20px;
+}
+
+td h4{
+    font-family: Arial;
+    font-size: 16px;
+}
+
+td h1{
+    font-family: Arial;
+    font-size: 26px;
+}
+
+#zahtevi table{
+     
+    background-color: #c8c6b9;
+    border-radius: 30px;
+    font-size: larger;
+    vertical-align: middle;
+    position: relative;
+}
+    
+#zahtevi pre{
+
+    font-size: larger;
+    text-align: left;
+}
+
+#zahtevi td{
+    font-size: larger;
+    text-align: left;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+#userimg {
+    width: 16%;
+    
+}
+
+#zahtevi tr{
+   /* height: 5%;*/
+    vertical-align: middle;
+
+}
+#zahtevi img{
+   margin-top: 0px;
+    width:100%;
+    border-radius: 15px;
+    vertical-align: middle;
+}
+
+
+
+#sredina{
+    position: relative;
+    z-index: 2;
+}
+
+
+
+

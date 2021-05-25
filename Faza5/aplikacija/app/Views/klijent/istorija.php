@@ -26,15 +26,24 @@
                 $uslugeOstvarene = $uslugeOst->findall();
 
                 foreach ($uslugeOstvarene as $uslugaOstvarena) {
+                    $nadjenZahtev=null;
                    if ($uslugaOstvarena->obrisano==1) continue;
-
+                    $zahtev=$zahtevi->find($uslugaOstvarena->idRez);
+                  
+                    if (!isset($zahtev)) continue;
+                        if ($zahtev->idKor==$idKor){
+                    $nadjenZahtev=$zahtev;
+                    }
+                    if ($nadjenZahtev==null) continue;
+                    $termin=$termini->find($nadjenZahtev->idTer);
+                    if (new DateTime() > new DateTime($termin->datumVreme)) continue;
                     $usluga = $usluge->find($uslugaOstvarena->idUsl);
                     $korisnik = $korisnici->find($usluga->idMaj);
-                    $rezervacija = $rezervacije->find($uslugaOstvarena->idRez);
-
-                    echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $korisnik->ime, 'datumPopravke' => $rezervacija->vremeOdgovora
-                        , 'komentar' => $uslugaOstvarena->komentar, 'ocena' => $uslugaOstvarena->ocena, 'id' => $uslugaOstvarena->idUslOstv
-                        ,'naziv'=>$usluga->naziv]);
+             
+                    
+                    echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $korisnik->ime, 'datumPopravke' => $termin->datumVreme
+              ,'komentar' => $uslugaOstvarena->komentar, 'ocena' => $uslugaOstvarena->ocena, 'id' => $uslugaOstvarena->idUslOstv
+                    ,'opis'=>$nadjenZahtev->opis]);
                 }
 
                 ?>

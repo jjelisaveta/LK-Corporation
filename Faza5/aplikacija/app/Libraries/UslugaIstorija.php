@@ -2,9 +2,9 @@
 
 class UslugaIstorija {
     
-    public function prikazUsluge($imeMajstor, $datumPopravke,$komentar,$ocena,$id,$naziv){
+    public function prikazUsluge($imeMajstor, $datumPopravke,$komentar,$ocena,$id,$opis){
         return view("klijent/komponente/uslugaIstorija", ['imeMajstor' => $imeMajstor, 'datumPopravke' => $datumPopravke,'komentar'=>$komentar,
-        'ocena'=>$ocena,'id'=>$id,'naziv'=>$naziv]);
+        'ocena'=>$ocena,'id'=>$id,'opis'=>$opis]);
     }
 }
 

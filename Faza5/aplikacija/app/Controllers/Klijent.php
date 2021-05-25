@@ -6,7 +6,8 @@ use App\Models\UslugaOstvarenaModel;
 use App\Models\RezervacijaModel;
 use App\Models\KorisnikModel;
 use App\Models\UslugaModel;
-
+use App\Models\ZahtevModel;
+use App\Models\TerminModel;
 class Klijent extends BaseController
 {
 
@@ -26,7 +27,7 @@ class Klijent extends BaseController
         echo view("klijent/$stranica", $podaci);
         echo view("osnova/footer");
     }
-
+    
     public function istorija()
     {
 
@@ -35,12 +36,28 @@ class Klijent extends BaseController
         $uslugaModel = new UslugaModel();
         $korisniciModel = new KorisnikModel();
         $rezervacijaModel = new RezervacijaModel();
+        $zahtevModel = new ZahtevModel();
+        $terminModel= new TerminModel();
+        $idkor=1;
         $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
-            'rezervacije' => $rezervacijaModel]);
+            'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
 
 
     }
+public function aktivnaPopravka()
+{
+    $uslugaOstvareneModel = new UslugaOstvarenaModel();
+    $uslugaModel = new UslugaModel();
 
+    $uslugaModel = new UslugaModel();
+    $korisniciModel = new KorisnikModel();
+    $rezervacijaModel = new RezervacijaModel();
+    $zahtevModel = new ZahtevModel();
+    $terminModel= new TerminModel();
+    $idkor=1; 
+    $this->prikaz("aktivnePopravke", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
+    'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
+}
     public function sacuvajKomentar()
     {
 
@@ -50,7 +67,7 @@ class Klijent extends BaseController
         $data = [
             'komentar' => $this->request->getVar('komentar')
         ];
-        
+    
         $uslugaOstvareneModel->update($id, $data);
        
         return redirect()->to(site_url("Klijent/istorija"));

@@ -15,7 +15,7 @@
                             <?= $datumPopravke ?>
                         </h4>
                         <h4>
-                        <?= $naziv ?>
+                        <?= $opis ?>
                         </h4>
                     </td>
                     <form action="sacuvajKomentar" method="POST">
