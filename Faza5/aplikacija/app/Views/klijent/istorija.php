@@ -26,14 +26,15 @@
                 $uslugeOstvarene = $uslugeOst->findall();
 
                 foreach ($uslugeOstvarene as $uslugaOstvarena) {
-
+                   if ($uslugaOstvarena->obrisano==1) continue;
 
                     $usluga = $usluge->find($uslugaOstvarena->idUsl);
                     $korisnik = $korisnici->find($usluga->idMaj);
                     $rezervacija = $rezervacije->find($uslugaOstvarena->idRez);
 
                     echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $korisnik->ime, 'datumPopravke' => $rezervacija->vremeOdgovora
-                        , 'komentar' => $uslugaOstvarena->komentar, 'ocena' => $uslugaOstvarena->ocena, 'id' => $uslugaOstvarena->idUslOstv]);
+                        , 'komentar' => $uslugaOstvarena->komentar, 'ocena' => $uslugaOstvarena->ocena, 'id' => $uslugaOstvarena->idUslOstv
+                        ,'naziv'=>$usluga->naziv]);
                 }
 
                 ?>

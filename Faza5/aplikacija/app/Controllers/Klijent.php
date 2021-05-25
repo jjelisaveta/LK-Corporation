@@ -54,23 +54,21 @@ class Klijent extends BaseController
         $uslugaOstvareneModel->update($id, $data);
        
         return redirect()->to(site_url("Klijent/istorija"));
-        // $uslugaOstvareneModel = new UslugaOstvarenaModel();
-        // $uslugaModel = new UslugaModel();
-        // $korisniciModel = new KorisnikModel();
-        // $rezervacijaModel = new RezervacijaModel();
-        // $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
-        //     'rezervacije' => $rezervacijaModel]);
-
+      
     }
     
     public function sacuvajOcenu()
     {
-
-        $id = (int)$this->request->getVar('hidden2');
-
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return "zahtev mora biti post";
+        }
+        $id = (int) $this->request->getVar('id');
+        $ocena=(int) $this->request->getVar('ocena');
         $uslugaOstvareneModel = new UslugaOstvarenaModel();
         $data = [
-            'ocena' =>(int) $this->request->getVar('hidden3')
+            'ocena' =>$ocena
         ];
         
         $uslugaOstvareneModel->update($id, $data);
@@ -79,14 +77,20 @@ class Klijent extends BaseController
     }
     public function obrisiIstorija()
     {
-        $id = (int)$this->request->getVar('hidden2');
-
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return "zahtev mora biti post";
+        }
+        $id = (int) $this->request->getVar('id');
+        $data = [
+            'obrisano' =>1
+        ];
         $uslugaOstvareneModel = new UslugaOstvarenaModel();
-        $uslugaOstvareneModel->delete($id);
+        $uslugaOstvareneModel->update($id, $data);
  
         return redirect()->to(site_url("Klijent/istorija"));
-        // $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
-        //     'rezervacije' => $rezervacijaModel]);
+      
 
     }
 }

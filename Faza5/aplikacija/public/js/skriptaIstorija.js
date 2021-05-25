@@ -19,7 +19,8 @@ function myFunction(objButton) {
     var label = objButton.parentNode.parentNode.getElementsByClassName("ocenaLabel")[0];
     var da = objButton.parentNode.parentNode.getElementsByClassName("ocenaDugme")[0];
     var ne = objButton.parentNode.parentNode.getElementsByClassName("ocenaDugme")[1];
-    var hid=objButton.parentNode.parentNode.getElementsByClassName("hidden3")[0];
+    var id=objButton.parentNode.parentNode.getElementsByClassName("hidden2")[0].value;
+     var ocena;
     
     label.innerHTML = objButton.innerHTML;
    
@@ -28,15 +29,22 @@ function myFunction(objButton) {
     
     if (label.innerHTML == "+") {
         label.style.color = "green"
-        hid.value=1;
+        ocena=1;
       
     } else {
         label.style.color = "red"
-        hid.value=0;
+        ocena=0;
   
     }
     var xmlhttp1 = new XMLHttpRequest();
-   
+    xmlhttp1.open("POST", "sacuvajOcenu", true);
+    xmlhttp1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp1.send("ocena="+ocena+"&id="+id);
+    xmlhttp1.onreadystatechange = function () {
+        if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
+          
+        }
+    }
 }
 function deleteTextArea(button) {
     var element = button.parentNode.parentNode.getElementsByClassName("komentarinput")[0].disabled = true;
@@ -45,9 +53,20 @@ function deleteTextArea(button) {
 }
 
 function ukloniPopravku(button) {
+  
     var zahtev = button.parentNode.parentNode.parentNode.parentNode.parentNode;
+    var id=button.parentNode.getElementsByClassName("hiddenU")[0].value;
+   
     zahtev.parentNode.removeChild(zahtev);
-    console.log(zahtev);
+    var xmlhttp1 = new XMLHttpRequest();
+    xmlhttp1.open("POST", "obrisiIstorija", true);
+    xmlhttp1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp1.send("id="+id);
+    xmlhttp1.onreadystatechange = function () {
+        if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
+          
+        }
+    }
 }
 
 function onTestChange(area) {

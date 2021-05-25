@@ -15,7 +15,7 @@
                             <?= $datumPopravke ?>
                         </h4>
                         <h4>
-                            <!-- < $tag ?>  -->
+                        <?= $naziv ?>
                         </h4>
                     </td>
                     <form action="sacuvajKomentar" method="POST">
@@ -35,17 +35,17 @@
 
                         <button class="komentardugme" type="SUBMIT">Sacuvaj komentar
                         </button>
-                        </form>
+                       
                         <form action="sacuvajOcenu" method="POST">
                            
-                        <input type="text" name="hidden2" id="" value= <?=$id?> style="display:none">
-                        <input type="text" name="hidden3" class="hidden3"  style="display:none">
+                        <input type="text" name="hidden2" class="hidden2" value= <?=$id?> style="display:none">
+                    
                         <label class="ocenaLabel"></label>
-                        <button class="ocenaDugme" id="dugmeP" name="submit1" type="SUBMIT" onsubmit="myFunction(this)">+</button>
+                        <button class="ocenaDugme" id="dugmeP" name="submit1"  onclick="myFunction(this)">+</button>
                         
-                        <button class="ocenaDugme" id="dugmeM" name="submit2" type="SUBMIT" onsubmit="myFunction(this)">-</button>
+                        <button class="ocenaDugme" id="dugmeM" name="submit2"  onclick="myFunction(this)">-</button>
                       
-                        </form>
+                        
                         <?php
                         if (isset($ocena)) {
                         if ($ocena == 0) {
@@ -68,18 +68,19 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <form action="obrisiIstorija" method="POST">
-                        <input type="text" name="hidden2" id="" value= <?=$id?> style="display:none">
+                       
+                 
                         <div class="ukloni">
-                            <button type="SUBMIT" onsubmit="ukloniPopravku(this)">
+                        <input type="text"  class="hiddenU" id="" value= <?=$id?> style="display:none">
+                            <button  onclick="ukloniPopravku(this)">
                                 ukloni iz istorije
                             </button>
                         </div>
-                        </form>
+                       
                     </td>
 
                 </tr>
-            </form>
+         
         </table>
 
     </div>
