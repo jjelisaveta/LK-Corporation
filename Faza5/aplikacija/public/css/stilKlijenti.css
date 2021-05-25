@@ -1,0 +1,215 @@
+body {
+    background-color: #e8e6d9;
+    position: relative;
+    overflow: auto;
+}
+
+
+#user {
+    height:8%;
+    width:100%;
+    position: absolute;
+    display:flex;
+    flex-direction: row;
+    bottom:16%; 
+    
+    padding: 6px 8px 6px 16px;
+}
+
+#user img {
+    border-color: transparent;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+}
+
+#user a {
+    font-size:15px;
+    font-family: Arial;
+    color: orange;
+    padding-left:10px;
+    padding-top:20px;
+    text-align: center;
+}
+
+
+
+
+
+#sredina{
+    position: relative;
+    z-index: 2;
+ 
+    height: 100%;
+}
+
+#con {
+
+    margin-bottom: 5%;
+    width: 90%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    background-color: #e8e6d9; 
+}
+
+.gornja {
+   
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    border-radius: 40px;
+    font-size: larger;
+    vertical-align: middle;
+    background-color:#c8c6b9 ;
+    position: relative;
+    height: 160px;
+}
+    
+.gornja td {
+    font-size: larger;
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 1%;
+    padding-right: 1%;
+}   
+
+.gornja h2 {
+    font-family: Arial;
+    font-size: 12px;
+}
+
+.gornja tr{
+    /*text-align: center;*/
+    vertical-align: middle;
+}
+
+.oblak{
+    background-color: #e8e6d9;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+
+}
+
+.userimg{
+    height: 100%;
+    width:15%;
+    
+}
+
+#con img{
+    width: 90%;
+    border-radius: 40px;
+    vertical-align: middle;
+    margin:5px;
+    
+    /*float:left;*/
+}
+
+#con h1 {
+    font-family: Arial;
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+#con h3 {
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+
+#content {
+    margin-left: 15%;
+    width: 85%;
+    height:80%;
+    float:left;
+    text-align: center;
+
+}
+
+#content h3 {
+    margin-top:8%;
+    font-family: Arial;
+    font-style: italic;
+    color:darkslategray;
+}
+
+
+#txtinput {
+    width: 40%;
+    padding: 10px;
+    padding-right: 50px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 20px;
+    margin-top: 2%;
+    font-size: 15px;
+    
+}
+
+#txtinput:focus {
+    outline:none;
+}
+
+#subinput {
+    margin-left: -50px;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+    outline: none;
+}
+
+#subinput img {
+    height: 100%;
+}
+
+#tags{
+    margin-left: 15%;
+    margin-top:5%;
+    text-align: center;
+    width: 85%;
+    float:left;
+}
+
+
+#tags button {
+    border-radius: 15px;
+    background: transparent;
+    color: darkslategray;
+    border-color: darkslategray;
+    border-style: solid;
+    font-size: 16px;
+    padding:5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#tags button:focus {
+    outline: none;
+    background-color: darkgray;
+}
+
+#tags button:hover{
+    background-color: darkgray;
+}
+
+.gornja a{
+    float: right;
+    font-family: Arial;
+    font-size:14px;
+    color:darkslategray;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.gornja a:hover{
+    color:orange;
+}
+
+
+

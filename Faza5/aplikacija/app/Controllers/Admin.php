@@ -2,12 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Models\UslugaOstvarenaModel;
-use App\Models\RezervacijaModel;
+
 use App\Models\KorisnikModel;
-use App\Models\UslugaModel;
-use App\Models\ZahtevModel;
-use App\Models\TerminModel;
+
 class Admin extends BaseController
 {
     protected function prikaz($stranica, $podaci)
@@ -16,8 +13,15 @@ class Admin extends BaseController
         $podaci['ime'] = 'Code';
         $podaci['prezime'] = 'Igniter';
         echo view("osnova/header");
-        echo view("osnova/meni", $podaci);
-        echo view("klijent/$stranica", $podaci);
+        echo view("admin/meni", $podaci);
+        echo view("admin/$stranica", $podaci);
         echo view("osnova/footer");
     }
+    public function index()
+    {
+        $korisniciModel=new Korisnikmodel();
+        $korisnici=$korisniciModel->findall();
+      $this->prikaz('pregledKorisnika',['korisnici'=>$korisnici]);
+    }
+
 }
