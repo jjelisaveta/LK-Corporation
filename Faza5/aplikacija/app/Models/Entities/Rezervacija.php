@@ -46,6 +46,41 @@ class Rezervacija
      * })
      */
     private $idmaj;
+    
+    
+    public function getId(): int {
+        return $this->id;
+    }
+
+    public function getIdRez(): \App\Models\Entities\Zahtev {
+        return $this->idRez;
+    }
+
+    public function getVremeodgovora(): \DateTime {
+        return $this->vremeodgovora;
+    }
+
+    public function getIdmaj(): \App\Models\Entities\Korisnik {
+        return $this->idmaj;
+    }
+
+    public function setId(int $id): void {
+        $this->id = $id;
+    }
+
+    public function setIdRez(\App\Models\Entities\Zahtev $idRez): void {
+        $this->idRez = $idRez;
+    }
+
+    public function setVremeodgovora(\DateTime $vremeodgovora): void {
+        $this->vremeodgovora = $vremeodgovora;
+    }
+
+    public function setIdmaj(\App\Models\Entities\Korisnik $idmaj): void {
+        $this->idmaj = $idmaj;
+    }
+
+
 
 
 }

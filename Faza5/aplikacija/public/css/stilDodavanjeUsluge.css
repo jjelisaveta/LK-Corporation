@@ -89,3 +89,8 @@ body {
 	padding:5px;
 	margin:10px;
 }
+
+.greska {
+    padding:10px;
+    color: red;
+}

@@ -19,6 +19,10 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
+                'gost'     => \App\Filters\GostFilter::class,
+                'korisnik' => \App\Filters\KorisnikFilter::class,
+                'majstor'  => \App\Filters\MajstorFilter::class,
+                'admin'    => \App\Filters\AdminFilter::class
 	];
 
 	/**
@@ -58,5 +62,10 @@ class Filters extends BaseConfig
 	 *
 	 * @var array
 	 */
-	public $filters = [];
+	public $filters = [
+            /*'gost' => ['before' => ['Gost/*',' Gost']],
+            'korisnik' => ['before' => ['Korisnik/*', 'Korisnik']],
+            'majstor' => ['before' => ['Majstor/*', 'Majstor']],
+            'admin' => ['before' => ['Admin/*', 'Admin']]*/
+        ];
 }

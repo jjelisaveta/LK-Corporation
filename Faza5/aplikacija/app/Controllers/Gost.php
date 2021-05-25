@@ -23,7 +23,13 @@ class Gost extends BaseController
         echo view($stranica, $greske);
         echo view("osnova/footerBezMenija");
     }
+    
     protected  $greska;
+    
+    public function pretrazivanje(){
+        echo "Ovo Jovan treba da uradi";
+    }
+    
     protected function uzmiPutanju() : string{
         $target_dir = "slike/";
         $target_file = $target_dir . basename($_FILES["izaberiSliku"]["name"]);
@@ -85,7 +91,7 @@ class Gost extends BaseController
                     }else{
                         $this->session->set('GostJe',0);                    //dajem vam indikator da li je gost u pitanju
                         $this->session->set('Korisnik', $korisnik[0]);
-                        return redirect()->to(site_url('Majstor/dodajUslugu'));
+                        return redirect()->to(site_url('Gost'));
                     }
                 }
             }else{
@@ -156,11 +162,11 @@ class Gost extends BaseController
 /*               if($this->request->getVar('izaberiSliku') != null){
                     $putanja = $this->uzmiPutanju();
                 }*/
-                $uloga = 0;
+                $uloga = 1;
                 if($this->request->getVar('adresa') == 'Korisnik'){
-                    $uloga = 1;
+                    $uloga = 3;
                 }else{
-                    $uloga = 0;
+                    $uloga = 2;
                 }
                 $km->save([
                     'ime' => $this->request->getVar('ime'),

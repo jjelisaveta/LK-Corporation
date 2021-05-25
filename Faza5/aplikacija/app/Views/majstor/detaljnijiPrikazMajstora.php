@@ -53,9 +53,11 @@
                 <div class="row">
                     <div class="komentarii offset-1 col-10">
                         <?php 
-                            foreach ($ostvrene as $ostvarena){
+                            foreach ($ostvarene as $ostvarena){
+                                if ($ostvarena->getKomentar()!="" && $ostvarena->getKomentar()!=null){
                                 echo view_cell("\App\Libraries\KomentarPrikazMajstoraLib::prikazKomentara", ['komentar' => $ostvarena->getKomentar(), 
-                                'korisnik'=>$ostvarena->getIdrez()->getZahtev->getIdkor()]);
+                                'korisnik'=>$ostvarena->getIdrez()->getIdRez()->getIdkor()]);
+                                }
                             }
                         ?>
                     </div>

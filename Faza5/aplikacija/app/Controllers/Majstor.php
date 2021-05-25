@@ -27,55 +27,89 @@ class Majstor extends BaseController
     protected function prikaz($stranica, $podaci)
     {
         $podaci['controller'] = "Majstor";
+        $podaci['korisnik'] = $this->session->get('Korisnik');
         $podaci['ime'] = $this->session->get('Korisnik')->ime;
         $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
+
         echo view("osnova/header");
         echo view("majstor/meni", $podaci);
         echo view("majstor/$stranica", $podaci);
         echo view("osnova/footer");
     }
 
+    public function pretrazivanje(){
+        echo "Ovo Jovan treba da uradi";
+    }
+    
     public function dodajUslugu()
     {
         $tagModel = new TagModel();
         $tagovi = $tagModel->findAll();
-        $this->prikaz("dodavanjeusluga", ['tagovi' => $tagovi]);
-        //redirect()->to(site_url("Majstor/novaUsluga"));
-    }
-
-
-    public function novaUsluga()
-    {
-        //ispravnost podataka
-
-        $t = $this->request->getVar('izabraniTagovi');
-        $tagovi = explode("#", $t);
-
-        /*dodati redove u Usluga-Tag i proveriti ispravnost podataka*/
-
-        $uslugaModel = new UslugaModel();
-        $uslugaModel->save([
-            'naziv' => $this->request->getVar('naslov'),
-            'opis' => $this->request->getVar('opis'),
-            'cena' => $this->request->getVar('cena'),
-            'idMaj' => 1                                        //izmeni
-        ]);
-
-        $tagModel = new TagModel();
-        $uslugaTagModel = new UslugaTagModel();
-        $t = $this->request->getVar('izabraniTagovi');
-        $tagovi = explode("#", $t);
-        $idUsluge = $uslugaModel->getInsertID();
-        foreach ($tagovi as $tag) {
-
-            $uslugaTagModel->save([
-                'idUsl' => $idUsluge,
-                'idTag' => $tagModel->dohvatiId($tag)->idTag
-            ]);
+        
+        if (!$_POST){
+            $this->prikaz("dodavanjeusluga", ['tagovi' => $tagovi]);
         }
+        
+        $rules = ['naslov' => [
+                'rules' => 'required',
+                'label' => 'Naslov',
+                'errors' => [
+                    'required' => 'Naslov je obavezno polje!',
+                ]],
+                'opis' => [
+                'rules' => 'required',
+                'label' => 'Kratak opis uslge',
+                'errors' => [
+                    'required' => 'Opis usluge je obavezno polje!',
+                ]],
+                'cena' => [
+                'rules' => 'required',
+                'label' => 'Cena',
+                'errors' => [
+                    'required' => 'Cena je obavezno polje!',
+                ]],
+            ];
+        if ($this->validate($rules)) {
+            $t = $this->request->getVar('izabraniTagovi');
+            $tagovi = explode("#", $t);
 
-        return redirect()->to(site_url("Majstor/mojeUsluge"));
+            $uslugaModel = new UslugaModel();
+            $uslugaModel->save([
+                'naziv' => $this->request->getVar('naslov'),
+                'opis' => $this->request->getVar('opis'),
+                'cena' => $this->request->getVar('cena'),
+                'idMaj' => $this->session->get('Korisnik')->idKor      
+            ]);
+
+            $tagModel = new TagModel();
+            $uslugaTagModel = new UslugaTagModel();
+            $t = $this->request->getVar('izabraniTagovi');
+            $tagovi = explode("#", $t);
+            $idUsluge = $uslugaModel->getInsertID();
+            foreach ($tagovi as $tag) {
+
+                $uslugaTagModel->save([
+                    'idUsl' => $idUsluge,
+                    'idTag' => $tagModel->dohvatiId($tag)->idTag
+                ]);
+            }
+
+            return redirect()->to(site_url("Majstor/mojeUsluge"));
+        }
+        else {
+            if ($this->validator->hasError('naslov')){
+                $podaci['nazivGreska'] = $this->validator->getError('naslov');
+            }
+            if ($this->validator->hasError('opis')){
+                $podaci['opisGreska'] = $this->validator->getError('opis');
+            }
+            if ($this->validator->hasError('cena')){
+                $podaci['cenaGreska'] = $this->validator->getError('cena');
+            }
+            return $this->prikaz("dodavanjeusluga", $podaci);
+        }
     }
+
 
     public function dohvatiTagove($idUsl)
     {
@@ -83,17 +117,17 @@ class Majstor extends BaseController
             ->find($idUsl);
         $tagovi = $u->getTagovi();
 
-        $poruke = "";
-        foreach ($tagovi as $tag) {
-            $poruke = $poruke . $tag->getOpis();
-        }
-        return $poruke;
+        return $tagovi;
     }
 
+    public function odjava(){
+        $this->session->destroy();
+        return redirect()->to(site_url("Gost/loginSubmit"));
+    }
+    
     public function mojeUsluge()
     {
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => 1]);
-
         $this->prikaz("mojeUsluge", ['usluge' => $usluge]);
     }
 
@@ -111,17 +145,11 @@ class Majstor extends BaseController
 
     public function prikazMajstora()
     {
-        $id = 1;
+        $id = $this->session->get('Korisnik')->idKor;
 
         $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
-
-        /*$upit = $em->createQuery("select o from \App\Models\Entities\UslugaOstvarena o JOIN o.idusl u WHERE u.idmaj=?1");
-        $upit->setParameter(1, $id);
-        $ostvarene = $upit->getResult();
-        $ostvatene = $this->doctrine->em->getRepository(\App\Models\Entities\UslugaOstvarena::class)->find;*/
-
-
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);      
+        $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
         $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene]);
 
     }
