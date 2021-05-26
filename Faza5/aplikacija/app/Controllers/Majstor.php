@@ -48,6 +48,7 @@ class Majstor extends BaseController
         
         if (!$_POST){
             $this->prikaz("dodavanjeusluga", ['tagovi' => $tagovi]);
+            return;
         }
         
         $rules = ['naslov' => [

@@ -1,5 +1,5 @@
 
-<div class="offset-1 col-10">
+<div class="offset-1 col-10 jednaUsluga">
     <table class="uslugaPrikaz">
         <tr>
             <td class="slikaMajstora"><img src="<?php echo base_url(); ?>/slike/Kalu.jpg" ></td>
@@ -24,7 +24,7 @@
                     ?>
                 </h5>
             </td>
-            <td style="border-left: solid ; width:33%;">
+            <td style="border-left: 1px solid orange; width:33%;">
                 <h3>
                     Majstora preporucuje: 82% <br>
                     Prosecno vreme reakcije:02:25 <br>

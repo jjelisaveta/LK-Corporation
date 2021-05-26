@@ -22,7 +22,7 @@ body {
 }
 
 .ocene {
-    border-left: 1px solid black;
+    border-left: 1px solid orange;
     width:35%;
 }
 
@@ -36,7 +36,7 @@ body {
 }
 
 .ocene h3 {
-    font-size: 16px;
+    font-size: 18px;
     margin: 5px;
 }
 
@@ -63,6 +63,11 @@ body {
 .slikaKorisnika {
     width: 15%;
     padding: 5px;
+}
+
+.slikaKorisnika img {
+    width: 100%;
+    border-radius: 15px;
 }
 
 .komentarii h1 {
@@ -160,4 +165,16 @@ body {
 
 #usluga {
     width:100%;
+}
+
+.jednaUsluga {
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+
+.sveUsluge h3 {
+    font-size: 18px;
+    margin: 5px;
+    text-align: left;
+    font-weight: normal;
 }

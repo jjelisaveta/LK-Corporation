@@ -23,7 +23,7 @@
                     <div id="info" class="offset-1 col-10">
                         <table>
                             <tr>
-                                <td class="slikaMajstora"><img src="slike/covek1.webp"></td>
+                                <td class="slikaMajstora"><img src="<?php echo base_url(); ?>/slike/covek1.webp"></td>
                                 <td class="podaci">
                                     <h1>
                                         <?= $majstor->getIme()?> <?= $majstor->getPrezime()?>
@@ -69,10 +69,10 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row sveUsluge">
                     <?php 
                         foreach ($usluge as $usluga){
-                            echo view_cell("\App\Libraries\MojaUslugaMajstor::prikazUsluge", ['naslov' => $usluga->getNaziv(), 
+                            echo view_cell("\App\Libraries\UslugaPrikazMajstora::prikazUsluge", ['naslov' => $usluga->getNaziv(), 
                             'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
                             'tagovi'=>$usluga->getTagovi()]);
                         }
