@@ -9,14 +9,14 @@
     <div id="meniMali" class="d-block d-md-none overlay">
         <a href="javascript:void(0)" class="dugmeZatvori" onclick="zatvoriMeni()">&times;</a>
         <div class="maliMeniSadrzaj">
-            <a href="pretrazivanje.html">Rezerviši termin</a>
-            <a href="aktivnapopravka.html">U toku</a>
-            <a href="istorija.html">Istorija</a>
+            <a href="#">Pregled Korisnika</a>
+            <a href="#">Zahtevi Majstora</a>
+            
             <div class="padajuciMeni">
                 <button class="padajuceDugme">Moj nalog</button>
                 <div class="padajuciSadrzaj">
                     <a href="logovanje.html">Uloguj se</a>
-                    <a href="registrovanje.html">Registruj se</a>
+
                 </div>
             </div>
         </div>
@@ -27,14 +27,13 @@
     </div>
 
     <div id="meni" class="d-none d-md-block col-md-2">
-        <a href="pretrazivanje.html">Rezerviši termin</a>
-        <a href="aktivnapopravka.html">U toku</a>
-        <a href="istorija.html">Istorija</a>
+           <a href="#">Pregled Korisnika</a>
+            <a href="#">Zahtevi Majstora</a>
         <div class="padajuciMeni">
             <button class="padajuceDugme">Moj nalog</button>
             <div class="padajuciSadrzaj">
                 <a href="logovanje.html">Uloguj se</a>
-                <a href="registrovanje.html">Registruj se</a>
+           
             </div>
         </div>
         <div id="korisnik">

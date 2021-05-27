@@ -3,7 +3,7 @@ use CodeIgniter\Model;
 
 class UslugaTagModel extends Model
 {
-        protected $table      = 'usluga-tag';
+        protected $table      = 'uslugatag';
         protected $primaryKey = 'idUslTag';
         protected $returnType = 'object';
         

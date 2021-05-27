@@ -39,7 +39,9 @@ class Gost extends BaseController
         echo view($stranica, $podaci);       
         echo view("osnova/footer");
     }
+	
     protected  $greska;
+    
     protected function uzmiPutanju() : string{
         $target_dir = "slike/";
         $target_file = $target_dir . basename($_FILES["izaberiSliku"]["name"]);
@@ -115,7 +117,8 @@ class Gost extends BaseController
                 if ($this->validator->hasError('lozinka')){
                     $data['LosaLozinka'] = $this->validator->getError('lozinka');
                 }
-                return $this->prikazi($stranica, $data);
+                return $this->prikazi('Majstor/dodajUslugu', $data);            //dodato za testiranje promene podataka
+                //ko zeli moze da skloni ali nek napise isti ovakav komentar da znam
             }
         }
     }
@@ -132,7 +135,7 @@ class Gost extends BaseController
         }
     }
     
-    public function registrujSe(){                  //tek treba da se radi
+    public function registrujSe(){                  //Zavrseno
         $stranica = 'gost/Registrovanje';
          if (!$_POST){
             return $this->prikazi($stranica, []);
@@ -231,7 +234,6 @@ class Gost extends BaseController
         $stranica = 'gost/promeniPodatke';
         $data = [];
         if (!$_POST){
-            $data['Ok'] = 'Napusim te sa kurac';
             $this->prikaziSaMenijem($stranica, $data);
             return ;
         }
@@ -262,7 +264,7 @@ class Gost extends BaseController
             }
             if($this->request->getVar('telefon') != null){
                 $this->session->get('Korisnik')->telefon = $this->request->getVar('telefon');
-                $trenutni[0]->telefon = $this->request->getVar('telefon');
+                $trenutni[0]->brojTelefona = $this->request->getVar('telefon');
             }
             
             if($this->request->getVar('adresa') != null){
@@ -275,7 +277,7 @@ class Gost extends BaseController
                 $trenutni[0]->lozinka = $this->request->getVar('lozinka');
             }
             $km->update($trenutni[0]->idKor, [
-                    'brojTelefona' => $trenutni[0]->telefon,
+                    'brojTelefona' => $trenutni[0]->brojTelefona,
                     'adresa' => $trenutni[0]->adresa,
                     'lozinka' => $trenutni[0]->lozinka,
                     'slika' => $putanja
@@ -290,7 +292,6 @@ class Gost extends BaseController
             if($this->validator->hasError('telefon')){
                 $data['LoseTelefon'] = $this->validator->getError('telefon');
             }
-            $data["Ok"] = "G R E S K A  " . $this->validator->getError('lozinka');
             $this->prikaziSaMenijem($stranica,$data);
             return ;
         }

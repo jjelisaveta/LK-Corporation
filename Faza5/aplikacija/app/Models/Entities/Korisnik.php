@@ -79,113 +79,93 @@ class Korisnik
 
     /**
      * @var \App\Models\Entities\Uloga
-     *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Uloga")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idUlo", referencedColumnName="idUlo")
-     * })
+     * @ORM\JoinColumn(name="idUlo", referencedColumnName="idUlo")
      */
     private $idulo;
-
-    /**
-     * Get ime.
-     *
-     * @return string
-     */
-    public function getIme()
-    {
-        return $this->ime;
-    }
-
-    function getIdkor(): int
-    {
+  
+    public function getIdkor(): int {
         return $this->idkor;
     }
 
-    function getPrezime(): string
-    {
+    public function getIme(): string {
+        return $this->ime;
+    }
+
+    public function getPrezime(): string {
         return $this->prezime;
     }
 
-    function getEmail(): string
-    {
+    public function getEmail(): string {
         return $this->email;
     }
 
-    function getBrojtelefona(): string
-    {
+    public function getBrojtelefona(): string {
         return $this->brojtelefona;
     }
 
-    function getLozinka(): string
-    {
+    public function getLozinka(): string {
         return $this->lozinka;
     }
 
-    function getAdresa(): string
-    {
+    public function getAdresa(): string {
         return $this->adresa;
     }
 
-    function getSlika(): ?string
-    {
+    public function getSlika(): ?string {
         return $this->slika;
     }
 
-    function getOdobren(): string
-    {
+    public function getOdobren(): string {
         return $this->odobren;
     }
 
-    public function getIdulo(): \App\Models\Entities\Uloga
-    {
+    public function getIdulo(): \App\Models\Entities\Uloga {
         return $this->idulo;
     }
 
-    function setIdkor(int $idkor): void
-    {
+    public function setIdkor(int $idkor): void {
         $this->idkor = $idkor;
     }
 
-    function setPrezime(string $prezime): void
-    {
+    public function setIme(string $ime): void {
+        $this->ime = $ime;
+    }
+
+    public function setPrezime(string $prezime): void {
         $this->prezime = $prezime;
     }
 
-    function setEmail(string $email): void
-    {
+    public function setEmail(string $email): void {
         $this->email = $email;
     }
 
-    function setBrojtelefona(string $brojtelefona): void
-    {
+    public function setBrojtelefona(string $brojtelefona): void {
         $this->brojtelefona = $brojtelefona;
     }
 
-    function setLozinka(string $lozinka): void
-    {
+    public function setLozinka(string $lozinka): void {
         $this->lozinka = $lozinka;
     }
 
-    function setAdresa(string $adresa): void
-    {
+    public function setAdresa(string $adresa): void {
         $this->adresa = $adresa;
     }
 
-    function setSlika(?string $slika): void
-    {
+    public function setSlika(?string $slika): void {
         $this->slika = $slika;
     }
 
-    function setOdobren(string $odobren): void
-    {
+    public function setOdobren(string $odobren): void {
         $this->odobren = $odobren;
     }
 
-    function setIdulo(\App\Models\Entities\Uloga $idulo): void
-    {
+    public function setIdulo(\App\Models\Entities\Uloga $idulo): void {
         $this->idulo = $idulo;
     }
+
+
+
 
 
 }

@@ -8,15 +8,10 @@
 
 namespace App\Controllers;
 
-/**
- * Description of Majstor
- *
- * @author Windows User
- */
-
 use App\Models\Entities\Zahtev;
 use App\Models\Kalendar;
 use App\Models\KalendarModel;
+use App\Models\Repositories\UslugaOstvarenaRepository;
 use App\Models\TerminModel;
 use App\Models\UslugaModel;
 use App\Models\TagModel;
@@ -32,89 +27,133 @@ class Majstor extends BaseController
     protected function prikaz($stranica, $podaci)
     {
         $podaci['controller'] = "Majstor";
+        $podaci['korisnik'] = $this->session->get('Korisnik');
         $podaci['ime'] = $this->session->get('Korisnik')->ime;
         $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
         $podaci['profilna'] = $this->session->get('Korisnik')->slika;
+
         echo view("osnova/header");
         echo view("majstor/meni", $podaci);
         echo view("majstor/$stranica", $podaci);
         echo view("osnova/footer");
     }
 
+    public function pretrazivanje(){
+        echo "Ovo Jovan treba da uradi";
+    }
+    
     public function dodajUslugu()
     {
         $tagModel = new TagModel();
         $tagovi = $tagModel->findAll();
-        $this->prikaz("dodavanjeusluga", ['tagovi' => $tagovi]);
-        //redirect()->to(site_url("Majstor/novaUsluga"));
-    }
-
-
-    public function novaUsluga()
-    {
-        //ispravnost podataka
-
-        $t = $this->request->getVar('izabraniTagovi');
-        $tagovi = explode("#", $t);
-
-        /*dodati redove u Usluga-Tag i proveriti ispravnost podataka*/
-
-        $uslugaModel = new UslugaModel();
-        $uslugaModel->save([
-            'naziv' => $this->request->getVar('naslov'),
-            'opis' => $this->request->getVar('opis'),
-            'cena' => $this->request->getVar('cena'),
-            'idMaj' => 1                                        //izmeni
-        ]);
-
-        $tagModel = new TagModel();
-        $uslugaTagModel = new UslugaTagModel();
-        $t = $this->request->getVar('izabraniTagovi');
-        $tagovi = explode("#", $t);
-        $idUsluge = $uslugaModel->getInsertID();
-        foreach ($tagovi as $tag) {
-
-            $uslugaTagModel->save([
-                'idUsl' => $idUsluge,
-                'idTag' => $tagModel->dohvatiId($tag)->idTag
-            ]);
+        
+        if (!$_POST){
+            $this->prikaz("dodavanjeusluga", ['tagovi' => $tagovi]);
+            return;
         }
+        
+        $rules = ['naslov' => [
+                'rules' => 'required',
+                'label' => 'Naslov',
+                'errors' => [
+                    'required' => 'Naslov je obavezno polje!',
+                ]],
+                'opis' => [
+                'rules' => 'required',
+                'label' => 'Kratak opis uslge',
+                'errors' => [
+                    'required' => 'Opis usluge je obavezno polje!',
+                ]],
+                'cena' => [
+                'rules' => 'required',
+                'label' => 'Cena',
+                'errors' => [
+                    'required' => 'Cena je obavezno polje!',
+                ]],
+            ];
+        if ($this->validate($rules)) {
+            $t = $this->request->getVar('izabraniTagovi');
+            $tagovi = explode("#", $t);
 
-        return redirect()->to(site_url("Majstor/mojeUsluge"));
+            $uslugaModel = new UslugaModel();
+            $uslugaModel->save([
+                'naziv' => $this->request->getVar('naslov'),
+                'opis' => $this->request->getVar('opis'),
+                'cena' => $this->request->getVar('cena'),
+                'idMaj' => $this->session->get('Korisnik')->idKor      
+            ]);
+
+            $tagModel = new TagModel();
+            $uslugaTagModel = new UslugaTagModel();
+            $t = $this->request->getVar('izabraniTagovi');
+            $tagovi = explode("#", $t);
+            $idUsluge = $uslugaModel->getInsertID();
+            foreach ($tagovi as $tag) {
+
+                $uslugaTagModel->save([
+                    'idUsl' => $idUsluge,
+                    'idTag' => $tagModel->dohvatiId($tag)->idTag
+                ]);
+            }
+
+            return redirect()->to(site_url("Majstor/mojeUsluge"));
+        }
+        else {
+            if ($this->validator->hasError('naslov')){
+                $podaci['nazivGreska'] = $this->validator->getError('naslov');
+            }
+            if ($this->validator->hasError('opis')){
+                $podaci['opisGreska'] = $this->validator->getError('opis');
+            }
+            if ($this->validator->hasError('cena')){
+                $podaci['cenaGreska'] = $this->validator->getError('cena');
+            }
+            return $this->prikaz("dodavanjeusluga", $podaci);
+        }
     }
+
 
     public function dohvatiTagove($idUsl)
     {
         $u = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)
             ->find($idUsl);
         $tagovi = $u->getTagovi();
-        return $tagovi;
-        /* foreach($tagovi as $tag){
-            // echo gettype($tag);
-            echo $tag->getOpis();
-         }*/
 
+        return $tagovi;
     }
 
+    public function odjava(){
+        $this->session->destroy();
+        return redirect()->to(site_url("Gost/loginSubmit"));
+    }
+    
     public function mojeUsluge()
     {
-        $uslugaModel = new UslugaModel();
-        $usluge = $uslugaModel->where('idMaj', 1)->findAll();  //stavi id ulogovanog korisnika
-        /* $uslugaTagModel = new UslugaTagModel();
-         $tagModel = new TagModel();
-         foreach ($usluge as $usluga){
-             $tagoviId = $uslugaTagModel->where('idUsl', $usluga->idUsl)->findAll();
-         }*/
-
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => 1]);
         $this->prikaz("mojeUsluge", ['usluge' => $usluge]);
+    }
+
+
+    public function dohvatiOStvareneUsluge($id)
+    {
+        $usluge = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
+        $naziv = [];
+        foreach ($usluge as $usluga) {
+            array_push($naziv, $usluga->getIdrez()->idRez->getOpis());
+        }
+
+        return "poruka" . json_encode($naziv);
     }
 
     public function prikazMajstora()
     {
-        //majstor - ime, prezime
-        //dohvatanje komentara iz baze 
-        //dohvatanje usluga
-        $this->prikaz("prikazMajstora", []);
+        $id = $this->session->get('Korisnik')->idKor;
+
+        $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);      
+        $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
+        $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene]);
+
     }
 
     public function kalendar($date = null)
