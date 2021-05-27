@@ -38,7 +38,7 @@ class Klijent extends BaseController
         $rezervacijaModel = new RezervacijaModel();
         $zahtevModel = new ZahtevModel();
         $terminModel= new TerminModel();
-        $idkor=6;
+        $idkor=2;
         $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
             'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
 
@@ -54,7 +54,7 @@ public function aktivnaPopravka()
     $rezervacijaModel = new RezervacijaModel();
     $zahtevModel = new ZahtevModel();
     $terminModel= new TerminModel();
-    $idkor=6;
+    $idkor=2;
     $this->prikaz("aktivnePopravke", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
     'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
 }
