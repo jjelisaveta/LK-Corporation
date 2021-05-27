@@ -1,28 +1,19 @@
-function dodajText(id, naslov, opis, cena, tagovi) {
-    $("#naslovId").val(naslov);
-    $("#opisId").val(opis);
-    $("#cenaId").val(cena);
-    $("#idUsluge").val(id);
-    tagovi = JSON.parse(tagovi);
-    console.log(tagovi);
-    tagovi.forEach(tag => {
-        console.log(tag);
-        let novo = $("<button type='button' class='dugmeTag'></button>");
-        novo.text(tag);
-        novo.click(function () {
-            var h = new Set($("#izabraniTagovi").val().split(";"));
-            h.delete(this.innerHTML);
-            $("#izabraniTagovi").val(Array.from(h).join(';'));
-            this.parentNode.removeChild(this);
-        });
-        var h = $("#izabraniTagovi").val() + ";" + tag;
-        $("#izabraniTagovi").val(h);
-        $("#tagovi").append(novo);
-    });
-}
-
 $(document).ready(function () {
-
+    $("#izabraniTagovi").val("");
+    $(".dugmeTag").click(function () {
+        var h = new Set($("#izabraniTagovi").val().split(";"));
+        h.delete(this.innerHTML);
+        $("#izabraniTagovi").val(Array.from(h).join(';'));
+        this.parentNode.removeChild(this);
+    });
+    let dugmad = $(".dugmeTag");
+    $.each(dugmad, (key, value) => {
+        if ($("#izabraniTagovi").val().length > 3)
+            var h = $("#izabraniTagovi").val() + ";" + dugmad[key].innerHTML;
+        else
+            var h = $("#izabraniTagovi").val() + dugmad[key].innerHTML;
+        $("#izabraniTagovi").val(h);
+    });
     $("#plus").click(function () {
         let izabrano = $("#selectId").val();
         var x = false;
@@ -40,9 +31,11 @@ $(document).ready(function () {
         if (x == true)
             return;
         let novo = $("<button type='button' class='dugmeTag'></button>");
-        var h = $("#izabraniTagovi").val() + ";" + izabrano;
+        if ($("#izabraniTagovi").val().length > 3)
+            var h = $("#izabraniTagovi").val() + ";" + izabrano;
+        else
+            var h = $("#izabraniTagovi").val() + izabrano;
         $("#izabraniTagovi").val(h);
-        console.log($("#izabraniTagovi").val());
         novo.text(izabrano);
         novo.click(function () {
             var h = new Set($("#izabraniTagovi").val().split(";"));
