@@ -95,7 +95,7 @@ body {
 
 .userimg{
     height: 100%;
-    width:15%;
+    width:20%;
     
 }
 
@@ -110,13 +110,13 @@ body {
 
 #con h1 {
     font-family: Arial;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bolder;
 }
 
 #con h3 {
     font-family: Arial;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: lighter;
 }
 
@@ -209,6 +209,12 @@ body {
 
 .gornja a:hover{
     color:orange;
+}
+.vise
+{
+    vertical-align: bottom;
+    text-align: right;
+ 
 }
 
 
