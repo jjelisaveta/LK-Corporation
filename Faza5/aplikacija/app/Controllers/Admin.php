@@ -21,7 +21,7 @@ class Admin extends BaseController
     {
         $korisniciModel=new Korisnikmodel();
         $korisnici=$korisniciModel->findall();
-      $this->prikaz('pregledKorisnika',['korisnici'=>$korisnici]);
+      $this->prikaz('pregledMajstora',['korisnici'=>$korisnici]);
     }
 
 }

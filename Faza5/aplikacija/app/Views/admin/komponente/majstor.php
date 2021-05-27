@@ -1,5 +1,7 @@
-<div class="row">
-    <div class="offset-1 col-10">
+<?php
+$klasa = "col-10 col-md-4 offset-1 offset-md-".$num;
+?>
+<div class="<?php echo $klasa; ?>" style="margin-bottom: 30px">
 <div class="oblak">
         <table class="gornja">
             <tr>
@@ -7,18 +9,20 @@
                 <td>
                     <h1>
                     <?= $ime?>
+                    <?=$prezime?>
                     </h1>
-                    <h2 style="font-size: medium;">
-                        Broj koriscenih usluga:3
+                    <h2>
+                    <a href="mailto:"+<?=$email?>>Posalji mejl majstoru</a>
                     </h2>
+                      <br>
                     <h2 style="font-size: medium;">
-                        Prosecna data ocena majstoru:66%
+                        <!-- Prosek ocena: <= $prosek?> -->
                     </h2>
+                 <a href="" class="vise">detaljnije...</a>
                     <br/>
                 </td>
             </tr>
         </table>
        
     </div>
-</div>
 </div>
