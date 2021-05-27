@@ -34,6 +34,7 @@ class Majstor extends BaseController
         $podaci['controller'] = "Majstor";
         $podaci['ime'] = $this->session->get('Korisnik')->ime;
         $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
+        $podaci['profilna'] = $this->session->get('Korisnik')->slika;
         echo view("osnova/header");
         echo view("majstor/meni", $podaci);
         echo view("majstor/$stranica", $podaci);
