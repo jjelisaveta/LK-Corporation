@@ -1,5 +1,4 @@
-function prihvati(button) {
-    id = button.id;
+function prihvati(id) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "odobriMajstora", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -16,8 +15,7 @@ function prihvati(button) {
     }
 }
 
-function ukloni(button) {
-    id = button.id;
+function ukloni(id) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "ukloniMajstora", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -32,4 +30,9 @@ function ukloni(button) {
             }
         }
     }
+}
+
+function mail(id, email) {
+    console.log($("#text" + id).val())
+    window.open('mailto:' + email + '?body=' + $("#text" + id).val());
 }

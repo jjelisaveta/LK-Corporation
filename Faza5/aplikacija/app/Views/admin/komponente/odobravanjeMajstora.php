@@ -1,5 +1,6 @@
 <?php
 $rowId = "red" . $id;
+$textId = "text" . $id;
 ?>
 <div id="<?php echo $rowId; ?>" class="row">
     <div class="offset-1 col-10">
@@ -18,25 +19,25 @@ $rowId = "red" . $id;
                     </h3>
                 </td>
                 <td>
-                    <textarea name="emailArea" class="emailArea" cols="25" rows="4"
+                    <textarea name="emailArea" id="<?php echo $textId; ?>" class="emailArea" cols="25" rows="4"
                               placeholder="Posalji email:"></textarea>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
                     <div class="prihvati">
-                        <button id="<?php echo $id; ?>" type="button" onclick="prihvati(this)">
+                        <button id="<?php echo $id; ?>" type="button" onclick="prihvati('<?php echo $id; ?>')">
                             prihvati
                         </button>
                     </div>
                     <div class="odbij">
-                        <button id="<?php echo $id; ?>" type="button" onclick="ukloni(this)">
+                        <button id="<?php echo $id; ?>" type="button" onclick="ukloni('<?php echo $id; ?>')">
                             odbij
                         </button>
                     </div>
                 </td>
                 <td>
-                    <button class="emailButton">
+                    <button id="" class="emailButton" onclick="mail('<?php echo $id; ?>','<?php echo $email; ?>')">
                         pošalji
                     </button>
                 </td>
