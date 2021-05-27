@@ -267,6 +267,7 @@ class Gost extends BaseController
             }
             if($putanja == ''){
                 $this->prikaziSaMenijem($stranica,$data);
+                return;
             }
             if($this->request->getVar('telefon') != null){
                 $this->session->get('Korisnik')->telefon = $this->request->getVar('telefon');
