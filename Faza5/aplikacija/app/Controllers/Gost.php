@@ -40,9 +40,8 @@ class Gost extends BaseController
         echo view("osnova/footer");
     }
 	
-    protected  $greska;
     
-    protected function uzmiPutanju() : string{
+    protected function uzmiPutanju(&$greska) : string{
         $target_dir = "slike/";
         $target_file = $target_dir . basename($_FILES["izaberiSliku"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -50,24 +49,24 @@ class Gost extends BaseController
         
         if($check == false) {
             $greska['GreskaSlika'] = 'Fajl koji ste prilozili nije slika!';
-            return 'A';
+            return "";
         }
         
         if ($_FILES["izaberiSliku"]["size"] > 1000000) {
             $greska['GreskaSlika'] = 'Slika koju ste prilozili je veca od 1mb!';
-            return 'B';
+            return "";
         }
         
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"){
             $greska['GreskaSlika'] = 'Slika nije u formatu JPG, JPEG ili PNG!';
-            return 'C';
+            return "";
         }
         
         if (move_uploaded_file($_FILES["izaberiSliku"]["tmp_name"], $target_file)) {
            return $target_file;
         }else{
             $greska['GreskaSlika'] = 'Desila se greska pri ucitavanju slike!';
-            return 'D';
+            return "";
         }
     }
     public function loginSubmit(){
@@ -189,7 +188,11 @@ class Gost extends BaseController
             }else{
                 $putanja = 'slike/profilna.png'; 
                 if($_FILES["izaberiSliku"]["size"] != 0){
-                    $putanja = $this->uzmiPutanju();
+                    $putanja = $this->uzmiPutanju($data);
+                }
+                if($putanja == ""){
+                    $this->prikazi($stranica, $data);
+                    return ;
                 }
                 $uloga = $this->dodeliUlogu($this->request->getVar('uloga'));
                 $km->save([
@@ -259,8 +262,11 @@ class Gost extends BaseController
             $putanja = 'slike/profilna.png'; 
             $deb = "";
             if($_FILES["izaberiSliku"]["size"] != 0){
-                $putanja = $this->uzmiPutanju();
+                $putanja = $this->uzmiPutanju($data);
                 $this->session->get('Korisnik')->slika = $putanja;
+            }
+            if($putanja == ''){
+                $this->prikaziSaMenijem($stranica,$data);
             }
             if($this->request->getVar('telefon') != null){
                 $this->session->get('Korisnik')->telefon = $this->request->getVar('telefon');

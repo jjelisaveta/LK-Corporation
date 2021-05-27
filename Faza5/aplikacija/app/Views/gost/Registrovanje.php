@@ -78,10 +78,12 @@
                             <label class="custom-file-label okvir" for="izaberiSliku" id="izaberiSliku" >Učitajte profilnu sliku</label>
                         </div> 
                     </div> 
+                    <font color='red'>
                     <?php
                         if(isset($GreskaSlika))
                             echo $GreskaSlika;
                     ?>
+                    </font>
                     <div class="row">
                         <input class="offset-2 col-8 offset-md-4 col-md-4 dugmic" type="submit" value="Registruj se" id="idDugmeR">
                     </div>
