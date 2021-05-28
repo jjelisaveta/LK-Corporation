@@ -20,10 +20,12 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
                         </div>
                     </div>
+
                     <a class="mail" href="mailto:" +<?= $email ?>>Posalji mejl majstoru</a>
                     <input type="text" class="hidden" style="display:none">
                     <br>
                     <a href="" class="vise">detaljnije...</a>
+
                     <br/>
                 </td>
             </tr>
