@@ -21,7 +21,6 @@
                     <form action="sacuvajKomentar" method="POST">
                 <input type="text" name="hidden" id="" value= <?= $id ?> style="display:none">
                     <td class="komentartd">
-
                         <div class="Komentar">
                             <label class="komentarLabel"></label><br>
                             <textarea type="text" placeholder="Komentar:" name="komentar" class="komentarinput" rows="4"
@@ -31,8 +30,6 @@
                                 }
                                 ?></textarea>
                         </div>
-              
-
                         <button class="komentardugme" type="SUBMIT">Sacuvaj komentar
                         </button>
                        

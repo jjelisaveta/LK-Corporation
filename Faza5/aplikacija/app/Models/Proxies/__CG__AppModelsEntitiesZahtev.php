@@ -220,4 +220,26 @@ class Zahtev extends \App\Models\Entities\Zahtev implements \Doctrine\ORM\Proxy\
         return parent::getIdkor();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getVremeslanja(): \DateTime
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVremeslanja', []);
+
+        return parent::getVremeslanja();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setVremeslanja(\DateTime $vremeslanja): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVremeslanja', [$vremeslanja]);
+
+        parent::setVremeslanja($vremeslanja);
+    }
+
 }

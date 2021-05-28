@@ -102,5 +102,13 @@ class Zahtev
     {
         return $this->idkor;
     }
+    public function getVremeslanja(): \DateTime {
+        return $this->vremeslanja;
+    }
+
+    public function setVremeslanja(\DateTime $vremeslanja): void {
+        $this->vremeslanja = $vremeslanja;
+    }
+
 
 }

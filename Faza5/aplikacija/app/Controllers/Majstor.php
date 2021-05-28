@@ -107,6 +107,7 @@ class Majstor extends BaseController
             if ($this->validator->hasError('cena')){
                 $podaci['cenaGreska'] = $this->validator->getError('cena');
             }
+            $podaci['tagovi'] = $tagovi;
             return $this->prikaz("dodavanjeusluga", $podaci);
         }
     }
@@ -143,18 +144,62 @@ class Majstor extends BaseController
 
         return "poruka" . json_encode($naziv);
     }
+    
+    public function vremeOdgovora($ostvarene){
+       $ukupno = 0;
+        foreach($ostvarene as $ostvarena){
+            $vremeOdgovora = $ostvarena->getIdrez()->getVremeodgovora()->format("Y-m-d H:i:s");
+            $vremeSlanja = $ostvarena->getIdrez()->getIdRez()->getVremeslanja()->format("Y-m-d H:i:s");
+            $razlika = strtotime($vremeOdgovora) - strtotime($vremeSlanja);
+            
+            $ukupno+= $razlika;
+        }
+        return $ukupno/sizeof($ostvarene);
+    }
 
+    public function preporuke($ostvarene){
+       $sum = 0;
+       foreach($ostvarene as $ostvarena) {
+           if ($ostvarena->getOcena() =="1"){
+               $sum++;
+           }
+       }
+       return $sum / sizeof($ostvarene) * 100;
+    }
+    
+    public function prosecnaCena($usluge){
+        $ukupno = 0;
+        foreach($usluge as $usluga){
+            $ukupno += $usluga->getCena();
+        }
+        return $ukupno / sizeof($usluge);
+    }
+    
     public function prikazMajstora()
     {
         $id = $this->session->get('Korisnik')->idKor;
 
         $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);      
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);        
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
-        $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene]);
+        
+        $vreme = $this->vremeOdgovora($ostvarene);
+        $preporuke = $this->preporuke($ostvarene);
+        $cena = $this->prosecnaCena($usluge);
+        
+        $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
+            'vreme'=>$vreme, 'preporuke'=>$preporuke, 'cena'=>$cena]);
 
     }
 
+    public function obrisiKomentar(){
+        $id = $this->request->getVar('idOstvUsl');
+        $ostvarena = $this->doctrine->em->getRepository(\App\Models\Entities\UslugaOstvarena::class)->find($id);
+        $ostvarena->setKomentar(null);
+        $this->doctrine->em->persist($ostvarena);
+        $this->doctrine->em->flush();
+    }
+    
     public function kalendar($date = null)
     {
         echo "<script>console.log('poslao zahtev');</script>";
@@ -377,6 +422,7 @@ class Majstor extends BaseController
         $usluga->setNaziv($naslov);
         $usluga->setCena($cena);
         $usluga->setOpis($opis);
+        
         $this->doctrine->em->flush();
         return redirect()->to(site_url("Majstor/mojeUsluge"));
     }

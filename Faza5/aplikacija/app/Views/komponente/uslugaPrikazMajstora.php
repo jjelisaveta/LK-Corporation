@@ -26,9 +26,8 @@
             </td>
             <td style="border-left: 1px solid orange; width:33%;">
                 <h3>
-                    Majstora preporucuje: 82% <br>
-                    Prosecno vreme reakcije:02:25 <br>
-                    Prosecan cena ove usluge: 3242 
+                    Majstora preporucuje: <b><?= $prep ?></b><br>
+                    Cena ove usluge: <b><?= $cenaUsluge ?></b> 
                 </h3>
             </td>
         </tr>

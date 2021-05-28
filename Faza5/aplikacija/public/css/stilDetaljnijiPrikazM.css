@@ -178,3 +178,18 @@ body {
     text-align: left;
     font-weight: normal;
 }
+
+.brisanje {
+    padding-right:2px;
+    margin:0;
+    text-align: right;
+}
+
+.brisanje button {
+    border:none;
+    outline:none;
+    padding:0;
+    margin:0;
+    background-color:khaki;
+    color:black;
+}

@@ -13,6 +13,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilDetaljnijiPrikazM.css">
+    <script src="<?php echo base_url(); ?>/js/skriptaDetaljnijiPrikazM.js"> </script>
+  
 </head>
 <body>
     
@@ -55,8 +57,9 @@
                         <?php 
                             foreach ($ostvarene as $ostvarena){
                                 if ($ostvarena->getKomentar()!="" && $ostvarena->getKomentar()!=null){
-                                echo view_cell("\App\Libraries\KomentarPrikazMajstoraLib::prikazKomentara", ['komentar' => $ostvarena->getKomentar(), 
-                                'korisnik'=>$ostvarena->getIdrez()->getIdRez()->getIdkor()]);
+                                echo view_cell("\App\Libraries\KomentarPrikazMajstoraLibBrisanje::prikazKomentara", ['komentar' => $ostvarena->getKomentar(), 
+                                'korisnik'=>$ostvarena->getIdrez()->getIdRez()->getIdkor(), 
+                                    'idOstvUsl'=>$ostvarena->getIduslostv()]);
                                 }
                             }
                         ?>
@@ -95,6 +98,8 @@
                 </div>
         </div>
     </div>
+        
+
   
 </body>
 </html>
