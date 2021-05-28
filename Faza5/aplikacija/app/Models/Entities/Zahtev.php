@@ -57,6 +57,66 @@ class Zahtev
 
 
     /**
+     * @var \App\Models\Entities\Usluga
+     *
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Usluga")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl")
+     * })
+     */
+    private $idusl;
+
+
+    /**
+     *
+     * @var Korisnik[]
+     *
+     * Many Groups have Many Users.
+     * @ManyToMany(targetEntity="App\Models\Entities\Korisnik", mappedBy="zahtevi")
+     */
+    private $majstori;
+
+
+    public function __construct()
+    {
+        $this->majstori = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * @return Usluga
+     */
+    public function getIdusl(): Usluga
+    {
+        return $this->idusl;
+    }
+
+    /**
+     * @param Usluga $idusl
+     */
+    public function setIdusl(Usluga $idusl): void
+    {
+        $this->idusl = $idusl;
+    }
+
+    /**
+     * @return Korisnik[]
+     */
+    public function getMajstori(): array
+    {
+        return $this->majstori;
+    }
+
+    /**
+     * @param Korisnik[] $majstori
+     */
+    public function setMajstori(array $majstori): void
+    {
+        $this->majstori = $majstori;
+    }
+
+
+    /**
      * Get opis.
      *
      * @return string
