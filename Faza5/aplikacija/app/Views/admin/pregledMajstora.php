@@ -1,4 +1,3 @@
-<!--Jelisaveta Jevtic 2018/0127-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,28 +12,21 @@
 
 <body>
 <div class="container-fluid">
-<div id="con">
+    <div id="con">
         <div id="sredina">
-        <div class="row">
-          
-            <?php
-              $num = 3;
+            <div class="row">
+                <?php
+                $num = 3;
                 foreach ($korisnici as $korisnik) {
-                    
-                    echo view_cell("\App\Libraries\MajstorPregled::prikazUsluge",['ime'=>$korisnik->ime,'prezime'=>$korisnik->prezime,
-                    'email'=>$korisnik->email,'id'=>$korisnik->idKor,'num'=>$num]);
+                    echo view_cell("\App\Libraries\MajstorPregled::prikazUsluge", ['ime' => $korisnik->ime, 'prezime' => $korisnik->prezime,
+                        'email' => $korisnik->email, 'id' => $korisnik->idKor, 'num' => $num]);
                     $num += 3;
                     $num = $num % 6;
                 }
-
                 ?>
-               
-                </div>
+            </div>
         </div>
     </div>
-    </div>
- 
-     
+</div>
 </body>
-
 </html>

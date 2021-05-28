@@ -1,17 +1,12 @@
-function ukloniMajstora(param)
-{
-    var roditelj = param.parentNode.parentNode.parentNode;
-    var id=param.parentNode.getElementsByClassName("hidden")[0].value;
-  
-    $(roditelj).remove()
-    
-    var xmlhttp1 = new XMLHttpRequest();
-    xmlhttp1.open("POST", "obrisiMajstora", true);
-    xmlhttp1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp1.send("id="+id);
-    xmlhttp1.onreadystatechange = function () {
-        if (xmlhttp1.readyState == 4 && xmlhttp1.status == 200) {
-          
+function ukloniMajstora(id) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", "obrisiMajstora", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    console.log(id);
+    xmlhttp.send("id=" + id);
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            $("#" + id).remove();
         }
     }
 }

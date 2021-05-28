@@ -21,27 +21,27 @@ class Admin extends BaseController
 
     public function obrisiMajstora()
     {
-      
+
         $var = $this->request->getMethod();
         if ($var != 'post') {
             //potrebno popraviti da se salje error 500
             return "zahtev mora biti post";
         }
         $id = (int) $this->request->getVar('id');
-      
+
         $korisniciModel=new Korisnikmodel();
         $korisniciModel->delete($id);
 
-        return redirect()->to(site_url("Admin/index"));
-      
+        return "OK";
+
 
     }
 
-    public function index()
+    public function pregledMajstora()
     {
         $korisniciModel = new Korisnikmodel();
         $korisnici = $korisniciModel->findall();
-        $this->prikaz('pregledKorisnika', ['korisnici' => $korisnici]);
+        $this->prikaz('pregledMajstora', ['korisnici' => $korisnici]);
     }
 
     public function odobravanjeMajstora()
