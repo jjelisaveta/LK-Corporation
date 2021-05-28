@@ -32,4 +32,6 @@ class Uloga
         return $this->naziv;
     }
 
+
+
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Zahtev
  *
  * @ORM\Table(name="zahtev", indexes={@ORM\Index(name="fk_IdKor_idx", columns={"idKor"}), @ORM\Index(name="fk_idTer_zahtev_idx", columns={"idTer"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Models\Repositories\ZahtevRepository")
  */
 class Zahtev
 {
@@ -60,27 +60,9 @@ class Zahtev
      * @var \App\Models\Entities\Usluga
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Usluga")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl")
-     * })
+     * @ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl")
      */
     private $idusl;
-
-
-    /**
-     *
-     * @var App\Models\Entities\Korisnik[]
-     *
-     * Many Groups have Many Users.
-     * @ORM\ManyToMany(targetEntity="App\Models\Entities\Korisnik", mappedBy="zahtevi")
-     */
-    private $majstori;
-
-
-    public function __construct()
-    {
-        $this->majstori = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -99,21 +81,63 @@ class Zahtev
         $this->idusl = $idusl;
     }
 
+
     /**
-     * @return \App\Models\Entities\Korisnik[]
+     * @var int
+     *
+     * @ORM\Column(name="identifikator", type="integer", nullable=false)
      */
-    public function getMajstori()
+    private $identifikator;
+
+    /**
+     * @return int
+     */
+    public function getIdentifikator(): int
     {
-        return $this->majstori;
+        return $this->identifikator;
     }
 
     /**
-     * @param \App\Models\Entities\Korisnik[] $majstori
+     * @param int $identifikator
      */
-    public function setMajstori($majstori): void
+    public function setIdentifikator(int $identifikator): void
     {
-        $this->majstori = $majstori;
+        $this->identifikator = $identifikator;
     }
+
+    /**
+     * @return int
+     */
+    public function getIdzah(): int
+    {
+        return $this->idzah;
+    }
+
+    /**
+     * @param int $idzah
+     */
+    public function setIdzah(int $idzah): void
+    {
+        $this->idzah = $idzah;
+    }
+
+    /**
+     * @return Termin
+     */
+    public function getIdter(): Termin
+    {
+        return $this->idter;
+    }
+
+    /**
+     * @param Termin $idter
+     */
+    public function setIdter(Termin $idter): void
+    {
+        $this->idter = $idter;
+    }
+
+
 
 
     /**
@@ -162,13 +186,18 @@ class Zahtev
     {
         return $this->idkor;
     }
-    public function getVremeslanja(): \DateTime {
+
+    public function getVremeslanja(): \DateTime
+    {
         return $this->vremeslanja;
     }
 
-    public function setVremeslanja(\DateTime $vremeslanja): void {
+    public function setVremeslanja(\DateTime $vremeslanja): void
+    {
         $this->vremeslanja = $vremeslanja;
     }
+
+
 
 
 }

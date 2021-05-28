@@ -138,43 +138,46 @@ class Majstor extends BaseController
     {
         $usluge = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
         $naziv = [];
-        foreach ($usluge as $usluga) {
-            array_push($naziv, $usluga->getIdrez()->idRez->getOpis());
-        }
+//        foreach ($usluge as $usluga) {
+//            array_push($naziv, $usluga->getIdrez()->idRez->getOpis());
+//        }
 
         return "poruka" . json_encode($naziv);
     }
-    
-    public function vremeOdgovora($ostvarene){
-       $ukupno = 0;
-        foreach($ostvarene as $ostvarena){
+
+    public function vremeOdgovora($ostvarene)
+    {
+        $ukupno = 0;
+        foreach ($ostvarene as $ostvarena) {
             $vremeOdgovora = $ostvarena->getIdrez()->getVremeodgovora()->format("Y-m-d H:i:s");
             $vremeSlanja = $ostvarena->getIdrez()->getIdRez()->getVremeslanja()->format("Y-m-d H:i:s");
             $razlika = strtotime($vremeOdgovora) - strtotime($vremeSlanja);
-            
-            $ukupno+= $razlika;
+
+            $ukupno += $razlika;
         }
-        return $ukupno/sizeof($ostvarene);
+        return $ukupno / sizeof($ostvarene);
     }
 
-    public function preporuke($ostvarene){
-       $sum = 0;
-       foreach($ostvarene as $ostvarena) {
-           if ($ostvarena->getOcena() =="1"){
-               $sum++;
-           }
-       }
-       return $sum / sizeof($ostvarene) * 100;
+    public function preporuke($ostvarene)
+    {
+        $sum = 0;
+        foreach ($ostvarene as $ostvarena) {
+            if ($ostvarena->getOcena() == "1") {
+                $sum++;
+            }
+        }
+        return $sum / sizeof($ostvarene) * 100;
     }
-    
-    public function prosecnaCena($usluge){
+
+    public function prosecnaCena($usluge)
+    {
         $ukupno = 0;
-        foreach($usluge as $usluga){
+        foreach ($usluge as $usluga) {
             $ukupno += $usluga->getCena();
         }
         return $ukupno / sizeof($usluge);
     }
-    
+
     public function prikazMajstora()
     {
         $id = $this->session->get('Korisnik')->idKor;
@@ -182,24 +185,25 @@ class Majstor extends BaseController
         $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
-        
+
         $vreme = $this->vremeOdgovora($ostvarene);
         $preporuke = $this->preporuke($ostvarene);
         $cena = $this->prosecnaCena($usluge);
-        
+
         $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
-            'vreme'=>$vreme, 'preporuke'=>$preporuke, 'cena'=>$cena]);
+            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena]);
 
     }
 
-    public function obrisiKomentar(){
+    public function obrisiKomentar()
+    {
         $id = $this->request->getVar('idOstvUsl');
         $ostvarena = $this->doctrine->em->getRepository(\App\Models\Entities\UslugaOstvarena::class)->find($id);
         $ostvarena->setKomentar(null);
         $this->doctrine->em->persist($ostvarena);
         $this->doctrine->em->flush();
     }
-    
+
     public function kalendar($date = null)
     {
         echo "<script>console.log('poslao zahtev');</script>";
@@ -417,16 +421,6 @@ class Majstor extends BaseController
                 }
             }
         }
-
-        $usluga = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->find($id);
-        $usluga->setTagovi($tags);
-        $usluga->setNaziv($naslov);
-        $usluga->setCena($cena);
-        $usluga->setOpis($opis);
-        
-        $this->doctrine->em->flush();
-        return redirect()->to(site_url("Majstor/mojeUsluge"));
-
         $rules = ['naslov' => [
             'rules' => 'required',
             'label' => 'Naslov',
@@ -454,7 +448,7 @@ class Majstor extends BaseController
             $usluga->setOpis($opis);
             $this->doctrine->em->flush();
             return redirect()->to(site_url("Majstor/mojeUsluge"));
-        } else 
+        }
         {
             //$podaci = ['sviTagovi' => $sviTagovi, 'naslov' => $naslov, 'opis' => $opis, 'cena' => $cena, 'tagovi' => $tags, 'id' => $id];
             $podaci = [];
@@ -475,13 +469,71 @@ class Majstor extends BaseController
 
     public function zahtevi($id)
     {
-        $zahtevi = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->findBy(['idzah' => $id])[0];
+        $zahtevi = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->dohvatiZahteveMajstoraAktivne($id);
+        //return $zahtevi;
         $ret = [];
-        foreach ($zahtevi->getMajstori() as $majstor) {
-            array_push($ret, $majstor->getIme());
+        foreach ($zahtevi as $zahtev) {
+            array_push($ret, $zahtev->getOpis() . " " . $zahtev->getIdentifikator() . " " . $zahtev->getIdusl()->getIdmaj()->getIdkor());
         }
         $ret = json_encode($ret);
         return $ret;
+    }
+
+
+    public function odbijZahtev()
+    {
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return "zahtev mora biti post";
+        }
+        $id = $this->request->getVar('idZah');
+        $zahtev = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->find($id);
+        $this->doctrine->em->remove($zahtev);
+        $this->doctrine->em->flush();
+        return "OK";
+    }
+
+    public function odobriZahtev()
+    {
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return "zahtev mora biti post";
+        }
+        $id = $this->request->getVar('idZah');
+        $zahtev = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->find($id);
+        $brisanjeIdentifikator = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)
+            ->dohvatiIdentifikatorZahteve($zahtev->getIdzah(), $zahtev->getIdentifikator());
+        $brisanjeTermin = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)
+            ->dohvatiMajstorTermin($zahtev->getIdusl()->getIdmaj()->getIdkor(), $zahtev->getIdter()->getIdter(), $zahtev->getIdzah());
+        $brisanje = array_merge($brisanjeTermin, $brisanjeIdentifikator);
+
+        foreach ($brisanje as $brisi)
+            $this->doctrine->em->remove($brisi);
+
+        $zahtev->setIdentifikator(-1);
+
+        $rezervacija = new Entities\Rezervacija();
+        $rezervacija->setIdRez($zahtev);
+        $rezervacija->setIdmaj($zahtev->getIdusl()->getIdmaj());
+        $rezervacija->setVremeodgovora(\DateTime::createFromFormat('y-m-d h:i:s', date('y-m-d h:i:s')));
+        $this->doctrine->em->persist($zahtev);
+        $this->doctrine->em->persist($rezervacija);
+        $this->doctrine->em->flush();
+
+        $kalendar = new Entities\Kalendar();
+        $kalendar->setIdmaj($zahtev->getIdusl()->getIdmaj()->getIdkor());
+        $kalendar->setIdrez($zahtev->getIdzah());
+        $kalendar->setIdter($zahtev->getIdter());
+        $terminKalendar = $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)
+            ->findBy(['idmaj' => $zahtev->getIdusl()->getIdmaj()->getIdkor(), 'idter' => $zahtev->getIdter()->getIdter()])[0];
+
+        $this->doctrine->em->remove($terminKalendar);
+        $this->doctrine->em->persist($kalendar);
+        $this->doctrine->em->flush();
+        return "OK";
+
     }
 
 }
