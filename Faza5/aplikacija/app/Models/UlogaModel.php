@@ -2,7 +2,7 @@
 
 use CodeIgniter\Model;
 
-class KorisnikModel extends Model
+class UlogaModel extends Model
 {
     protected $table = 'uloga';
     protected $primaryKey = 'idUlo';

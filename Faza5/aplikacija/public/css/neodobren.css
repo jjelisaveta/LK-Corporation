@@ -1,0 +1,31 @@
+body {
+    background-color: #e8e6d9;    
+}
+
+.row {
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+#p1, #p2 {
+    font-family: Arial;
+    font-size: 14px;
+    color: #282619;
+    text-decoration: none;
+    margin:0;
+}
+
+#p1:hover, #p2:hover{
+    color: orange;
+    cursor: pointer;
+}
+
+.tekst{
+    font-family:Arial;
+    color: #2b2b2b;
+    font-size:30px;
+}
+
+.linkovi{
+    text-align: center;
+}

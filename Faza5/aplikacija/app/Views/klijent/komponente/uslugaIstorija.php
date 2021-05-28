@@ -10,6 +10,7 @@
                     <td>
                         <h1>
                             <?= $imeMajstor ?>
+                            <?= $prezime ?>
                         </h1>
                         <h4>
                             <?= $datumPopravke ?>

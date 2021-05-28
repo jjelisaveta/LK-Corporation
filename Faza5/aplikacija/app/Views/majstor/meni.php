@@ -43,13 +43,12 @@
             <div class="padajuciMeni">
                 <button class="padajuceDugme">Moj nalog</button>
                 <div class="padajuciSadrzaj">
-                    <a href="logovanje.html">Uloguj se</a>
-                    <a href="registrovanje.html">Registruj se</a>
-                    <a href="izlogujSe.html"> Izloguje se </a>
+                    <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
+                    <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguje se </a>
                 </div>
             </div>
                 <div id="korisnik">
-                <img src="<?php echo base_url(); ?>/slike/Kalu.jpg" alt="korisnicka slika">
+                <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika">
                 <a href="pretrazivanje.html"><?=$ime ?> <?=$prezime ?></a>
             </div>
         </div>

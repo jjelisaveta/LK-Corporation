@@ -15,6 +15,7 @@ namespace App\Controllers;
  */
 
 use App\Models\KorisnikModel;
+use App\Models\UlogaModel;
 
 class Gost extends BaseController
 {
@@ -23,39 +24,49 @@ class Gost extends BaseController
         echo view($stranica, $greske);
         echo view("osnova/footerBezMenija");
     }
-    
-    protected  $greska;
-    
-    public function pretrazivanje(){
-        echo "Ovo Jovan treba da uradi";
+
+    protected function prikaziSaMenijem($stranica, $podaci){
+        if($this->session->get('Korisnik')->idUlo == 0){
+            $podaci['controller'] = "Korisnik";
+        }else{
+            $podaci['controller'] = "Majstor";
+        }
+        $podaci['ime'] = $this->session->get('Korisnik')->ime;
+        $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
+        $podaci['profilna'] = $this->session->get('Korisnik')->slika;
+        echo view("osnova/header");
+        echo view("majstor/meni", $podaci);         // ovde kad bude za korisnika zavrsena strancia ubaci njegov link                
+        echo view($stranica, $podaci);       
+        echo view("osnova/footer");
     }
+	
     
-    protected function uzmiPutanju() : string{
+    protected function uzmiPutanju(&$greska) : string{
         $target_dir = "slike/";
         $target_file = $target_dir . basename($_FILES["izaberiSliku"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         $check = getimagesize($_FILES["izaberiSliku"]["tmp_name"]);
         
         if($check == false) {
-            $greska['slika'] = 'Fajl koji ste prilozili nije slika!';
-            return null;
+            $greska['GreskaSlika'] = 'Fajl koji ste prilozili nije slika!';
+            return "";
         }
         
         if ($_FILES["izaberiSliku"]["size"] > 1000000) {
-            $greska['slika'] = 'Slika koju ste prilozili je veca od 1mb!';
-            return null;
+            $greska['GreskaSlika'] = 'Slika koju ste prilozili je veca od 1mb!';
+            return "";
         }
         
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"){
-            $greska['slika'] = 'Slika nije u formatu JPG, JPEG ili PNG!';
-            return null;
+            $greska['GreskaSlika'] = 'Slika nije u formatu JPG, JPEG ili PNG!';
+            return "";
         }
         
         if (move_uploaded_file($_FILES["izaberiSliku"]["tmp_name"], $target_file)) {
            return $target_file;
         }else{
-            $greska['slika'] = 'Desila se greska pri ucitavanju slike!';
-            return null;
+            $greska['GreskaSlika'] = 'Desila se greska pri ucitavanju slike!';
+            return "";
         }
     }
     public function loginSubmit(){
@@ -89,9 +100,13 @@ class Gost extends BaseController
                         $data['LosaLozinka'] = 'Uneta je pogresna lozinka!';
                         return $this->prikazi($stranica, $data);
                     }else{
-                        $this->session->set('GostJe',0);                    //dajem vam indikator da li je gost u pitanju
+                        if($korisnik[0]->odobren!= 1){
+                            $data['LosaAdresa'] = 'Administrator jos uvek nije odobrio korisnika!';
+                            return $this->prikazi($stranica, $data);
+                        }
+                        $this->session->set('GostJe',0);                  
                         $this->session->set('Korisnik', $korisnik[0]);
-                        return redirect()->to(site_url('Gost'));
+                        return redirect()->to(site_url('Majstor/dodajUslugu'));
                     }
                 }
             }else{
@@ -101,14 +116,27 @@ class Gost extends BaseController
                 if ($this->validator->hasError('lozinka')){
                     $data['LosaLozinka'] = $this->validator->getError('lozinka');
                 }
-                return $this->prikazi($stranica, $data);
+                return $this->prikazi('Majstor/dodajUslugu', $data);            //dodato za testiranje promene podataka
+                //ko zeli moze da skloni ali nek napise isti ovakav komentar da znam
             }
         }
     }
+
+    protected function dodeliUlogu($zanimanje) : int {
+        $um = new UlogaModel();
+        $id = 0;
+        if($zanimanje == 'Korisnik'){
+            $tmp = $um->where('naziv','korisnik')->findAll();
+            return $tmp[0]->idUlo;
+        }else{
+            $tmp = $um->where('naziv','majstor')->findAll();
+            return $tmp[0]->idUlo;
+        }
+    }
     
-    public function registrujSe(){                  //tek treba da se radi
+    public function registrujSe(){                  //Zavrseno
         $stranica = 'gost/Registrovanje';
-          if (!$_POST){
+         if (!$_POST){
             return $this->prikazi($stranica, []);
         }
         helper(['form']);
@@ -158,16 +186,15 @@ class Gost extends BaseController
                 $data['LoseEmail'] = 'Već postoji korisnik sa zadatom e-adresom';
                 $this->prikazi($stranica,$data);
             }else{
-                $putanja = ''; 
-/*               if($this->request->getVar('izaberiSliku') != null){
-                    $putanja = $this->uzmiPutanju();
-                }*/
-                $uloga = 1;
-                if($this->request->getVar('adresa') == 'Korisnik'){
-                    $uloga = 3;
-                }else{
-                    $uloga = 2;
+                $putanja = 'slike/profilna.png'; 
+                if($_FILES["izaberiSliku"]["size"] != 0){
+                    $putanja = $this->uzmiPutanju($data);
                 }
+                if($putanja == ""){
+                    $this->prikazi($stranica, $data);
+                    return ;
+                }
+                $uloga = $this->dodeliUlogu($this->request->getVar('uloga'));
                 $km->save([
                     'ime' => $this->request->getVar('ime'),
                     'prezime' => $this->request->getVar('prezime'),
@@ -179,6 +206,7 @@ class Gost extends BaseController
                     'idUlo' => $uloga,
                     'odobren' => 0
                 ]);
+                $stranica = 'gost/neodobren';
                 $this->prikazi($stranica,$data);
             }
         }else{
@@ -203,5 +231,85 @@ class Gost extends BaseController
             $this->prikazi($stranica,$data);
         }
     }
+
+    public function promeniPodatke(){
+        $rules = 'KURCINA';
+        $stranica = 'gost/promeniPodatke';
+        $data = [];
+        if (!$_POST){
+            $this->prikaziSaMenijem($stranica, $data);
+            return ;
+        }
+        helper(['form']);
+        if($this->request->getMethod() == 'post'){
+                $rules = [
+                'telefon' => [
+                'rules' => 'validTelefon',
+                'errors' => [
+                    'validTelefon' => 'Telefon mora da sadrzi samo cifre!'
+                ]],
+                'lozinka' => [
+                'rules' => 'min_length[8]',
+                'errors' => [
+                    'min_length' => 'Lozinka mora biti duzine bar 8 znakova!'
+                ]]];            
+        }
+        $this->validate($rules);
+        if((!$this->validator->hasError('lozinka') || $this->request->getVar('lozinka') == null)  && 
+                (!$this->validator->hasError('telefon') || $this->request->getVar('telefon') == null)){
+            $km = new KorisnikModel();
+            $trenutni = $km->where('email',$this->session->get('Korisnik')->email)->findAll();
+            $putanja = 'slike/profilna.png'; 
+            $deb = "";
+            if($_FILES["izaberiSliku"]["size"] != 0){
+                $putanja = $this->uzmiPutanju($data);
+                $this->session->get('Korisnik')->slika = $putanja;
+            }
+            if($putanja == ''){
+                $this->prikaziSaMenijem($stranica,$data);
+                return;
+            }
+            if($this->request->getVar('telefon') != null){
+                $this->session->get('Korisnik')->telefon = $this->request->getVar('telefon');
+                $trenutni[0]->brojTelefona = $this->request->getVar('telefon');
+            }
+            
+            if($this->request->getVar('adresa') != null){
+                $this->session->get('Korisnik')->adresa = $this->request->getVar('adresa');
+                $trenutni[0]->adresa = $this->request->getVar('adresa');
+            }
+            
+            if($this->request->getVar('lozinka') != null){
+                $this->session->get('Korisnik')->lozinka = $this->request->getVar('lozinka');
+                $trenutni[0]->lozinka = $this->request->getVar('lozinka');
+            }
+            $km->update($trenutni[0]->idKor, [
+                    'brojTelefona' => $trenutni[0]->brojTelefona,
+                    'adresa' => $trenutni[0]->adresa,
+                    'lozinka' => $trenutni[0]->lozinka,
+                    'slika' => $putanja
+                         ]);
+            $data['Ok'] = 'Podatci su azurirani! ';
+            $this->prikaziSaMenijem($stranica,$data);
+            return ;
+        }else{
+            if ($this->validator->hasError('lozinka')){
+                $data['LoseLozinka'] = $this->validator->getError('lozinka');
+            }
+            if($this->validator->hasError('telefon')){
+                $data['LoseTelefon'] = $this->validator->getError('telefon');
+            }
+            $this->prikaziSaMenijem($stranica,$data);
+            return ;
+        }
+    }
+            
+    public function izlogujSe(){
+        $this->session->destroy();
+        $this->loginSubmit();
+    }
     
 }
+
+
+/* >update(['departed' => false]); */

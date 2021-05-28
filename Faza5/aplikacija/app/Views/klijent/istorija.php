@@ -41,7 +41,7 @@
                     $korisnik = $korisnici->find($usluga->idMaj);
              
                     
-                    echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $korisnik->ime, 'datumPopravke' => $termin->datumVreme
+                    echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $korisnik->ime,'prezime'=>$korisnik->prezime, 'datumPopravke' => $termin->datumVreme
               ,'komentar' => $uslugaOstvarena->komentar, 'ocena' => $uslugaOstvarena->ocena, 'id' => $uslugaOstvarena->idUslOstv
                     ,'opis'=>$nadjenZahtev->opis]);
                 }
