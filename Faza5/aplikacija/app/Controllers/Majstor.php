@@ -416,4 +416,17 @@ class Majstor extends BaseController
             return redirect()->to(site_url("Majstor/izmeniUslugu/" . $id));
         }
     }
+
+
+    public function zahtevi($id)
+    {
+        $zahtevi = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->findBy(['idzah' => $id])[0];
+        $ret = [];
+        foreach ($zahtevi->getMajstori() as $majstor) {
+            array_push($ret, $majstor->getIme());
+        }
+        $ret = json_encode($ret);
+        return $ret;
+    }
+
 }

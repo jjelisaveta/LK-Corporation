@@ -66,10 +66,10 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idkor', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'email', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brojtelefona', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'lozinka', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'adresa', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'slika', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'odobren', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idulo'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idkor', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'email', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brojtelefona', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'lozinka', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'adresa', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'slika', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'odobren', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idulo', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'zahtevi'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idkor', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'email', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brojtelefona', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'lozinka', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'adresa', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'slika', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'odobren', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idulo'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idkor', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'email', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brojtelefona', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'lozinka', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'adresa', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'slika', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'odobren', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idulo', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'zahtevi'];
     }
 
     /**
@@ -176,6 +176,28 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getZahtevi()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZahtevi', []);
+
+        return parent::getZahtevi();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setZahtevi($zahtevi): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setZahtevi', [$zahtevi]);
+
+        parent::setZahtevi($zahtevi);
+    }
+
     /**
      * {@inheritDoc}
      */
