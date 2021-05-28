@@ -310,6 +310,3 @@ class Gost extends BaseController
     }
     
 }
-
-
-/* >update(['departed' => false]); */

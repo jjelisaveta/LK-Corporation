@@ -110,4 +110,8 @@ public function aktivnaPopravka()
       
 
     }
+    
+    public function prikazUsluga(){
+        $this->prikaz('prikazUsluga',[]);
+    }
 }
