@@ -16,7 +16,6 @@ use App\Models\UslugaTagModel;
 use App\Models\ZahtevModel;
 use CodeIgniter\Model;
 use phpDocumentor\Reflection\Types\Array_;
-use App\Models\Entities;
 
 
 class Admin extends BaseController

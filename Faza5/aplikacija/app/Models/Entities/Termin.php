@@ -28,5 +28,21 @@ class Termin
      */
     private $datumvreme;
 
+    /**
+     * @return int
+     */
+    public function getIdter(): int
+    {
+        return $this->idter;
+    }
+
+    /**
+     * @param int $idter
+     */
+    public function setIdter(int $idter): void
+    {
+        $this->idter = $idter;
+    }
+
 
 }

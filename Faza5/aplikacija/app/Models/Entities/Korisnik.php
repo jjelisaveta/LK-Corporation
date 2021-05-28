@@ -85,41 +85,6 @@ class Korisnik
     private $idulo;
 
 
-    /**
-     *
-     * @var \App\Models\Entities\Zahtev[]
-     * Many Korisnik have Many Zahtev.
-     * @ORM\ManyToMany(targetEntity="App\Models\Entities\Zahtev", inversedBy="majstori")
-     * @ORM\JoinTable(name="zahtevmajstor",
-     *     joinColumns={@ORM\JoinColumn(name="korisnik_id", referencedColumnName="idKor")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="zahtev_id", referencedColumnName="idZah")}
-     *      )
-     */
-    private $zahtevi;
-
-    public function __construct()
-    {
-        $this->zahtevi = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-
-    /**
-     * @return \App\Models\Entities\Zahtev[]
-     */
-    public function getZahtevi()
-    {
-        return $this->zahtevi;
-    }
-
-    /**
-     * @param \App\Models\Entities\Zahtev[] $zahtevi
-     */
-    public function setZahtevi($zahtevi): void
-    {
-        $this->zahtevi = $zahtevi;
-    }
-
-
     public function getIdkor(): int
     {
         return $this->idkor;
