@@ -69,10 +69,10 @@ class Zahtev
 
     /**
      *
-     * @var Korisnik[]
+     * @var App\Models\Entities\Korisnik[]
      *
      * Many Groups have Many Users.
-     * @ManyToMany(targetEntity="App\Models\Entities\Korisnik", mappedBy="zahtevi")
+     * @ORM\ManyToMany(targetEntity="App\Models\Entities\Korisnik", mappedBy="zahtevi")
      */
     private $majstori;
 
@@ -84,7 +84,7 @@ class Zahtev
 
 
     /**
-     * @return Usluga
+     * @return \App\Models\Entities\Usluga
      */
     public function getIdusl(): Usluga
     {
@@ -92,25 +92,25 @@ class Zahtev
     }
 
     /**
-     * @param Usluga $idusl
+     * @param \App\Models\Entities\Usluga $idusl
      */
-    public function setIdusl(Usluga $idusl): void
+    public function setIdusl(\App\Models\Entities\Usluga $idusl): void
     {
         $this->idusl = $idusl;
     }
 
     /**
-     * @return Korisnik[]
+     * @return \App\Models\Entities\Korisnik[]
      */
-    public function getMajstori(): array
+    public function getMajstori()
     {
         return $this->majstori;
     }
 
     /**
-     * @param Korisnik[] $majstori
+     * @param \App\Models\Entities\Korisnik[] $majstori
      */
-    public function setMajstori(array $majstori): void
+    public function setMajstori($majstori): void
     {
         $this->majstori = $majstori;
     }

@@ -87,10 +87,13 @@ class Korisnik
 
     /**
      *
-     * @var Zahtev[]
+     * @var \App\Models\Entities\Zahtev[]
      * Many Korisnik have Many Zahtev.
-     * @ManyToMany(targetEntity="App\Models\Entities\Zahtev", inversedBy="majstori")
-     * @JoinTable(name="zahtevmajstor")
+     * @ORM\ManyToMany(targetEntity="App\Models\Entities\Zahtev", inversedBy="majstori")
+     * @ORM\JoinTable(name="zahtevmajstor",
+     *     joinColumns={@ORM\JoinColumn(name="korisnik_id", referencedColumnName="idKor")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="zahtev_id", referencedColumnName="idZah")}
+     *      )
      */
     private $zahtevi;
 
@@ -101,17 +104,17 @@ class Korisnik
 
 
     /**
-     * @return Zahtev[]
+     * @return \App\Models\Entities\Zahtev[]
      */
-    public function getZahtevi(): array
+    public function getZahtevi()
     {
         return $this->zahtevi;
     }
 
     /**
-     * @param Zahtev[] $zahtevi
+     * @param \App\Models\Entities\Zahtev[] $zahtevi
      */
-    public function setZahtevi(array $zahtevi): void
+    public function setZahtevi($zahtevi): void
     {
         $this->zahtevi = $zahtevi;
     }
