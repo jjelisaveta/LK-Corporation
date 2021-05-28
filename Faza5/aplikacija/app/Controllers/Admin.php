@@ -40,7 +40,8 @@ class Admin extends BaseController
             //potrebno popraviti da se salje error 500
             return "zahtev mora biti post";
         }
-        $id = (int) $this->request->getVar('id');
+
+        $id =  $this->request->getVar('id');
 
         $korisniciModel=new Korisnikmodel();
         $korisniciModel->delete($id);
@@ -52,9 +53,9 @@ class Admin extends BaseController
 
     public function pregledMajstora()
     {
-        $korisniciModel = new Korisnikmodel();
-        $korisnici = $korisniciModel->findall();
-        $this->prikaz('pregledMajstora', ['korisnici' => $korisnici]);
+        $uloga = 2;
+        $majstori = $this->doctrine->em->getRepository(Entities\Korisnik::class)->findBy(['idulo' => $uloga, 'odobren' => 'o']);
+        $this->prikaz('pregledMajstora', ['majstori' => $majstori]);
     }
 
     public function odobravanjeMajstora()

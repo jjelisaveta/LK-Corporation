@@ -1,3 +1,4 @@
+
 function ukloniMajstora(id) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "obrisiMajstora", true);
@@ -9,4 +10,8 @@ function ukloniMajstora(id) {
             $("#" + id).remove();
         }
     }
+}
+function mail(id, email) {
+    console.log($("#text" + id).val())
+    window.open('mailto:' + email + '?body=' + $("#text" + id).val());
 }
