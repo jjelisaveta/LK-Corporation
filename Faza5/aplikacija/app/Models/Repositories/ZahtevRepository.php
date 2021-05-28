@@ -34,16 +34,16 @@ class ZahtevRepository extends \Doctrine\ORM\EntityRepository
         return $upit->getQuery()->getResult();
     }
 
-    public function dohvatiIdentifikatorZahteve($idMaj, $identifikator)
+    public function dohvatiIdentifikatorZahteve($idZah, $identifikator)
     {
         $upit = $this->getEntityManager()->createQueryBuilder();
         $upit->select('z')
             ->from('App\Models\Entities\Zahtev', 'z')
             ->join('App\Models\Entities\Usluga', 'u', 'WITH', 'u.idusl=z.idusl')
             ->where($upit->expr()->andX(
-                $upit->expr()->neq('u.idmaj', '?1')),
+                $upit->expr()->neq('z.idzah', '?1')),
                 $upit->expr()->eq('z.identifikator', '?2'))
-            ->setParameter('1', $idMaj)
+            ->setParameter('1', $idZah)
             ->setParameter('2', $identifikator);
         return $upit->getQuery()->getResult();
     }

@@ -504,7 +504,7 @@ class Majstor extends BaseController
         $id = $this->request->getVar('idZah');
         $zahtev = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->find($id);
         $brisanjeIdentifikator = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)
-            ->dohvatiIdentifikatorZahteve($zahtev->getIdusl()->getIdmaj()->getIdkor(), $zahtev->getIdentifikator());
+            ->dohvatiIdentifikatorZahteve($zahtev->getIdzah(), $zahtev->getIdentifikator());
         $brisanjeTermin = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)
             ->dohvatiMajstorTermin($zahtev->getIdusl()->getIdmaj()->getIdkor(), $zahtev->getIdter()->getIdter(), $zahtev->getIdzah());
         $brisanje = array_merge($brisanjeTermin, $brisanjeIdentifikator);
@@ -513,7 +513,6 @@ class Majstor extends BaseController
             $this->doctrine->em->remove($brisi);
 
         $zahtev->setIdentifikator(-1);
-
 
         $rezervacija = new Entities\Rezervacija();
         $rezervacija->setIdRez($zahtev);
