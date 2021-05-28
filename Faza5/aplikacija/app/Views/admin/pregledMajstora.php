@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POPRAVI.com</title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilMajstori.css">
+    <script src="<?php echo base_url(); ?>/js/skriptaPregledMajstora.js"></script>
 </head>
 
 <body>
@@ -20,7 +21,8 @@
               $num = 3;
                 foreach ($korisnici as $korisnik) {
                     
-                    echo view_cell("\App\Libraries\MajstorPregled::prikazUsluge",['ime'=>$korisnik->ime,'prezime'=>$korisnik->prezime,'email'=>$korisnik->email,'num'=>$num]);
+                    echo view_cell("\App\Libraries\MajstorPregled::prikazUsluge",['ime'=>$korisnik->ime,'prezime'=>$korisnik->prezime,
+                    'email'=>$korisnik->email,'id'=>$korisnik->idKor,'num'=>$num]);
                     $num += 3;
                     $num = $num % 6;
                 }

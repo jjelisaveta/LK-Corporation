@@ -17,6 +17,24 @@ class Admin extends BaseController
         echo view("admin/$stranica", $podaci);
         echo view("osnova/footer");
     }
+   
+    public function obrisiMajstora()
+    {
+      
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return "zahtev mora biti post";
+        }
+        $id = (int) $this->request->getVar('id');
+      
+        $korisniciModel=new Korisnikmodel();
+        $korisniciModel->delete($id);
+
+        return redirect()->to(site_url("Admin/index"));
+      
+
+    }
     public function index()
     {
         $korisniciModel=new Korisnikmodel();
