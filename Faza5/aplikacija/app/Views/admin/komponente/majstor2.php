@@ -34,14 +34,16 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
         </div>
         
         <div class="row no-gutters">
-        <div class="col-7">
+        <div class="col-8">
         <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;"
-                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
+                        <div class=" progress-bar bg-warning" role="progressbar" style="width:<?= $procenat ?>%"
+                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                         </div>
+                     <span><?= $procenat?>%</span>
                     </div>
+                    
         </div>
-        <div class="col-lg-2 offset-lg-3 col-md-2 offset-md-0 col-sm-2 offset-sm-3 col-3 offset-2 ">
+        <div class="col-lg-2 offset-lg-2 col-md-2 offset-md-0 col-sm-2 offset-sm-2 col-3 offset-1 ">
         <a href="" class="vise">...
           </a>
         </div>
