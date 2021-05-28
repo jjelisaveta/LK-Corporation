@@ -4,6 +4,7 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
 <div class="<?php echo $klasa; ?>" id="<?php echo $id; ?>" style="margin-bottom: 30px"><div class="gornja">
   <div class="row" class="gornja">
       <div class="col-4 col-md-4">
+              <!-- ovde treba ubaciti da se ucitava korisnicka slika -->
       <img  class="userimg" src="<?php echo base_url(); ?>/slike/profilna.png">
       </div>
     <div class="col-8 col-md-8">

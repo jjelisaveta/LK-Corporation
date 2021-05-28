@@ -467,16 +467,20 @@ class Majstor extends BaseController
     }
 
 
-    public function zahtevi($id)
+    public function zahtevi()
     {
-        $zahtevi = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->dohvatiZahteveMajstoraAktivne($id);
+        
+        $zahtevi= $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->findAll();
+        // $zahtevi = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->dohvatiZahteveMajstoraAktivne($id);
+        $this->prikaz("zahtevi", ['zahtevi'=>$zahtevi]);
+
         //return $zahtevi;
-        $ret = [];
-        foreach ($zahtevi as $zahtev) {
-            array_push($ret, $zahtev->getOpis() . " " . $zahtev->getIdentifikator() . " " . $zahtev->getIdusl()->getIdmaj()->getIdkor());
-        }
-        $ret = json_encode($ret);
-        return $ret;
+        // $ret = [];
+        // foreach ($zahtevi as $zahtev) {
+        //     array_push($ret, $zahtev->getOpis() . " " . $zahtev->getIdentifikator() . " " . $zahtev->getIdusl()->getIdmaj()->getIdkor());
+        // }
+        // $ret = json_encode($ret);
+        // return $ret;
     }
 
 
