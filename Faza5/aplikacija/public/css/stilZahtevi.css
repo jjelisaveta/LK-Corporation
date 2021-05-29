@@ -4,15 +4,14 @@ body {
     overflow: auto;
 }
 
-#sredina{
+#sredina {
     position: relative;
     z-index: 2;
 
 }
 
 
-
-.zahtev{
+.zahtev {
     display: flex;
     flex-direction: row;
 
@@ -20,27 +19,26 @@ body {
 }
 
 
-
-#zahtevi table{
+#zahtevi table {
     margin-left: auto;
     margin-right: auto;
-    border-collapse:separate;
-    border-spacing:10px ;
-    width:80%;
+    border-collapse: separate;
+    border-spacing: 10px;
+    width: 80%;
     background-color: #c8c6b9;
     border-radius: 30px;
     font-size: larger;
     vertical-align: middle;
     position: relative;
 }
-    
-#zahtevi pre{
+
+#zahtevi pre {
     /*margin-left: -15%;*/
     font-size: larger;
     text-align: left;
 }
 
-#zahtevi td{
+#zahtevi td {
     font-size: larger;
     text-align: left;
     padding-left: 1%;
@@ -51,21 +49,22 @@ body {
     width: 15%;
 }
 
-#zahtevi tr{
-   /* height: 5%;*/
+#zahtevi tr {
+    /* height: 5%;*/
     vertical-align: middle;
 
 }
-#zahtevi img{
+
+#zahtevi img {
     /*margin-left: 5%;*/
-    width:100%;
+    width: 100%;
     border-radius: 15px;
     vertical-align: middle;
 }
 
 
-.prihvati button{
-    float:left;
+.prihvati button {
+    float: left;
     border: none;
     border-radius: 30px;
     border-top-right-radius: 0;
@@ -77,8 +76,8 @@ body {
     padding: 5px 5px 5px 5px;
 }
 
-.odbij button{
-    float:left;
+.odbij button {
+    float: left;
     border: none;
     border-radius: 30px;
     border-top-left-radius: 0;
@@ -90,23 +89,27 @@ body {
     padding: 5px 5px 5px 5px;
 }
 
-#sredina{
+#sredina {
     position: relative;
     z-index: 2;
 }
-.ime
-{
-    
-font-weight:normal;
-font-size: 2.5vh;
-}
-.adresa
-{
-    font-size: 2vh;
-    font-weight:normal;
-}
-.opis
-{
+
+.ime {
+
+    font-weight: normal;
     font-size: 2.5vh;
-    font-weight:normal;
+}
+
+.adresa {
+    font-size: 2vh;
+    font-weight: normal;
+}
+
+.opis {
+    font-size: 2.5vh;
+    font-weight: normal;
+}
+
+.row {
+    margin-bottom: 10px;
 }

@@ -469,10 +469,11 @@ class Majstor extends BaseController
 
     public function zahtevi()
     {
-        
-        $zahtevi= $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->findAll();
-        // $zahtevi = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->dohvatiZahteveMajstoraAktivne($id);
-        $this->prikaz("zahtevi", ['zahtevi'=>$zahtevi]);
+
+        //$zahtevi= $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->findAll();
+        $id = $_SESSION['Korisnik']->idKor;
+        $zahtevi = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->dohvatiZahteveMajstoraAktivne($id);
+        return $this->prikaz("zahtevi", ['zahtevi' => $zahtevi]);
 
         //return $zahtevi;
         // $ret = [];
@@ -512,9 +513,13 @@ class Majstor extends BaseController
         $brisanjeTermin = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)
             ->dohvatiMajstorTermin($zahtev->getIdusl()->getIdmaj()->getIdkor(), $zahtev->getIdter()->getIdter(), $zahtev->getIdzah());
         $brisanje = array_merge($brisanjeTermin, $brisanjeIdentifikator);
-
-        foreach ($brisanje as $brisi)
+        $ret = [];
+        foreach ($brisanje as $brisi) {
+            array_push($ret, $brisi->getIdzah());
             $this->doctrine->em->remove($brisi);
+        }
+        $ret = json_encode($ret);
+
 
         $zahtev->setIdentifikator(-1);
 
@@ -530,13 +535,16 @@ class Majstor extends BaseController
         $kalendar->setIdmaj($zahtev->getIdusl()->getIdmaj()->getIdkor());
         $kalendar->setIdrez($zahtev->getIdzah());
         $kalendar->setIdter($zahtev->getIdter());
-        $terminKalendar = $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)
-            ->findBy(['idmaj' => $zahtev->getIdusl()->getIdmaj()->getIdkor(), 'idter' => $zahtev->getIdter()->getIdter()])[0];
-
-        $this->doctrine->em->remove($terminKalendar);
-        $this->doctrine->em->persist($kalendar);
+        $terminKalendarNiz = $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)
+            ->findBy(['idmaj' => $zahtev->getIdusl()->getIdmaj()->getIdkor(), 'idter' => $zahtev->getIdter()->getIdter()]);
+        if (isset($terminKalendarNiz[0])) {
+            $terminKalendar = $terminKalendarNiz[0];
+            $terminKalendar->setIdrez($zahtev->getIdzah());
+        } else {
+            $this->doctrine->em->persist($kalendar);
+        }
         $this->doctrine->em->flush();
-        return "OK";
+        return "OK" . "\n" . $ret;
 
     }
 
