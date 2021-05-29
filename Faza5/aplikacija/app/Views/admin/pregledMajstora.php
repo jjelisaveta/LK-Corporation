@@ -13,7 +13,7 @@
 <body>
 <div class="container-fluid">
     <div id="con">
-        <div id="sredina">
+  
 
         <div class="row">
           
@@ -47,7 +47,7 @@
                 ?>
             </div>
         </div>
-    </div>
+    
 </div>
 </body>
 </html>

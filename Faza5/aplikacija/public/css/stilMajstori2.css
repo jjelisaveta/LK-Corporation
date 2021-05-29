@@ -7,22 +7,11 @@ body {
 
 
 
-#sredina{
-    position: relative;
-    z-index: 2;
- 
-    height: 100%;
-}
+
 
 #con {
 
-    margin-bottom: 5%;
-    width: 90%;
-    height:100%;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-around;
-    position: relative;
+ 
     background-color: #e8e6d9; 
 }
 
@@ -138,35 +127,6 @@ body {
     height: 100%;
 }
 
-#tags{
-    margin-left: 15%;
-    margin-top:5%;
-    text-align: center;
-    width: 85%;
-    float:left;
-}
-
-
-#tags button {
-    border-radius: 15px;
-    background: transparent;
-    color: darkslategray;
-    border-color: darkslategray;
-    border-style: solid;
-    font-size: 16px;
-    padding:5px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-#tags button:focus {
-    outline: none;
-    background-color: darkgray;
-}
-
-#tags button:hover{
-    background-color: darkgray;
-}
 
 .gornja a{
     float: right;
