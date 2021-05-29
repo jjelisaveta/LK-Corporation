@@ -7,7 +7,7 @@ body {
 
 
 #sredina{
-    position: relative;
+
     z-index: 2;
 
  
@@ -39,7 +39,7 @@ td h1{
 }
 
 #zahtevi table{
-     
+    z-index: 2;
     background-color: #c8c6b9;
     border-radius: 30px;
     font-size: larger;
@@ -105,11 +105,6 @@ td h1{
     font-weight: bolder;;
     color: #d8d6c9;
     padding: 5px 5px 5px 5px;
-}
-
-.sredina{
-
-    z-index: 2;
 }
 
 
