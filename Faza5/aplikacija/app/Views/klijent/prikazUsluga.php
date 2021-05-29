@@ -12,9 +12,8 @@
 <script src="<?php echo base_url(); ?>/js/skriptaPrikazUsluga.js"></script>
 <div class="container-fluid">
 <span style="font-size:30px;cursor:pointer;top: 30px;right: 30px;z-index: 1;position: fixed;" onclick="openNav()">&#9776;</span>
-    <div class="row">
-    
-        <div class="col-12 offset-md-2 col-md-10">
+<div class="row">
+    <div class="col-12 offset-md-2 col-md-10">
             <div class="row">
             
                 <div id="filteri" class="col-12 offset-md-6 col-md-4 overlay" style="display:none;">
@@ -101,25 +100,72 @@
                     </form>
                 </div>
             </div>
-        <div class="offset-1 col-10 polje">
-            <table>
-                <tr>
-                    <td rowspan="2" class="width:40%">
-                        <textarea id="opisProblema" name="opisProblema" rows="7" cols="50" placeholder="Opis problema:"></textarea>
-                    </td>
-                    <td style="width:60%">
-                        <h3 id=tekstSlanje>Pošaljite poruku svim odabranim majstorima i rešite svoj problem u najkraćem roku!</h3>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width:60%;">    
-                        <button type="button" id="dugmePosalji"onClick="uncheck()" >Rezerviši</button>
-                        <button type="button" id="dugmeOznaciSve" onClick="check()">Odaberi sve </button>
-                    </td>
-                </tr>
-            </table>
+        <div class="row">
+            <div class="offset-1 col-10 polje">
+                <table>
+                    <tr>
+                        <td rowspan="2" class="width:40%">
+                            <textarea id="opisProblema" name="opisProblema" rows="7" cols="50" placeholder="Opis problema:"></textarea>
+                        </td>
+                        <td style="width:60%">
+                            <h3 id=tekstSlanje>Pošaljite poruku svim odabranim majstorima i rešite svoj problem u najkraćem roku!</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:60%;">    
+                            <button type="button" id="dugmePosalji"onClick="uncheck()" >Rezerviši</button>
+                            <button type="button" id="dugmeOznaciSve" onClick="check()">Odaberi sve </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-1 col-10 polje">
+                <table class="uslugaTabela">
+                    <tr>
+                        <td id="userimg"><img src="slike/covek1.webp"></td>
+                        <td>
+                            <h1>
+                                BRZO, EFIKASNO, POVOLJNO! MAJSTOR NEŠA
+                            </h1>
+                            <hr/>
+                            <p>
+                                Dvadeset godina iskustva u popravljanju veš mašina, radimo sa svim modelima! Dolazimo kod vas u najkracem roku.  Jos neki tekst da se proveri prelom. Jos neki tekst da se proveri prelom.
+                            </p>
+                        </td>
+                        <td class="statistika">
+                            <h3>
+                                Majstora preporučuje: <b>82%</b> <br>
+                                Prosečno vreme odgovora: <b>02:25</b> <br> 
+                                Cena usluge: <b>3242</b> 
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="detaljnijeMajstor">
+                                <button type="button" onclick="window.location='detaljnijiPrikazMajstora.html';">
+                                    Prikazi majstora detaljnije
+                                </button>
+                            </div>
+                            <div class="odbij">
+                                <button>
+                                    <label for="cb">Odaberi</label>
+                                    <input type="checkbox" id ="cb">
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
+    
+    
+
+</div>
+    
 </div>
     
 </body>

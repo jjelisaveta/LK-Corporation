@@ -7,17 +7,12 @@ body {
 #sredina {
     position: relative;
     z-index: 2;
-
 }
-
 
 .zahtev {
     display: flex;
     flex-direction: row;
-
-
 }
-
 
 #zahtevi table {
     margin-left: auto;
@@ -27,15 +22,8 @@ body {
     width: 80%;
     background-color: #c8c6b9;
     border-radius: 30px;
-    font-size: larger;
     vertical-align: middle;
     position: relative;
-}
-
-#zahtevi pre {
-    /*margin-left: -15%;*/
-    font-size: larger;
-    text-align: left;
 }
 
 #zahtevi td {
@@ -56,12 +44,10 @@ body {
 }
 
 #zahtevi img {
-    /*margin-left: 5%;*/
     width: 100%;
     border-radius: 15px;
     vertical-align: middle;
 }
-
 
 .prihvati button {
     float: left;
@@ -71,9 +57,9 @@ body {
     border-bottom-right-radius: 0;
     width: 50%;
     background-color: #03ac13;
-    font-weight: bolder;;
     color: #d8d6c9;
-    padding: 5px 5px 5px 5px;
+    padding: 3px;
+    font-size: 2.2vh;
 }
 
 .odbij button {
@@ -84,9 +70,9 @@ body {
     border-bottom-left-radius: 0;
     width: 50%;
     background-color: red;
-    font-weight: bolder;;
     color: #d8d6c9;
-    padding: 5px 5px 5px 5px;
+    padding: 3px;
+    font-size: 2.2vh;
 }
 
 #sredina {
@@ -95,18 +81,17 @@ body {
 }
 
 .ime {
-
     font-weight: normal;
-    font-size: 2.5vh;
+    font-size: 2.8vh;
 }
 
 .adresa {
-    font-size: 2vh;
+    font-size: 2.2vh;
     font-weight: normal;
 }
 
 .opis {
-    font-size: 2.5vh;
+    font-size: 2.2vh;
     font-weight: normal;
 }
 
@@ -115,6 +100,6 @@ body {
 }
 
 .datumVreme {
-    font-size: 2vh;
+    font-size: 2.2vh;
     font-weight: normal;
 }
