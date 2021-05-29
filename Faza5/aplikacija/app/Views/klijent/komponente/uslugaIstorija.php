@@ -5,7 +5,7 @@
         <table class="prikazUslugaIstorija">
       
                 <tr>
-
+    <!-- ovde treba ubaciti da se ucitava korisnicka slika -->
                     <td id="userimg"><img src="<?php echo base_url(); ?>/slike/profilna.png"></td>
                     <td>
                         <h1>

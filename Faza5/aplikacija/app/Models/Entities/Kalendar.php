@@ -29,9 +29,9 @@ class Kalendar
     private $idkal;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idRez", type="integer", nullable=true)
+     * @var \App\Models\Entities\Rezervacija
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Rezervacija")
+     * @ORM\JoinColumn(name="idRez", referencedColumnName="id")
      */
     private $idrez;
 
@@ -78,17 +78,17 @@ class Kalendar
     }
 
     /**
-     * @return int
+     * @return \App\Models\Entities\Rezervacija
      */
-    public function getIdrez(): int
+    public function getIdrez(): \App\Models\Entities\Rezervacija
     {
         return $this->idrez;
     }
 
     /**
-     * @param int $idrez
+     * @param \App\Models\Entities\Rezervacija $idrez
      */
-    public function setIdrez(int $idrez): void
+    public function setIdrez(\App\Models\Entities\Rezervacija $idrez): void
     {
         $this->idrez = $idrez;
     }

@@ -202,4 +202,26 @@ class Termin extends \App\Models\Entities\Termin implements \Doctrine\ORM\Proxy\
         parent::setIdter($idter);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getDatumvreme(): \DateTime
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDatumvreme', []);
+
+        return parent::getDatumvreme();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDatumvreme(\DateTime $datumvreme): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDatumvreme', [$datumvreme]);
+
+        parent::setDatumvreme($datumvreme);
+    }
+
 }
