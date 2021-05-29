@@ -10,18 +10,18 @@ $idrow = "row" . $id;
                 <td id="userimg"><img src=" <?php echo base_url(); ?>/slike/profilna.png"></td>
                 <td>
                     <h1 class="ime">
-                        <?= $ime ?>
-                        <?= $prezime ?>
+                        <b> <?= $ime ?> <?= $prezime ?> </b>
                     </h1>
+                    <hr/>
                     <h3 class="adresa">
-                        <?= $adresa ?>
+                        <b>adresa:</b> <?= $adresa ?>
                     </h3>
-                    <h4 class="opis">
-                        <?= $opis ?>
-                    </h4>
-                    <h5 class="datumVreme">
-                        <?= $datumVreme ?>
-                    </h5>
+                    <h3 class="opis">
+                        <b>opis:</b> <i> <?= $opis ?> </i> 
+                    </h3>
+                    <h3 class="datumVreme">
+                        <b>datum i vreme:</b> <?= $datumVreme ?>
+                    </h3>
                 </td>
             </tr>
             <tr>

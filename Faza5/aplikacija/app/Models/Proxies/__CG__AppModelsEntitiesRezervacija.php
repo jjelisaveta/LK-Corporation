@@ -34,7 +34,7 @@ class Rezervacija extends \App\Models\Entities\Rezervacija implements \Doctrine\
      * @var array<string, null> properties to be lazy loaded, indexed by property name
      */
     public static $lazyPropertiesNames = array (
-  'idRez' => NULL,
+  'idrez' => NULL,
   'vremeodgovora' => NULL,
 );
 
@@ -44,7 +44,7 @@ class Rezervacija extends \App\Models\Entities\Rezervacija implements \Doctrine\
      * @see \Doctrine\Common\Proxy\Proxy::__getLazyProperties
      */
     public static $lazyPropertiesDefaults = array (
-  'idRez' => NULL,
+  'idrez' => NULL,
   'vremeodgovora' => NULL,
 );
 
@@ -52,7 +52,7 @@ class Rezervacija extends \App\Models\Entities\Rezervacija implements \Doctrine\
 
     public function __construct(?\Closure $initializer = null, ?\Closure $cloner = null)
     {
-        unset($this->idRez, $this->vremeodgovora);
+        unset($this->idrez, $this->vremeodgovora);
 
         $this->__initializer__ = $initializer;
         $this->__cloner__      = $cloner;
@@ -114,7 +114,7 @@ class Rezervacija extends \App\Models\Entities\Rezervacija implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Rezervacija' . "\0" . 'id', 'idRez', 'vremeodgovora', '' . "\0" . 'App\\Models\\Entities\\Rezervacija' . "\0" . 'idmaj'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Rezervacija' . "\0" . 'id', 'idrez', 'vremeodgovora', '' . "\0" . 'App\\Models\\Entities\\Rezervacija' . "\0" . 'idmaj'];
         }
 
         return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Rezervacija' . "\0" . 'id', '' . "\0" . 'App\\Models\\Entities\\Rezervacija' . "\0" . 'idmaj'];
@@ -139,7 +139,7 @@ class Rezervacija extends \App\Models\Entities\Rezervacija implements \Doctrine\
                 }
             };
 
-            unset($this->idRez, $this->vremeodgovora);
+            unset($this->idrez, $this->vremeodgovora);
         }
     }
 
@@ -287,12 +287,12 @@ class Rezervacija extends \App\Models\Entities\Rezervacija implements \Doctrine\
     /**
      * {@inheritDoc}
      */
-    public function setIdRez(\App\Models\Entities\Zahtev $idRez): void
+    public function setIdRez(\App\Models\Entities\Zahtev $idrez): void
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdRez', [$idRez]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdRez', [$idrez]);
 
-        parent::setIdRez($idRez);
+        parent::setIdRez($idrez);
     }
 
     /**

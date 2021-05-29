@@ -4,23 +4,23 @@ $textId = "text" . $id;
 ?>
 <div id="<?php echo $rowId; ?>" class="row">
     <div class="offset-1 col-10">
-        <table class="offset-0 offset-md-1 col-10 col-md-8 majstor">
+        <table class="majstor">
             <tr>
                 <td class="userimg"><img src="<?php echo base_url(); ?>/slike/profilna.png"></td>
                 <td style="width:38%;">
                     <h1>
-                        <?php echo $ime . " " . $prezime; ?>
+                        <b> <?php echo $ime . " " . $prezime; ?> </b>
                     </h1>
                     <h3>
-                        <?php echo $email; ?>
+                        <b> mejl: </b><?php echo $email; ?>
                     </h3>
                     <h3>
-                        <?php echo $broj; ?>
+                        <b>telefon: </b><?php echo $broj; ?>
                     </h3>
                 </td>
                 <td>
-                    <textarea name="emailArea" id="<?php echo $textId; ?>" class="emailArea" cols="25" rows="4"
-                              placeholder="Posalji email:"></textarea>
+                    <textarea name="emailArea" id="<?php echo $textId; ?>" class="emailArea" cols="50" rows="5"
+                              placeholder="Posalji mejl:"></textarea>
                 </td>
             </tr>
             <tr>

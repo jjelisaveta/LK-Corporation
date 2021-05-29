@@ -25,7 +25,7 @@ class Database extends Config
      */
     public $defaultGroup = 'default';
 
-<<<<<<< HEAD
+
 	/**
 	 * The default database connection.
 	 *

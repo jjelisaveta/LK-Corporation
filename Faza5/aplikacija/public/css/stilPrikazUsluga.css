@@ -3,6 +3,7 @@
     border-radius: 30px;
     vertical-align: middle;
     z-index: 2;
+    margin-bottom: 1%;
 }
 
 #opisProblema {
@@ -14,20 +15,12 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-
+    font-size:2vh;
     width: 90%;
 }
 
-.statistika {
-    width: 33%;
-    border: solid #2b2b2b;
-    margin-left: 10px;
-    border-radius: 15px;
-}
-
 #tekstSlanje{
-    font-family: Arial;
-    font-size:18px;
+    font-size:2vh;
     color: #2b2b2b;
     text-align: center;
     margin:10px;
@@ -45,6 +38,7 @@
     width:60%;
     margin-bottom:10px;
     float:left;
+    font-size: 2vh;
 }
 
 #dugmeOznaciSve {
@@ -59,6 +53,7 @@
     font-weight: bolder;
     background-color: gray;
     margin-bottom:10px;
+    font-size: 2vh;
 }
 
 #filteri {
@@ -75,11 +70,9 @@
     transition: 0.5s;
 }
 
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 500px) {
     #filteri {padding-top: 1%;}
     #filteri  {font-size: 14px;}
-    #dugmePosalji {font-size: 12px;}
-    #dugmeOznaciSve {font-size: 12px;}
   }
 
 #labelaDatum {
@@ -135,4 +128,72 @@
 
 form{
     margin-top: 8%;
+}
+
+#userimg {
+    width: 15%;
+    padding: 5px;
+}
+
+#userimg img{
+    width:100%;
+    border-radius: 15px;
+    vertical-align: middle;
+}
+
+.uslugaTabela h1 {
+    font-size: 3.2vh;
+    font-weight: bolder;
+    margin: 10px;
+}
+
+.uslugaTabela p {
+    font-style: italic;
+    font-size: 2vh;
+}
+
+
+.detaljnijeMajstor button{
+    float:left;
+    border: none;
+    border-radius: 30px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 5px;
+    background-color: gray;
+    color: #d8d6c9;
+    width: 66%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 2.2vh;
+}
+.odbij button{
+    float:left;
+    border: none;
+    border-radius: 30px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 33%;
+    background-color: gray;
+    color: #d8d6c9;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 2.2vh;
+}
+
+.statistika {
+    width: 33%;
+    border-left: 2px solid orange;
+    margin-left: 10px;
+    border-radius: 15px;
+}
+
+.statistika h3 {
+    font-size: 2.3vh;
+    font-weight: normal;
+    margin-left: 5%;
+}
+
+.uslugaTabela hr {
+    background-color: orange;
 }
