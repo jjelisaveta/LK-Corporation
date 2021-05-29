@@ -19,6 +19,9 @@ $idrow = "row" . $id;
                     <h4 class="opis">
                         <?= $opis ?>
                     </h4>
+                    <h5 class="datumVreme">
+                        <?= $datumVreme ?>
+                    </h5>
                 </td>
             </tr>
             <tr>

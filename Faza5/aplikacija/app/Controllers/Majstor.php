@@ -246,7 +246,7 @@ class Majstor extends BaseController
         $ime = $korisnik->getIme();
         $prezime = $korisnik->getPrezime();
         $adresa = $korisnik->getAdresa();
-        $opis = $ime . " " . $prezime . ";" . $opis . ";" . $adresa;
+        $opis = $ime . " " . $prezime . ";" . $adresa;
         return $opis;
     }
 
@@ -259,9 +259,9 @@ class Majstor extends BaseController
         $kalendar = $kalendarModel->dohvatiMajstorRezervisan($idMaj, $date);
         foreach ($kalendar as $kal) {
             $niz = explode(" ", $kal->datumVreme);
-            $niz = explode("-", $niz[1]);
-            $id = "dugme" . (intval($niz[0]));
-            array_push($ret, [$id, $this->dohvatiOpisRezervacije($kal->idRez)]);
+            $nizz = explode("-", $niz[1]);
+            $id = "dugme" . (intval($nizz[0]));
+            array_push($ret, [$id, $this->dohvatiOpisRezervacije($kal->idRez) . ";" . $kal->datumVreme]);
         }
         return $ret;
     }
@@ -525,22 +525,31 @@ class Majstor extends BaseController
 
         $rezervacija = new Entities\Rezervacija();
         $rezervacija->setIdRez($zahtev);
+        $rezervacija->setId($zahtev->getIdzah());
         $rezervacija->setIdmaj($zahtev->getIdusl()->getIdmaj());
         $rezervacija->setVremeodgovora(\DateTime::createFromFormat('y-m-d h:i:s', date('y-m-d h:i:s')));
+
+
         $this->doctrine->em->persist($zahtev);
         $this->doctrine->em->persist($rezervacija);
-        $this->doctrine->em->flush();
 
-        $kalendar = new Entities\Kalendar();
-        $kalendar->setIdmaj($zahtev->getIdusl()->getIdmaj()->getIdkor());
-        $kalendar->setIdrez($zahtev->getIdzah());
-        $kalendar->setIdter($zahtev->getIdter());
+        $uslugaOstvarena = new Entities\UslugaOstvarena();
+        $uslugaOstvarena->setIdrez($rezervacija);
+        $uslugaOstvarena->setIdusl($zahtev->getIdusl());
+        $uslugaOstvarena->setObrisano(0);
+        $this->doctrine->em->persist($uslugaOstvarena);
+        //$this->doctrine->em->flush();
+
         $terminKalendarNiz = $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)
             ->findBy(['idmaj' => $zahtev->getIdusl()->getIdmaj()->getIdkor(), 'idter' => $zahtev->getIdter()->getIdter()]);
         if (isset($terminKalendarNiz[0])) {
             $terminKalendar = $terminKalendarNiz[0];
-            $terminKalendar->setIdrez($zahtev->getIdzah());
+            $terminKalendar->setIdrez($rezervacija);
         } else {
+            $kalendar = new Entities\Kalendar();
+            $kalendar->setIdmaj($zahtev->getIdusl()->getIdmaj()->getIdkor());
+            $kalendar->setIdrez($rezervacija);
+            $kalendar->setIdter($zahtev->getIdter());
             $this->doctrine->em->persist($kalendar);
         }
         $this->doctrine->em->flush();

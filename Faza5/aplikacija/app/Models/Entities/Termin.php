@@ -44,5 +44,21 @@ class Termin
         $this->idter = $idter;
     }
 
+    /**
+     * @return \DateTime
+     */
+    public function getDatumvreme(): \DateTime
+    {
+        return $this->datumvreme;
+    }
+
+    /**
+     * @param \DateTime $datumvreme
+     */
+    public function setDatumvreme(\DateTime $datumvreme): void
+    {
+        $this->datumvreme = $datumvreme;
+    }
+
 
 }
