@@ -18,7 +18,7 @@
 
 <body>
 <div class="container-fluid">
-
+<div class="sredina">
     <div id="zahtevi">
         <div class="row">
             <div id="zahtev" class="offset-0 col-12 offset-md-2 col-md-10">
@@ -36,7 +36,7 @@
                     }
                     if ($nadjenZahtev==null) continue;
                     $termin=$termini->find($nadjenZahtev->idTer);
-                    if (new DateTime() > new DateTime($termin->datumVreme)) continue;
+                    if (new DateTime() < new DateTime($termin->datumVreme)) continue;
                     $usluga = $usluge->find($uslugaOstvarena->idUsl);
                     $korisnik = $korisnici->find($usluga->idMaj);
              
@@ -56,7 +56,7 @@
         </div>
     </div>
 </div>
-
+</div>
 </body>
 
 </html>

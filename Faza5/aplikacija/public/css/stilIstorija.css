@@ -15,10 +15,10 @@ body {
 
 
 .zahtev{
-
+height: 200px;
     display: flex;
     flex-direction: row;
-
+z-index: 2;
     /*position: relative;*/
   
 }
@@ -47,7 +47,7 @@ td h1{
     position: relative;
     margin-bottom: 10px;
 }
-    
+
 #zahtevi pre{
 
     font-size: larger;
@@ -107,8 +107,8 @@ td h1{
     padding: 5px 5px 5px 5px;
 }
 
-#sredina{
-    position: relative;
+.sredina{
+
     z-index: 2;
 }
 

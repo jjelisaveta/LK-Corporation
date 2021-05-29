@@ -31,7 +31,7 @@
             }
             if ($nadjenZahtev == null) continue;
             $termin = $termini->find($nadjenZahtev->idTer);
-            if (new DateTime() < new DateTime($termin->datumVreme)) continue;
+            if (new DateTime() > new DateTime($termin->datumVreme)) continue;
 
             $usluga = $usluge->find($uslugaOstvarena->idUsl);
             $korisnik = $korisnici->find($usluga->idMaj);
