@@ -10,13 +10,13 @@
         <a href="javascript:void(0)" class="dugmeZatvori" onclick="zatvoriMeni()">&times;</a>
         <div class="maliMeniSadrzaj">
             <a href="pretrazivanje.html">Rezerviši termin</a>
-            <a href="aktivnapopravka.html">U toku</a>
-            <a href="istorija.html">Istorija</a>
+            <a href="<?php echo site_url("Klijent/aktivnaPopravka") ?>">U toku</a>
+            <a href="<?php echo site_url("Klijent/istorija") ?>">Istorija</a>
             <div class="padajuciMeni">
                 <button class="padajuceDugme">Moj nalog</button>
                 <div class="padajuciSadrzaj">
-                    <a href="logovanje.html">Uloguj se</a>
-                    <a href="registrovanje.html">Registruj se</a>
+                <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
+                    <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
                 </div>
             </div>
         </div>
@@ -28,13 +28,13 @@
 
     <div id="meni" class="d-none d-md-block col-md-2">
         <a href="pretrazivanje.html">Rezerviši termin</a>
-        <a href="aktivnapopravka.html">U toku</a>
-        <a href="istorija.html">Istorija</a>
+        <a href="<?php echo site_url("Klijent/aktivnaPopravka") ?>">U toku</a>
+        <a href="<?php echo site_url("Klijent/istorija") ?>">Istorija</a>
         <div class="padajuciMeni">
             <button class="padajuceDugme">Moj nalog</button>
             <div class="padajuciSadrzaj">
-                <a href="logovanje.html">Uloguj se</a>
-                <a href="registrovanje.html">Registruj se</a>
+            <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
+                    <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
             </div>
         </div>
         <div id="korisnik">

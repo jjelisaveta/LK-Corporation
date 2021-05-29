@@ -59,10 +59,10 @@ class Admin extends BaseController
     public function pregledMajstora()
     {
         $uloga = 2;
-        $majstori = $this->doctrine->em->getRepository(Entities\Korisnik::class)->findBy(['idulo' => $uloga, 'odobren' => 'o']);
+        $majstori = $this->doctrine->em->getRepository(Entities\Korisnik::class)->findBy(['idulo' => $uloga, 'odobren' => 1]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUsluge();
         
-        $this->prikaz('pregledMajstora', ['majstori' => $majstori,'ostvarene'=>$ostvarene]);
+        return $this->prikaz('pregledMajstora', ['majstori' => $majstori,'ostvarene'=>$ostvarene]);
     }
 
     public function odobravanjeMajstora()

@@ -14,15 +14,15 @@
                 <a href="pretrazivanje.html">Rezerviši termin</a>
                     <a href="aktivnapopravka.html">U toku</a>
                     <a href="istorija.html">Istorija</a>
-                    <a href="zahtevi.html">Zahtevi</a>
-                    <a href="kalendar.html">Kalendar</a>
-                    <a href="mojeUsluge.html">Moje usluge</a>
-                    <a href="dodavanjeusluga.html">Dodaj uslugu</a>
+                    <a href="<?php echo site_url("Majstor/zahtevi") ?>">Zahtevi</a>
+                    <a href="<?php echo site_url("Majstor/kalendar") ?>">Kalendar</a>
+                    <a href="<?php echo site_url("Majstor/mojeUsluge") ?>">Moje usluge</a>
+                    <a href="<?php echo site_url("Majstor/dodajUslugu") ?>">Dodaj uslugu</a>
                 <div class="padajuciMeni">
                     <button class="padajuceDugme">Moj nalog</button>
                     <div class="padajuciSadrzaj">
-                        <a href="logovanje.html">Uloguj se</a>
-                        <a href="registrovanje.html">Registruj se</a>
+                    <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
+                    <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
                     </div>
                 </div>
             </div>
@@ -36,15 +36,15 @@
             <a href="pretrazivanje.html">Rezerviši termin</a>
                     <a href="aktivnapopravka.html">U toku</a>
                     <a href="istorija.html">Istorija</a>
-                    <a href="zahtevi.html">Zahtevi</a>
-                    <a href="kalendar.html">Kalendar</a>
-                    <a href="mojeUsluge.html">Moje usluge</a>
-                    <a href="dodavanjeusluga.html">Dodaj uslugu</a>
+                    <a href="<?php echo site_url("Majstor/zahtevi") ?>">Zahtevi</a>
+                    <a href="<?php echo site_url("Majstor/kalendar") ?>">Kalendar</a>
+                    <a href="<?php echo site_url("Majstor/mojeUsluge") ?>">Moje usluge</a>
+                    <a href="<?php echo site_url("Majstor/dodajUslugu") ?>">Dodaj uslugu</a>
             <div class="padajuciMeni">
                 <button class="padajuceDugme">Moj nalog</button>
                 <div class="padajuciSadrzaj">
                     <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
-                    <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguje se </a>
+                    <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
                 </div>
             </div>
                 <div id="korisnik">
@@ -53,3 +53,5 @@
             </div>
         </div>
         
+
+        </div>

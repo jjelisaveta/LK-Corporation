@@ -11,12 +11,12 @@
         <div class="maliMeniSadrzaj">
             <a href="#">Pregled Korisnika</a>
             <a href="#">Zahtevi Majstora</a>
-            
+
             <div class="padajuciMeni">
                 <button class="padajuceDugme">Moj nalog</button>
                 <div class="padajuciSadrzaj">
-                    <a href="logovanje.html">Uloguj se</a>
-
+                <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
+                    <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
                 </div>
             </div>
         </div>
@@ -26,14 +26,18 @@
         </div>
     </div>
 
+
     <div id="meni" class="d-none d-md-block col-md-2">
-           <a href="#">Pregled Korisnika</a>
-            <a href="#">Zahtevi Majstora</a>
+
+        <a href="<?php echo site_url("Admin/pregledMajstora") ?>">Pregled Korisnika</a>
+        <a href="<?php echo site_url("Admin/odobravanjeMajstora") ?>">Zahtevi Majstora</a>
+     
         <div class="padajuciMeni">
             <button class="padajuceDugme">Moj nalog</button>
             <div class="padajuciSadrzaj">
-                <a href="logovanje.html">Uloguj se</a>
-           
+            <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
+                <a href="logovanje.html">Izloguj se</a>
+
             </div>
         </div>
         <div id="korisnik">
@@ -42,4 +46,4 @@
         </div>
     </div>
 
-</div>
+    </div>
