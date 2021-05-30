@@ -41,11 +41,11 @@ class Majstor extends BaseController
     {
         $stranica = 'pretrazivanje';
         $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
-        if (!$_POST){
+        if (!$_POST) {
             return $this->prikaz($stranica, ['tagovi' => $allTags]);
         }
     }
-    
+
     public function dodajUslugu()
     {
         $tagModel = new TagModel();
@@ -560,5 +560,16 @@ class Majstor extends BaseController
         return "OK" . "\n" . $ret;
 
     }
+
+    public function usluge()
+    {
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(10)->getUsluge();
+        $ret = [];
+        foreach ($usluge as $usluga) {
+            array_push($ret, $usluga->getIdusl());
+        }
+        return "poruka " . json_encode($ret);
+    }
+
 
 }

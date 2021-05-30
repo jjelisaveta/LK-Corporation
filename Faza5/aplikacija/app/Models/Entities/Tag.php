@@ -30,15 +30,19 @@ class Tag
     private $opis;
 
 
-//    /**
-//     * ORM\ManyToMany(targetEntity="\App\Models\Entities\Usluga", mappedBy="tagovi")
-//     */
-//    protected $usluge;
-//
-//
-//    public function __construct() {
-//        $this->usluge = new \Doctrine\Common\Collections\ArrayCollection();
-//    }
+    /**
+     *
+     * @var Usluga[]
+     *
+     * Many Tags have Many Uslugas.
+     * @ORM\ManyToMany(targetEntity="App\Models\Entities\Usluga", mappedBy="tagovi")
+     */
+    protected $usluge;
+
+
+    public function __construct() {
+        $this->usluge = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     public function getIdtag(): int
@@ -51,10 +55,10 @@ class Tag
         return $this->opis;
     }
 
-//    public function getUsluge()
-//    {
-//        return $this->usluge;
-//    }
+    public function getUsluge()
+    {
+        return $this->usluge;
+    }
 
     public function setIdtag(int $idtag): Tag
     {
@@ -68,9 +72,9 @@ class Tag
         return this;
     }
 
-//    public function setUsluge($usluge): void {
-//        $this->usluge = $usluge;
-//    }
+    public function setUsluge($usluge): void {
+        $this->usluge = $usluge;
+    }
 
 
 }
