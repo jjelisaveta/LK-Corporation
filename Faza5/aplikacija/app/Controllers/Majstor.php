@@ -38,9 +38,6 @@ class Majstor extends BaseController
         echo view("osnova/footer");
     }
 
-    public function pretrazivanje(){
-        echo "Ovo Jovan treba da uradi";
-    }
     
     public function dodajUslugu()
     {

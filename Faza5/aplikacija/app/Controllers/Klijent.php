@@ -19,15 +19,30 @@ class Klijent extends BaseController
 
     protected function prikaz($stranica, $podaci)
     {
-        $podaci['controller'] = "Klijent";
-        $podaci['ime'] = 'Code';
-        $podaci['prezime'] = 'Igniter';
+    /*    $podaci['ime'] = $this->session->get('Korisnik')->ime;
+        $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
+        $podaci['profilna'] = $this->session->get('Korisnik')->slika;*/
+        $podaci['ime'] = 'Jovan';
+        $podaci['prezime'] = 'Pavlovic';
+        $podaci['profilna'] = '';
         echo view("osnova/header");
         echo view("osnova/meni", $podaci);
         echo view("klijent/$stranica", $podaci);
         echo view("osnova/footer");
     }
     
+    public function pretraga(){
+        $stranica = 'pretrazivanje';
+        $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
+        if (!$_POST){
+            return $this->prikaz($stranica, ['tagovi' => $allTags]);
+        }
+    }
+    
+    public function prikazUsluga($trazeniTag){             /* prosledi se ovde samo kompresovano*/
+        $stranica = 'pretrazivanje';
+    }
+
     public function istorija()
     {
 
