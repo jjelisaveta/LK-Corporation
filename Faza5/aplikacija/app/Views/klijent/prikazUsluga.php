@@ -34,8 +34,8 @@
                                 <td><input type="checkbox" id="10"><label for="10" class="satnice"> 10:00 - 12:00</label></td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox" id="12"><label for="0" class="satnice"> 12:00 - 14:00</label></td>
-                                <td><input type="checkbox" id="14"><label for="2" class="satnice"> 14:00 - 16:00</label></td>
+                                <td><input type="checkbox" id="12"><label for="1" class="satnice"> 12:00 - 14:00</label></td>
+                                <td><input type="checkbox" id="14"><label for=k"2" class="satnice"> 14:00 - 16:00</label></td>
                                 <td><input type="checkbox" id="16"><label for="4" class="satnice"> 16:00 - 18:00</label></td>
                             </tr>
                             <tr>
@@ -113,7 +113,7 @@
                     </tr>
                     <tr>
                         <td style="width:60%;">    
-                            <button type="button" id="dugmePosalji"onClick="uncheck()" >Rezerviši</button>
+                            <button type="button" id="dugmePosalji" >Prvo izaberite željene usluge</button>
                             <button type="button" id="dugmeOznaciSve" onClick="check()">Odaberi sve </button>
                         </td>
                     </tr>

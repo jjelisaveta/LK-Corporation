@@ -18,7 +18,7 @@
         let emptyArray = [];
         if(userData){
             emptyArray = jArray.filter((data)=>{                        //ovde sad lista svih imena ekstrakuj u dugmad
-                return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase()); 
+                return data.toLocaleLowerCase().includes(userData.toLocaleLowerCase()); 
             });
             for(let i = 0; i < emptyArray.length; i++){
                  $("#" + trim(emptyArray[i])).show();
