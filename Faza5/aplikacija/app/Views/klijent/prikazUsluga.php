@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POPRAVI.com</title>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>/css/stilPrikazUsluga.css">
+    
+</head>
+<body>
+<script src="<?php echo base_url(); ?>/js/skriptaPrikazUsluga.js"></script>
+<div class="container-fluid">
+<span style="font-size:30px;cursor:pointer;top: 30px;right: 30px;z-index: 1;position: fixed;" onclick="openNav()">&#9776;</span>
+<div class="row">
+    <div class="col-12 offset-md-2 col-md-10">
+            <div class="row">
+            
+                <div id="filteri" class="col-12 offset-md-6 col-md-4 overlay" style="display:none;">
+                    <a href="javascript:void(0)" id="zatvaranje" class="closebtn" onclick="closeNav()">&times;</a>
+                    <form action="" method="">
+                        <label id="labelaDatum" for="termin">Datum:</label>
+                        <input type="date" id="termin" name="termin">
+   
+                        <table id="termini" class="text-center">
+                            <tr>
+                                <td><input type="checkbox" id="0"><label for="0" class="satnice"> 00:00 - 02:00</label></td>
+                                <td><input type="checkbox" id="2"><label for="2" class="satnice"> 02:00 - 04:00</label></td>
+                                <td><input type="checkbox" id="4"><label for="4" class="satnice"> 04:00 - 06:00</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="6"><label for="6" class="satnice"> 06:00 - 08:00</label></td>
+                                <td><input type="checkbox" id="8"><label for="8" class="satnice"> 08:00 - 10:00</label></td>
+                                <td><input type="checkbox" id="10"><label for="10" class="satnice"> 10:00 - 12:00</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="12"><label for="0" class="satnice"> 12:00 - 14:00</label></td>
+                                <td><input type="checkbox" id="14"><label for="2" class="satnice"> 14:00 - 16:00</label></td>
+                                <td><input type="checkbox" id="16"><label for="4" class="satnice"> 16:00 - 18:00</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" id="18"><label for="0" class="satnice"> 18:00 - 20:00</label></td>
+                                <td><input type="checkbox" id="20"><label for="2" class="satnice"> 20:00 - 22:00</label></td>
+                                <td><input type="checkbox" id="22"><label for="4" class="satnice"> 22:00 - 00:00</label></td>
+                            </tr>
+                        </table>
+                        <div class="slidecontainer">
+                            <input type="range" min="0" max="12000" value="6000" class="slider" id="SkalaCena">
+                            <p style="color: white; font-family: Arial; text-align-last: center;">Maksimalna cena: <span id="cena"></s-pan></p>
+                            <input type="range" min="0" max="100" value="50" class="slider" id="ocena">
+                            <p style="color: white; font-family: Arial; text-align-last: center;">Majstora preporučuje: <span id="mojaOcena"></span>% korisnika</p>
+                            <input type="range" min="0" max="600" value="300" class="slider" id="vremeOdziva">
+                            <p style="color: white; font-family: Arial; text-align-last: center;">Maksimalno vreme odgovora: <span id="odziv"></span> minuta</p>
+                        </div>
+
+                        <div id="selektorSortiranje">
+                            <label for="sortiranje" style="color: white;">Sortiraj po:</label>
+                            <select name="sortiranje" id="cars">
+                                <option value="s1">prosečnoj ceni rastuće</option>
+                                <option value="s2">prosečnoj ceni opadajuće</option>
+                                <option value="s3">prosečnoj oceni rastuće</option>
+                                <option value="s4">prosečnoj oceni opadajuće</option>
+                                <option value="s5">vremenu odgovora rastuće</option>
+                                <option value="s6">vremenu odgovora opadajuće</option>
+                            </select>
+                        </div>
+                        <div id="posaljiDugme">
+                            <button type="button"  id="dugmePretrazi" onClick="window.location='prikazUsluga.html';">
+                                Pretraži usluge
+                            </button>
+                        </div>
+                        <script>
+                            var slider = document.getElementById("ocena");
+                            var output = document.getElementById("mojaOcena");
+                            var slider2 = document.getElementById("SkalaCena");
+                            var output2 = document.getElementById("cena");
+                            var slider3 = document.getElementById("vremeOdziva");
+                            var output3 = document.getElementById("odziv");
+                            output.innerHTML = slider.value;
+                            output2.innerHTML = slider2.value;
+                            output3.innerHTML = slider3.value;
+                            slider.oninput = function() {
+                            output.innerHTML = this.value;
+                            }
+                            slider2.oninput = function(){
+                                output2.innerHTML = this.value;
+                            }
+                            slider3.oninput = function(){
+                                output3.innerHTML = this.value;
+                            }
+                            function check() {
+                                document.getElementById("cb").checked = true;
+                                document.getElementById("cb2").checked = true;                      
+                            }
+                            function uncheck() {
+                                document.getElementById("cb").checked = false;
+                                document.getElementById("cb2").checked = false;                      
+                            }
+                        </script>
+                    </form>
+                </div>
+            </div>
+        <div class="row">
+            <div class="offset-1 col-10 polje">
+                <table>
+                    <tr>
+                        <td rowspan="2" class="width:40%">
+                            <textarea id="opisProblema" name="opisProblema" rows="7" cols="50" placeholder="Opis problema:"></textarea>
+                        </td>
+                        <td style="width:60%">
+                            <h3 id=tekstSlanje>Pošaljite poruku svim odabranim majstorima i rešite svoj problem u najkraćem roku!</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:60%;">    
+                            <button type="button" id="dugmePosalji"onClick="uncheck()" >Rezerviši</button>
+                            <button type="button" id="dugmeOznaciSve" onClick="check()">Odaberi sve </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-1 col-10 polje">
+                <table class="uslugaTabela">
+                    <tr>
+                        <td id="userimg"><img src="slike/covek1.webp"></td>
+                        <td>
+                            <h1>
+                                BRZO, EFIKASNO, POVOLJNO! MAJSTOR NEŠA
+                            </h1>
+                            <hr/>
+                            <p>
+                                Dvadeset godina iskustva u popravljanju veš mašina, radimo sa svim modelima! Dolazimo kod vas u najkracem roku.  Jos neki tekst da se proveri prelom. Jos neki tekst da se proveri prelom.
+                            </p>
+                        </td>
+                        <td class="statistika">
+                            <h3>
+                                Majstora preporučuje: <b>82%</b> <br>
+                                Prosečno vreme odgovora: <b>02:25</b> <br> 
+                                Cena usluge: <b>3242</b> 
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="detaljnijeMajstor">
+                                <button type="button" onclick="window.location='detaljnijiPrikazMajstora.html';">
+                                    Prikazi majstora detaljnije
+                                </button>
+                            </div>
+                            <div class="odbij">
+                                <button>
+                                    <label for="cb">Odaberi</label>
+                                    <input type="checkbox" id ="cb">
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    
+
+</div>
+    
+</div>
+    
+</body>
+</html>

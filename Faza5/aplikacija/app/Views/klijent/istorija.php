@@ -18,7 +18,7 @@
 
 <body>
 <div class="container-fluid">
-
+<div class="sredina">
     <div id="zahtevi">
         <div class="row">
             <div id="zahtev" class="offset-0 col-12 offset-md-2 col-md-10">
@@ -41,7 +41,7 @@
                     $korisnik = $korisnici->find($usluga->idMaj);
              
                     
-                    echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $korisnik->ime, 'datumPopravke' => $termin->datumVreme
+                    echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $korisnik->ime,'prezime'=>$korisnik->prezime, 'datumPopravke' => $termin->datumVreme
               ,'komentar' => $uslugaOstvarena->komentar, 'ocena' => $uslugaOstvarena->ocena, 'id' => $uslugaOstvarena->idUslOstv
                     ,'opis'=>$nadjenZahtev->opis]);
                 }
@@ -56,7 +56,7 @@
         </div>
     </div>
 </div>
-
+</div>
 </body>
 
 </html>

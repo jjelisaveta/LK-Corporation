@@ -66,10 +66,10 @@ class Zahtev extends \App\Models\Entities\Zahtev implements \Doctrine\ORM\Proxy\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idzah', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'opis', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'vremeslanja', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idkor', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idter'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idzah', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'opis', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'vremeslanja', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idkor', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idter', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idusl', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'identifikator'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idzah', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'opis', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'vremeslanja', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idkor', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idter'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idzah', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'opis', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'vremeslanja', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idkor', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idter', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'idusl', '' . "\0" . 'App\\Models\\Entities\\Zahtev' . "\0" . 'identifikator'];
     }
 
     /**
@@ -179,6 +179,98 @@ class Zahtev extends \App\Models\Entities\Zahtev implements \Doctrine\ORM\Proxy\
     /**
      * {@inheritDoc}
      */
+    public function getIdusl(): \App\Models\Entities\Usluga
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdusl', []);
+
+        return parent::getIdusl();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdusl(\App\Models\Entities\Usluga $idusl): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdusl', [$idusl]);
+
+        parent::setIdusl($idusl);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdentifikator(): int
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdentifikator', []);
+
+        return parent::getIdentifikator();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdentifikator(int $identifikator): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdentifikator', [$identifikator]);
+
+        parent::setIdentifikator($identifikator);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdzah(): int
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getIdzah();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdzah', []);
+
+        return parent::getIdzah();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdzah(int $idzah): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdzah', [$idzah]);
+
+        parent::setIdzah($idzah);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdter(): \App\Models\Entities\Termin
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdter', []);
+
+        return parent::getIdter();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdter(\App\Models\Entities\Termin $idter): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdter', [$idter]);
+
+        parent::setIdter($idter);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getOpis()
     {
 
@@ -218,6 +310,28 @@ class Zahtev extends \App\Models\Entities\Zahtev implements \Doctrine\ORM\Proxy\
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdkor', []);
 
         return parent::getIdkor();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVremeslanja(): \DateTime
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVremeslanja', []);
+
+        return parent::getVremeslanja();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setVremeslanja(\DateTime $vremeslanja): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVremeslanja', [$vremeslanja]);
+
+        parent::setVremeslanja($vremeslanja);
     }
 
 }

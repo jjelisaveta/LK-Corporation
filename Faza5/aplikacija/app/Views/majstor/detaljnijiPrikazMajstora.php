@@ -1,4 +1,4 @@
-<!--Jovan Pavlovic 2018/0012-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +26,7 @@
                                 <td class="slikaMajstora"><img src="<?php echo base_url(); ?>/slike/covek1.webp"></td>
                                 <td class="podaci">
                                     <h1>
-                                        <?= $majstor->getIme()?> <?= $majstor->getPrezime()?>
+                                        <?= $majstor->getIme()?> <?= $majstor->getPrezime() ?>
                                     </h1>
                                     <p>
                                         <b>telefon: </b><?= $majstor->getBrojtelefona()?><br>
@@ -35,9 +35,9 @@
                                 </td>
                                 <td class="ocene" style="border-left: solid; width:33%">
                                     <h3>
-                                        Majstora preporucuje: <b>66%</b> <br> 
-                                        Prosecno vreme reakcije: <b>03:40</b> <br> 
-                                        Prosecan cena svih usluga: <b>4500</b>
+                                        Majstora preporučuje: <b><?= $preporuke ?>%</b> <br> 
+                                        Prosečno vreme odgovora: <b><?= gmdate("H:i:s", $vreme) ?></b> <br> 
+                                        Prosečna cena svih usluga: <b><?= $cena ?></b>
                                     </h3>
                                 </td>
                             </tr>
@@ -71,10 +71,24 @@
 
                 <div class="row sveUsluge">
                     <?php 
-                        foreach ($usluge as $usluga){
+                        foreach ($usluge as $usluga) {
+                            $ukupno = 0;
+                            $pozitivna = 0;
+                            foreach($ostvarene as $ostvarena){
+                                if ($ostvarena->getIdusl()->getIdusl() == $usluga->getIdusl()){
+                                    $ukupno++;
+                                    if ($ostvarena->getOcena()!=null && $ostvarena->getOcena()=="1")
+                                        $pozitivna++;
+                                }
+                            }
+                            if ($ukupno!=0) {
+                                $prep = $pozitivna/$ukupno * 100;
+                                $prep = "" . $prep ."%";
+                            }
+                            else $prep = " - ";
                             echo view_cell("\App\Libraries\UslugaPrikazMajstora::prikazUsluge", ['naslov' => $usluga->getNaziv(), 
                             'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
-                            'tagovi'=>$usluga->getTagovi()]);
+                            'tagovi'=>$usluga->getTagovi(), 'cenaUsluge'=>$usluga->getCena(), 'prep'=>$prep]);
                         }
                     ?>
                     

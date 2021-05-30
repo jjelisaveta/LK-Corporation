@@ -19,9 +19,8 @@ class Klijent extends BaseController
 
     protected function prikaz($stranica, $podaci)
     {
-    /*    $podaci['ime'] = $this->session->get('Korisnik')->ime;
-        $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
-        $podaci['profilna'] = $this->session->get('Korisnik')->slika;*/
+        
+        //nece biti kasnije hardkodovano, samo privremeno za test
         $podaci['ime'] = 'Jovan';
         $podaci['prezime'] = 'Pavlovic';
         $podaci['profilna'] = '';
@@ -31,7 +30,7 @@ class Klijent extends BaseController
         echo view("osnova/footer");
     }
     
-    public function pretraga(){
+    public function pretrazivanje(){
         $stranica = 'pretrazivanje';
         $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
         if (!$_POST){
@@ -53,7 +52,8 @@ class Klijent extends BaseController
         $rezervacijaModel = new RezervacijaModel();
         $zahtevModel = new ZahtevModel();
         $terminModel= new TerminModel();
-        $idkor=6;
+        //ovde treba ubaciti dohvatanje id-a korisnika iz sesije
+        $idkor=2;
         $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
             'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
 
@@ -69,7 +69,8 @@ public function aktivnaPopravka()
     $rezervacijaModel = new RezervacijaModel();
     $zahtevModel = new ZahtevModel();
     $terminModel= new TerminModel();
-    $idkor=6;
+      //ovde treba ubaciti dohvatanje id-a korisnika iz sesije
+    $idkor=2;
     $this->prikaz("aktivnePopravke", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
     'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
 }
@@ -125,4 +126,5 @@ public function aktivnaPopravka()
       
 
     }
+
 }

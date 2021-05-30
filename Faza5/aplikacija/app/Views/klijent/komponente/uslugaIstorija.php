@@ -5,11 +5,12 @@
         <table class="prikazUslugaIstorija">
       
                 <tr>
-
+    <!-- ovde treba ubaciti da se ucitava korisnicka slika -->
                     <td id="userimg"><img src="<?php echo base_url(); ?>/slike/profilna.png"></td>
                     <td>
                         <h1>
                             <?= $imeMajstor ?>
+                            <?= $prezime ?>
                         </h1>
                         <h4>
                             <?= $datumPopravke ?>
@@ -21,7 +22,6 @@
                     <form action="sacuvajKomentar" method="POST">
                 <input type="text" name="hidden" id="" value= <?= $id ?> style="display:none">
                     <td class="komentartd">
-
                         <div class="Komentar">
                             <label class="komentarLabel"></label><br>
                             <textarea type="text" placeholder="Komentar:" name="komentar" class="komentarinput" rows="4"
@@ -31,8 +31,6 @@
                                 }
                                 ?></textarea>
                         </div>
-              
-
                         <button class="komentardugme" type="SUBMIT">Sacuvaj komentar
                         </button>
                        

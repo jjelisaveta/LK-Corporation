@@ -30,11 +30,8 @@ class Kalendar
 
     /**
      * @var \App\Models\Entities\Rezervacija
-     *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Rezervacija")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idRez", referencedColumnName="idRez")
-     * })
+     * @ORM\JoinColumn(name="idRez", referencedColumnName="id")
      */
     private $idrez;
 
@@ -47,6 +44,70 @@ class Kalendar
      * })
      */
     private $idter;
+
+    /**
+     * @return int
+     */
+    public function getIdmaj(): int
+    {
+        return $this->idmaj;
+    }
+
+    /**
+     * @param int $idmaj
+     */
+    public function setIdmaj(int $idmaj): void
+    {
+        $this->idmaj = $idmaj;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdkal(): int
+    {
+        return $this->idkal;
+    }
+
+    /**
+     * @param int $idkal
+     */
+    public function setIdkal(int $idkal): void
+    {
+        $this->idkal = $idkal;
+    }
+
+    /**
+     * @return \App\Models\Entities\Rezervacija
+     */
+    public function getIdrez(): \App\Models\Entities\Rezervacija
+    {
+        return $this->idrez;
+    }
+
+    /**
+     * @param \App\Models\Entities\Rezervacija $idrez
+     */
+    public function setIdrez(\App\Models\Entities\Rezervacija $idrez): void
+    {
+        $this->idrez = $idrez;
+    }
+
+    /**
+     * @return Termin
+     */
+    public function getIdter(): Termin
+    {
+        return $this->idter;
+    }
+
+    /**
+     * @param Termin $idter
+     */
+    public function setIdter(Termin $idter): void
+    {
+        $this->idter = $idter;
+    }
 
 
 }

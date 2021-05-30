@@ -1,0 +1,84 @@
+.majstor h3{
+    font-size: 2.2vh;
+    font-weight: 300;
+}
+.majstor h1{
+    font-size: 3.5vh;
+}
+
+.majstor{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 10px;
+    background-color: #c8c6b9;
+    border-radius: 30px;
+}
+
+.majstor td{
+    text-align: left;
+    padding: 1%;
+    padding-bottom: 0;
+}
+
+.userimg {
+    width: 15%;
+}
+.majstor img{
+    width:100%;
+    border-radius: 15px;
+    vertical-align: middle;
+}
+
+.prihvati button{
+    float:left;
+    border: none;
+    border-radius: 30px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 50%;
+    background-color: #03ac13;
+    color: #d8d6c9;
+    padding: 5px;
+    font-size: 2.2vh;
+    margin-bottom: 1%;
+}
+
+.odbij button{
+    float:left;
+    border: none;
+    border-radius: 30px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 50%;
+    background-color: red;
+    color: #d8d6c9;
+    padding: 5px;
+    font-size: 2.2vh;
+    margin-bottom: 1%;
+}
+
+.emailArea {
+    outline:none;
+    border:none;
+    border-radius: 15px;
+    padding: 5px;
+    resize: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 2.2vh;
+}
+
+.emailButton {
+    outline:none;
+    border:none;
+    border-radius: 30px;
+    background-color: #686659;
+    width: 100%;
+    padding: 5px;
+    color: #d8d6c9;
+    font-size: 2.2vh;
+    margin-bottom: 1%;
+}

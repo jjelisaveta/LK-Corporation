@@ -601,3 +601,8 @@ body {
     padding:15px;
     font-weight: bolder;
 }
+.odbij label{
+    font-size: 14px;
+    font-family: Arial;
+    padding-left: 5px;
+}

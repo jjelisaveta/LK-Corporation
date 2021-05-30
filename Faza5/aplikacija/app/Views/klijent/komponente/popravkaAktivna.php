@@ -8,6 +8,7 @@ $klasa = "col-10 col-md-3 offset-1 offset-md-" . $num;
             <td>
                 <h1>
                     <?= $imeMajstor ?>
+                    <?= $prezime ?>
                 </h1>
                 <h4>
                     <?= $datumPopravke ?>

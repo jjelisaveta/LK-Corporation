@@ -176,4 +176,52 @@ class Termin extends \App\Models\Entities\Termin implements \Doctrine\ORM\Proxy\
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdter(): int
+    {
+        if ($this->__isInitialized__ === false) {
+            return (int)  parent::getIdter();
+        }
+
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdter', []);
+
+        return parent::getIdter();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdter(int $idter): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdter', [$idter]);
+
+        parent::setIdter($idter);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDatumvreme(): \DateTime
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDatumvreme', []);
+
+        return parent::getDatumvreme();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDatumvreme(\DateTime $datumvreme): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDatumvreme', [$datumvreme]);
+
+        parent::setDatumvreme($datumvreme);
+    }
+
 }

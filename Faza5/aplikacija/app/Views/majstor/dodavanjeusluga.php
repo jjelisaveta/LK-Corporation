@@ -22,38 +22,36 @@
             <div id="sadrzaj" class="offset-0 col-12 offset-md-2 col-md-10">
                 <form id="content" action="dodajUslugu" method="POST">
                     <div class="row">
+                 
+                    <input class="offset-2 col-8 offset-md-4 col-md-4" type="text" name="naslov" id="naslovId" value="<?php echo set_value('naslov'); ?>"  placeholder="Naslov" >
                     <div class="offset-2 col-8 offset-md-4 col-md-4 offset-2 greska text-center">
                         <?php
                         if(isset($nazivGreska))
                             echo $nazivGreska;
                         ?>
-                    </div>                    
-                    <input class="offset-2 col-8 offset-md-4 col-md-4" type="text" name="naslov" id="naslovId" value="<?php echo set_value('naslov'); ?>"  placeholder="Naslov" >
+                    </div>         
                     </div>
 
                     <div class="row">
+                        
+                        <textarea  class="offset-2 col-8 offset-md-4 col-md-4 offset-2" name="opis" id="opisId" cols="40" rows="8" placeholder="Kratak opis usluge" draggable="false" ><?php echo set_value('opis'); ?></textarea>
                         <div class="offset-2 col-8 offset-md-4 col-md-4 offset-2 greska text-center">
                             <?php
                             if(isset($opisGreska))
                                 echo $opisGreska;
                             ?>
                         </div>
-                        <textarea  class="offset-2 col-8 offset-md-4 col-md-4 offset-2" name="opis" id="opisId" cols="40" rows="8" placeholder="Kratak opis usluge" draggable="false" ><?php echo set_value('opis'); ?></textarea>
                     </div>
 
                     <div class="row red text-center">
                         
                             <div class="offset-2 col-8 offset-md-4 col-md-4 offset-md-4 offset-2">
-                                    <div class="col-5 greska text-center">
-                                      <?php
-                                    if(isset($cenaGreska))
-                                        echo $cenaGreska;
-                                    ?>
-                                     </div>
+                                    
                                     <input class="col-5" type="number" name="cena" id="cenaId" value="<?php echo set_value('cena'); ?>" placeholder="Cena"><?php
                                     if(isset($cena))
                                         echo $cena;
                                     ?>
+                                   
                                     <select class="col-5" name="t" id="selectId" >  
                                             <option value="default">--Izaberi--</option>
                                             <?php if(isset($tagovi))
@@ -64,9 +62,17 @@
                                     </select>
                                     <input type="hidden" id="izabraniTagovi" name="izabraniTagovi">
                                     <button id="plus" type="button" class="col-1 plus">+ </button>
+                                    <div class="col-5 greska text-center">
+                                      <?php
+                                    if(isset($cenaGreska))
+                                        echo $cenaGreska;
+                                    ?>
+                                     </div>
                             </div>
                     </div>
-
+                    <div class="row">
+                         
+                    </div>
                     <div class="row">
                             <div  class="offset-2 col-8 offset-md-4 col-md-4 offset-md-4 offset-2">
                                     <div name="tagovi" id="tagovi">
@@ -78,7 +84,6 @@
                             <div class="offset-2 col-8 offset-md-4 col-md-4 text-center offset-2">
                                     <a href="mojeUsluge.html">   
                                             <button id="idDugmeR" class="col-11" type="submit"> Dodaj</button>
-
                                     </a>
                             </div>
                     </div>

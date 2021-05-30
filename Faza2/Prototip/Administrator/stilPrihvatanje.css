@@ -26,7 +26,7 @@ body {
     color: #818181;
     display: block;
   }
-  
+
 #menu a:hover {
     color: #f1f1f1;
 }
@@ -38,8 +38,8 @@ body {
     position: absolute;
     display:flex;
     flex-direction: row;
-    bottom:16%; 
-    
+    bottom:16%;
+
     padding: 6px 8px 6px 16px;
 }
 
@@ -79,7 +79,7 @@ body {
     color:orange;
 }
 
-#footer { 
+#footer {
     position: fixed;
     bottom:0;
     width:85%;
@@ -110,17 +110,17 @@ body {
     background-color: #2b2b2b;
     z-index: 1;
 }
-  
+
 .dropdown-content a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     display: block;
 }
-  
+
 .dropdown-content a:hover {
     color: rgb(255, 255, 255);
 }
-  
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -145,8 +145,7 @@ body {
     display:flex;
     flex-direction: column;
     justify-content: space-around;
-    position: relative;
-    background-color: #e8e6d9; 
+    background-color: #e8e6d9;
 }
 
 .zahtev{
@@ -183,7 +182,7 @@ body {
     vertical-align: middle;
     position: relative;
 }
-    
+
 #zahtevi pre{
     /*margin-left: -15%;*/
     font-size: larger;
@@ -266,7 +265,7 @@ body {
     z-index: 2;
 }
 
-#footer{ 
+#footer{
     bottom:0;
     width:85%;
     height: 5%;
@@ -275,5 +274,5 @@ body {
     color: #818181;
     font-family: 'Courier New';
     z-index: 0;
-   
+
 }

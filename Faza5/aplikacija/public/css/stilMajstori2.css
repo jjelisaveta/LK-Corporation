@@ -5,52 +5,13 @@ body {
 }
 
 
-#user {
-    height:8%;
-    width:100%;
-    position: absolute;
-    display:flex;
-    flex-direction: row;
-    bottom:16%; 
-    
-    padding: 6px 8px 6px 16px;
-}
-
-#user img {
-    border-color: transparent;
-    border-radius: 10px;
-    padding: 5px 5px 5px 5px;
-}
-
-#user a {
-    font-size:15px;
-    font-family: Arial;
-    color: orange;
-    padding-left:10px;
-    padding-top:20px;
-    text-align: center;
-}
 
 
 
-
-
-#sredina{
-    position: relative;
-    z-index: 2;
- 
-    height: 100%;
-}
 
 #con {
 
-    margin-bottom: 5%;
-    width: 90%;
-    height:100%;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-around;
-    position: relative;
+ 
     background-color: #e8e6d9; 
 }
 
@@ -64,16 +25,9 @@ body {
     vertical-align: middle;
     background-color:#c8c6b9 ;
     position: relative;
-    height: 160px;
+    height: 200px;
 }
     
-.gornja td {
-    font-size: larger;
-    vertical-align: middle;
-    text-align: left;
-    padding-left: 1%;
-    padding-right: 1%;
-}   
 
 .gornja h2 {
     font-family: Arial;
@@ -94,9 +48,13 @@ body {
 }
 
 .userimg{
-    height: 100%;
-    width:15%;
-    
+    /* height: 100%;
+    width:20%; */
+    width: 100%;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: blue;
 }
 
 #con img{
@@ -110,13 +68,14 @@ body {
 
 #con h1 {
     font-family: Arial;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bolder;
+   margin-top: 8%;
 }
 
 #con h3 {
     font-family: Arial;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: lighter;
 }
 
@@ -168,35 +127,6 @@ body {
     height: 100%;
 }
 
-#tags{
-    margin-left: 15%;
-    margin-top:5%;
-    text-align: center;
-    width: 85%;
-    float:left;
-}
-
-
-#tags button {
-    border-radius: 15px;
-    background: transparent;
-    color: darkslategray;
-    border-color: darkslategray;
-    border-style: solid;
-    font-size: 16px;
-    padding:5px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-#tags button:focus {
-    outline: none;
-    background-color: darkgray;
-}
-
-#tags button:hover{
-    background-color: darkgray;
-}
 
 .gornja a{
     float: right;
@@ -210,6 +140,72 @@ body {
 .gornja a:hover{
     color:orange;
 }
+.vise
+{
+    vertical-align: bottom;
+    text-align: right;
+   margin-top: 20px;
+   margin-right: 20px;
+}
+.progress
+{
+    position: relative;
+    width: 80%;
+    height: 100%;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: orangered;
+    margin-bottom: 0px;
+   
+}
 
+.progress-bar
+{
+    color: black;  
+}
+.mala
+{
+    font-size: 16px;
+    font-weight: lighter;
+    margin-bottom: 0px;
+}
+.btn 
+{
 
+    border-width: 20%;
+    
+    vertical-align:top;
+ 
+}
+.imeP
+{
+    text-align: center;
+}
+#btnD
+{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 50%;
+   
+    margin-top: 5%;
+    text-align: right;
+}
+#mejl
+{
+    text-align: left;
+}
+.progress .bar {
+    z-index: 1;
+    position: absolute;
+}
 
+.progress span {
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    color: black; /* Change according to needs */
+    text-align: center;
+    width: 100%;
+}
