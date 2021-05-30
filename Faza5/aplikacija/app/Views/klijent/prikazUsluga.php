@@ -120,46 +120,30 @@
                 </table>
             </div>
         </div>
-        <div class="row">
-            <div class="offset-1 col-10 polje">
-                <table class="uslugaTabela">
-                    <tr>
-                        <td id="userimg"><img src="slike/covek1.webp"></td>
-                        <td>
-                            <h1>
-                                BRZO, EFIKASNO, POVOLJNO! MAJSTOR NEŠA
-                            </h1>
-                            <hr/>
-                            <p>
-                                Dvadeset godina iskustva u popravljanju veš mašina, radimo sa svim modelima! Dolazimo kod vas u najkracem roku.  Jos neki tekst da se proveri prelom. Jos neki tekst da se proveri prelom.
-                            </p>
-                        </td>
-                        <td class="statistika">
-                            <h3>
-                                Majstora preporučuje: <b>82%</b> <br>
-                                Prosečno vreme odgovora: <b>02:25</b> <br> 
-                                Cena usluge: <b>3242</b> 
-                            </h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <div class="detaljnijeMajstor">
-                                <button type="button" onclick="window.location='detaljnijiPrikazMajstora.html';">
-                                    Prikazi majstora detaljnije
-                                </button>
-                            </div>
-                            <div class="odbij">
-                                <button>
-                                    <label for="cb">Odaberi</label>
-                                    <input type="checkbox" id ="cb">
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+        <?php
+            foreach ($usluge as $usluga){
+                $ukupno = 0;
+                $pozitivna = 0;
+                foreach($ostvarene as $ostvarena){
+                    if ($ostvarena->getIdusl()->getIdusl() == $usluga->getIdusl()){
+                        $ukupno++;
+                        if ($ostvarena->getOcena()!=null && $ostvarena->getOcena()=="1")
+                            $pozitivna++;
+                    }
+                }
+                if ($ukupno!=0) {
+                    $prep = $pozitivna/$ukupno * 100;
+                    $prep = "" . $prep ."%";
+                }
+                else $prep = " - ";
+                echo view_cell("\App\Libraries\UslugaPrikazUslugaLib::prikazUsluge", ['naslov' => $usluga->getNaziv(), 
+                            'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
+                            'tagovi'=>$usluga->getTagovi(), 'cenaUsluge'=>$usluga->getCena(), 'prep'=>$prep]);
+            }
+        ?>
+        
+        
+        
     </div>
     
     

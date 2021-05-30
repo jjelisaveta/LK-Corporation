@@ -8,6 +8,13 @@ use App\Models\KorisnikModel;
 use App\Models\UslugaModel;
 use App\Models\ZahtevModel;
 use App\Models\TerminModel;
+use App\Models\Entities\Zahtev;
+use App\Models\Kalendar;
+use App\Models\KalendarModel;
+use App\Models\Repositories\UslugaOstvarenaRepository;
+use CodeIgniter\Model;
+use phpDocumentor\Reflection\Types\Array_;
+use App\Models\Entities;
 class Klijent extends BaseController
 {
 
@@ -38,8 +45,25 @@ class Klijent extends BaseController
         }
     }
     
+       public function usluge()
+    {
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(7)->getUsluge();
+        $ret = [];
+        /*foreach ($usluge as $usluga) {
+            array_push($ret, $usluga->getIdusl());
+            echo $usluga->getIdusl();
+        }
+        return "" . json_encode($ret);*/
+        return $usluge;
+    }
+
+    
     public function prikazUsluga($trazeniTag){             /* prosledi se ovde samo kompresovano*/
-        $stranica = 'pretrazivanje';
+        $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->findAll();
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(10)->getUsluge();
+        
+        $this->prikaz('prikazUsluga', ['usluge'=>$usluge, 'ostvarene'=>$ostvarene]);
+            
     }
 
     public function istorija()
