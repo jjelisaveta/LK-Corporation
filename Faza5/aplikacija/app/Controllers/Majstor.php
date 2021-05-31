@@ -261,16 +261,17 @@ class Majstor extends BaseController
         }
         return $ret;
     }
-    //test
+
     public function dohvatiRezervacije($date)
     {
+        $id = $this->session->get('Korisnik')->idKor;
         $var = $this->request->getMethod();
         if ($var != 'get') {
             //potrebno popraviti da se salje error 500
             return json_encode([]);
         }
 //        $date = $this->request->getVar('date');
-        return json_encode($this->dohvatiRezervacijeInternal(1, $date));
+        return json_encode($this->dohvatiRezervacijeInternal($id, $date));
     }
 
     private function dohvatiRadneTermineInternal($idMaj, $date)
@@ -287,40 +288,41 @@ class Majstor extends BaseController
         return $ret;
     }
 
-
     public function dohvatiRadneTermine($date)
     {
+        $id = $this->session->get('Korisnik')->idKor;
         $var = $this->request->getMethod();
         if ($var != 'get') {
             //potrebno popraviti da se salje error 500
             return json_encode([]);
         }
 //        $date = $this->request->getVar('date');
-        return json_encode($this->dohvatiRadneTermineInternal(1, $date));
+        return json_encode($this->dohvatiRadneTermineInternal($id, $date));
     }
 
     private function dodajRadniTerminInternal($idMaj, $date, $id)
     {
-        $terminModel = new TerminModel();
-        $datumVreme = $date . " " . $id . ":00:00";
-        $termin = $terminModel->where("datumVreme", $datumVreme)->first();
+        $datumVreme = \DateTime::createFromFormat('Y-m-d H:i:s', $date . " " . $id . ":00:00");
+        $termin = $this->doctrine->em->getRepository(\App\Models\Entities\Termin::class)
+            ->findBy(['datumvreme' => $datumVreme]);
         if ($termin == []) {
-            $terminModel->save([
-                "datumVreme" => $datumVreme
-            ]);
-            $idTer = $terminModel->getInsertID();
+            $termin = new Entities\Termin();
+            $termin->setDatumvreme($datumVreme);
+            $this->doctrine->em->persist($termin);
+            $this->doctrine->em->flush();
         } else {
-            $idTer = $termin->idTer;
+            $termin = $termin[0];
         }
-        $kalendarModel = new KalendarModel();
-        $kalendarTermin = $kalendarModel->where("idMaj", $idMaj)->where("idTer", $idTer)->first();
-        if ($kalendarTermin != null) {
+        $kalendar = $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)
+            ->findBy(['idter' => $termin, 'idmaj' => $idMaj]);
+        if ($kalendar != []) {
             return "GRESKA termin vec postoji";
         }
-        $kalendarModel->save([
-            'idMaj' => $idMaj,
-            'idTer' => $idTer,
-        ]);
+        $kalendar = new  Entities\Kalendar();
+        $kalendar->setIdmaj($idMaj);
+        $kalendar->setIdter($termin);
+        $this->doctrine->em->persist($kalendar);
+        $this->doctrine->em->flush();
         return "OK";
     }
 
@@ -331,7 +333,7 @@ class Majstor extends BaseController
             //potrebno popraviti da se salje error 500
             return "zahtev mora biti post";
         }
-        $idMaj = 1;
+        $idMaj = $this->session->get("Korisnik")->idKor;
         $date = $this->request->getVar("datum");
         $id = $this->request->getVar("index");
         return $this->dodajRadniTerminInternal($idMaj, $date, $id);
@@ -339,26 +341,29 @@ class Majstor extends BaseController
 
     private function skiniRadniTerminInternal($idMaj, $date, $id)
     {
-        $terminModel = new TerminModel();
-        $datumVreme = $date . " " . $id . ":00:00";
-        $termin = $terminModel->where("datumVreme", $datumVreme)->first();
+        $datumVreme = \DateTime::createFromFormat('Y-m-d H:i:s', $date . " " . $id . ":00:00");
+        $termin = $this->doctrine->em->getRepository(\App\Models\Entities\Termin::class)
+            ->findBy(['datumvreme' => $datumVreme]);
         if ($termin == []) {
-            $terminModel->save([
-                "datumVreme" => $datumVreme
-            ]);
-            $idTer = $terminModel->getInsertID();
+            $termin = new Entities\Termin();
+            $termin->setDatumvreme($datumVreme);
+            $this->doctrine->em->persist($termin);
+            $this->doctrine->em->flush();
+            return "GRESKA termin nije ni postojao";
         } else {
-            $idTer = $termin->idTer;
+            $termin = $termin[0];
         }
-        $kalendarModel = new KalendarModel();
-        $kalendarTermin = $kalendarModel->where("idMaj", $idMaj)->where("idTer", $idTer)->first();
-        if ($kalendarTermin == null) {
+        $kalendar = $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)
+            ->findBy(['idter' => $termin, 'idmaj' => $idMaj]);
+        if ($kalendar == []) {
             return "GRESKA termin ne postoji";
         }
-        if ($kalendarTermin->idRez != null) {
+        $kalendar = $kalendar[0];
+        if ($kalendar->getIdrez() != null) {
             return "GRESKA termin je rezervisan";
         }
-        $kalendarModel->delete($kalendarTermin->idKal);
+        $this->doctrine->em->remove($kalendar);
+        $this->doctrine->em->flush();
         return "OK";
     }
 
@@ -369,7 +374,7 @@ class Majstor extends BaseController
             //potrebno popraviti da se salje error 500
             return "zahtev mora biti post";
         }
-        $idMaj = 1;
+        $idMaj = $this->session->get("Korisnik")->idKor;
         $date = $this->request->getVar("datum");
         $id = $this->request->getVar("index");
         return $this->skiniRadniTerminInternal($idMaj, $date, $id);
@@ -553,6 +558,7 @@ class Majstor extends BaseController
 
     }
 
+    //test
     public function usluge()
     {
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(10)->getUsluge();

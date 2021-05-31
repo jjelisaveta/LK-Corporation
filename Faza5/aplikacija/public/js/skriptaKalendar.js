@@ -60,6 +60,11 @@ function resetTermine() {
 
 function promeniTermin(objButton) {
     //dugme1
+    var danas = new Date();
+    var izbor = $("#datuminput").val().split("-");
+
+    if (izbor[0] == danas.getFullYear() && parseInt(izbor[1]) == (danas.getMonth() + 1) && parseInt(izbor[2]) == danas.getDate())
+        return;
     var id = objButton.id.substr(5, objButton.id.length - 4);
     console.log(id);
     if (objButton.classList.contains("terminzauzet")) {
