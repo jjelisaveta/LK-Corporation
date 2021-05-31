@@ -23,28 +23,45 @@
         <div class="row">
             <div id="zahtev" class="offset-0 col-12 offset-md-2 col-md-10">
                 <?php
-                $uslugeOstvarene = $uslugeOst->findall();
+                // $uslugeOstvarene = $uslugeOst->findall();
 
-                foreach ($uslugeOstvarene as $uslugaOstvarena) {
-                    $nadjenZahtev=null;
-                   if ($uslugaOstvarena->obrisano==1) continue;
-                    $zahtev=$zahtevi->find($uslugaOstvarena->idRez);
+            //     foreach ($uslugeOstvarene as $uslugaOstvarena) {
+            //         $nadjenZahtev=null;
+            //        if ($uslugaOstvarena->obrisano==1) continue;
+            //         $zahtev=$zahtevi->find($uslugaOstvarena->idRez);
                   
-                    if (!isset($zahtev)) continue;
-                        if ($zahtev->idKor==$idKor){
-                    $nadjenZahtev=$zahtev;
-                    }
-                    if ($nadjenZahtev==null) continue;
-                    $termin=$termini->find($nadjenZahtev->idTer);
-                    if (new DateTime() < new DateTime($termin->datumVreme)) continue;
-                    $usluga = $usluge->find($uslugaOstvarena->idUsl);
-                    $korisnik = $korisnici->find($usluga->idMaj);
+            //         if (!isset($zahtev)) continue;
+            //             if ($zahtev->idKor==$idKor){
+            //         $nadjenZahtev=$zahtev;
+            //         }
+            //         if ($nadjenZahtev==null) continue;
+            //         $termin=$termini->find($nadjenZahtev->idTer);
+            //         if (new DateTime() < new DateTime($termin->datumVreme)) continue;
+            //         $usluga = $usluge->find($uslugaOstvarena->idUsl);
+            //         $korisnik = $korisnici->find($usluga->idMaj);
              
                     
-                    echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $korisnik->ime,'prezime'=>$korisnik->prezime, 'datumPopravke' => $termin->datumVreme
-              ,'komentar' => $uslugaOstvarena->komentar, 'ocena' => $uslugaOstvarena->ocena, 'id' => $uslugaOstvarena->idUslOstv
-                    ,'opis'=>$nadjenZahtev->opis]);
+            //         echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $korisnik->ime,'prezime'=>$korisnik->prezime, 'datumPopravke' => $termin->datumVreme
+            //   ,'komentar' => $uslugaOstvarena->komentar, 'ocena' => $uslugaOstvarena->ocena, 'id' => $uslugaOstvarena->idUslOstv
+            //         ,'opis'=>$nadjenZahtev->opis]);
+            //     }
+            foreach($ostvarene as $ostvarena)
+
+            {
+              $ime= $ostvarena->getIdrez()->getIdmaj()->getIme();
+              $prezime= $ostvarena->getIdrez()->getIdmaj()->getPrezime();
+              $datum=$ostvarena->getIdrez()->getIdrez()->getIdter()->getDatumvreme()->format("Y-m-d H:i:s");;
+              if (new DateTime() < new DateTime($datum)) continue;
+                $komentar=$ostvarena->getKomentar();
+               $ocena=$ostvarena->getOcena();
+               $id=$ostvarena->getIduslostv();
+               $opis=$ostvarena->getIdrez()->getIdrez()->getOpis();
+
+                            echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $ime,'prezime'=>$prezime, 'datumPopravke' => $datum
+              ,'komentar' => $komentar, 'ocena' => $ocena, 'id' => $id
+                    ,'opis'=>$opis]);
                 }
+            
 
                 ?>
                 <script>
