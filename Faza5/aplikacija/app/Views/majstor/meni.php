@@ -27,8 +27,8 @@
                 </div>
             </div>
             <div id="korisnik">
-                <img src="<?php echo base_url(); ?>/slike/Kalu.jpg" alt="korisnicka slika">
-                <a href="pretrazivanje.html">Kalu</a>
+                <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika">
+                <a href="pretrazivanje.html"><?=$ime ?> <?=$prezime ?></a>
             </div>
         </div>
         

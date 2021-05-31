@@ -3,7 +3,7 @@
     <div class="offset-1 col-10">
         <table class="uslugaPrikaz">
             <tr>
-                <td class="slikaMajstora"><img src="<?php echo base_url(); ?>/slike/Kalu.jpg"></td>
+                <td class="slikaMajstora"><img src="<?php echo base_url() . "/" . $majstor->getSlika(); ?>"></td>
                 <td class="opisUsluge">
                     <h1>
                         <?= $naslov ?>
