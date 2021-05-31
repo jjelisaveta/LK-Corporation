@@ -50,7 +50,7 @@ function resetTermine() {
     $(".dugme").attr("class", "btn-lg col-3 col-md-2 dugme terminne");
     console.log("reset")
     for (i = 0; i < 10; i += 2) {
-        $("#dugme0" + i).text("0" + i + ":00");
+        $("#dugme" + i).text("0" + i + ":00");
     }
     for (i = 10; i < 24; i += 2) {
         $("#dugme" + i).text(i + ":00");

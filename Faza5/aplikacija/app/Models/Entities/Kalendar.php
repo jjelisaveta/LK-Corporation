@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Kalendar
  *
  * @ORM\Table(name="kalendar", indexes={@ORM\Index(name="fk_idRez_idx", columns={"idRez"}), @ORM\Index(name="fk_idTer_idx", columns={"idTer"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Models\Repositories\KalendarRepository")
  */
 class Kalendar
 {

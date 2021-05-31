@@ -117,6 +117,7 @@ class Majstor extends BaseController
     }
 
 
+    //test vrvtn???
     public function dohvatiTagove($idUsl)
     {
         $u = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)
@@ -138,6 +139,7 @@ class Majstor extends BaseController
     }
 
 
+    //test
     public function dohvatiOStvareneUsluge($id)
     {
         $usluge = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
@@ -210,41 +212,32 @@ class Majstor extends BaseController
 
     public function kalendar($date = null)
     {
-        echo "<script>console.log('poslao zahtev');</script>";
         if (!isset($date)) {
             $date = date("Y-m-d");
         }
-        $idMaj = 1;
+        $idMaj = $this->session->get('Korisnik')->idKor;
         $termini = [];
         for ($i = 0; $i < 4; $i++) {
             for ($j = 0; $j < 3; $j++) {
                 $vreme = str_pad((($i * 3 + $j) * 2), 2, '0', STR_PAD_LEFT) . ":" . "00";
                 $id = "dugme" . (($i * 3 + $j) * 2);
                 $class = "terminne";
-                $termin = new \App\Libraries\KalendarTermin($vreme, $id, $class);
+                $termin = ['vreme' => $vreme, 'id' => $id, 'class' => $class];
                 array_push($termini, $termin);
             }
         }
+        $rezervisan = $this->dohvatiRezervacijeInternal($idMaj, $date);
+        $radi = $this->dohvatiRadneTermineInternal($idMaj, $date);
         $data["termini"] = $termini;
         $data["date"] = $date;
+        $data['radi'] = $radi;
+        $data['rezervisan'] = $rezervisan;
         $this->prikaz("kalendar", $data);
-        $radi = $this->dohvatiRadneTermineInternal($idMaj, $date);
-        foreach ($radi as $ter) {
-            echo "<script>updateTermin('$ter');</script>";
-        }
-        $rezervisan = $this->dohvatiRezervacijeInternal($idMaj, $date);
-        foreach ($rezervisan as $ter) {
-            echo "<script>rezervisi('$ter[0]','$ter[1]');</script>";
-        }
     }
 
-    private function dohvatiOpisRezervacije($idRez)
+    private function dohvatiOpisRezervacije($rezervacija)
     {
-//        $zahtevModel = new ZahtevModel();
-//        $ret = $zahtevModel->dohvatiCeoOpis($idRez);
-//        return $ret;
-        $em = $this->doctrine->em;
-        $zahtev = $em->getRepository(Zahtev::class)->find($idRez);
+        $zahtev = $rezervacija->getIdrez();
         $korisnik = $zahtev->getIdkor();
         $opis = $zahtev->getOpis();
         $ime = $korisnik->getIme();
@@ -257,19 +250,18 @@ class Majstor extends BaseController
 
     private function dohvatiRezervacijeInternal($idMaj, $date)
     {
-        $kalendarModel = new KalendarModel();
         $ret = array();
-        $kalendarModel = new KalendarModel();
-        $kalendar = $kalendarModel->dohvatiMajstorRezervisan($idMaj, $date);
+        $kalendar = $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)
+            ->dohvatiMajstorRezervisan($idMaj, $date);
         foreach ($kalendar as $kal) {
-            $niz = explode(" ", $kal->datumVreme);
+            $niz = explode(" ", $kal->getIdter()->getDatumvreme()->format("Y-m-d H:i"));
             $nizz = explode("-", $niz[1]);
             $id = "dugme" . (intval($nizz[0]));
-            array_push($ret, [$id, $this->dohvatiOpisRezervacije($kal->idRez) . ";" . $kal->datumVreme]);
+            array_push($ret, [$id, $this->dohvatiOpisRezervacije($kal->getIdrez()) . ";" . $kal->getIdter()->getDatumvreme()->format("Y-m-d H:i")]);
         }
         return $ret;
     }
-
+    //test
     public function dohvatiRezervacije($date)
     {
         $var = $this->request->getMethod();
@@ -284,12 +276,12 @@ class Majstor extends BaseController
     private function dohvatiRadneTermineInternal($idMaj, $date)
     {
         $ret = array();
-        $kalendarModel = new KalendarModel();
-        $kalendar = $kalendarModel->dohvatiMajstorSlobodan($idMaj, $date);
+        $kalendar = $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)
+            ->dohvatiMajstorSlobodan($idMaj, $date);
         foreach ($kalendar as $kal) {
-            $niz = explode(" ", $kal->datumVreme);
-            $niz = explode("-", $niz[1]);
-            $id = "dugme" . (intval($niz[0]));
+            $niz = explode(" ", $kal->getIdter()->getDatumvreme()->format("Y-m-d H:i"));
+            $nizz = explode("-", $niz[1]);
+            $id = "dugme" . (intval($nizz[0]));
             array_push($ret, $id);
         }
         return $ret;
