@@ -35,7 +35,7 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
         </div>
         
         <div class="row no-gutters">
-        <div class="col-8">
+        <div class="col-7">
         <div class="progress">
                         <div class=" progress-bar bg-warning" role="progressbar" style="width:<?= $procenat ?>%"
                              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
@@ -44,11 +44,14 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
                     </div>
                     
         </div>
-        <div class="col-lg-2 offset-lg-2 col-md-2 offset-md-0 col-sm-2 offset-sm-2 col-3 offset-1 ">
-        <a href="" class="vise">...
-          </a>
+        <div class="col-lg-3 offset-lg-1 col-md-3 offset-md-0 col-sm-3 offset-sm-1 col-3 offset-1 ">
+        <!-- <a href="<?php echo site_url("Admin/prikazMajstoraAdmin") ?>"> -->
+        <button class="vise btn btn-warning "  onclick="detaljnijiPrikaz('<?php echo $id; ?>')">...</button>
+        <!-- </a> -->
+        <!-- <a href="" class="vise" ondetaljnijePrikazi>...
+          </a> -->
         </div>
-        <div class="col-1"></div>
+        <div class="col-2"></div>
 
         </div>
     </div>

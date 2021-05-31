@@ -14,6 +14,7 @@ use App\Models\UslugaModel;
 use App\Models\TagModel;
 use App\Models\UslugaTagModel;
 use App\Models\ZahtevModel;
+use CodeIgniter\CLI\Console;
 use CodeIgniter\Model;
 use phpDocumentor\Reflection\Types\Array_;
 
@@ -142,8 +143,16 @@ class Admin extends BaseController
     
     public function prikazMajstora()
     {
+        // $var = $this->request->getMethod();
+        // if ($var != 'post') {
+        //     //potrebno popraviti da se salje error 500
+        //     return "zahtev mora biti post";
+        // }
+        
+        $id = intval($this->request->getVar('id'));
+    //   echo ($id);
         //$id = $this->session->get('Korisnik')->idKor;  id kroz get/post
-        $id = 1;
+        // $id = 1;
         $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
         /*if ($majstor->getIdulo()->getNaziv()!="majstor"){
             return ;//prikaz svih usluga
@@ -155,9 +164,11 @@ class Admin extends BaseController
         $preporuke = $this->preporuke($ostvarene);
         $cena = $this->prosecnaCena($usluge);
         
+        echo site_url('Admin/prikazMajstoraAdmin');
+        echo (';');
         $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
             'vreme'=>$vreme, 'preporuke'=>$preporuke, 'cena'=>$cena]);
-
+       
     }
 
     public function obrisiKomentar()
