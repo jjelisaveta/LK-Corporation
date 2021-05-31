@@ -12,6 +12,7 @@ use App\Models\Entities\Zahtev;
 use App\Models\Kalendar;
 use App\Models\KalendarModel;
 use App\Models\Repositories\UslugaOstvarenaRepository;
+use App\Models\Repositories\IstorijaRepository;
 use CodeIgniter\Model;
 use phpDocumentor\Reflection\Types\Array_;
 use App\Models\Entities;
@@ -68,35 +69,42 @@ class Klijent extends BaseController
 
     public function istorija()
     {
+        // $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->where('obrisano'!=1);
+        
+        // $uslugaOstvareneModel = new UslugaOstvarenaModel();
 
-        $uslugaOstvareneModel = new UslugaOstvarenaModel();
-
-        $uslugaModel = new UslugaModel();
-        $korisniciModel = new KorisnikModel();
-        $rezervacijaModel = new RezervacijaModel();
-        $zahtevModel = new ZahtevModel();
-        $terminModel= new TerminModel();
+        // $uslugaModel = new UslugaModel();
+        // $korisniciModel = new KorisnikModel();
+        // $zahtevModel = new ZahtevModel();
+        // $terminModel= new TerminModel();
+       
         //ovde treba ubaciti dohvatanje id-a korisnika iz sesije
         $idkor=2;
-        $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
-            'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
+        $ostvarene=$this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
+        // $ostvarene=$this->doctrine->em->getRepository(\App\Models\Repositories\IstorijaRepository::class)->dohvatiIstoriju($idkor);
+
+        $this->prikaz("istorija",["ostvarene"=>$ostvarene]);
+        // $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
+        //     'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
 
 
     }
 public function aktivnaPopravka()
 {
-    $uslugaOstvareneModel = new UslugaOstvarenaModel();
-    $uslugaModel = new UslugaModel();
+    // $uslugaOstvareneModel = new UslugaOstvarenaModel();
+    // $uslugaModel = new UslugaModel();
 
-    $uslugaModel = new UslugaModel();
-    $korisniciModel = new KorisnikModel();
-    $rezervacijaModel = new RezervacijaModel();
-    $zahtevModel = new ZahtevModel();
-    $terminModel= new TerminModel();
+    // $uslugaModel = new UslugaModel();
+    // $korisniciModel = new KorisnikModel();
+    // $rezervacijaModel = new RezervacijaModel();
+    // $zahtevModel = new ZahtevModel();
+    // $terminModel= new TerminModel();
       //ovde treba ubaciti dohvatanje id-a korisnika iz sesije
     $idkor=2;
-    $this->prikaz("aktivnePopravke", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
-    'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
+    $aktivne=$this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
+    $this->prikaz("aktivnePopravke",["aktivne"=>$aktivne]);
+//     $this->prikaz("aktivnePopravke", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
+//     'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
 }
     public function sacuvajKomentar()
     {
