@@ -141,7 +141,7 @@ class Admin extends BaseController
         return $ukupno / sizeof($usluge);
     }
     
-    public function prikazMajstora()
+    public function prikazMajstoraAdmin()
     {
         // $var = $this->request->getMethod();
         // if ($var != 'post') {
