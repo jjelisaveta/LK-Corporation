@@ -28,7 +28,7 @@ class Admin extends BaseController
         // $podaci['ime'] = $this->session->get('Korisnik')->ime;
         // $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
         // $podaci['profilna'] = $this->session->get('Korisnik')->slika;
-          // $podaci['id'] = $this->session->get('Korisnik')->idKor;
+        // $podaci['id'] = $this->session->get('Korisnik')->idKor;
         $podaci['controller'] = "Admin";
         $podaci['ime'] = 'Code';
         $podaci['prezime'] = 'Igniter';
@@ -47,9 +47,9 @@ class Admin extends BaseController
             return "zahtev mora biti post";
         }
 
-        $id =  $this->request->getVar('id');
+        $id = $this->request->getVar('id');
 
-        $korisniciModel=new Korisnikmodel();
+        $korisniciModel = new Korisnikmodel();
         $korisniciModel->delete($id);
 
         return "OK";
@@ -62,8 +62,8 @@ class Admin extends BaseController
         $uloga = 2;
         $majstori = $this->doctrine->em->getRepository(Entities\Korisnik::class)->findBy(['idulo' => $uloga, 'odobren' => 1]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUsluge();
-        
-        return $this->prikaz('pregledMajstora', ['majstori' => $majstori,'ostvarene'=>$ostvarene]);
+
+        return $this->prikaz('pregledMajstora', ['majstori' => $majstori, 'ostvarene' => $ostvarene]);
     }
 
     public function odobravanjeMajstora()
@@ -111,64 +111,65 @@ class Admin extends BaseController
         return $this->ukloniMajstoraInternal($id);
     }
 
-    public function vremeOdgovora($ostvarene){
-       $ukupno = 0;
-        foreach($ostvarene as $ostvarena){
+    public function vremeOdgovora($ostvarene)
+    {
+        $ukupno = 0;
+        foreach ($ostvarene as $ostvarena) {
             $vremeOdgovora = $ostvarena->getIdrez()->getVremeodgovora()->format("Y-m-d H:i:s");
             $vremeSlanja = $ostvarena->getIdrez()->getIdRez()->getVremeslanja()->format("Y-m-d H:i:s");
             $razlika = strtotime($vremeOdgovora) - strtotime($vremeSlanja);
-            
-            $ukupno+= $razlika;
+
+            $ukupno += $razlika;
         }
-        return $ukupno/sizeof($ostvarene);
+        if (sizeof($ostvarene) == 0)
+            return 0;
+        return $ukupno / sizeof($ostvarene);
     }
 
-    public function preporuke($ostvarene){
-       $sum = 0;
-       foreach($ostvarene as $ostvarena) {
-           if ($ostvarena->getOcena() =="1"){
-               $sum++;
-           }
-       }
-       return $sum / sizeof($ostvarene) * 100;
+    public function preporuke($ostvarene)
+    {
+        $sum = 0;
+        foreach ($ostvarene as $ostvarena) {
+            if ($ostvarena->getOcena() == "1") {
+                $sum++;
+            }
+        }
+        if (sizeof($ostvarene) == 0)
+            return 0;
+        return $sum / sizeof($ostvarene) * 100;
     }
-    
-    public function prosecnaCena($usluge){
+
+    public function prosecnaCena($usluge)
+    {
         $ukupno = 0;
-        foreach($usluge as $usluga){
+        foreach ($usluge as $usluga) {
             $ukupno += $usluga->getCena();
         }
+        if (sizeof($usluge) == 0)
+            return 0;
         return $ukupno / sizeof($usluge);
     }
-    
+
     public function prikazMajstoraAdmin()
     {
-        // $var = $this->request->getMethod();
-        // if ($var != 'post') {
-        //     //potrebno popraviti da se salje error 500
-        //     return "zahtev mora biti post";
-        // }
-        
-        $id = intval($this->request->getVar('id'));
-    //   echo ($id);
-        //$id = $this->session->get('Korisnik')->idKor;  id kroz get/post
-        // $id = 1;
-        $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
-        /*if ($majstor->getIdulo()->getNaziv()!="majstor"){
-            return ;//prikaz svih usluga
-        }*/
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);        
+        // print_r($_POST);
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return "zahtev mora biti post";
+        }
+        $id = $this->request->getVar('id');
+
+        $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->findBy(['idkor' => $id])[0];
+
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
-        
+
         $vreme = $this->vremeOdgovora($ostvarene);
         $preporuke = $this->preporuke($ostvarene);
         $cena = $this->prosecnaCena($usluge);
-        
-        echo site_url('Admin/prikazMajstoraAdmin');
-        echo (';');
-        $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
-            'vreme'=>$vreme, 'preporuke'=>$preporuke, 'cena'=>$cena]);
-       
+        return $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
+            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena]);
     }
 
     public function obrisiKomentar()
