@@ -161,7 +161,7 @@ class Zahtev
     public function setOpis($opis)
     {
         $this->opis = $opis;
-        return this;
+        
     }
 
     /**
@@ -174,7 +174,7 @@ class Zahtev
     public function setIdkor(\App\Models\Entities\Korisnik $idKor = null)
     {
         $this->idkor = $idKor;
-        return this;
+       
     }
 
     /**
