@@ -64,9 +64,30 @@ class Klijent extends BaseController
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->findAll();
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis'=>$tag])->getUsluge();
         $this->prikaz('prikazUsluga', ['usluge'=>$usluge, 'ostvarene'=>$ostvarene]);
-            
     }
 
+    public function dohvatiSlobodneTermine(){
+        $majstori = $this->request->getVar('majstori');
+        $nizMajstora = explode("_", $majstori);
+        $slobodni = [];
+        foreach ($nizMajstora as $idMaj){
+            $slobodni = array_merge($slobodni, $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)->dohvatiSveSlobodneZaMajstora($idMaj));
+        }
+       // echo sizeof($slobodni);
+        $zaSlanje = [];
+        foreach($slobodni as $s) {
+            array_push($zaSlanje, [
+                'idMaj'=>$s->getIdmaj(),
+                'idKal'=> $s->getIdkal(),
+                'idTer'=> $s->getIdTer()->getIdter(),
+                'vreme'=>$s->getIdTer()->getDatumvreme()
+            ]);
+        }
+       //print_r(json_encode($zaSlanje));
+     
+        return json_encode($zaSlanje);
+    }
+    
     public function istorija()
     {
         // $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->where('obrisano'!=1);

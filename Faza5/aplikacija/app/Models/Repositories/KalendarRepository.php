@@ -39,4 +39,15 @@ class KalendarRepository extends \Doctrine\ORM\EntityRepository
         return $upit->getQuery()->getResult();
     }
 
+    public function dohvatiSveSlobodneZaMajstora($idMaj){
+        $upit = $this->getEntityManager()->createQueryBuilder();
+        $upit->select('k')
+            ->from('App\Models\Entities\Kalendar', 'k')
+            ->join('App\Models\Entities\Termin', 't', 'WITH', 'k.idter=t.idter')
+            ->where($upit->expr()->andX(
+                $upit->expr()->eq('k.idmaj', '?1'),
+                $upit->expr()->isNull('k.idrez')))
+                ->setParameters(['1' => $idMaj]);
+        return $upit->getQuery()->getResult();
+    }
 }

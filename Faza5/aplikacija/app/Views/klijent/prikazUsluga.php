@@ -43,23 +43,21 @@ if (!isset($ostvarene))
                                 </td>
                                 <td><input type="checkbox" id="8"><label for="8" class="satnice"> 08:00 - 10:00</label>
                                 </td>
-                                <td><input type="checkbox" id="10"><label for="10" class="satnice"> 10:00 -
-                                        12:00</label></td>
+                                <td><input type="checkbox" id="10"><label for="10" class="satnice"> 10:00 - 12:00</label></td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox" id="12"><label for="1" class="satnice"> 12:00 - 14:00</label>
+                                <td><input type="checkbox" id="12"><label for="12" class="satnice"> 12:00 - 14:00</label>
                                 </td>
-                                <td><input type="checkbox" id="14"><label for=k"2" class="satnice"> 14:00 -
-                                        16:00</label></td>
-                                <td><input type="checkbox" id="16"><label for="4" class="satnice"> 16:00 - 18:00</label>
+                                <td><input type="checkbox" id="14"><label for="14" class="satnice"> 14:00 - 16:00</label></td>
+                                <td><input type="checkbox" id="16"><label for="16" class="satnice"> 16:00 - 18:00</label>
                                 </td>
                             </tr>
                             <tr>
-                                <td><input type="checkbox" id="18"><label for="0" class="satnice"> 18:00 - 20:00</label>
+                                <td><input type="checkbox" id="18"><label for="18" class="satnice"> 18:00 - 20:00</label>
                                 </td>
-                                <td><input type="checkbox" id="20"><label for="2" class="satnice"> 20:00 - 22:00</label>
+                                <td><input type="checkbox" id="20"><label for="20" class="satnice"> 20:00 - 22:00</label>
                                 </td>
-                                <td><input type="checkbox" id="22"><label for="4" class="satnice"> 22:00 - 00:00</label>
+                                <td><input type="checkbox" id="22"><label for="22" class="satnice"> 22:00 - 00:00</label>
                                 </td>
                             </tr>
                         </table>
@@ -169,7 +167,8 @@ if (!isset($ostvarene))
                 echo view_cell("\App\Libraries\UslugaPrikazUslugaLib::prikazUsluge", ['naslov' => $usluga->getNaziv(),
                     'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
                     'tagovi' => $usluga->getTagovi(), 'cenaUsluge' => $usluga->getCena(), 'prep' => $prep,
-                    'slika'=>$usluga->getIdmaj()->getSlika()]);
+                    'slika'=>$usluga->getIdmaj()->getSlika(), 'idUsl'=>$usluga->getIdusl(),
+                    'idMaj'=> $usluga->getIdmaj()->getIdkor()]);
             }
             ?>
         </div>
