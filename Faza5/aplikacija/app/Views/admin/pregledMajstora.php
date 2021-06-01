@@ -27,6 +27,8 @@
                         foreach($ostvarene as $ostvarena){
                             $idP=$ostvarena->getIdusl()->getIdmaj()->getIdkor();
                             if ($idP!=$majstor->getIdkor()) continue;
+                            $datum=$ostvarena->getIdrez()->getIdrez()->getIdter()->getDatumvreme()->format("Y-m-d H:i:s");;
+                            if (new DateTime() < new DateTime($datum)) continue;
                                 $ukupno++;
                                
                                 if ($ostvarena->getOcena()!=null && $ostvarena->getOcena()=="1")
