@@ -47,4 +47,13 @@ class ZahtevRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('2', $identifikator);
         return $upit->getQuery()->getResult();
     }
+
+    public function dohvatiIdentifikator()
+    {
+        $upit = $this->getEntityManager()->createQueryBuilder();
+        $upit->select('z')
+            ->from('App\Models\Entities\Zahtev', 'z')
+            ->orderBy('z.identifikator', 'DESC');
+        return $upit->getQuery()->getResult();
+    }
 }

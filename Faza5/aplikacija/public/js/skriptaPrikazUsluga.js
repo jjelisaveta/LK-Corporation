@@ -15,13 +15,61 @@ $(document).ready(function () {
         val.push(Date.parse(t.vreme.date));
         terminiMapa.set(t.idMaj, val);
     })
+
+    dohvatiKljuc();
+
     console.log(terminiMapa);
     $("#dugmePosalji").click(function () {
         if (!unetiTermini) {
             openNav();
             return;
         }
-        ;
+
+        console.log("slanje");
+        var usl = [];
+        var ozn = $("#filteri input:checkbox:checked");
+        var dan = $("#termin").val();
+        var oznaceni = [];
+        ozn.each(index => {
+            oznaceni.push(Date.parse(dan + " " + ozn[index].id + ":00:00"));
+        })
+        var novaMapa = new Map();
+        terminiMapa.forEach((value, key) => {
+            value = value.filter(t => oznaceni.includes(t));
+            novaMapa.set(key, value);
+        });
+        var o = $("#poljeZaUsluge input:checkbox:checked");
+        o.each(index => {
+            console.log(o[index].id.substr(0, 2));
+            if (o[index].id.substr(0, 2) === "cb") {
+                var id = o[index].id.substr(2, o[index].id.length - 2);
+                var majstor = uslugeSve.find(u => u.idUsl == id).majstor;
+                var niz = novaMapa.get(parseInt(majstor))
+                var ter = [];
+                niz.forEach(e => {
+                    var idter = terminiSvi.find(elem => Date.parse(elem.vreme.date) == e).idTer;
+                    ter.push(idter);
+                })
+                usl.push({
+                    'id': id,
+                    'ter': ter
+                });
+            }
+        });
+        opis = $("#opisProblema").val();
+        console.log(JSON.stringify(usl));
+        $.ajax({
+            type: "POST",
+            url: "/Klijent/rezervacija",
+            data: {
+                zahtevi: JSON.stringify(usl),
+                opis: opis,
+                kljuc: kljuc
+            }
+        }).done(function (result_html) {
+            if (result_html === "OK")
+                window.location = '../pretrazivanje';
+        });
         /*slanje mejlova i upis zahteva u bazu*/
     });
 
@@ -34,7 +82,8 @@ $(document).ready(function () {
             return;
             /*filtriranje i sortiranje*/
         }
-        var o = $("input:checkbox:checked");
+        var o = $("#filteri input:checkbox:checked");
+        console.log(o);
         var dan = $("#termin").val();
         var oznaceni = [];
         o.each(index => {
@@ -62,6 +111,7 @@ $(document).ready(function () {
 let uslugeSve;
 let terminiSvi;
 let terminiMapa;
+let kljuc;
 
 function filter(oznaceni, cena, preporuka, vreme) {
     usluge = dohvatiUsluge();
@@ -123,7 +173,7 @@ function dohvatiUsluge() {
 function updateUsluge(usluge) {
     $(".uslugaKomponenta").remove();
     usluge.forEach(u => {
-        $("#poljeZaUsluge").append(usluga(u.cena, u.id, u.majstori, u.naslov, u.opis, u.preporuke, u.vremeOdgovora));
+        $("#poljeZaUsluge").append(usluga(u.cena, u.idUsl, u.majstori, u.naslov, u.opis, u.preporuke, u.vremeOdgovora));
     });
 }
 
@@ -167,6 +217,16 @@ function dohvatiSlobodneTermine(nizMajstora) {
     }).done(function (result_html) {
         rez = result_html;
         localStorage.setItem("termini", rez);
+    });
+}
+
+function dohvatiKljuc() {
+    $.ajax({
+        type: "GET",
+        url: "/Klijent/dohvatiIdentifikator",
+    }).done(function (result_html) {
+        rez = result_html.split("\n")[1];
+        kljuc = parseInt(rez);
     });
 }
 
@@ -223,7 +283,7 @@ function usluga(cena, id, majstor, naslov, opis, preporuka, vremeOdgovora) {
         '                    <div class="odbij">\n' +
         '                        <button>\n' +
         '                            <label for="cb">Odaberi</label>\n' +
-        '                            <input type="checkbox" id="cb">\n' +
+        '                            <input type="checkbox" id="cb' + id + '">\n' +
         '                        </button>\n' +
         '                    </div>\n' +
         '                </td>\n' +
