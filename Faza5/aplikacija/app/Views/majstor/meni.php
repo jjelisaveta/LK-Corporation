@@ -33,9 +33,7 @@
         </div>
         
         <div id="meni" class="d-none d-md-block col-md-2">
-            <a href="pretrazivanje.html">Rezerviši termin</a>
-                    <a href="aktivnapopravka.html">U toku</a>
-                    <a href="istorija.html">Istorija</a>
+               
                     <a href="<?php echo site_url("Majstor/zahtevi") ?>">Zahtevi</a>
                     <a href="<?php echo site_url("Majstor/kalendar") ?>">Kalendar</a>
                     <a href="<?php echo site_url("Majstor/mojeUsluge") ?>">Moje usluge</a>
