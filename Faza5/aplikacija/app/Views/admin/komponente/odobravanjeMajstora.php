@@ -6,7 +6,7 @@ $textId = "text" . $id;
     <div class="offset-1 col-10">
         <table class="majstor">
             <tr>
-                <td class="userimg"><img src="<?php echo base_url(); ?>/slike/profilna.png"></td>
+                <td class="userimg"><img src="<?php echo base_url() . "/" . $slika ?>" ></td>
                 <td style="width:38%;">
                     <h1>
                         <b> <?php echo $ime . " " . $prezime; ?> </b>

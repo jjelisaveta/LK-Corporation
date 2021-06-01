@@ -39,7 +39,7 @@
                         else $procenat =0;
             
                     echo view_cell("\App\Libraries\MajstorPregled::prikazUsluge",['ime'=>$majstor->getIme(),'prezime'=>$majstor->getPrezime(),
-                    'email'=>$majstor->getEmail(),'id'=>$majstor->getidKor(),'num'=>$num,'procenat'=>$procenat]);
+                    'email'=>$majstor->getEmail(),'id'=>$majstor->getidKor(),'num'=>$num,'procenat'=>$procenat, 'slika' => $majstor->getSlika()]);
                     
                     $num += 3;
                     $num = $num % 6;

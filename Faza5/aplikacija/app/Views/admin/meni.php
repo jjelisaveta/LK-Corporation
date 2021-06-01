@@ -36,7 +36,7 @@
             <button class="padajuceDugme">Moj nalog</button>
             <div class="padajuciSadrzaj">
             <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
-                <a href="logovanje.html">Izloguj se</a>
+            <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
 
             </div>
         </div>

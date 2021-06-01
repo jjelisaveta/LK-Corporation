@@ -50,6 +50,7 @@
             {
               $ime= $ostvarena->getIdrez()->getIdmaj()->getIme();
               $prezime= $ostvarena->getIdrez()->getIdmaj()->getPrezime();
+              $slika=$ostvarena->getIdrez()->getIdmaj()->getSlika();
               $datum=$ostvarena->getIdrez()->getIdrez()->getIdter()->getDatumvreme()->format("Y-m-d H:i:s");;
               if (new DateTime() < new DateTime($datum)) continue;
                 $komentar=$ostvarena->getKomentar();
@@ -59,7 +60,7 @@
 
                             echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $ime,'prezime'=>$prezime, 'datumPopravke' => $datum
               ,'komentar' => $komentar, 'ocena' => $ocena, 'id' => $id
-                    ,'opis'=>$opis]);
+                    ,'opis'=>$opis,'slika'=>$slika]);
                 }
             
 

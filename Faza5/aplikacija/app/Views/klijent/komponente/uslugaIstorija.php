@@ -6,7 +6,7 @@
       
                 <tr>
     <!-- ovde treba ubaciti da se ucitava korisnicka slika -->
-                    <td id="userimg"><img src="<?php echo base_url(); ?>/slike/profilna.png"></td>
+                    <td id="userimg"><img src="<?php echo base_url() . "/" . $slika ?>" ></td>
                     <td>
                         <h1>
                             <?= $imeMajstor ?>

@@ -38,12 +38,13 @@
         foreach ($aktivne as $aktivna){
             $ime= $aktivna->getIdrez()->getIdmaj()->getIme();
             $prezime= $aktivna->getIdrez()->getIdmaj()->getPrezime();
+            $slika=$aktivna->getIdrez()->getIdmaj()->getSlika();
             $datum=$aktivna->getIdrez()->getIdrez()->getIdter()->getDatumvreme()->format("Y-m-d H:i:s");;
             if (new DateTime() > new DateTime($datum)) continue;
              $id=$aktivna->getIduslostv();
              $opis=$aktivna->getIdrez()->getIdrez()->getOpis();
              echo view_cell("\App\Libraries\AktivnaPopravka::prikazUsluge",
-                ['imeMajstor' => $ime,'prezime'=>$prezime, 'datumPopravke' => $datum, 'opis' => $opis, 'num' => $num]);
+                ['imeMajstor' => $ime,'prezime'=>$prezime, 'datumPopravke' => $datum, 'opis' => $opis, 'num' => $num,'slika'=>$slika]);
             // echo view_cell("\App\Libraries\AktivnaPopravka::prikazUsluge",
             //     ['imeMajstor' => $korisnik->ime,'prezime'=>$korisnik->prezime, 'datumPopravke' => $termin->datumVreme, 'opis' => $nadjenZahtev->opis, 'num' => $num]);
             $num += 4;
