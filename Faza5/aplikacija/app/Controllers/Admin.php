@@ -152,7 +152,7 @@ class Admin extends BaseController
 
     public function prikazMajstoraAdmin()
     {
-        // print_r($_POST);
+        //print_r($_POST);
         $var = $this->request->getMethod();
         if ($var != 'post') {
             //potrebno popraviti da se salje error 500
@@ -162,6 +162,7 @@ class Admin extends BaseController
 
         $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->findBy(['idkor' => $id])[0];
 
+        //$usluge = [];
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
 
