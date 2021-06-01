@@ -3,6 +3,19 @@ $(document).ready(function () {
     let rez;
     inicijalizacija();
 
+    uslugeSve = JSON.parse(localStorage.getItem('usluge'));
+    terminiSvi = JSON.parse(localStorage.getItem('termini'));
+    terminiMapa = new Map();
+    terminiSvi.forEach(t => {
+        if (terminiMapa.has(t.idMaj)) {
+            var val = terminiMapa.get(t.idMaj);
+        } else {
+            var val = [];
+        }
+        val.push(Date.parse(t.vreme.date));
+        terminiMapa.set(t.idMaj, val);
+    })
+    console.log(terminiMapa);
     $("#dugmePosalji").click(function () {
         if (!unetiTermini) {
             openNav();
@@ -21,12 +34,19 @@ $(document).ready(function () {
             return;
             /*filtriranje i sortiranje*/
         }
+        var o = $("input:checkbox:checked");
+        var dan = $("#termin").val();
+        var oznaceni = [];
+        o.each(index => {
+            oznaceni.push(Date.parse(dan + " " + o[index].id + ":00:00"));
+        })
+        console.log(oznaceni);
         usluge = dohvatiUsluge();
         var sortSelektovan = $("#sortiranje").children("option:selected").val()[1];
         var cena = $("#SkalaCena").val();
         var preporuka = $("#ocena").val();
         var vreme = $("#vremeOdziva").val();
-        sort(sortSelektovan, filter(cena, preporuka, vreme));
+        sort(sortSelektovan, filter(oznaceni, cena, preporuka, vreme));
     });
 
 
@@ -39,8 +59,28 @@ $(document).ready(function () {
 
 });
 
-function filter(cena, preporuka, vreme) {
+let uslugeSve;
+let terminiSvi;
+let terminiMapa;
+
+function filter(oznaceni, cena, preporuka, vreme) {
     usluge = dohvatiUsluge();
+    usluge = usluge.filter(u => {
+        console.log('slobodan ');
+        var slobodan = terminiMapa.get(parseInt(u.majstor));
+        if (slobodan == null)
+            return false;
+        console.log(slobodan);
+        var x = false;
+        for (let o of oznaceni) {
+            if (slobodan.includes(o)) {
+                x = true;
+                break;
+            }
+        }
+        return x;
+    });
+
     usluge = usluge.filter(u => parseInt(u.cena) <= cena);
     usluge = usluge.filter(u => {
         var p = parseInt(u.preporuke.substr(0, u.preporuke.length - 1));
@@ -77,7 +117,7 @@ function sort(znak, usluge) {
 }
 
 function dohvatiUsluge() {
-    return usluge = JSON.parse(localStorage.getItem('usluge'));
+    return uslugeSve;
 }
 
 function updateUsluge(usluge) {
@@ -126,7 +166,7 @@ function dohvatiSlobodneTermine(nizMajstora) {
         }
     }).done(function (result_html) {
         rez = result_html;
-        localStorage.setItem("terimini", rez);
+        localStorage.setItem("termini", rez);
     });
 }
 
