@@ -48,8 +48,6 @@ class Majstor extends BaseController
 
     public function dodajUslugu()
     {
-       /* $tagModel = new TagModel();
-        $tagovi = $tagModel->findAll();*/
         $tagovi = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findAll();
     
         if (!$_POST) {
@@ -79,27 +77,6 @@ class Majstor extends BaseController
         if ($this->validate($rules)) {
             $t = $this->request->getVar('izabraniTagovi');
             $tagovi = explode("#", $t);
-
-           /* $uslugaModel = new UslugaModel();
-            $uslugaModel->save([
-                'naziv' => $this->request->getVar('naslov'),
-                'opis' => $this->request->getVar('opis'),
-                'cena' => $this->request->getVar('cena'),
-                'idMaj' => $this->session->get('Korisnik')->idKor
-            ]);*/
-
-            /*$tagModel = new TagModel();
-            $uslugaTagModel = new UslugaTagModel();
-            $t = $this->request->getVar('izabraniTagovi');
-            $tagovi = explode("#", $t);
-            $idUsluge = $uslugaModel->getInsertID();
-            foreach ($tagovi as $tag) {
-
-                $uslugaTagModel->save([
-                    'idUsl' => $idUsluge,
-                    'idTag' => $tagModel->dohvatiId($tag)->idTag
-                ]);
-            }*/
             $novaUsluga = new Entities\Usluga();
             $novaUsluga->setNaziv($this->request->getVar('naslov'));
             $novaUsluga->setOpis($this->request->getVar('opis'));
@@ -202,7 +179,6 @@ class Majstor extends BaseController
     public function prikazMajstora()
     {
         $id = $this->session->get('Korisnik')->idKor;
-
         $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);

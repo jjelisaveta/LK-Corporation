@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row ">
             <div class="offset-1 col-10 polje">
                 <table class="uslugaTabela">
                     <tr>
-                        <td id="userimg"><img src="slike/covek1.webp"></td>
+                        <td id="userimg"><img src="<?php echo base_url() . "/" . $slika ?>"></td>
                         <td width="60%">
                             <h1>
                                 <?= $naslov ?>

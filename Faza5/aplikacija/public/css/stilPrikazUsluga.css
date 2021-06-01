@@ -4,8 +4,12 @@
     vertical-align: middle;
     z-index: 2;
     margin-bottom: 1%;
+    min-height: 200px;
 }
 
+.uslugaTabela{
+    height: 100%;
+}
 #opisProblema {
     border:none;
     resize:none;

@@ -168,7 +168,8 @@ if (!isset($ostvarene))
                 }
                 echo view_cell("\App\Libraries\UslugaPrikazUslugaLib::prikazUsluge", ['naslov' => $usluga->getNaziv(),
                     'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
-                    'tagovi' => $usluga->getTagovi(), 'cenaUsluge' => $usluga->getCena(), 'prep' => $prep]);
+                    'tagovi' => $usluga->getTagovi(), 'cenaUsluge' => $usluga->getCena(), 'prep' => $prep,
+                    'slika'=>$usluga->getIdmaj()->getSlika()]);
             }
             ?>
         </div>
