@@ -23,7 +23,7 @@
                     <div id="info" class="offset-1 col-10">
                         <table>
                             <tr>
-                                <td class="slikaMajstora"><img src="<?php echo base_url(); ?>/slike/covek1.webp"></td>
+                                <td class="slikaMajstora"><img src="<?php echo base_url() . "/" . $majstor->getSlika(); ?>"></td>
                                 <td class="podaci">
                                     <h1>
                                         <?= $majstor->getIme()?> <?= $majstor->getPrezime() ?>
@@ -88,7 +88,7 @@
                             else $prep = " - ";
                             echo view_cell("\App\Libraries\UslugaPrikazMajstora::prikazUsluge", ['naslov' => $usluga->getNaziv(), 
                             'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
-                            'tagovi'=>$usluga->getTagovi(), 'cenaUsluge'=>$usluga->getCena(), 'prep'=>$prep]);
+                            'tagovi'=>$usluga->getTagovi(), 'cenaUsluge'=>$usluga->getCena(), 'prep'=>$prep, 'slika'=>$majstor->getSlika()]);
                         }
                     ?>
                     

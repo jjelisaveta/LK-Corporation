@@ -35,7 +35,6 @@ $(document).ready(function() {
 		$(this).remove();
 		for (let i = 0; i < dugmad.length; i++){
 			if (dugmad.eq(i).text() == obrisati){
-				alert("radi");
 				t.splice(i, 1);
 				localStorage.setItem("tagovi", JSON.stringify(t));
 				return;

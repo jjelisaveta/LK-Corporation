@@ -29,7 +29,7 @@
             foreach ($usluge as $usluga) {
                 echo view_cell("\App\Libraries\MojaUslugaMajstor::prikazUsluge", ['naslov' => $usluga->getNaziv(), 
                     'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
-                    'tagovi'=>$usluga->getTagovi()]);
+                    'tagovi'=>$usluga->getTagovi(), 'majstor'=>$usluga->getIdmaj()]);
             }
             ?>
         </div>

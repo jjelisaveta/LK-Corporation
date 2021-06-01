@@ -1,10 +1,12 @@
 $(document).ready(function(){
-    let unetiTermini = false;
+    let unetiTermini;
+    let rez;
     inicijalizacija();
     
     $("#dugmePosalji").click(function(){
         if (!unetiTermini) {
             openNav();
+            return;
         };
         /*slanje mejlova i upis zahteva u bazu*/
     });
@@ -22,6 +24,45 @@ $(document).ready(function(){
 
 function inicijalizacija(){
     unetiTermini = false;
+    //dohvti sve usluge sa strane i posalji ajax da se za sve majstore svih usluga dohvate slobodni termini
+    let usluge = [];
+    let sveUsluge = $(".uslugaTabela");
+    let nizMajstora = [];
+    for (let i = 0; i < sveUsluge.length; i++) {
+        let tren = sveUsluge.eq(i);
+        if (!nizMajstora.includes(tren.find(".detaljnijeMajstor").attr("id").trim())){
+            nizMajstora.push(tren.find(".detaljnijeMajstor").attr("id").trim());
+        }
+        usluge.push({
+            idUsl: tren.attr("id").trim(),
+            naslov: tren.find("h1").text().trim(),
+            opis: tren.find("p").text().trim(),
+            cena: tren.find(".cenaUsluge").text().trim(),
+            preporuke: tren.find(".preporuke").text().trim(),
+            vremeOdgovora: tren.find(".vremeOdgovora").text().trim(),
+            majstor: tren.find(".detaljnijeMajstor").attr("id").trim()
+
+        });
+    }
+    
+    let majstori = nizMajstora.join("_");
+    let termini = dohvatiSlobodneTermine(majstori);
+
+    localStorage.setItem("usluge", JSON.stringify(usluge));
+    
+}
+
+function dohvatiSlobodneTermine(nizMajstora){
+    $.ajax({
+        type: "POST",
+        url:"/Klijent/dohvatiSlobodneTermine",
+        data: {
+            majstori: nizMajstora
+        }
+    }).done(function(result_html) {
+        rez = result_html;
+        localStorage.setItem("terimini", rez);
+    });
 }
 
 function openNav() {

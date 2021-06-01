@@ -56,7 +56,7 @@
                                             <option value="default">--Izaberi--</option>
                                             <?php if(isset($tagovi))
                                             foreach ($tagovi as $tag) { ?>
-                                            <option value="<?php echo $tag->opis ?>"><?php echo $tag->opis ?></option>
+                                            <option value="<?php echo $tag->getOpis() ?>"><?php echo $tag->getOpis() ?></option>
                                             <?php } ?>
 
                                     </select>

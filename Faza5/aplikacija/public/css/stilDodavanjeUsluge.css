@@ -5,6 +5,12 @@ body {
     overflow: auto;
 }
 
+#sadrzaj {
+    background-color: #e8e6d9;
+    z-index: 2;
+    margin-bottom: 50px;
+}
+
 #opisId {
     resize: none;
     padding: 8px;

@@ -27,11 +27,11 @@ class Klijent extends BaseController
 
     protected function prikaz($stranica, $podaci)
     {
-        
-        //nece biti kasnije hardkodovano, samo privremeno za test
-        $podaci['ime'] = 'Jovan';
-        $podaci['prezime'] = 'Pavlovic';
-        $podaci['profilna'] = '';
+        $podaci['controller'] = 'Klijent';
+        $podaci['korisnik'] = $this->session->get('Korisnik');
+        $podaci['ime'] = $this->session->get('Korisnik')->ime;
+        $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
+        $podaci['profilna'] = $this->session->get('Korisnik')->slika;
         echo view("osnova/header");
         echo view("osnova/meni", $podaci);
         echo view("klijent/$stranica", $podaci);
@@ -60,13 +60,34 @@ class Klijent extends BaseController
 
     
     public function prikazUsluga($trazeniTag){             /* prosledi se ovde samo kompresovano*/
+        $tag = str_replace("_"," ",$trazeniTag);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->findAll();
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(10)->getUsluge();
-        
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis'=>$tag])->getUsluge();
         $this->prikaz('prikazUsluga', ['usluge'=>$usluge, 'ostvarene'=>$ostvarene]);
-            
     }
 
+    public function dohvatiSlobodneTermine(){
+        $majstori = $this->request->getVar('majstori');
+        $nizMajstora = explode("_", $majstori);
+        $slobodni = [];
+        foreach ($nizMajstora as $idMaj){
+            $slobodni = array_merge($slobodni, $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)->dohvatiSveSlobodneZaMajstora($idMaj));
+        }
+       // echo sizeof($slobodni);
+        $zaSlanje = [];
+        foreach($slobodni as $s) {
+            array_push($zaSlanje, [
+                'idMaj'=>$s->getIdmaj(),
+                'idKal'=> $s->getIdkal(),
+                'idTer'=> $s->getIdTer()->getIdter(),
+                'vreme'=>$s->getIdTer()->getDatumvreme()
+            ]);
+        }
+       //print_r(json_encode($zaSlanje));
+     
+        return json_encode($zaSlanje);
+    }
+    
     public function istorija()
     {
         // $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->where('obrisano'!=1);
@@ -79,7 +100,8 @@ class Klijent extends BaseController
         // $terminModel= new TerminModel();
        
         //ovde treba ubaciti dohvatanje id-a korisnika iz sesije
-        $idkor=2;
+        $idkor= $podaci['ime'] = $this->session->get('Korisnik')->idKor;
+
         $ostvarene=$this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
         // $ostvarene=$this->doctrine->em->getRepository(\App\Models\Repositories\IstorijaRepository::class)->dohvatiIstoriju($idkor);
 
@@ -100,7 +122,7 @@ public function aktivnaPopravka()
     // $zahtevModel = new ZahtevModel();
     // $terminModel= new TerminModel();
       //ovde treba ubaciti dohvatanje id-a korisnika iz sesije
-    $idkor=2;
+    $idkor= $podaci['ime'] = $this->session->get('Korisnik')->idKor;
     $aktivne=$this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
     $this->prikaz("aktivnePopravke",["aktivne"=>$aktivne]);
 //     $this->prikaz("aktivnePopravke", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
