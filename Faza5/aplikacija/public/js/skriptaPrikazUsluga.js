@@ -12,7 +12,10 @@ $(document).ready(function () {
         } else {
             var val = [];
         }
-        val.push(Date.parse(t.vreme.date));
+        val.push({
+            'date': Date.parse(t.vreme.date),
+            'idter': t.idTer
+        });
         terminiMapa.set(t.idMaj, val);
     })
 
@@ -35,7 +38,7 @@ $(document).ready(function () {
         })
         var novaMapa = new Map();
         terminiMapa.forEach((value, key) => {
-            value = value.filter(t => oznaceni.includes(t));
+            value = value.filter(obj => oznaceni.includes(obj.date));
             novaMapa.set(key, value);
         });
         var o = $("#poljeZaUsluge input:checkbox:checked");
@@ -46,9 +49,8 @@ $(document).ready(function () {
                 var majstor = uslugeSve.find(u => u.idUsl == id).majstor;
                 var niz = novaMapa.get(parseInt(majstor))
                 var ter = [];
-                niz.forEach(e => {
-                    var idter = terminiSvi.find(elem => Date.parse(elem.vreme.date) == e).idTer;
-                    ter.push(idter);
+                niz.forEach(obj => {
+                    ter.push(obj.idter);
                 })
                 usl.push({
                     'id': id,
@@ -70,7 +72,6 @@ $(document).ready(function () {
             if (result_html === "OK")
                 window.location = '../pretrazivanje';
         });
-        /*slanje mejlova i upis zahteva u bazu*/
     });
 
     $("#dugmePretrazi").click(function () {
@@ -116,14 +117,14 @@ let kljuc;
 function filter(oznaceni, cena, preporuka, vreme) {
     usluge = dohvatiUsluge();
     usluge = usluge.filter(u => {
-        console.log('slobodan ');
+        console.log('slobodan');
         var slobodan = terminiMapa.get(parseInt(u.majstor));
         if (slobodan == null)
             return false;
         console.log(slobodan);
         var x = false;
         for (let o of oznaceni) {
-            if (slobodan.includes(o)) {
+            if (slobodan.find(obj => obj => date == o) != null) {
                 x = true;
                 break;
             }
@@ -132,10 +133,12 @@ function filter(oznaceni, cena, preporuka, vreme) {
     });
 
     usluge = usluge.filter(u => parseInt(u.cena) <= cena);
-    usluge = usluge.filter(u => {
-        var p = parseInt(u.preporuke.substr(0, u.preporuke.length - 1));
-        return p >= preporuka;
-    });
+    // usluge = usluge.filter(u => {
+    //     if (u.preporuke === "-")
+    //         return true;
+    //     var p = parseInt(u.preporuke.substr(0, u.preporuke.length - 1));
+    //     return p >= preporuka;
+    // });
     usluge = usluge.filter(u => {
         var vr = u.vremeOdgovora.split(":");
         var sekunde = 0;
