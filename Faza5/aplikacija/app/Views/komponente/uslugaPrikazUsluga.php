@@ -30,7 +30,7 @@
                     <div class="odbij">
                         <button>
                             <label for="cb">Odaberi</label>
-                            <input type="checkbox" id="cb">
+                            <input type="checkbox" class="uslugaCB" id=<?php echo "cb" . $idUsl ?>>
                         </button>
                     </div>
                 </td>

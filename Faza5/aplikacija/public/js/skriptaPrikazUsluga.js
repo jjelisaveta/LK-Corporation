@@ -210,6 +210,18 @@ function inicijalizacija() {
 
 }
 
+function oznaciSve() {
+    var o = $(".uslugaCB");
+    console.log('klik');
+    console.log(o);
+    o.each(index => {
+        console.log(o[index].id.substr(0, 2));
+        if (o[index].id.substr(0, 2) === "cb") {
+            $("#" + o[index].id).prop("checked", true);
+        }
+    });
+}
+
 function dohvatiSlobodneTermine(nizMajstora) {
     $.ajax({
         type: "POST",
@@ -286,7 +298,7 @@ function usluga(cena, id, majstor, naslov, opis, preporuka, vremeOdgovora) {
         '                    <div class="odbij">\n' +
         '                        <button>\n' +
         '                            <label for="cb">Odaberi</label>\n' +
-        '                            <input type="checkbox" id="cb' + id + '">\n' +
+        '                            <input type="checkbox" class="uslugaCB" id="cb' + id + '">\n' +
         '                        </button>\n' +
         '                    </div>\n' +
         '                </td>\n' +
