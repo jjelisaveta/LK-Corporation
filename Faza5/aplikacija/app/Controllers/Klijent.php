@@ -27,13 +27,14 @@ class Klijent extends BaseController
     }
 
 
-    protected function prikaz($stranica, $podaci)
+    protected function prikaz($stranica, $podaci,$broj)
     {
         $podaci['controller'] = 'Klijent';
         $podaci['korisnik'] = $this->session->get('Korisnik');
         $podaci['ime'] = $this->session->get('Korisnik')->ime;
         $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
         $podaci['profilna'] = $this->session->get('Korisnik')->slika;
+        $podaci['broj']=$broj;
         echo view("osnova/header");
         echo view("osnova/meni", $podaci);
         echo view("klijent/$stranica", $podaci);
@@ -45,7 +46,7 @@ class Klijent extends BaseController
         $stranica = 'pretrazivanje';
         $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
         if (!$_POST) {
-            return $this->prikaz($stranica, ['tagovi' => $allTags]);
+            return $this->prikaz($stranica, ['tagovi' => $allTags],1);
         }
     }
 
@@ -67,7 +68,7 @@ class Klijent extends BaseController
         $tag = str_replace("_", " ", $trazeniTag);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->findAll();
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag])->getUsluge();
-        $this->prikaz('prikazUsluga', ['usluge' => $usluge, 'ostvarene' => $ostvarene]);
+        $this->prikaz('prikazUsluga', ['usluge' => $usluge, 'ostvarene' => $ostvarene],0);
     }
 
     public function dohvatiSlobodneTermine()
@@ -100,7 +101,7 @@ class Klijent extends BaseController
 
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
 
-        $this->prikaz("istorija", ["ostvarene" => $ostvarene]);
+        $this->prikaz("istorija", ["ostvarene" => $ostvarene],3);
 
     }
 
@@ -109,7 +110,7 @@ class Klijent extends BaseController
 
         $idkor = $podaci['ime'] = $this->session->get('Korisnik')->idKor;
         $aktivne = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
-        $this->prikaz("aktivnePopravke", ["aktivne" => $aktivne]);
+        $this->prikaz("aktivnePopravke", ["aktivne" => $aktivne],2);
 
     }
 

@@ -9,8 +9,8 @@
     <div id="meniMali" class="d-block d-md-none overlay">
         <a href="javascript:void(0)" class="dugmeZatvori" onclick="zatvoriMeni()">&times;</a>
         <div class="maliMeniSadrzaj">
-            <a href="#">Pregled Korisnika</a>
-            <a href="#">Zahtevi Majstora</a>
+            <a href="<?php echo site_url("Admin/pregledMajstora") ?>" class=<?=$broj== 1 ? 'active':'' ?>>Pregled Majstora</a>
+            <a href="<?php echo site_url("Admin/odobravanjeMajstora") ?>"  class=<?=$broj== 2 ? 'active':'' ?>>Zahtevi Majstora</a>
 
             <div class="padajuciMeni">
                 <button class="padajuceDugme">Moj nalog</button>
@@ -29,8 +29,8 @@
 
     <div id="meni" class="d-none d-md-block col-md-2">
 
-        <a href="<?php echo site_url("Admin/pregledMajstora") ?>">Pregled Korisnika</a>
-        <a href="<?php echo site_url("Admin/odobravanjeMajstora") ?>">Zahtevi Majstora</a>
+        <a href="<?php echo site_url("Admin/pregledMajstora") ?>" class=<?=$broj== 1 ? 'active':'' ?> >Pregled Majstora</a>
+        <a href="<?php echo site_url("Admin/odobravanjeMajstora") ?>"  class=<?=$broj== 2 ? 'active':'' ?>>Zahtevi Majstora</a>
      
         <div class="padajuciMeni">
             <button class="padajuceDugme">Moj nalog</button>

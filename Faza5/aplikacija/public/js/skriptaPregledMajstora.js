@@ -61,4 +61,12 @@ function bojaProgresa()
         $(this).addClass("bg-success")
      }
         })
+    
+}
+
+function ini()
+{
+ 
+
+    bojaProgresa();
 }

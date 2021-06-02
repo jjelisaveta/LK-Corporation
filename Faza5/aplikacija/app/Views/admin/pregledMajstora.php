@@ -10,7 +10,7 @@
     <script src="<?php echo base_url(); ?>/js/skriptaPregledMajstora.js"></script>
 </head>
 
-<body onload="bojaProgresa()">
+<body onload="ini()">
 <div class="container-fluid">
     <div id="con">
   
