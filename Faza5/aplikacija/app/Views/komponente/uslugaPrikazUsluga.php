@@ -23,17 +23,20 @@
             </tr>
             <tr>
                 <td colspan="3" width="100%">
-                    <div class="detaljnijeMajstor" id="<?= $idMaj ?>">
-                        <button class="ddd" type="SUBMIT" id="<?= $idMaj ?>" onclick="">
+                    <form action="../prikazMajstora" method="POST">
+                    <div class="detaljnijeMajstor" id="<?= $idMaj ?>"
+                            <input type="hidden" id="idUsluge" name="id" value="<?php echo $idMaj ?>">
+                            <button type="SUBMIT" id="" onclick="" formtarget="_blank" value="...">
                             Prikaži profil majstora
-                        </button>
+                            </button>
                     </div>
                     <div class="odbij">
-                        <button>
+                        <button type="button">
                             <label for="cb">Odaberi</label>
                             <input type="checkbox" id="cb">
                         </button>
                     </div>
+                    </form>
                 </td>
             </tr>
         </table>

@@ -99,7 +99,7 @@ $(document).ready(function () {
     });
 
     
-   $(".ddd").click(function (){
+   /*$(".ddd").click(function (){
         let id = $(this).attr("id");
         alert(id);
         $.ajax({
@@ -111,7 +111,7 @@ $(document).ready(function () {
         }).done(function(result_html) {
             window.open(result_html);
         });
-    });
+    });*/
 
 
     //usluga(cena, id, majstor, naslov, opis, preporuka)

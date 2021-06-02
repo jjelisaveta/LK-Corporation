@@ -207,6 +207,8 @@ class Klijent extends BaseController
 
             $ukupno += $razlika;
         }
+        if (sizeof($ostvarene) == 0)
+            return 0;
         return $ukupno / sizeof($ostvarene);
     }
 
@@ -218,6 +220,8 @@ class Klijent extends BaseController
                 $sum++;
             }
         }
+        if (sizeof($ostvarene) == 0)
+            return 0;
         return number_format($sum / sizeof($ostvarene) * 100, 2);
     }
 
@@ -227,13 +231,16 @@ class Klijent extends BaseController
         foreach ($usluge as $usluga) {
             $ukupno += $usluga->getCena();
         }
+         if (sizeof($usluge) == 0)
+            return 0;
         return $ukupno / sizeof($usluge);
     }
 
     public function prikazMajstora()
     {
-        $id = $this->request->getVar('idMaj');
-        //$id = 1;
+       // $id = $this->request->getVar('id');
+        $id = 1;
+        echo $id;
         $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->findBy(['idkor' => $id])[0];
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
@@ -243,7 +250,7 @@ class Klijent extends BaseController
         $cena = $this->prosecnaCena($usluge);
 
         return $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
-            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena]);
+            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena], 1);
 
     }
 }
