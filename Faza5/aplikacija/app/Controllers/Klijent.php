@@ -16,7 +16,7 @@ use App\Models\Repositories\IstorijaRepository;
 use CodeIgniter\Model;
 use phpDocumentor\Reflection\Types\Array_;
 use App\Models\Entities;
-
+use phpDocumentor\Reflection\Types\This;
 
 class Klijent extends BaseController
 {
@@ -27,32 +27,34 @@ class Klijent extends BaseController
     }
 */
 
-    protected function prikaz($stranica, $podaci)
+    protected function prikaz($stranica, $podaci,$broj)
     {
         $podaci['controller'] = 'Klijent';
         $podaci['korisnik'] = $this->session->get('Korisnik');
         $podaci['ime'] = $this->session->get('Korisnik')->ime;
         $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
         $podaci['profilna'] = $this->session->get('Korisnik')->slika;
+        $podaci['broj']=$broj;
         echo view("osnova/header");
         echo view("osnova/meni", $podaci);
         echo view("klijent/$stranica", $podaci);
         echo view("osnova/footer");
     }
-    
-    public function pretrazivanje(){
+
+    public function pretrazivanje()
+    {
         $stranica = 'pretrazivanje';
         $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
-        if (!$_POST){
-            return $this->prikaz($stranica, ['tagovi' => $allTags]);
+        if (!$_POST) {
+            return $this->prikaz($stranica, ['tagovi' => $allTags],1);
         }
     }
-    
     public function usluge()
     {
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(7)->getUsluge();       
         return $usluge;
     }
+
     
     public function izlogujSe(){
         $this->session->destroy();
@@ -61,70 +63,54 @@ class Klijent extends BaseController
     
     public function prikazUsluga($trazeniTag){
         $tag = str_replace("_"," ",$trazeniTag);
+
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->findAll();
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis'=>$tag])->getUsluge();
-        $this->prikaz('prikazUsluga', ['usluge'=>$usluge, 'ostvarene'=>$ostvarene]);
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag])->getUsluge();
+        $this->prikaz('prikazUsluga', ['usluge' => $usluge, 'ostvarene' => $ostvarene],0);
     }
 
-    public function dohvatiSlobodneTermine(){
+    public function dohvatiSlobodneTermine()
+    {
         $majstori = $this->request->getVar('majstori');
         $nizMajstora = explode("_", $majstori);
         $slobodni = [];
-        foreach ($nizMajstora as $idMaj){
+        foreach ($nizMajstora as $idMaj) {
             $slobodni = array_merge($slobodni, $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)->dohvatiSveSlobodneZaMajstora($idMaj));
         }
+
         $zaSlanje = [];
-        foreach($slobodni as $s) {
+        foreach ($slobodni as $s) {
             array_push($zaSlanje, [
-                'idMaj'=>$s->getIdmaj(),
-                'idKal'=> $s->getIdkal(),
-                'idTer'=> $s->getIdTer()->getIdter(),
-                'vreme'=>$s->getIdTer()->getDatumvreme()
+                'idMaj' => $s->getIdmaj(),
+                'idKal' => $s->getIdkal(),
+                'idTer' => $s->getIdTer()->getIdter(),
+                'vreme' => $s->getIdTer()->getDatumvreme()
             ]);
         }
+
         return json_encode($zaSlanje);
     }
-    
+
     public function istorija()
     {
-        // $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->where('obrisano'!=1);
-        
-        // $uslugaOstvareneModel = new UslugaOstvarenaModel();
 
-        // $uslugaModel = new UslugaModel();
-        // $korisniciModel = new KorisnikModel();
-        // $zahtevModel = new ZahtevModel();
-        // $terminModel= new TerminModel();
-       
-        //ovde treba ubaciti dohvatanje id-a korisnika iz sesije
-        $idkor= $podaci['ime'] = $this->session->get('Korisnik')->idKor;
+        $idkor = $podaci['ime'] = $this->session->get('Korisnik')->idKor;
 
-        $ostvarene=$this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
-        // $ostvarene=$this->doctrine->em->getRepository(\App\Models\Repositories\IstorijaRepository::class)->dohvatiIstoriju($idkor);
+        $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
 
-        $this->prikaz("istorija",["ostvarene"=>$ostvarene]);
-        // $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
-        //     'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
-
+        $this->prikaz("istorija", ["ostvarene" => $ostvarene],3);
 
     }
-public function aktivnaPopravka()
-{
-    // $uslugaOstvareneModel = new UslugaOstvarenaModel();
-    // $uslugaModel = new UslugaModel();
 
-    // $uslugaModel = new UslugaModel();
-    // $korisniciModel = new KorisnikModel();
-    // $rezervacijaModel = new RezervacijaModel();
-    // $zahtevModel = new ZahtevModel();
-    // $terminModel= new TerminModel();
-      //ovde treba ubaciti dohvatanje id-a korisnika iz sesije
-    $idkor= $podaci['ime'] = $this->session->get('Korisnik')->idKor;
-    $aktivne=$this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
-    $this->prikaz("aktivnePopravke",["aktivne"=>$aktivne]);
-//     $this->prikaz("aktivnePopravke", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
-//     'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
-}
+    public function aktivnaPopravka()
+    {
+
+        $idkor = $podaci['ime'] = $this->session->get('Korisnik')->idKor;
+        $aktivne = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
+        $this->prikaz("aktivnePopravke", ["aktivne" => $aktivne],2);
+
+    }
+
     public function sacuvajKomentar()
     {
 
@@ -134,13 +120,13 @@ public function aktivnaPopravka()
         $data = [
             'komentar' => $this->request->getVar('komentar')
         ];
-    
+
         $uslugaOstvareneModel->update($id, $data);
-       
+
         return redirect()->to(site_url("Klijent/istorija"));
-      
+
     }
-    
+
     public function sacuvajOcenu()
     {
         $var = $this->request->getMethod();
@@ -148,17 +134,18 @@ public function aktivnaPopravka()
             //potrebno popraviti da se salje error 500
             return "zahtev mora biti post";
         }
-        $id = (int) $this->request->getVar('id');
-        $ocena=(int) $this->request->getVar('ocena');
+        $id = (int)$this->request->getVar('id');
+        $ocena = (int)$this->request->getVar('ocena');
         $uslugaOstvareneModel = new UslugaOstvarenaModel();
         $data = [
-            'ocena' =>$ocena
+            'ocena' => $ocena
         ];
-        
+
         $uslugaOstvareneModel->update($id, $data);
         return redirect()->to(site_url("Klijent/istorija"));
-  
+
     }
+
     public function obrisiIstorija()
     {
         $var = $this->request->getMethod();
@@ -166,16 +153,49 @@ public function aktivnaPopravka()
             //potrebno popraviti da se salje error 500
             return "zahtev mora biti post";
         }
-        $id = (int) $this->request->getVar('id');
+        $id = (int)$this->request->getVar('id');
         $data = [
-            'obrisano' =>1
+            'obrisano' => 1
         ];
         $uslugaOstvareneModel = new UslugaOstvarenaModel();
         $uslugaOstvareneModel->update($id, $data);
- 
-        return redirect()->to(site_url("Klijent/istorija"));
-      
 
+        return redirect()->to(site_url("Klijent/istorija"));
+
+
+    }
+
+    public function dohvatiIdentifikator()
+    {
+        return "OK\n" . ($this->doctrine->em->getRepository(Entities\Kljuc::class)->dohvatiSledeci());
+    }
+
+    public function rezervacija()
+    {
+        $var = $this->request->getMethod();
+        if ($var != 'post') {
+            //potrebno popraviti da se salje error 500
+            return "zahtev mora biti post";
+        }
+        $zahtevi = json_decode($this->request->getVar('zahtevi'));
+        $opis = $this->request->getVar('opis');
+        $vreme = date("Y-m-d H:i:s");
+        $kljuc = $this->request->getVar('kljuc');
+        $korisnik = $this->doctrine->em->getRepository(Entities\Korisnik::class)->find($this->session->get('Korisnik')->idKor);
+        foreach ($zahtevi as $zahtev) {
+            foreach ($zahtev->ter as $termin) {
+                $noviZahtev = new Zahtev();
+                $noviZahtev->setIdusl($this->doctrine->em->getRepository(Entities\Usluga::class)->find($zahtev->id));
+                $noviZahtev->setIdter($this->doctrine->em->getRepository(Entities\Termin::class)->find($termin));
+                $noviZahtev->setOpis($opis);
+                $noviZahtev->setVremeslanja(\DateTime::createFromFormat("Y-m-d H:i:s", $vreme));
+                $noviZahtev->setIdkor($korisnik);
+                $noviZahtev->setIdentifikator($kljuc);
+                $this->doctrine->em->persist($noviZahtev);
+            }
+        }
+        $this->doctrine->em->flush();
+        return "OK";
     }
     public function vremeOdgovora($ostvarene)
     {

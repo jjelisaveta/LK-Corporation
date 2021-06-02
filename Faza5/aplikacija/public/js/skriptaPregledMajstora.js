@@ -31,4 +31,42 @@ function detaljnijiPrikaz(id) {
 //  location.href = response;
         }
     }
+
+}
+function bojaProgresa()
+{
+    $(".progress-bar").each(function()
+        {
+     var procenatString=$(this).attr('name')
+     var procenat=parseInt(procenatString);
+     var ukupnoString=$(this).attr('value')
+     var ukupno=parseInt(ukupnoString);
+     if (ukupno==0)
+     {
+       var nesto= $(this).parent().find("span")
+       nesto.text("TBD")
+
+     }
+   
+     if (procenat<33)
+     {
+     $(this).addClass("bg-danger")
+     }
+     else if (procenat<66)
+     {
+        $(this).addClass("bg-warning")
+     }
+     else
+     {
+        $(this).addClass("bg-success")
+     }
+        })
+    
+}
+
+function ini()
+{
+ 
+
+    bojaProgresa();
 }

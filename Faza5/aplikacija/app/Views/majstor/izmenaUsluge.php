@@ -61,7 +61,7 @@ if (!isset($id))
                                 echo $cenaGreska;
                             ?>
                         </div>
-                        <input class="col-5" type="number" name="cena" id="cenaId" value="<?php echo $cena; ?>">
+                        <input class="col-5" type="number" step="100" name="cena" id="cenaId" value="<?php echo $cena; ?>">
                         <select class="col-5" name="t" id="selectId">
                             <option value="default">--Izaberi--</option>
                             <?php if (isset($sviTagovi))

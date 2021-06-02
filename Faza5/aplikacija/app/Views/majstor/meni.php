@@ -11,13 +11,12 @@
         <div id="meniMali" class="d-block d-md-none overlay">
             <a href="javascript:void(0)" class="dugmeZatvori" onclick="zatvoriMeni()">&times;</a>
             <div class="maliMeniSadrzaj">
-                <a href="pretrazivanje.html">Rezerviši termin</a>
-                    <a href="aktivnapopravka.html">U toku</a>
-                    <a href="istorija.html">Istorija</a>
-                    <a href="<?php echo site_url("Majstor/zahtevi") ?>">Zahtevi</a>
-                    <a href="<?php echo site_url("Majstor/kalendar") ?>">Kalendar</a>
-                    <a href="<?php echo site_url("Majstor/mojeUsluge") ?>">Moje usluge</a>
-                    <a href="<?php echo site_url("Majstor/dodajUslugu") ?>">Dodaj uslugu</a>
+           
+        
+                    <a href="<?php echo site_url("Majstor/zahtevi") ?>" class=<?=$broj== 1 ? 'active':'' ?>>Zahtevi</a>
+                    <a href="<?php echo site_url("Majstor/kalendar") ?>" class=<?=$broj== 2 ? 'active':'' ?>>Kalendar</a>
+                    <a href="<?php echo site_url("Majstor/mojeUsluge") ?>" class=<?=$broj== 3 ? 'active':'' ?>> Moje usluge</a>
+                    <a href="<?php echo site_url("Majstor/dodajUslugu") ?>" class=<?=$broj== 4 ? 'active':'' ?>>Dodaj uslugu</a>
                 <div class="padajuciMeni">
                     <button class="padajuceDugme">Moj nalog</button>
                     <div class="padajuciSadrzaj">
@@ -33,13 +32,11 @@
         </div>
         
         <div id="meni" class="d-none d-md-block col-md-2">
-            <a href="pretrazivanje.html">Rezerviši termin</a>
-                    <a href="aktivnapopravka.html">U toku</a>
-                    <a href="istorija.html">Istorija</a>
-                    <a href="<?php echo site_url("Majstor/zahtevi") ?>">Zahtevi</a>
-                    <a href="<?php echo site_url("Majstor/kalendar") ?>">Kalendar</a>
-                    <a href="<?php echo site_url("Majstor/mojeUsluge") ?>">Moje usluge</a>
-                    <a href="<?php echo site_url("Majstor/dodajUslugu") ?>">Dodaj uslugu</a>
+               
+                    <a href="<?php echo site_url("Majstor/zahtevi") ?>" class=<?=$broj== 1 ? 'active':'' ?>>Zahtevi</a>
+                    <a href="<?php echo site_url("Majstor/kalendar") ?>" class=<?=$broj== 2 ? 'active':'' ?>>Kalendar</a>
+                    <a href="<?php echo site_url("Majstor/mojeUsluge") ?>" class=<?=$broj== 3 ? 'active':'' ?>>Moje usluge</a>
+                    <a href="<?php echo site_url("Majstor/dodajUslugu") ?>" class=<?=$broj== 4 ? 'active':'' ?>>Dodaj uslugu</a>
             <div class="padajuciMeni">
                 <button class="padajuceDugme">Moj nalog</button>
                 <div class="padajuciSadrzaj">

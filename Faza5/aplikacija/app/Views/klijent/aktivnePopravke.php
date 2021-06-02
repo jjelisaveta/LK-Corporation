@@ -18,34 +18,18 @@
     <div class="row zahtevi">
         <?php
         $num = 4;
-        // $uslugeOstvarene = $uslugeOst->findall();
-
-        // foreach ($uslugeOstvarene as $uslugaOstvarena) {
-        //     $nadjenZahtev = null;
-        //     if ($uslugaOstvarena->obrisano == 1) continue;
-        //     $zahtev = $zahtevi->find($uslugaOstvarena->idRez);
-
-        //     if (!isset($zahtev)) continue;
-        //     if ($zahtev->idKor == $idKor) {
-        //         $nadjenZahtev = $zahtev;
-        //     }
-        //     if ($nadjenZahtev == null) continue;
-        //     $termin = $termini->find($nadjenZahtev->idTer);
-        //     if (new DateTime() > new DateTime($termin->datumVreme)) continue;
-
-        //     $usluga = $usluge->find($uslugaOstvarena->idUsl);
-        //     $korisnik = $korisnici->find($usluga->idMaj);
+  
         foreach ($aktivne as $aktivna){
             $ime= $aktivna->getIdrez()->getIdmaj()->getIme();
             $prezime= $aktivna->getIdrez()->getIdmaj()->getPrezime();
+            $slika=$aktivna->getIdrez()->getIdmaj()->getSlika();
             $datum=$aktivna->getIdrez()->getIdrez()->getIdter()->getDatumvreme()->format("Y-m-d H:i:s");;
             if (new DateTime() > new DateTime($datum)) continue;
              $id=$aktivna->getIduslostv();
              $opis=$aktivna->getIdrez()->getIdrez()->getOpis();
-             echo view_cell("\App\Libraries\AktivnaPopravka::prikazUsluge",
-                ['imeMajstor' => $ime,'prezime'=>$prezime, 'datumPopravke' => $datum, 'opis' => $opis, 'num' => $num]);
-            // echo view_cell("\App\Libraries\AktivnaPopravka::prikazUsluge",
-            //     ['imeMajstor' => $korisnik->ime,'prezime'=>$korisnik->prezime, 'datumPopravke' => $termin->datumVreme, 'opis' => $nadjenZahtev->opis, 'num' => $num]);
+             echo view_cell("\App\Libraries\AktivnaPopravka::aktivnePopravke",
+                ['imeMajstor' => $ime,'prezime'=>$prezime, 'datumPopravke' => $datum, 'opis' => $opis, 'num' => $num,'slika'=>$slika]);
+
             $num += 4;
             $num = $num % 8;
         }

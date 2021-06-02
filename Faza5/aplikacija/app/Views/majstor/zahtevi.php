@@ -23,9 +23,10 @@
                         $adresa = $zahtev->getIdkor()->getAdresa();
                         $opis = $zahtev->getOpis();
                         $id = $zahtev->getIdzah();
+                        $slika=$zahtev->getIdkor()->getSlika();
                         $datumVreme = $zahtev->getIdter()->getDatumvreme()->format('Y-m-d H:i');
-                        echo view_cell("\App\Libraries\OdobravanjeZahteva::prikazUsluge", ['ime' => $ime, 'prezime' => $prezime,
-                            'adresa' => $adresa, 'opis' => $opis, 'id' => $id, 'datumVreme' => $datumVreme]);
+                        echo view_cell("\App\Libraries\OdobravanjeZahteva::prikazZahteva", ['ime' => $ime, 'prezime' => $prezime,
+                            'adresa' => $adresa, 'opis' => $opis, 'id' => $id, 'datumVreme' => $datumVreme,'slika'=>$slika]);
                     }
                     ?>
                 </div>
