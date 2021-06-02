@@ -21,8 +21,8 @@
             </div>
         </div>
         <div id="korisnik">
-            <img src="<?php echo base_url(); ?>/slike/Kalu.jpg" alt="korisnicka slika">
-            <a href="pretrazivanje.html">Kalu</a>
+        <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika">
+        <a href="pretrazivanje.html"><?= $ime ?> <?= $prezime ?></a>
         </div>
     </div>
 
@@ -36,12 +36,12 @@
             <button class="padajuceDugme">Moj nalog</button>
             <div class="padajuciSadrzaj">
             <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
-                <a href="logovanje.html">Izloguj se</a>
+            <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
 
             </div>
         </div>
         <div id="korisnik">
-            <img src="<?php echo base_url(); ?>/slike/Kalu.jpg" alt="korisnicka slika">
+        <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika">
             <a href="pretrazivanje.html"><?= $ime ?> <?= $prezime ?></a>
         </div>
     </div>

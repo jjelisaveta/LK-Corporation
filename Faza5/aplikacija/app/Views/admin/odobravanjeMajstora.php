@@ -31,7 +31,7 @@ if (!isset($majstori))
                 foreach ($majstori as $majstor) {
                     echo view_cell("\App\Libraries\OdobravanjeMajstora::prikaz",
                         ['ime' => $majstor->getIme(), 'prezime' => $majstor->getPrezime(),
-                            'email' => $majstor->getEmail(), 'broj' => $majstor->getBrojtelefona(), 'slika' => "", 'id' => $majstor->getIdkor()]);
+                            'email' => $majstor->getEmail(), 'broj' => $majstor->getBrojtelefona(), 'slika' => $majstor->getSlika(), 'id' => $majstor->getIdkor()]);
                 }
                 ?>
             </div>

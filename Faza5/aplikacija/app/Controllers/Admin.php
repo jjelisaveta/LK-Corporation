@@ -24,14 +24,14 @@ class Admin extends BaseController
     protected function prikaz($stranica, $podaci)
     {
         //TREBA DOHVATITI IZ SESIJE NE HARDKODOVATI
-        // $podaci['korisnik'] = $this->session->get('Korisnik');
-        // $podaci['ime'] = $this->session->get('Korisnik')->ime;
-        // $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
-        // $podaci['profilna'] = $this->session->get('Korisnik')->slika;
-        // $podaci['id'] = $this->session->get('Korisnik')->idKor;
-        $podaci['controller'] = "Admin";
-        $podaci['ime'] = 'Code';
-        $podaci['prezime'] = 'Igniter';
+        $podaci['korisnik'] = $this->session->get('Korisnik');
+        $podaci['ime'] = $this->session->get('Korisnik')->ime;
+        $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
+        $podaci['profilna'] = $this->session->get('Korisnik')->slika;
+        $podaci['id'] = $this->session->get('Korisnik')->idKor;
+        // $podaci['controller'] = "Admin";
+        // $podaci['ime'] = 'Code';
+        // $podaci['prezime'] = 'Igniter';
         echo view("osnova/header");
         echo view("admin/meni", $podaci);
         echo view("admin/$stranica", $podaci);

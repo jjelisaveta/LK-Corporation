@@ -95,44 +95,22 @@ class Klijent extends BaseController
 
     public function istorija()
     {
-        // $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->where('obrisano'!=1);
 
-        // $uslugaOstvareneModel = new UslugaOstvarenaModel();
-
-        // $uslugaModel = new UslugaModel();
-        // $korisniciModel = new KorisnikModel();
-        // $zahtevModel = new ZahtevModel();
-        // $terminModel= new TerminModel();
-
-        //ovde treba ubaciti dohvatanje id-a korisnika iz sesije
         $idkor = $podaci['ime'] = $this->session->get('Korisnik')->idKor;
 
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
-        // $ostvarene=$this->doctrine->em->getRepository(\App\Models\Repositories\IstorijaRepository::class)->dohvatiIstoriju($idkor);
 
         $this->prikaz("istorija", ["ostvarene" => $ostvarene]);
-        // $this->prikaz("istorija", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
-        //     'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
-
 
     }
 
     public function aktivnaPopravka()
     {
-        // $uslugaOstvareneModel = new UslugaOstvarenaModel();
-        // $uslugaModel = new UslugaModel();
 
-        // $uslugaModel = new UslugaModel();
-        // $korisniciModel = new KorisnikModel();
-        // $rezervacijaModel = new RezervacijaModel();
-        // $zahtevModel = new ZahtevModel();
-        // $terminModel= new TerminModel();
-        //ovde treba ubaciti dohvatanje id-a korisnika iz sesije
         $idkor = $podaci['ime'] = $this->session->get('Korisnik')->idKor;
         $aktivne = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
         $this->prikaz("aktivnePopravke", ["aktivne" => $aktivne]);
-//     $this->prikaz("aktivnePopravke", ['uslugeOst' => $uslugaOstvareneModel, 'usluge' => $uslugaModel, 'korisnici' => $korisniciModel,
-//     'rezervacije' => $rezervacijaModel,'zahtevi'=>$zahtevModel,'idKor'=>$idkor,'termini'=>$terminModel]);
+
     }
 
     public function sacuvajKomentar()

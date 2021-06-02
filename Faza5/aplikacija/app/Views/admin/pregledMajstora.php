@@ -27,6 +27,8 @@
                         foreach($ostvarene as $ostvarena){
                             $idP=$ostvarena->getIdusl()->getIdmaj()->getIdkor();
                             if ($idP!=$majstor->getIdkor()) continue;
+                            $datum=$ostvarena->getIdrez()->getIdrez()->getIdter()->getDatumvreme()->format("Y-m-d H:i:s");;
+                            if (new DateTime() < new DateTime($datum)) continue;
                                 $ukupno++;
                                
                                 if ($ostvarena->getOcena()!=null && $ostvarena->getOcena()=="1")
@@ -39,7 +41,7 @@
                         else $procenat =0;
             
                     echo view_cell("\App\Libraries\MajstorPregled::prikazUsluge",['ime'=>$majstor->getIme(),'prezime'=>$majstor->getPrezime(),
-                    'email'=>$majstor->getEmail(),'id'=>$majstor->getidKor(),'num'=>$num,'procenat'=>$procenat]);
+                    'email'=>$majstor->getEmail(),'id'=>$majstor->getidKor(),'num'=>$num,'procenat'=>$procenat, 'slika' => $majstor->getSlika()]);
                     
                     $num += 3;
                     $num = $num % 6;

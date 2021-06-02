@@ -6,7 +6,8 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
         <div class="row" class="gornja">
             <div class="col-4 col-md-4">
                 <!-- ovde treba ubaciti da se ucitava korisnicka slika -->
-                <img class="userimg" src="<?php echo base_url(); ?>/slike/profilna.png">
+                <img  class="userimg" img src="<?php echo base_url() . "/" . $slika ?>"   >
+             
             </div>
             <div class="col-8 col-md-8">
                 <div class="row no-gutters">
