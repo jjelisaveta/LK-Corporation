@@ -50,15 +50,15 @@ function bojaProgresa()
    
      if (procenat<33)
      {
-     $(this).addClass("bg-danger")
+     $(this).addClass("bg-danger progress-bar-danger")
      }
      else if (procenat<66)
      {
-        $(this).addClass("bg-warning")
+        $(this).addClass("bg-warning progress-bar-warning")
      }
      else
      {
-        $(this).addClass("bg-success")
+        $(this).addClass("bg-success progress-bar-success")
      }
         })
     
@@ -67,6 +67,8 @@ function bojaProgresa()
 function ini()
 {
  
-
+    $(".progress").css({
+        "visibility":"visible"
+    })
     bojaProgresa();
 }

@@ -148,6 +148,8 @@ body {
 }
 .progress
 {
+    
+    visibility: hidden;
     position: relative;
     width: 90%;
     height: 70%;
