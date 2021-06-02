@@ -40,7 +40,7 @@
                         }
                         else $procenat =0;
             
-                    echo view_cell("\App\Libraries\MajstorPregled::prikazUsluge",['ime'=>$majstor->getIme(),'prezime'=>$majstor->getPrezime(),
+                    echo view_cell("\App\Libraries\MajstorPregled::pregledMajstora",['ime'=>$majstor->getIme(),'prezime'=>$majstor->getPrezime(),
                     'email'=>$majstor->getEmail(),'id'=>$majstor->getidKor(),'num'=>$num,'procenat'=>$procenat, 'slika' => $majstor->getSlika(),'ukupno'=>$ukupno]);
                     
                     $num += 3;

@@ -43,7 +43,7 @@
             if (new DateTime() > new DateTime($datum)) continue;
              $id=$aktivna->getIduslostv();
              $opis=$aktivna->getIdrez()->getIdrez()->getOpis();
-             echo view_cell("\App\Libraries\AktivnaPopravka::prikazUsluge",
+             echo view_cell("\App\Libraries\AktivnaPopravka::aktivnePopravke",
                 ['imeMajstor' => $ime,'prezime'=>$prezime, 'datumPopravke' => $datum, 'opis' => $opis, 'num' => $num,'slika'=>$slika]);
             // echo view_cell("\App\Libraries\AktivnaPopravka::prikazUsluge",
             //     ['imeMajstor' => $korisnik->ime,'prezime'=>$korisnik->prezime, 'datumPopravke' => $termin->datumVreme, 'opis' => $nadjenZahtev->opis, 'num' => $num]);

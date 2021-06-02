@@ -58,7 +58,7 @@
                $id=$ostvarena->getIduslostv();
                $opis=$ostvarena->getIdrez()->getIdrez()->getOpis();
 
-                            echo view_cell("\App\Libraries\UslugaIstorija::prikazUsluge", ['imeMajstor' => $ime,'prezime'=>$prezime, 'datumPopravke' => $datum
+                            echo view_cell("\App\Libraries\UslugaIstorija::istorija", ['imeMajstor' => $ime,'prezime'=>$prezime, 'datumPopravke' => $datum
               ,'komentar' => $komentar, 'ocena' => $ocena, 'id' => $id
                     ,'opis'=>$opis,'slika'=>$slika]);
                 }
