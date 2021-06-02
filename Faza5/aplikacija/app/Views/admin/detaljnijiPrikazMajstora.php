@@ -71,28 +71,29 @@
                 </div>
             </div>
 
-            <div class="row sveUsluge">
-                <?php
-                foreach ($usluge as $usluga) {
-                    $ukupno = 0;
-                    $pozitivna = 0;
-                    foreach ($ostvarene as $ostvarena) {
-                        if ($ostvarena->getIdusl()->getIdusl() == $usluga->getIdusl()) {
-                            $ukupno++;
-                            if ($ostvarena->getOcena() != null && $ostvarena->getOcena() == "1")
-                                $pozitivna++;
-                        }
-                    }
-                    if ($ukupno != 0) {
-                        $prep = $pozitivna / $ukupno * 100;
-                        $prep = "" . $prep . "%";
-                    } else
-                        $prep = " - ";
-                    echo view_cell("\App\Libraries\UslugaPrikazMajstora::prikazUsluge", ['naslov' => $usluga->getNaziv(),
-                        'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
-                        'tagovi' => $usluga->getTagovi(), 'cenaUsluge' => $usluga->getCena(), 'prep' => $prep, 'slika' => $usluga->getIdmaj()->getSlika()]);
-                }
-                ?>
+                <div class="row sveUsluge">
+                    <?php 
+                        foreach ($usluge as $usluga) {
+                            $ukupno = 0;
+                            $pozitivna = 0;
+                            foreach($ostvarene as $ostvarena){
+                                if ($ostvarena->getIdusl()->getIdusl() == $usluga->getIdusl() && $ostvarena->getOcena()!=null) {
+                                    $ukupno++;
+                                    if ($ostvarena->getOcena()=="1")
+                                        $pozitivna++;
+                                }
+                            }
+                            if ($ukupno!=0) {
+                                $prep = $pozitivna/$ukupno * 100;
+                                $prep = number_format($prep, 2);
+                                $prep = "" . $prep ."%";
+                            }
+                            else $prep = " - ";
+                            echo view_cell("\App\Libraries\UslugaPrikazMajstora::prikazUsluge", ['naslov' => $usluga->getNaziv(), 
+                            'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
+                            'tagovi'=>$usluga->getTagovi(), 'cenaUsluge'=>$usluga->getCena(), 'prep'=>$prep, 'slika' => $usluga->getIdmaj()->getSlika()]);
+                
+                        }?>
 
             </div>
         </div>

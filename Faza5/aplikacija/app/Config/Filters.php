@@ -20,7 +20,7 @@ class Filters extends BaseConfig
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
                 'gost'     => \App\Filters\GostFilter::class,
-                'korisnik' => \App\Filters\KorisnikFilter::class,
+                'klijent' => \App\Filters\KlijentFilter::class,
                 'majstor'  => \App\Filters\MajstorFilter::class,
                 'admin'    => \App\Filters\AdminFilter::class
 	];
@@ -64,7 +64,7 @@ class Filters extends BaseConfig
 	 */
 	public $filters = [
             /*'gost' => ['before' => ['Gost/*',' Gost']],
-            'korisnik' => ['before' => ['Korisnik/*', 'Korisnik']],
+            'klijent' => ['before' => ['Klijent/*', 'Klijent']],
             'majstor' => ['before' => ['Majstor/*', 'Majstor']],
             'admin' => ['before' => ['Admin/*', 'Admin']]*/
         ];

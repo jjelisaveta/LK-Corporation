@@ -3,7 +3,7 @@
 class AktivnaPopravka
 {
 
-    public function prikazUsluge($imeMajstor,$prezime, $datumPopravke, $opis, $num,$slika)
+    public function aktivnePopravke($imeMajstor,$prezime, $datumPopravke, $opis, $num,$slika)
     {
         return view("klijent/komponente/popravkaAktivna", ['imeMajstor' => $imeMajstor,'prezime'=>$prezime, 'datumPopravke' => $datumPopravke, 'opis' => $opis, 'num' => $num,'slika'=>$slika]);
     }

@@ -106,7 +106,7 @@ class Gost extends BaseController
                         }
                         $this->session->set('GostJe',0);                  
                         $this->session->set('Korisnik', $korisnik[0]);
-                        return redirect()->to(site_url('Majstor/dodajUslugu'));
+                        return redirect()->to(site_url('Gost/pretrazivanje'));
                     }
                 }
             }else{
@@ -116,7 +116,7 @@ class Gost extends BaseController
                 if ($this->validator->hasError('lozinka')){
                     $data['LosaLozinka'] = $this->validator->getError('lozinka');
                 }
-                return $this->prikazi('Majstor/dodajUslugu', $data);            //dodato za testiranje promene podataka
+                return $this->prikazi('Gost/pretrazivanje', $data);            //dodato za testiranje promene podataka
                 //ko zeli moze da skloni ali nek napise isti ovakav komentar da znam
             }
         }

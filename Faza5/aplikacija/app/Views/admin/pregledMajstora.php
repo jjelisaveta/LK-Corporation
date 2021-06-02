@@ -10,7 +10,7 @@
     <script src="<?php echo base_url(); ?>/js/skriptaPregledMajstora.js"></script>
 </head>
 
-<body>
+<body onload="ini()">
 <div class="container-fluid">
     <div id="con">
   
@@ -27,21 +27,22 @@
                         foreach($ostvarene as $ostvarena){
                             $idP=$ostvarena->getIdusl()->getIdmaj()->getIdkor();
                             if ($idP!=$majstor->getIdkor()) continue;
+                            if ($ostvarena->getOcena()==null) continue;
                             $datum=$ostvarena->getIdrez()->getIdrez()->getIdter()->getDatumvreme()->format("Y-m-d H:i:s");;
                             if (new DateTime() < new DateTime($datum)) continue;
                                 $ukupno++;
                                
-                                if ($ostvarena->getOcena()!=null && $ostvarena->getOcena()=="1")
+                                if ( $ostvarena->getOcena()=="1")
                                     $pozitivna++;
                         }
                         if ($ukupno!=0) {
                             $procenat = $pozitivna/$ukupno * 100;
-      
+                            
                         }
                         else $procenat =0;
             
-                    echo view_cell("\App\Libraries\MajstorPregled::prikazUsluge",['ime'=>$majstor->getIme(),'prezime'=>$majstor->getPrezime(),
-                    'email'=>$majstor->getEmail(),'id'=>$majstor->getidKor(),'num'=>$num,'procenat'=>$procenat, 'slika' => $majstor->getSlika()]);
+                    echo view_cell("\App\Libraries\MajstorPregled::pregledMajstora",['ime'=>$majstor->getIme(),'prezime'=>$majstor->getPrezime(),
+                    'email'=>$majstor->getEmail(),'id'=>$majstor->getidKor(),'num'=>$num,'procenat'=>$procenat, 'slika' => $majstor->getSlika(),'ukupno'=>$ukupno]);
                     
                     $num += 3;
                     $num = $num % 6;

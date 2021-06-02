@@ -47,7 +47,7 @@
                         
                             <div class="offset-2 col-8 offset-md-4 col-md-4 offset-md-4 offset-2">
                                     
-                                    <input class="col-5" type="number" name="cena" id="cenaId" value="<?php echo set_value('cena'); ?>" placeholder="Cena"><?php
+                                    <input class="col-5" type="number" step="100" name="cena" id="cenaId" value="<?php echo set_value('cena'); ?>" placeholder="Cena"><?php
                                     if(isset($cena))
                                         echo $cena;
                                     ?>

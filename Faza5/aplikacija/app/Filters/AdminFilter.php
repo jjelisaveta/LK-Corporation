@@ -13,10 +13,9 @@ class AdminFilter implements FilterInterface
         $session = session();
         if ($session->has("Korisnik")){
             $ulogovan = $session->get('Korisnik')->idUlo;
-            echo $ulogovan;
             switch ($ulogovan){
                 case 2: return redirect()->to(site_url("Majstor"));
-                case 3: return redirect()->to(site_url("Korisnik"));
+                case 3: return redirect()->to(site_url("Klijent"));
             } 
         } else {
             return redirect()->to(site_url("Gost"));

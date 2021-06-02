@@ -99,6 +99,21 @@ $(document).ready(function () {
         sort(sortSelektovan, filter(oznaceni, cena, preporuka, vreme));
     });
 
+    
+   /*$(".ddd").click(function (){
+        let id = $(this).attr("id");
+        alert(id);
+        $.ajax({
+            type: "POST",
+            url:"/Klijent/prikazMajstora",
+            data: {
+                idMaj: id
+            }
+        }).done(function(result_html) {
+            window.open(result_html);
+        });
+    });*/
+
 
     //usluga(cena, id, majstor, naslov, opis, preporuka)
     // var usluge = JSON.parse(localStorage.getItem('usluge'));
@@ -244,6 +259,8 @@ function dohvatiKljuc() {
         kljuc = parseInt(rez);
     });
 }
+
+
 
 function openNav() {
     document.getElementById("filteri").style.display = "block";

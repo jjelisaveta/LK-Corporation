@@ -6,7 +6,7 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
         <div class="row" class="gornja">
             <div class="col-4 col-md-4">
                 <!-- ovde treba ubaciti da se ucitava korisnicka slika -->
-                <img  class="userimg" img src="<?php echo base_url() . "/" . $slika ?>"   >
+                <img  class="userimg" src="<?php echo base_url() . "/" . $slika ?>"   >
              
             </div>
             <div class="col-8 col-md-8">
@@ -42,7 +42,7 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
                 <div class="row no-gutters">
                     <div class="col-7">
                         <div class="progress">
-                            <div class=" progress-bar bg-warning" role="progressbar" style="width:<?= $procenat ?>%"
+                            <div class=" progress-bar progress-bar-striped" role="progressbar " style="width:<?= $procenat ?>%"
                                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                             </div>
                             <span><?= $procenat ?>%</span>
@@ -64,27 +64,6 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
                 </div>
             </div>
         </div>
-        <!-- <table class="gornja">
-            <tr>
-               
-                <td>
-                  
-                 
-                    <p class="mala">Procenat pozitivnih ocena:</p>
-                    <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;"
-                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
-                        </div>
-                    </div>
 
-                    <a class="mail" href="mailto:" +<?= $email ?>>Posalji mejl majstoru</a>
-                    <input type="text" class="hidden" style="display:none">
-                    <br>
-                    <a href="" class="vise">detaljnije...</a>
-
-                    <br/>
-                </td>
-            </tr>
-        </table> -->
     </div>
 </div>

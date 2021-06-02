@@ -21,19 +21,20 @@ use phpDocumentor\Reflection\Types\This;
 class Klijent extends BaseController
 {
 
-    public function index()
+    /*public function index()
     {
         return view('welcome_message');
     }
+*/
 
-
-    protected function prikaz($stranica, $podaci)
+    protected function prikaz($stranica, $podaci,$broj)
     {
         $podaci['controller'] = 'Klijent';
         $podaci['korisnik'] = $this->session->get('Korisnik');
         $podaci['ime'] = $this->session->get('Korisnik')->ime;
         $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
         $podaci['profilna'] = $this->session->get('Korisnik')->slika;
+        $podaci['broj']=$broj;
         echo view("osnova/header");
         echo view("osnova/meni", $podaci);
         echo view("klijent/$stranica", $podaci);
@@ -45,29 +46,27 @@ class Klijent extends BaseController
         $stranica = 'pretrazivanje';
         $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
         if (!$_POST) {
-            return $this->prikaz($stranica, ['tagovi' => $allTags]);
+            return $this->prikaz($stranica, ['tagovi' => $allTags],1);
         }
     }
-
     public function usluge()
     {
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(7)->getUsluge();
-        $ret = [];
-        /*foreach ($usluge as $usluga) {
-            array_push($ret, $usluga->getIdusl());
-            echo $usluga->getIdusl();
-        }
-        return "" . json_encode($ret);*/
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(7)->getUsluge();       
         return $usluge;
     }
 
+    
+    public function izlogujSe(){
+        $this->session->destroy();
+        return redirect()->to(site_url("Gost/loginSubmit"));
+    }
+    
+    public function prikazUsluga($trazeniTag){
+        $tag = str_replace("_"," ",$trazeniTag);
 
-    public function prikazUsluga($trazeniTag)
-    {             /* prosledi se ovde samo kompresovano*/
-        $tag = str_replace("_", " ", $trazeniTag);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->findAll();
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag])->getUsluge();
-        $this->prikaz('prikazUsluga', ['usluge' => $usluge, 'ostvarene' => $ostvarene]);
+        $this->prikaz('prikazUsluga', ['usluge' => $usluge, 'ostvarene' => $ostvarene],0);
     }
 
     public function dohvatiSlobodneTermine()
@@ -78,7 +77,7 @@ class Klijent extends BaseController
         foreach ($nizMajstora as $idMaj) {
             $slobodni = array_merge($slobodni, $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)->dohvatiSveSlobodneZaMajstora($idMaj));
         }
-        // echo sizeof($slobodni);
+
         $zaSlanje = [];
         foreach ($slobodni as $s) {
             array_push($zaSlanje, [
@@ -88,7 +87,6 @@ class Klijent extends BaseController
                 'vreme' => $s->getIdTer()->getDatumvreme()
             ]);
         }
-        //print_r(json_encode($zaSlanje));
 
         return json_encode($zaSlanje);
     }
@@ -100,7 +98,7 @@ class Klijent extends BaseController
 
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
 
-        $this->prikaz("istorija", ["ostvarene" => $ostvarene]);
+        $this->prikaz("istorija", ["ostvarene" => $ostvarene],3);
 
     }
 
@@ -109,7 +107,7 @@ class Klijent extends BaseController
 
         $idkor = $podaci['ime'] = $this->session->get('Korisnik')->idKor;
         $aktivne = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
-        $this->prikaz("aktivnePopravke", ["aktivne" => $aktivne]);
+        $this->prikaz("aktivnePopravke", ["aktivne" => $aktivne],2);
 
     }
 
@@ -199,5 +197,60 @@ class Klijent extends BaseController
         $this->doctrine->em->flush();
         return "OK";
     }
+    public function vremeOdgovora($ostvarene)
+    {
+        $ukupno = 0;
+        foreach ($ostvarene as $ostvarena) {
+            $vremeOdgovora = $ostvarena->getIdrez()->getVremeodgovora()->format("Y-m-d H:i:s");
+            $vremeSlanja = $ostvarena->getIdrez()->getIdRez()->getVremeslanja()->format("Y-m-d H:i:s");
+            $razlika = strtotime($vremeOdgovora) - strtotime($vremeSlanja);
 
+            $ukupno += $razlika;
+        }
+        if (sizeof($ostvarene) == 0)
+            return 0;
+        return $ukupno / sizeof($ostvarene);
+    }
+
+    public function preporuke($ostvarene)
+    {
+        $sum = 0;
+        foreach ($ostvarene as $ostvarena) {
+            if ($ostvarena->getOcena() == "1") {
+                $sum++;
+            }
+        }
+        if (sizeof($ostvarene) == 0)
+            return 0;
+        return number_format($sum / sizeof($ostvarene) * 100, 2);
+    }
+
+    public function prosecnaCena($usluge)
+    {
+        $ukupno = 0;
+        foreach ($usluge as $usluga) {
+            $ukupno += $usluga->getCena();
+        }
+         if (sizeof($usluge) == 0)
+            return 0;
+        return $ukupno / sizeof($usluge);
+    }
+
+    public function prikazMajstora()
+    {
+       // $id = $this->request->getVar('id');
+        $id = 1;
+        echo $id;
+        $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->findBy(['idkor' => $id])[0];
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
+        $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
+
+        $vreme = $this->vremeOdgovora($ostvarene);
+        $preporuke = $this->preporuke($ostvarene);
+        $cena = $this->prosecnaCena($usluge);
+
+        return $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
+            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena], 1);
+
+    }
 }
