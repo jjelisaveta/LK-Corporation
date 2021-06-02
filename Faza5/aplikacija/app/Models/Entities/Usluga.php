@@ -57,11 +57,12 @@ class Usluga
      *
      * @var Tag[]
      *
+     *
      * Many Usluga have Many Tags.
-     * @ORM\ManyToMany(targetEntity="Tag")
-     * @ORM\JoinTable(name="uslugatag",
-     *      joinColumns={@ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="idTag", referencedColumnName="idTag")}
+     *  @ORM\ManyToMany(targetEntity="App\Models\Entities\Tag", inversedBy="usluge")
+     *  @ORM\JoinTable(name="uslugatag",
+     *       joinColumns={@ORM\JoinColumn(name="idUsl", referencedColumnName="idUsl")},
+     *       inverseJoinColumns={@ORM\JoinColumn(name="idTag", referencedColumnName="idTag")}
      *      )
      */
     private $tagovi;

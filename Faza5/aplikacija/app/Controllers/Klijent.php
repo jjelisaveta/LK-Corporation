@@ -39,7 +39,14 @@ class Klijent extends BaseController
     }
     
     public function prikazUsluga($trazeniTag){             /* prosledi se ovde samo kompresovano*/
-        $stranica = 'pretrazivanje';
+        $tagA = str_replace("_"," ",$trazeniTag);
+        $id = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findBy(['opis' => $tagA]);
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find($id[0]->getIdtag())->getUsluge();
+        $prosledi = [];
+        foreach($usluge as $u){
+            array_push($prosledi, $u->getIdusl());
+        }
+        $this->prikaz('prikazUsluga',['sveUsluge' => $prosledi]);
     }
 
     public function istorija()
