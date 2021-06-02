@@ -48,8 +48,7 @@ body {
 }
 
 .userimg{
-    /* height: 100%;
-    width:20%; */
+    height: 160px;
     width: 100%;
     border-radius: 50%;
     border-style: solid;

@@ -42,7 +42,7 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
                 <div class="row no-gutters">
                     <div class="col-7">
                         <div class="progress">
-                            <div class=" progress-bar bg-warning" role="progressbar" style="width:<?= $procenat ?>%"
+                            <div class=" progress-bar progress-bar-striped" role="progressbar " value='<?= $ukupno ?>'name='<?= $procenat ?>' style="width:<?= $procenat ?>%"
                                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                             </div>
                             <span><?= $procenat ?>%</span>
