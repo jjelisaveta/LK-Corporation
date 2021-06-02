@@ -20,6 +20,20 @@ $(document).ready(function(){
             /*filtriranje i sortiranje*/
         }
     });
+    
+   $(".ddd").click(function (){
+        let id = $(this).attr("id");
+        alert(id);
+        $.ajax({
+            type: "POST",
+            url:"/Klijent/prikazMajstora",
+            data: {
+                idMaj: id
+            }
+        }).done(function(result_html) {
+            window.open(result_html);
+        });
+    });
 });
 
 function inicijalizacija(){
@@ -64,6 +78,8 @@ function dohvatiSlobodneTermine(nizMajstora){
         localStorage.setItem("terimini", rez);
     });
 }
+
+
 
 function openNav() {
   document.getElementById("filteri").style.display = "block";

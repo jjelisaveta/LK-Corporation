@@ -32,7 +32,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Gost::pretrazivanje');
 $routes->get('/Gost', 'Gost::pretrazivanje');
-$routes->get('/Korisnik', 'Korisnik::pretrazivanje');
+$routes->get('/Klijent', 'Klijent::pretrazivanje');
 $routes->get('/Majstor', 'Majstor::pretrazivanje');
 $routes->get('/Admin', 'Admin::pretrazivanje');
 /*

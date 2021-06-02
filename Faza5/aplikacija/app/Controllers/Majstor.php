@@ -166,7 +166,7 @@ class Majstor extends BaseController
                 $sum++;
             }
         }
-        return $sum / sizeof($ostvarene) * 100;
+        return number_format($sum / sizeof($ostvarene) * 100, 2);
     }
 
     public function prosecnaCena($usluge)
@@ -194,7 +194,7 @@ class Majstor extends BaseController
 
     }
 
-    public function obrisiKomentar()
+   /* public function obrisiKomentar()
     {
         $id = $this->request->getVar('idOstvUsl');
         $ostvarena = $this->doctrine->em->getRepository(\App\Models\Entities\UslugaOstvarena::class)->find($id);
@@ -202,7 +202,7 @@ class Majstor extends BaseController
         $this->doctrine->em->persist($ostvarena);
         $this->doctrine->em->flush();
     }
-
+*/
     public function kalendar($date = null)
     {
         if (!isset($date)) {

@@ -23,7 +23,7 @@
                     <tr>
                         <td colspan="3" width="100%">
                             <div class="detaljnijeMajstor" id="<?= $idMaj ?>">
-                                <button type="button" onclick="window.location='detaljnijiPrikazMajstora.html';">
+                                <button class="ddd" type="SUBMIT" id="<?= $idMaj ?>" onclick="">
                                     Prikaži profil majstora
                                 </button>
                             </div>

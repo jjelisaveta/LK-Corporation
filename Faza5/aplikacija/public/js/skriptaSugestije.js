@@ -4,12 +4,13 @@
     const suggBox = searchWrapper.querySelector(".autocom-box");
     const icon = searchWrapper.querySelector(".icon");
     let linkTag = searchWrapper.querySelector("a");
+    
     let webLink;
     for(let i = 0; i < jArray.length; i++){
         $("#tagovi").append('<button ' + " id=" + trim(jArray[i]) + '>' + jArray[i] + '</button>');
         $("#" + trim(jArray[i])).hide();  
     }
-    // if user press any key and release
+    
     inputBox.onkeyup = (e)=>{
         for(let i = 0; i < jArray.length; i++){
             $("#" + trim(jArray[i])).hide();
@@ -26,7 +27,7 @@
         }
     }
     $("button").click(function(){
-        window.location.href = "prikazUsluga/" + $(this).attr("id");
+       window.location.href = "prikazUsluga/" + $(this).attr("id");
     })
     function trim(rec){
         let sol = "";

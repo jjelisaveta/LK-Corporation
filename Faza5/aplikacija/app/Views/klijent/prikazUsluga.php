@@ -137,7 +137,7 @@ if (!isset($ostvarene))
                         </tr>
                         <tr>
                             <td style="width:60%;">
-                                <button type="button" id="dugmePosalji">Prvo izaberite željene usluge</button>
+                                <button type="button" id="dugmePosalji">Izaberite termine</button>
                                 <button type="button" id="dugmeOznaciSve" onClick="check()">Odaberi sve</button>
                             </td>
                         </tr>
@@ -151,14 +151,16 @@ if (!isset($ostvarene))
                     $ukupno = 0;
                     $pozitivna = 0;
                     foreach ($ostvarene as $ostvarena) {
-                        if ($ostvarena->getIdusl()->getIdusl() == $usluga->getIdusl()) {
+                        if ($ostvarena->getIdusl()->getIdusl() == $usluga->getIdusl() && $ostvarena->getOcena()!=null) {
+                            
                             $ukupno++;
-                            if ($ostvarena->getOcena() != null && $ostvarena->getOcena() == "1")
+                            if ($ostvarena->getOcena() == "1")
                                 $pozitivna++;
                         }
                     }
                     if ($ukupno != 0) {
                         $prep = $pozitivna / $ukupno * 100;
+                        $prep = number_format($prep, 2);
                         $prep = "" . $prep . "%";
                     } else $prep = " - ";
                 } else {

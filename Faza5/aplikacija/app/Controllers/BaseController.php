@@ -8,6 +8,10 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use App\Models\Repositories\UslugaOstvarenaRepository;
+use CodeIgniter\Model;
+use phpDocumentor\Reflection\Types\Array_;
+use App\Models\Entities;
 
 /**
  * Class BaseController
@@ -63,6 +67,10 @@ class BaseController extends Controller
             echo view("header");
             echo view("meni");
             echo view("footer");
-        
 	}
+        
+        
+        
+
+
 }

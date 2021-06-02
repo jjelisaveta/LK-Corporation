@@ -16,14 +16,16 @@ use App\Models\Repositories\IstorijaRepository;
 use CodeIgniter\Model;
 use phpDocumentor\Reflection\Types\Array_;
 use App\Models\Entities;
+
+
 class Klijent extends BaseController
 {
 
-    public function index()
+    /*public function index()
     {
         return view('welcome_message');
     }
-
+*/
 
     protected function prikaz($stranica, $podaci)
     {
@@ -46,20 +48,18 @@ class Klijent extends BaseController
         }
     }
     
-       public function usluge()
+    public function usluge()
     {
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(7)->getUsluge();
-        $ret = [];
-        /*foreach ($usluge as $usluga) {
-            array_push($ret, $usluga->getIdusl());
-            echo $usluga->getIdusl();
-        }
-        return "" . json_encode($ret);*/
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(7)->getUsluge();       
         return $usluge;
     }
-
     
-    public function prikazUsluga($trazeniTag){             /* prosledi se ovde samo kompresovano*/
+    public function izlogujSe(){
+        $this->session->destroy();
+        return redirect()->to(site_url("Gost/loginSubmit"));
+    }
+    
+    public function prikazUsluga($trazeniTag){
         $tag = str_replace("_"," ",$trazeniTag);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->findAll();
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis'=>$tag])->getUsluge();
@@ -73,7 +73,6 @@ class Klijent extends BaseController
         foreach ($nizMajstora as $idMaj){
             $slobodni = array_merge($slobodni, $this->doctrine->em->getRepository(\App\Models\Entities\Kalendar::class)->dohvatiSveSlobodneZaMajstora($idMaj));
         }
-       // echo sizeof($slobodni);
         $zaSlanje = [];
         foreach($slobodni as $s) {
             array_push($zaSlanje, [
@@ -83,8 +82,6 @@ class Klijent extends BaseController
                 'vreme'=>$s->getIdTer()->getDatumvreme()
             ]);
         }
-       //print_r(json_encode($zaSlanje));
-     
         return json_encode($zaSlanje);
     }
     
@@ -180,5 +177,53 @@ public function aktivnaPopravka()
       
 
     }
+    public function vremeOdgovora($ostvarene)
+    {
+        $ukupno = 0;
+        foreach ($ostvarene as $ostvarena) {
+            $vremeOdgovora = $ostvarena->getIdrez()->getVremeodgovora()->format("Y-m-d H:i:s");
+            $vremeSlanja = $ostvarena->getIdrez()->getIdRez()->getVremeslanja()->format("Y-m-d H:i:s");
+            $razlika = strtotime($vremeOdgovora) - strtotime($vremeSlanja);
 
+            $ukupno += $razlika;
+        }
+        return $ukupno / sizeof($ostvarene);
+    }
+
+    public function preporuke($ostvarene)
+    {
+        $sum = 0;
+        foreach ($ostvarene as $ostvarena) {
+            if ($ostvarena->getOcena() == "1") {
+                $sum++;
+            }
+        }
+        return number_format($sum / sizeof($ostvarene) * 100, 2);
+    }
+
+    public function prosecnaCena($usluge)
+    {
+        $ukupno = 0;
+        foreach ($usluge as $usluga) {
+            $ukupno += $usluga->getCena();
+        }
+        return $ukupno / sizeof($usluge);
+    }
+
+    public function prikazMajstora()
+    {
+        $id = $this->request->getVar('idMaj');
+        //$id = 1;
+        $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->findBy(['idkor' => $id])[0];
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
+        $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
+
+        $vreme = $this->vremeOdgovora($ostvarene);
+        $preporuke = $this->preporuke($ostvarene);
+        $cena = $this->prosecnaCena($usluge);
+
+        return $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
+            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena]);
+
+    }
 }

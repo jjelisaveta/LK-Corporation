@@ -27,14 +27,15 @@
                         foreach($ostvarene as $ostvarena){
                             $idP=$ostvarena->getIdusl()->getIdmaj()->getIdkor();
                             if ($idP!=$majstor->getIdkor()) continue;
+                            if ($ostvarena->getOcena()==null) continue;
                                 $ukupno++;
                                
-                                if ($ostvarena->getOcena()!=null && $ostvarena->getOcena()=="1")
+                                if ( $ostvarena->getOcena()=="1")
                                     $pozitivna++;
                         }
                         if ($ukupno!=0) {
                             $procenat = $pozitivna/$ukupno * 100;
-      
+                            
                         }
                         else $procenat =0;
             
