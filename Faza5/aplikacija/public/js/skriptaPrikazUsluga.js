@@ -96,7 +96,7 @@ $(document).ready(function () {
         var cena = $("#SkalaCena").val();
         var preporuka = $("#ocena").val();
         var vreme = $("#vremeOdziva").val();
-        sort(sortSelektovan, filter(oznaceni, cena, preporuka, vreme));
+        sort(sortSelektovan, filter(oznaceni, cena, preporuka, vreme*60));
     });
 
 

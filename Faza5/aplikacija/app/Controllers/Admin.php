@@ -21,18 +21,21 @@ use phpDocumentor\Reflection\Types\Array_;
 
 class Admin extends BaseController
 {
-    protected function prikaz($stranica, $podaci,$broj)
+    protected function prikaz($stranica, $podaci, $broj)
     {
         //TREBA DOHVATITI IZ SESIJE NE HARDKODOVATI
-        $podaci['korisnik'] = $this->session->get('Korisnik');
-        $podaci['ime'] = $this->session->get('Korisnik')->ime;
-        $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
-        $podaci['profilna'] = $this->session->get('Korisnik')->slika;
-        $podaci['id'] = $this->session->get('Korisnik')->idKor;
-        $podaci['broj']=$broj; 
-        // $podaci['controller'] = "Admin";
-        // $podaci['ime'] = 'Code';
-        // $podaci['prezime'] = 'Igniter';
+//        $podaci['korisnik'] = $this->session->get('Korisnik');
+//        $podaci['ime'] = $this->session->get('Korisnik')->ime;
+//        $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
+//        $podaci['profilna'] = $this->session->get('Korisnik')->slika;
+//        $podaci['id'] = $this->session->get('Korisnik')->idKor;
+//        $podaci['broj']=$broj;
+        $podaci['controller'] = "Admin";
+        $podaci['ime'] = 'Code';
+        $podaci['prezime'] = 'Igniter';
+        $podaci['profilna'] = '#';
+        $podaci['id'] = '0';
+        $podaci['broj'] = $broj;
         echo view("osnova/header");
         echo view("admin/meni", $podaci);
         echo view("admin/$stranica", $podaci);
@@ -64,14 +67,14 @@ class Admin extends BaseController
         $majstori = $this->doctrine->em->getRepository(Entities\Korisnik::class)->findBy(['idulo' => $uloga, 'odobren' => 1]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUsluge();
 
-        return $this->prikaz('pregledMajstora', ['majstori' => $majstori, 'ostvarene' => $ostvarene],1);
+        return $this->prikaz('pregledMajstora', ['majstori' => $majstori, 'ostvarene' => $ostvarene], 1);
     }
 
     public function odobravanjeMajstora()
     {
         $uloga = 2;
         $majstori = $this->doctrine->em->getRepository(Entities\Korisnik::class)->findBy(['idulo' => $uloga, 'odobren' => 0]);
-        return $this->prikaz('odobravanjeMajstora', ['majstori' => $majstori],2);
+        return $this->prikaz('odobravanjeMajstora', ['majstori' => $majstori], 2);
     }
 
     private function odobriMajstoraInternal($id)
@@ -171,7 +174,7 @@ class Admin extends BaseController
         $preporuke = $this->preporuke($ostvarene);
         $cena = $this->prosecnaCena($usluge);
         return $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
-            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena],1);
+            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena], 1);
     }
 
     public function obrisiKomentar()

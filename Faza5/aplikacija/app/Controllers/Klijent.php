@@ -244,7 +244,7 @@ class Klijent extends BaseController
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
 
-        $vreme = $this->vremeOdgovora($ostvarene);
+        $vreme = $this->vremeOdgovora($ostvFarene);
         $preporuke = $this->preporuke($ostvarene);
         $cena = $this->prosecnaCena($usluge);
 
