@@ -29,9 +29,9 @@ if (!isset($majstori))
             <div id="zahtev" class="offset-0 col-12 offset-md-2 col-md-10">
                 <?php
                 foreach ($majstori as $majstor) {
-                    echo view_cell("\App\Libraries\OdobravanjeMajstora::prikaz",
+                    echo view_cell("\App\Libraries\OdobravanjeMajstora:odobravanjeMajstora",
                         ['ime' => $majstor->getIme(), 'prezime' => $majstor->getPrezime(),
-                            'email' => $majstor->getEmail(), 'broj' => $majstor->getBrojtelefona(), 'slika' => "", 'id' => $majstor->getIdkor()]);
+                            'email' => $majstor->getEmail(), 'broj' => $majstor->getBrojtelefona(), 'slika' => $majstor->getSlika(), 'id' => $majstor->getIdkor()]);
                 }
                 ?>
             </div>

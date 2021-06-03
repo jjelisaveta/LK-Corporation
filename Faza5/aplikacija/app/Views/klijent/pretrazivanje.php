@@ -25,17 +25,17 @@
         ?>
     <div class="container-fluid">
         <div class="row">
-            <div id="sadrzaj" class="col-xs-12 offset-md-2 col-md-10 wrapper">
+            <div id="sadrzaj" class="col-12 offset-md-2 col-md-10 wrapper">
                 <h3>Imate kvar? Mi imamo majstora!</h3>
                 <div class="search-input">
                     <a href="" target="_blank" hidden></a>
-                    <input id = "poljePretraga" type="text" placeholder="Unesite tag..">
+                    <input id = "poljePretraga" type="text" placeholder="Unesite pojam za pretragu..">
                 </div>
             </div>
         </div>
         <div class="row">
-            <div id="tagovi" class="col-xs-8 offset-md-2 col-md-6 d-flex justify-content-center">
-                <!--Ovde ide neki kod koji dinamicki dodaje tagove-->
+            <div id="tagovi" class="col-12 offset-md-2 col-md-10 d-flex justify-content-center">
+               
             </div>
         </div>
     </div>

@@ -23,7 +23,6 @@
 <div class="container-fluid">
     <div class="row">
         <div id="kalendar" class="offset-sm-0 col-12 col-md-10 offset-md-2 text-center">
-
             <div id="termini">
                 <?php
                 if (!isset($date)) {
@@ -32,7 +31,8 @@
                 if (isset($termini)) {
                     $i = 0;
                     foreach ($termini as $key) {
-                        $key->view();
+                        echo view_cell("\App\Libraries\KalendarTermin::prikaz",
+                            ['terminText' => $key['vreme'], 'id' => $key['id'], 'class' => $key['class']]);
                         $i++;
                         if ($i == 3) {
                             $i = 0;
@@ -52,6 +52,16 @@
             </div>
         </div>
     </div>
+    <?php
+    if (isset($radi))
+        foreach ($radi as $ter) {
+            echo "<script>updateTermin('$ter');</script>";
+        }
+    if (isset($rezervisan))
+        foreach ($rezervisan as $ter) {
+            echo "<script>rezervisi('$ter[0]','$ter[1]');</script>";
+        }
+    ?>
 </div>
 </body>
 </html>

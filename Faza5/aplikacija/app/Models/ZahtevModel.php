@@ -9,7 +9,7 @@ class ZahtevModel extends Model
     protected $table = "zahtev";
     protected $returnType = "object";
     protected $primaryKey = 'idZah';
-    protected $allowedFields = ['idKor', 'opis', 'idTer', 'vremeSlanja'];
+    protected $allowedFields = ['idUsl', 'idKor', 'idTer', 'opis', 'vremeSlanja', 'identifikator'];
 
     public function dohvatiCeoOpis($idZah)
     {

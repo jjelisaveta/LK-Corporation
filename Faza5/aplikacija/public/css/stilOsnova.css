@@ -8,7 +8,7 @@ body {
     height: 100%;
     background-color:#2b2b2b;
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     top: 0;
     left: 0;
     padding-top:120px;
@@ -156,4 +156,8 @@ body {
     color: #818181;
     font-family: 'Courier New';
 }
-
+.active
+{
+   
+  color:   #f1f1f1 !important
+}
