@@ -31,10 +31,10 @@ class Admin extends BaseController
 //        $podaci['id'] = $this->session->get('Korisnik')->idKor;
 //        $podaci['broj']=$broj;
         $podaci['controller'] = "Admin";
-        $podaci['ime'] = 'Code';
-        $podaci['prezime'] = 'Igniter';
+        $podaci['ime'] = 'Admin';
+        $podaci['prezime'] = 'Admin';
         $podaci['profilna'] = '#';
-        $podaci['id'] = '0';
+//        $podaci['id'] = '0';
         $podaci['broj'] = $broj;
         echo view("osnova/header");
         echo view("admin/meni", $podaci);
