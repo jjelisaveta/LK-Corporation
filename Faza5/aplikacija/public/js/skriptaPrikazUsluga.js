@@ -99,20 +99,20 @@ $(document).ready(function () {
         sort(sortSelektovan, filter(oznaceni, cena, preporuka, vreme));
     });
 
-    
-   /*$(".ddd").click(function (){
-        let id = $(this).attr("id");
-        alert(id);
-        $.ajax({
-            type: "POST",
-            url:"/Klijent/prikazMajstora",
-            data: {
-                idMaj: id
-            }
-        }).done(function(result_html) {
-            window.open(result_html);
-        });
-    });*/
+
+    /*$(".ddd").click(function (){
+         let id = $(this).attr("id");
+         alert(id);
+         $.ajax({
+             type: "POST",
+             url:"/Klijent/prikazMajstora",
+             data: {
+                 idMaj: id
+             }
+         }).done(function(result_html) {
+             window.open(result_html);
+         });
+     });*/
 
 
     //usluga(cena, id, majstor, naslov, opis, preporuka)
@@ -148,12 +148,12 @@ function filter(oznaceni, cena, preporuka, vreme) {
     });
 
     usluge = usluge.filter(u => parseInt(u.cena) <= cena);
-    // usluge = usluge.filter(u => {
-    //     if (u.preporuke === "-")
-    //         return true;
-    //     var p = parseInt(u.preporuke.substr(0, u.preporuke.length - 1));
-    //     return p >= preporuka;
-    // });
+    usluge = usluge.filter(u => {
+        if (u.preporuke === "-")
+            return true;
+        var p = parseInt(u.preporuke.substr(0, u.preporuke.length - 1));
+        return p >= preporuka;
+    });
     usluge = usluge.filter(u => {
         var vr = u.vremeOdgovora.split(":");
         var sekunde = 0;
@@ -191,7 +191,7 @@ function dohvatiUsluge() {
 function updateUsluge(usluge) {
     $(".uslugaKomponenta").remove();
     usluge.forEach(u => {
-        $("#poljeZaUsluge").append(usluga(u.cena, u.idUsl, u.majstori, u.naslov, u.opis, u.preporuke, u.vremeOdgovora));
+        $("#poljeZaUsluge").append(usluga(u.cena, u.idUsl, u.majstori, u.naslov, u.opis, u.preporuke, u.vremeOdgovora, u.slika));
     });
 }
 
@@ -213,8 +213,8 @@ function inicijalizacija() {
             cena: tren.find(".cenaUsluge").text().trim(),
             preporuke: tren.find(".preporuke").text().trim(),
             vremeOdgovora: tren.find(".vremeOdgovora").text().trim(),
-            majstor: tren.find(".detaljnijeMajstor").attr("id").trim()
-
+            majstor: tren.find(".detaljnijeMajstor").attr("id").trim(),
+            slika: tren.find("#userimg img").attr("src")
         });
     }
 
@@ -261,7 +261,6 @@ function dohvatiKljuc() {
 }
 
 
-
 function openNav() {
     document.getElementById("filteri").style.display = "block";
 }
@@ -282,12 +281,12 @@ vremeOdgovora: "02:25"
 
 
  */
-function usluga(cena, id, majstor, naslov, opis, preporuka, vremeOdgovora) {
+function usluga(cena, id, majstor, naslov, opis, preporuka, vremeOdgovora, slika) {
     return '<div class="row uslugaKomponenta">\n' +
         '    <div class="offset-1 col-10 polje">\n' +
         '        <table class="uslugaTabela" id="' + id + '">\n' +
         '            <tr>\n' +
-        '                <td id="userimg"><img src="#"></td>\n' +
+        '                <td id="userimg"><img src="' + slika + '"></td>\n' +
         '                <td width="60%">\n' +
         '                    <h1>\n' +
         '                        ' + naslov + '\n' +

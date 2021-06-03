@@ -23,14 +23,14 @@ use App\Models\Entities;
 
 class Majstor extends BaseController
 {
-    protected function prikaz($stranica, $podaci,$broj)
+    protected function prikaz($stranica, $podaci, $broj)
     {
         $podaci['controller'] = "Majstor";
         $podaci['korisnik'] = $this->session->get('Korisnik');
         $podaci['ime'] = $this->session->get('Korisnik')->ime;
         $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
         $podaci['profilna'] = $this->session->get('Korisnik')->slika;
-        $podaci['broj']=$broj;
+        $podaci['broj'] = $broj;
         echo view("osnova/header");
         echo view("majstor/meni", $podaci);
         echo view("majstor/$stranica", $podaci);
@@ -42,16 +42,16 @@ class Majstor extends BaseController
         $stranica = 'pretrazivanje';
         $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
         if (!$_POST) {
-            return $this->prikaz($stranica, ['tagovi' => $allTags],0);
+            return $this->prikaz($stranica, ['tagovi' => $allTags], 0);
         }
     }
 
     public function dodajUslugu()
     {
         $tagovi = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findAll();
-    
+
         if (!$_POST) {
-            $this->prikaz("dodavanjeusluga", ['tagovi' => $tagovi],4);
+            $this->prikaz("dodavanjeusluga", ['tagovi' => $tagovi], 4);
             return;
         }
 
@@ -82,15 +82,15 @@ class Majstor extends BaseController
             $novaUsluga->setOpis($this->request->getVar('opis'));
             $novaUsluga->setCena($this->request->getVar('cena'));
             $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($this->session->get('Korisnik')->idKor);
-           
+
             $novaUsluga->setIdmaj($majstor);
-            $noviTagovi =[];
-            foreach ($tagovi as $tag){
+            $noviTagovi = [];
+            foreach ($tagovi as $tag) {
                 echo $tag;
-                array_push($noviTagovi,$this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' =>$tag]));
-                echo $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' =>$tag])->getOpis();
+                array_push($noviTagovi, $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag]));
+                echo $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag])->getOpis();
             }
-           
+
             $novaUsluga->setTagovi($noviTagovi);
             $this->doctrine->em->persist($novaUsluga);
             $this->doctrine->em->flush();
@@ -106,7 +106,7 @@ class Majstor extends BaseController
                 $podaci['cenaGreska'] = $this->validator->getError('cena');
             }
             $podaci['tagovi'] = $tagovi;
-            return $this->prikaz("dodavanjeusluga", $podaci,4);
+            return $this->prikaz("dodavanjeusluga", $podaci, 4);
         }
     }
 
@@ -128,8 +128,8 @@ class Majstor extends BaseController
 
     public function mojeUsluge()
     {
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj'=>$this->session->get('Korisnik')->idKor]);
-        $this->prikaz("mojeUsluge", ['usluge' => $usluge],3);
+        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $this->session->get('Korisnik')->idKor]);
+        $this->prikaz("mojeUsluge", ['usluge' => $usluge], 3);
     }
 
 
@@ -190,19 +190,19 @@ class Majstor extends BaseController
         $cena = $this->prosecnaCena($usluge);
 
         $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
-            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena],0);
+            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena], 0);
 
     }
 
-   /* public function obrisiKomentar()
-    {
-        $id = $this->request->getVar('idOstvUsl');
-        $ostvarena = $this->doctrine->em->getRepository(\App\Models\Entities\UslugaOstvarena::class)->find($id);
-        $ostvarena->setKomentar(null);
-        $this->doctrine->em->persist($ostvarena);
-        $this->doctrine->em->flush();
-    }
-*/
+    /* public function obrisiKomentar()
+     {
+         $id = $this->request->getVar('idOstvUsl');
+         $ostvarena = $this->doctrine->em->getRepository(\App\Models\Entities\UslugaOstvarena::class)->find($id);
+         $ostvarena->setKomentar(null);
+         $this->doctrine->em->persist($ostvarena);
+         $this->doctrine->em->flush();
+     }
+ */
     public function kalendar($date = null)
     {
         if (!isset($date)) {
@@ -225,7 +225,7 @@ class Majstor extends BaseController
         $data["date"] = $date;
         $data['radi'] = $radi;
         $data['rezervisan'] = $rezervisan;
-        $this->prikaz("kalendar", $data,2);
+        $this->prikaz("kalendar", $data, 2);
     }
 
     private function dohvatiOpisRezervacije($rezervacija)
@@ -389,7 +389,7 @@ class Majstor extends BaseController
             $podaci = array_merge($podaci, $_SESSION['greske']);
             unset($_SESSION['greske']);
         }
-        return $this->prikaz("izmenaUsluge", $podaci,0);
+        return $this->prikaz("izmenaUsluge", $podaci, 0);
     }
 
     public function izmenaUsluge()
@@ -399,8 +399,8 @@ class Majstor extends BaseController
             //potrebno popraviti da se salje error 500
             return "zahtev mora biti post";
         }
-        
-      
+
+
         $naslov = $this->request->getVar("naslov");
         $opis = $this->request->getVar("opis");
         $cena = $this->request->getVar("cena");
@@ -468,7 +468,15 @@ class Majstor extends BaseController
         //$zahtevi= $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->findAll();
         $id = $_SESSION['Korisnik']->idKor;
         $zahtevi = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->dohvatiZahteveMajstoraAktivne($id);
-        return $this->prikaz("zahtevi", ['zahtevi' => $zahtevi],1);
+//        $danas = date("Y:m:h");
+//        foreach ($zahtevi as $zahtev) {
+//            if ($zahtevi->getIdter()->getDatumVreme()->before($danas)) {
+//                array_remove($zahtev);
+//                $this->doctrine->em->remove($zahtev);
+//            }
+//        }
+//        $this->doctrine->em->flush();
+        return $this->prikaz("zahtevi", ['zahtevi' => $zahtevi], 1);
 
         //return $zahtevi;
         // $ret = [];
