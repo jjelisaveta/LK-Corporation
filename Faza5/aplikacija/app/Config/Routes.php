@@ -41,7 +41,7 @@ $routes->get('/', 'Klijent::pretrazivanje');
 $routes->get('/Gost', 'Klijent::pretrazivanje');
 $routes->get('/Klijent', 'Klijent::pretrazivanje');
 $routes->get('/Majstor', 'Majstor::mojeUsluge');
-$routes->get('/Admin', 'Admin::pretrazivanje');
+$routes->get('/Admin', 'Admin::pregledMajstora');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

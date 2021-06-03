@@ -75,7 +75,7 @@
                     <div class="row">
                         <div class="offset-2 col-8 offset-md-4 col-md-4" style="text-align: center">
                             <input type="file" class="custom-file-input okvir" name="izaberiSliku" id="izaberiSliku">
-                            <label class="custom-file-label okvir" for="izaberiSliku" id="izaberiSliku" >Učitajte profilnu sliku</label>
+                            <label class="custom-file-label okvir" for="izaberiSliku" id="izaberiSliku" >Učitajte profilnu sliku</label>  
                         </div> 
                     </div> 
                     <font color='red'>

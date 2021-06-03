@@ -15,8 +15,8 @@
                 </td>
                 <td class="statistika" width="25%">
                     <h3>
-                        Majstora preporučuje: <b class="preporuke"> <?= $prep ?></b> <br>
-                        Prosečno vreme odgovora: <b class="vremeOdgovora">02:25</b> <br>
+                        Uslugu preporučuje: <b class="preporuke"> <?= $prep ?></b> <br>
+                        Prosečno vreme odgovora: <b class="vremeOdgovora"><?= gmdate("H:i:s", $vreme) ?></b> <br>
                         Cena usluge: <b class="cenaUsluge"> <?= $cenaUsluge ?></b>
                     </h3>
                 </td>

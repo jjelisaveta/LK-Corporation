@@ -1,3 +1,11 @@
+#zahtev {
+    z-index: 2;    
+}
+
+#zahtevi {
+    margin-bottom: 50px
+}
+
 .majstor h3{
     font-size: 2.2vh;
     font-weight: 300;
@@ -13,6 +21,7 @@
     margin-bottom: 10px;
     background-color: #c8c6b9;
     border-radius: 30px;
+    
 }
 
 .majstor td{
@@ -26,6 +35,7 @@
     width: auto;
     max-width: 180px;
     max-height: 180px;
+    border: none;
 }
 .majstor img{
     width: 100%;
@@ -84,4 +94,8 @@
     color: #d8d6c9;
     font-size: 2.2vh;
     margin-bottom: 1%;
+}
+
+table {
+    width: 100%;
 }

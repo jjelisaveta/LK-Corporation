@@ -24,6 +24,7 @@ $(document).ready(function () {
     console.log(terminiMapa);
     $("#dugmePosalji").click(function () {
         if (!unetiTermini) {
+           
             openNav();
             return;
         }
@@ -35,7 +36,7 @@ $(document).ready(function () {
         var oznaceni = [];
         ozn.each(index => {
             oznaceni.push(Date.parse(dan + " " + ozn[index].id + ":00:00"));
-        })
+        });
         var novaMapa = new Map();
         terminiMapa.forEach((value, key) => {
             value = value.filter(obj => oznaceni.includes(obj.date));
@@ -75,6 +76,7 @@ $(document).ready(function () {
     });
 
     $("#dugmePretrazi").click(function () {
+        
         if (!unetiTermini) {
             let oznaceni = $("input:checkbox:checked");
             if (oznaceni.length == 0) return;
@@ -89,7 +91,7 @@ $(document).ready(function () {
         var oznaceni = [];
         o.each(index => {
             oznaceni.push(Date.parse(dan + " " + o[index].id + ":00:00"));
-        })
+        });
         console.log(oznaceni);
         usluge = dohvatiUsluge();
         var sortSelektovan = $("#sortiranje").children("option:selected").val()[1];
@@ -98,22 +100,6 @@ $(document).ready(function () {
         var vreme = $("#vremeOdziva").val();
         sort(sortSelektovan, filter(oznaceni, cena, preporuka, vreme*60));
     });
-
-
-    /*$(".ddd").click(function (){
-         let id = $(this).attr("id");
-         alert(id);
-         $.ajax({
-             type: "POST",
-             url:"/Klijent/prikazMajstora",
-             data: {
-                 idMaj: id
-             }
-         }).done(function(result_html) {
-             window.open(result_html);
-         });
-     });*/
-
 
     //usluga(cena, id, majstor, naslov, opis, preporuka)
     // var usluge = JSON.parse(localStorage.getItem('usluge'));
@@ -148,7 +134,9 @@ function filter(oznaceni, cena, preporuka, vreme) {
     });
 
     usluge = usluge.filter(u => parseInt(u.cena) <= cena);
+
     usluge = usluge.filter(u => {
+
         if (u.preporuke === "-")
             return true;
         var p = parseInt(u.preporuke.substr(0, u.preporuke.length - 1));
@@ -180,8 +168,8 @@ function sort(znak, usluge) {
         if (znak == 5)
             return a.vremeOdgovora - b.vremeOdgovora;
         return b.vremeOdgovora - a.vremeOdgovora;
-    })
-    updateUsluge(usluge)
+    });
+    updateUsluge(usluge);
 }
 
 function dohvatiUsluge() {
