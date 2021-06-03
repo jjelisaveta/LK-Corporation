@@ -468,15 +468,17 @@ class Majstor extends BaseController
         //$zahtevi= $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->findAll();
         $id = $_SESSION['Korisnik']->idKor;
         $zahtevi = $this->doctrine->em->getRepository(\App\Models\Entities\Zahtev::class)->dohvatiZahteveMajstoraAktivne($id);
-//        $danas = date("Y:m:h");
-//        foreach ($zahtevi as $zahtev) {
-//            if ($zahtevi->getIdter()->getDatumVreme()->before($danas)) {
-//                array_remove($zahtev);
-//                $this->doctrine->em->remove($zahtev);
-//            }
-//        }
-//        $this->doctrine->em->flush();
-        return $this->prikaz("zahtevi", ['zahtevi' => $zahtevi], 1);
+        $danas = date("Y:m:d");
+        $ok = [];
+        foreach ($zahtevi as $zahtev) {
+            if ($zahtev->getIdter()->getDatumVreme()->format("Y:m:d") < ($danas)) {
+                $this->doctrine->em->remove($zahtev);
+            } else {
+                array_push($ok, $zahtev);
+            }
+        }
+        $this->doctrine->em->flush();
+        return $this->prikaz("zahtevi", ['zahtevi' => $ok], 1);
 
         //return $zahtevi;
         // $ret = [];
