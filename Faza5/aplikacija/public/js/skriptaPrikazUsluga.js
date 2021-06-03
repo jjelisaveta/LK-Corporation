@@ -99,19 +99,7 @@ $(document).ready(function () {
     });
 
     
-   /*$(".ddd").click(function (){
-        let id = $(this).attr("id");
-        alert(id);
-        $.ajax({
-            type: "POST",
-            url:"/Klijent/prikazMajstora",
-            data: {
-                idMaj: id
-            }
-        }).done(function(result_html) {
-            window.open(result_html);
-        });
-    });*/
+   
 
 
     //usluga(cena, id, majstor, naslov, opis, preporuka)
@@ -210,8 +198,8 @@ function inicijalizacija() {
             cena: tren.find(".cenaUsluge").text().trim(),
             preporuke: tren.find(".preporuke").text().trim(),
             vremeOdgovora: tren.find(".vremeOdgovora").text().trim(),
-            majstor: tren.find(".detaljnijeMajstor").attr("id").trim()
-
+            majstor: tren.find(".detaljnijeMajstor").attr("id").trim(),
+            slika: tren.find("#userimg img").attr("src")
         });
     }
 

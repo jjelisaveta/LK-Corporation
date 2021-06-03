@@ -152,11 +152,23 @@ if (!isset($ostvarene))
             </div>
             <?php
             $ocene = [];
+            $kasnjenje = [];
             foreach ($usluge as $usluga) {
+                
                 if (!isset($ocene[$usluga->getIdmaj()->getIdkor()])) {
                     $ukupno = 0;
                     $pozitivna = 0;
+                    $kasni = 0;
+                    $brojOstvarenih = 0;
                     foreach ($ostvarene as $ostvarena) {
+                        if ($usluga->getIdmaj()->getIdkor() == $ostvarena->getIdusl()->getIdmaj()->getIdkor()){
+                            $brojOstvarenih++;
+                            $vremeOdgovora = $ostvarena->getIdrez()->getVremeodgovora()->format("Y-m-d H:i:s");
+                            $vremeSlanja = $ostvarena->getIdrez()->getIdRez()->getVremeslanja()->format("Y-m-d H:i:s");
+                            $razlika = strtotime($vremeOdgovora) - strtotime($vremeSlanja);
+
+                            $kasni += $razlika;
+                        }
                         if ($ostvarena->getIdusl()->getIdusl() == $usluga->getIdusl() && $ostvarena->getOcena()!=null) {
                             
                             $ukupno++;
@@ -169,6 +181,9 @@ if (!isset($ostvarene))
                         $prep = number_format($prep, 2);
                         $prep = "" . $prep . "%";
                     } else $prep = " - ";
+                    if ($brojOstvarenih == 0) $kasni = 0;
+                    else $kasni /= $brojOstvarenih; 
+                   
                 } else {
                     $prep = $ocene[$usluga->getIdusl()->getIdmaj()];
                 }
@@ -176,7 +191,7 @@ if (!isset($ostvarene))
                     'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
                     'tagovi' => $usluga->getTagovi(), 'cenaUsluge' => $usluga->getCena(), 'prep' => $prep,
                     'slika' => $usluga->getIdmaj()->getSlika(), 'idUsl' => $usluga->getIdusl(),
-                    'idMaj' => $usluga->getIdmaj()->getIdkor()]);
+                    'idMaj' => $usluga->getIdmaj()->getIdkor(), 'vreme'=>$kasni]);
             }
             ?>
         </div>
