@@ -142,7 +142,7 @@ function filter(oznaceni, cena, preporuka, vreme) {
     //     var p = parseInt(u.preporuke.substr(0, u.preporuke.length - 1));
     //     return p >= preporuka;
     // });
-    usluge = usluge.filter(u => {
+   /* usluge = usluge.filter(u => {
         var vr = u.vremeOdgovora.split(":");
         var sekunde = 0;
         var mnozilac = 1;
@@ -151,7 +151,7 @@ function filter(oznaceni, cena, preporuka, vreme) {
             mnozilac *= 60;
         }
         return sekunde <= vreme;
-    });
+    });*/
     return usluge;
 }
 

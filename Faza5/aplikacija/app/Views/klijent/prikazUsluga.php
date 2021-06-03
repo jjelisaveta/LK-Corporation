@@ -79,7 +79,7 @@ $date = date("Y-m-d");
                             <input type="range" min="0" max="100" value="50" class="slider" id="ocena">
                             <p style="color: white; font-family: Arial; text-align-last: center;">Majstora preporučuje:
                                 <span id="mojaOcena"></span>% korisnika</p>
-                            <input type="range" min="0" max="600" value="300" class="slider" id="vremeOdziva">
+                            <input type="range" min="0" max="2000" value="1000" class="slider" id="vremeOdziva">
                             <p style="color: white; font-family: Arial; text-align-last: center;">Maksimalno vreme
                                 odgovora: <span id="odziv"></span> minuta</p>
                         </div>
@@ -182,7 +182,9 @@ $date = date("Y-m-d");
                 } else {
                     $prep = $ocene[$usluga->getIdusl()->getIdmaj()];
                 }
-                echo view_cell("\App\Libraries\UslugaPrikazUslugaLib::prikazUsluge", ['naslov' => $usluga->getNaziv(),
+                echo view_cell("\App\Libraries\UslugaPrikazUslugaLib::prikazUsluge", [
+                    'naslov' => $usluga->getIdmaj()->getIme()." ".$usluga->getIdmaj()->getPrezime()." - ".$usluga->getNaziv(),
+                    
                     'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
                     'tagovi' => $usluga->getTagovi(), 'cenaUsluge' => $usluga->getCena(), 'prep' => $prep,
                     'slika' => $usluga->getIdmaj()->getSlika(), 'idUsl' => $usluga->getIdusl(),
