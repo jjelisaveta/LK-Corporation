@@ -14,7 +14,9 @@ if (!isset($usluge))
     $usluge = [];
 if (!isset($ostvarene))
     $ostvarene = [];
+$date = date("Y-m-d");
 ?>
+
 
 <script src="<?php echo base_url(); ?>/js/skriptaPrikazUsluga.js"></script>
 <div class="container-fluid">
@@ -26,7 +28,10 @@ if (!isset($ostvarene))
                     <a href="javascript:void(0)" id="zatvaranje" class="closebtn" onclick="closeNav()">&times;</a>
                     <form action="" method="">
                         <label id="labelaDatum" for="termin">Datum:</label>
-                        <input type="date" id="termin" name="termin">
+                        <input type="date"
+                               min=<?php echo $date ?>
+                               max=<?php echo date('Y-m-d', strtotime($date . ' + 30 days')) ?>
+                               value=<?php echo $date ?> id="termin" name="termin">
 
                         <table id="termini" class="text-center">
                             <tr>
@@ -114,16 +119,6 @@ if (!isset($ostvarene))
                             slider3.oninput = function () {
                                 output3.innerHTML = this.value;
                             }
-
-                            function check() {
-                                document.getElementById("cb").checked = true;
-                                document.getElementById("cb2").checked = true;
-                            }
-
-                            function uncheck() {
-                                document.getElementById("cb").checked = false;
-                                document.getElementById("cb2").checked = false;
-                            }
                         </script>
                     </form>
                 </div>
@@ -143,8 +138,8 @@ if (!isset($ostvarene))
                         </tr>
                         <tr>
                             <td style="width:60%;">
-                                <button type="button" id="dugmePosalji">Izaberite termine</button>
-                                <button type="button" id="dugmeOznaciSve" onClick="check()">Odaberi sve</button>
+                                <button type="button" id="dugmePosalji">Prvo izaberite željene usluge</button>
+                                <button type="button" id="dugmeOznaciSve" onclick="oznaciSve()">Odaberi sve</button>
                             </td>
                         </tr>
                     </table>

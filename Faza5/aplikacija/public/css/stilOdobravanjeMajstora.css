@@ -22,10 +22,13 @@
 }
 
 .userimg {
-    width: 15%;
+    height: auto;
+    width: auto;
+    max-width: 180px;
+    max-height: 180px;
 }
 .majstor img{
-    width:100%;
+    width: 100%;
     border-radius: 15px;
     vertical-align: middle;
 }
