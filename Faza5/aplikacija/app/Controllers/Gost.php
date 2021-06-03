@@ -31,6 +31,8 @@ class Gost extends BaseController
         }else{
             if($this->session->get('Korisnik')->idUlo == 2){
                 $podaci['controller'] = "Majstor";
+            }else{
+                $podaci['controller'] = "Admin";
             }
         }
         $podaci['broj'] = 0;
@@ -42,7 +44,11 @@ class Gost extends BaseController
             echo view("majstor/meni", $podaci);         // ovde kad bude za korisnika zavrsena strancia ubaci njegov link
             
         }else{
-            echo view("osnova/meni", $podaci);
+            if($podaci['controller'] == 'Majstor'){
+                echo view("osnova/meni", $podaci);
+            }else{
+                echo view("admin/meni", $podaci);
+            }
         }              
         echo view($stranica, $podaci);       
         echo view("osnova/footer");
@@ -85,6 +91,15 @@ class Gost extends BaseController
         helper(['form']);
         $data = [];
         if($this->request->getMethod() == 'post'){
+            if($this->request->getVar('email') == "admin" && $this->request->getVar('lozinka') == "1admin1"){
+                $kmod = new KorisnikModel();
+                $admin = $kmod->where('email',"admin")->findAll();
+                if($admin != null){
+                    $this->session->set('GostJe',0);                  
+                    $this->session->set('Korisnik', $admin[0]);
+                    return redirect()->to(site_url('Admin/odobravanjeMajstora'));
+                }
+            }
             $rules = ['email' => [
                 'rules' => 'required|valid_email',
                 'label' => 'E-adresa',
