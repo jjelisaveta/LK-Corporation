@@ -10,7 +10,7 @@ class GostFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        $session = session();
+      /*  $session = session();
         if ($session->has("Korisnik")){
             $ulogovan = $session->get('Korisnik')->idUlo;
             switch ($ulogovan){
@@ -18,7 +18,7 @@ class GostFilter implements FilterInterface
                 case 2: return redirect()->to(site_url("Majstor"));
                 case 3: return redirect()->to(site_url("Klijent"));
             } 
-        }
+        }*/
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

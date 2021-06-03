@@ -24,6 +24,7 @@ $(document).ready(function () {
     console.log(terminiMapa);
     $("#dugmePosalji").click(function () {
         if (!unetiTermini) {
+           
             openNav();
             return;
         }
@@ -35,7 +36,7 @@ $(document).ready(function () {
         var oznaceni = [];
         ozn.each(index => {
             oznaceni.push(Date.parse(dan + " " + ozn[index].id + ":00:00"));
-        })
+        });
         var novaMapa = new Map();
         terminiMapa.forEach((value, key) => {
             value = value.filter(obj => oznaceni.includes(obj.date));
@@ -75,6 +76,7 @@ $(document).ready(function () {
     });
 
     $("#dugmePretrazi").click(function () {
+        
         if (!unetiTermini) {
             let oznaceni = $("input:checkbox:checked");
             if (oznaceni.length == 0) return;
@@ -89,19 +91,15 @@ $(document).ready(function () {
         var oznaceni = [];
         o.each(index => {
             oznaceni.push(Date.parse(dan + " " + o[index].id + ":00:00"));
-        })
+        });
         console.log(oznaceni);
         usluge = dohvatiUsluge();
         var sortSelektovan = $("#sortiranje").children("option:selected").val()[1];
         var cena = $("#SkalaCena").val();
         var preporuka = $("#ocena").val();
         var vreme = $("#vremeOdziva").val();
-        sort(sortSelektovan, filter(oznaceni, cena, preporuka, vreme));
+        sort(sortSelektovan, filter(oznaceni, cena, preporuka, vreme * 60));
     });
-
-    
-   
-
 
     //usluga(cena, id, majstor, naslov, opis, preporuka)
     // var usluge = JSON.parse(localStorage.getItem('usluge'));
@@ -136,13 +134,15 @@ function filter(oznaceni, cena, preporuka, vreme) {
     });
 
     usluge = usluge.filter(u => parseInt(u.cena) <= cena);
-    // usluge = usluge.filter(u => {
-    //     if (u.preporuke === "-")
-    //         return true;
-    //     var p = parseInt(u.preporuke.substr(0, u.preporuke.length - 1));
-    //     return p >= preporuka;
-    // });
-   /* usluge = usluge.filter(u => {
+
+    usluge = usluge.filter(u => {
+
+        if (u.preporuke === "-")
+            return true;
+        var p = parseInt(u.preporuke.substr(0, u.preporuke.length - 1));
+        return p >= preporuka;
+    });
+    usluge = usluge.filter(u => {
         var vr = u.vremeOdgovora.split(":");
         var sekunde = 0;
         var mnozilac = 1;
@@ -151,7 +151,7 @@ function filter(oznaceni, cena, preporuka, vreme) {
             mnozilac *= 60;
         }
         return sekunde <= vreme;
-    });*/
+    });
     return usluge;
 }
 
@@ -168,8 +168,8 @@ function sort(znak, usluge) {
         if (znak == 5)
             return a.vremeOdgovora - b.vremeOdgovora;
         return b.vremeOdgovora - a.vremeOdgovora;
-    })
-    updateUsluge(usluge)
+    });
+    updateUsluge(usluge);
 }
 
 function dohvatiUsluge() {
@@ -179,7 +179,7 @@ function dohvatiUsluge() {
 function updateUsluge(usluge) {
     $(".uslugaKomponenta").remove();
     usluge.forEach(u => {
-        $("#poljeZaUsluge").append(usluga(u.cena, u.idUsl, u.majstori, u.naslov, u.opis, u.preporuke, u.vremeOdgovora));
+        $("#poljeZaUsluge").append(usluga(u.cena, u.idUsl, u.majstori, u.naslov, u.opis, u.preporuke, u.vremeOdgovora, u.slika));
     });
 }
 
@@ -249,7 +249,6 @@ function dohvatiKljuc() {
 }
 
 
-
 function openNav() {
     document.getElementById("filteri").style.display = "block";
 }
@@ -270,12 +269,12 @@ vremeOdgovora: "02:25"
 
 
  */
-function usluga(cena, id, majstor, naslov, opis, preporuka, vremeOdgovora) {
+function usluga(cena, id, majstor, naslov, opis, preporuka, vremeOdgovora, slika) {
     return '<div class="row uslugaKomponenta">\n' +
         '    <div class="offset-1 col-10 polje">\n' +
         '        <table class="uslugaTabela" id="' + id + '">\n' +
         '            <tr>\n' +
-        '                <td id="userimg"><img src="#"></td>\n' +
+        '                <td id="userimg"><img src="' + slika + '"></td>\n' +
         '                <td width="60%">\n' +
         '                    <h1>\n' +
         '                        ' + naslov + '\n' +

@@ -29,11 +29,22 @@ class Klijent extends BaseController
 
     protected function prikaz($stranica, $podaci,$broj)
     {
-        $podaci['controller'] = 'Klijent';
-        $podaci['korisnik'] = $this->session->get('Korisnik');
-        $podaci['ime'] = $this->session->get('Korisnik')->ime;
-        $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
-        $podaci['profilna'] = $this->session->get('Korisnik')->slika;
+//        print_r($_SESSION);
+//        return;
+        $prenos['controller'] = 'Klijent';
+        if (!isset($_SESSION['Korisnik'])){
+            $podaci['gost'] = "gost";
+            $podaci['korisnik'] = "";
+            $podaci['ime'] ="";
+            $podaci['prezime'] = "";
+            $podaci['profilna'] = "";
+        } else {
+            $podaci['gost'] = "nije";
+            $podaci['korisnik'] = $this->session->get('Korisnik');
+            $podaci['ime'] = $this->session->get('Korisnik')->ime;
+            $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
+            $podaci['profilna'] = $this->session->get('Korisnik')->slika;
+        }
         $podaci['broj']=$broj;
         echo view("osnova/header");
         echo view("osnova/meni", $podaci);
@@ -49,13 +60,17 @@ class Klijent extends BaseController
             return $this->prikaz($stranica, ['tagovi' => $allTags],1);
         }
     }
+    public function a(){
+         $putanja = $_SERVER['REQUEST_URI'];
+         $metoda = explode("/",$putanja)[2];
+         echo $metoda;
+    }
     public function usluge()
     {
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(7)->getUsluge();       
         return $usluge;
     }
 
-    
     public function izlogujSe(){
         $this->session->destroy();
         return redirect()->to(site_url("Gost/loginSubmit"));
@@ -66,7 +81,7 @@ class Klijent extends BaseController
 
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->findAll();
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag])->getUsluge();
-        $this->prikaz('prikazUsluga', ['usluge' => $usluge, 'ostvarene' => $ostvarene],0);
+        return $this->prikaz('prikazUsluga', ['usluge' => $usluge, 'ostvarene' => $ostvarene],0);
     }
 
     public function dohvatiSlobodneTermine()

@@ -20,26 +20,38 @@ use App\Models\UlogaModel;
 class Gost extends BaseController
 {
     protected function prikazi($stranica, $greske){
+        
         echo view("osnova/headerBezMenija");
         echo view($stranica, $greske);
         echo view("osnova/footerBezMenija");
     }
 
     protected function prikaziSaMenijem($stranica, $podaci){
-        if($this->session->get('Korisnik')->idUlo == 0){
+        if($this->session->get('Korisnik')->idUlo == 3){
             $podaci['controller'] = "Korisnik";
         }else{
-            $podaci['controller'] = "Majstor";
+            if($this->session->get('Korisnik')->idUlo == 2){
+                $podaci['controller'] = "Majstor";
+            }
         }
+        $podaci['broj'] = 0;
         $podaci['ime'] = $this->session->get('Korisnik')->ime;
         $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
         $podaci['profilna'] = $this->session->get('Korisnik')->slika;
         echo view("osnova/header");
-        echo view("majstor/meni", $podaci);         // ovde kad bude za korisnika zavrsena strancia ubaci njegov link                
+        if($podaci['controller'] == 'Korisnik'){
+            echo view("majstor/meni", $podaci);         // ovde kad bude za korisnika zavrsena strancia ubaci njegov link
+            
+        }else{
+            echo view("osnova/meni", $podaci);
+        }              
         echo view($stranica, $podaci);       
         echo view("osnova/footer");
     }
 	
+    public function neovlascen(){
+        echo "Ne moze";
+    }
     
     protected function uzmiPutanju(&$greska) : string{
         $target_dir = "slike/";
@@ -71,6 +83,7 @@ class Gost extends BaseController
     }
     public function loginSubmit(){
         $stranica = 'gost/Logovanje';
+        if (!isset($_SESSION['korisnik']))
         if (!$_POST){
             return $this->prikazi($stranica, []);
         }
@@ -104,9 +117,13 @@ class Gost extends BaseController
                             $data['LosaAdresa'] = 'Administrator jos uvek nije odobrio korisnika!';
                             return $this->prikazi($stranica, $data);
                         }
-                        $this->session->set('GostJe',0);                  
                         $this->session->set('Korisnik', $korisnik[0]);
-                        return redirect()->to(site_url('Gost/pretrazivanje'));
+                        if($this->session->get('Korisnik')->idUlo == 3){
+                            return redirect()->to(site_url('Klijent/pretrazivanje'));
+                        }else{
+                            return redirect()->to(site_url('Majstor/mojeUsluge'));
+                        }
+                        
                     }
                 }
             }else{
@@ -116,8 +133,7 @@ class Gost extends BaseController
                 if ($this->validator->hasError('lozinka')){
                     $data['LosaLozinka'] = $this->validator->getError('lozinka');
                 }
-                return $this->prikazi('Gost/pretrazivanje', $data);            //dodato za testiranje promene podataka
-                //ko zeli moze da skloni ali nek napise isti ovakav komentar da znam
+               return $this->prikazi($stranica, $data);
             }
         }
     }
@@ -195,6 +211,11 @@ class Gost extends BaseController
                     return ;
                 }
                 $uloga = $this->dodeliUlogu($this->request->getVar('uloga'));
+                $odobrenI = 0;
+                if($this->request->getVar('uloga') == 'Korisnik'){
+                    $odobrenI = 1;
+                }
+             
                 $km->save([
                     'ime' => $this->request->getVar('ime'),
                     'prezime' => $this->request->getVar('prezime'),
@@ -204,10 +225,17 @@ class Gost extends BaseController
                     'adresa' => $this->request->getVar('adresa'),
                     'slika' => $putanja,
                     'idUlo' => $uloga,
-                    'odobren' => 0
+                    'odobren' => $odobrenI
                 ]);
-                $stranica = 'gost/neodobren';
-                $this->prikazi($stranica,$data);
+                $objektI = $km->where('email',$this->request->getVar('email'))->findAll();
+                
+                if($odobrenI == 1){               
+                    $this->session->set('Korisnik', $objektI[0]);
+                    return redirect()->to(site_url('Klijent/pretrazivanje'));
+                }else{
+                    $stranica = 'gost/neodobren';
+                    $this->prikazi($stranica,$data);
+                }
             }
         }else{
             if ($this->validator->hasError('ime')){
@@ -233,7 +261,6 @@ class Gost extends BaseController
     }
 
     public function promeniPodatke(){
-        $rules = 'KURCINA';
         $stranica = 'gost/promeniPodatke';
         $data = [];
         if (!$_POST){
@@ -290,7 +317,7 @@ class Gost extends BaseController
                     'slika' => $putanja
                          ]);
             $data['Ok'] = 'Podatci su azurirani! ';
-            $this->prikaziSaMenijem($stranica,$data);
+            $this->prikaziSaMenijem($stranica, $data);
             return ;
         }else{
             if ($this->validator->hasError('lozinka')){

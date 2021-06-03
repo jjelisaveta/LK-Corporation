@@ -15,27 +15,29 @@ inputBox.onkeyup = (e) => {
     }
     let userData = e.target.value; //user enetered data
     let emptyArray = [];
-    if (userData) {
-        emptyArray = jArray.filter((data) => {                        //ovde sad lista svih imena ekstrakuj u dugmad
-            return data.toLocaleLowerCase().includes(userData.toLocaleLowerCase());
+    if(userData){
+        emptyArray = jArray.filter((data)=>{                        //ovde sad lista svih imena ekstrakuj u dugmad
+            return data.toLocaleLowerCase().includes(userData.toLocaleLowerCase()); 
         });
-        for (let i = 0; i < emptyArray.length; i++) {
+        for(let i = 0; i < emptyArray.length; i++){
             $("#" + trim(emptyArray[i])).show();
         }
     }
 }
-$("button").click(function () {
+
+$("button").click(function(){
     window.location.href = "prikazUsluga/" + $(this).attr("id");
 })
 
-function trim(rec) {
-    let sol = "";
-    for (let i = 0; i < rec.length; i++) {
-        if (rec[i] == ' ') {
-            sol += "_";
-        } else {
-            sol += rec[i];
+function trim(rec){
+        let sol = "";
+        for(let i = 0; i < rec.length; i++){
+            if(rec[i] == ' '){
+                sol += "_";
+            }else{
+                sol += rec[i];
+            }
         }
-    }
-    return sol;
+        return sol;
 }
+
