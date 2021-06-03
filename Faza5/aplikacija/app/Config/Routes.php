@@ -28,6 +28,8 @@ $routes->setAutoRoute(true);
  * --------------------------------------------------------------------
  */
 
+/*$routes->add('Majstor/promeniPodatke', "Gost::promeniPodatke");
+$routes->add('Klijent/promeniPodatke', "Gost::promeniPodatke");*/
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Gost::pretrazivanje');

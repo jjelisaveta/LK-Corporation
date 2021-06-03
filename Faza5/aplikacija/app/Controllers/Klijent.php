@@ -55,7 +55,6 @@ class Klijent extends BaseController
         return $usluge;
     }
 
-    
     public function izlogujSe(){
         $this->session->destroy();
         return redirect()->to(site_url("Gost/loginSubmit"));

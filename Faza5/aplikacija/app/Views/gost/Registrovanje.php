@@ -65,11 +65,11 @@
                     <div class="row">
                         <div class="offset-2 col-4 offset-md-4 col-md-2">
                             <label for="radioMajstor">Majstor</label>
-                            <input type="radio" name="uloga" id="radioMajstor" value='Korisnik'>
+                            <input type="radio" name="uloga" id="radioMajstor" value='Majstor'>
                         </div>
                         <div class="col-4 col-md-2">
                             <label for="radioKorisnik">Korisnik</label>
-                            <input type="radio" name="uloga" id="radioKorisnik" value='Majstor' checked>
+                            <input type="radio" name="uloga" id="radioKorisnik" value='Korisnik' checked>
                         </div>
                     </div>
                     <div class="row">
