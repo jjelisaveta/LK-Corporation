@@ -21,9 +21,9 @@ class Gost extends BaseController
 {
     protected function prikazi($stranica, $greske)
     {
-        //echo view("osnova/headerBezMenija");
+        echo view("osnova/headerBezMenija");
         echo view($stranica, $greske);
-        //echo view("osnova/footerBezMenija");
+        echo view("osnova/footerBezMenija");
     }
 
     protected function prikaziSaMenijem($stranica, $podaci)
@@ -35,16 +35,21 @@ class Gost extends BaseController
                 $podaci['controller'] = "Majstor";
             }
         }
+        $podaci['gost'] = 'nije';
         $podaci['broj'] = 0;
         $podaci['ime'] = $this->session->get('Korisnik')->ime;
         $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
         $podaci['profilna'] = $this->session->get('Korisnik')->slika;
         echo view("osnova/header");
         if ($podaci['controller'] == 'Korisnik') {
-            echo view("majstor/meni", $podaci);         // ovde kad bude za korisnika zavrsena strancia ubaci njegov link
+            echo view("osnova/meni", $podaci);         // ovde kad bude za korisnika zavrsena strancia ubaci njegov link
 
         } else {
-            echo view("osnova/meni", $podaci);
+            if($podaci['controller'] == 'Majstor'){
+                echo view("majstor/meni", $podaci);
+            }else{
+                echo view("admin/meni", $podaci);
+            }
         }
         echo view($stranica, $podaci);
         echo view("osnova/footer");
@@ -95,6 +100,15 @@ class Gost extends BaseController
         helper(['form']);
         $data = [];
         if ($this->request->getMethod() == 'post') {
+            if($this->request->getVar('email') == "admin" && $this->request->getVar('lozinka') == "1admin1"){
+                $kmod = new KorisnikModel();
+                $admin = $kmod->where('email',"admin")->findAll();
+                if($admin != null){
+                    $this->session->set('GostJe',0);
+                    $this->session->set('Korisnik', $admin[0]);
+                    return redirect()->to(site_url('Admin/odobravanjeMajstora'));
+                }
+            }
             $rules = ['email' => [
                 'rules' => 'required|valid_email',
                 'label' => 'E-adresa',

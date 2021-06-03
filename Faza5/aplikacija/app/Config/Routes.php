@@ -35,8 +35,15 @@ $routes->add('Klijent/promeniPodatke', "Gost::promeniPodatke");*/
 
 //$routes->add("Gost/izlogujSe", 'Klijent::izlogujSe');
 
+$routes->add('pretrazivanje','Klijent::pretrazivanje');
+$routes->add('/prikazUsluga/(:any)','Klijent::prikazUsluga/$1');
+
+$routes->add('Klijent/pretrazivanje','Klijent::pretrazivanje');
+$routes->add('Klijent/prikazUsluga/(:any)','Klijent::prikazUsluga/$1');
+
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories .
+
 $routes->get('/', 'Klijent::pretrazivanje');
 $routes->get('/Gost', 'Klijent::pretrazivanje');
 $routes->get('/Klijent', 'Klijent::pretrazivanje');

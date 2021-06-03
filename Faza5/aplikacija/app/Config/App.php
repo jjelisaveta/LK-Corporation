@@ -41,7 +41,7 @@ class App extends BaseConfig
 	/**
 	 * --------------------------------------------------------------------------
 	 * URI PROTOCOL
-	 * --------------------------------------------------------------------------
+	 * -------------------------------------------------------------------------
 	 *
 	 * This item determines which getServer global should be used to retrieve the
 	 * URI string.  The default setting of 'REQUEST_URI' works for most servers.
