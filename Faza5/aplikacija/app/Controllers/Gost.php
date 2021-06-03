@@ -114,7 +114,12 @@ class Gost extends BaseController
                         }
                         $this->session->set('GostJe',0);                  
                         $this->session->set('Korisnik', $korisnik[0]);
-                        return redirect()->to(site_url('Klijent/pretrazivanje'));
+                        if($this->session->get('Korisnik')->idUlo == 3){
+                            return redirect()->to(site_url('Klijent/pretrazivanje'));
+                        }else{
+                            return redirect()->to(site_url('Majstor/mojeUsluge'));
+                        }
+                        
                     }
                 }
             }else{
