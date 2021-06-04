@@ -189,7 +189,7 @@ class Gost extends BaseController
                 'prezime' => [
                     'rules' => 'required|validIme',
                     'errors' => [
-                        'required' => 'Ime i Prezime su obavezna polja!',
+                        'required' => 'Ime i prezime su obavezna polja!',
                         'validIme' => 'Ime i prezime moraju da sadrze samo slova!'
                     ]],
                 'telefon' => [
