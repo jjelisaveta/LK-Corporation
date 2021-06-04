@@ -70,7 +70,9 @@ $(document).ready(function () {
                 kljuc: kljuc
             }
         }).done(function (result_html) {
+            //console.log(result_html);
             if (result_html === "OK")
+                //console.log(result_html);
                 window.location = '../pretrazivanje';
         });
     });
@@ -123,9 +125,10 @@ function filter(oznaceni, cena, preporuka, vreme) {
         if (slobodan == null)
             return false;
         console.log(slobodan);
+        console.log(oznaceni);
         var x = false;
         for (let o of oznaceni) {
-            if (slobodan.find(obj => obj => date == o) != null) {
+            if (slobodan.find(obj => obj.date == o) != null) {
                 x = true;
                 break;
             }
