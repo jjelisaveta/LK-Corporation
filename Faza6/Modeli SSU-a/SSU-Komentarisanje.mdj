@@ -1519,7 +1519,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 24.72998046875,
-											"top": 13,
+											"top": 5,
 											"width": 89.15625,
 											"height": 13,
 											"text": "komentarisanje"
@@ -1532,14 +1532,13 @@
 											},
 											"font": "Arial;13;1",
 											"left": 5,
-											"top": 13,
+											"top": 5,
 											"width": 14.72998046875,
 											"height": 13,
 											"text": "sd"
 										}
 									],
 									"font": "Arial;13;0",
-									"top": 8,
 									"width": 1353,
 									"height": 937,
 									"nameLabel": {
@@ -2030,9 +2029,9 @@
 												"$ref": "AAAAAAF51unQYkWT2Cs="
 											},
 											"font": "Arial;13;0",
-											"left": 569,
+											"left": 567,
 											"top": 120,
-											"width": 177.0361328125,
+											"width": 181.38427734375,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -2040,7 +2039,7 @@
 												"$ref": "AAAAAAF51unQYkWUIJI="
 											},
 											"edgePosition": 1,
-											"text": "2 : dohvatiUslugeKorisnikaUpit"
+											"text": "2 : dohvati usluge korisnika upit"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2376,7 +2375,7 @@
 												"$ref": "AAAAAAF51u1gI0XcD7g="
 											},
 											"edgePosition": 1,
-											"text": "5 : dugmeSacuvaj"
+											"text": "5 : dugme Sacuvaj"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2479,7 +2478,7 @@
 											"font": "Arial;13;0",
 											"left": 487,
 											"top": 248,
-											"width": 118.50439453125,
+											"width": 119.9453125,
 											"height": 13,
 											"alpha": 2.020554872362334,
 											"distance": 64.40496875241847,
@@ -2487,7 +2486,7 @@
 												"$ref": "AAAAAAF51u7LVUX0oWc="
 											},
 											"edgePosition": 1,
-											"text": "6 : sacuvajKomentar"
+											"text": "6 : sacuvaj komentar"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2588,9 +2587,9 @@
 												"$ref": "AAAAAAF51vaRq0c/TKQ="
 											},
 											"font": "Arial;13;0",
-											"left": 245,
+											"left": 243,
 											"top": 390,
-											"width": 165.47705078125,
+											"width": 169.0888671875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -2598,7 +2597,7 @@
 												"$ref": "AAAAAAF51vaRq0dArys="
 											},
 											"edgePosition": 1,
-											"text": "7 : Greska duzinaKomentara"
+											"text": "7 : Greska duzina komentara"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2700,9 +2699,9 @@
 												"$ref": "AAAAAAF51u9ApEYsEPc="
 											},
 											"font": "Arial;13;0",
-											"left": 604,
+											"left": 583,
 											"top": 472,
-											"width": 114.18798828125,
+											"width": 157.548828125,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -2710,7 +2709,7 @@
 												"$ref": "AAAAAAF51u9ApEYtmdE="
 											},
 											"edgePosition": 1,
-											"text": "8 : updateKomentar"
+											"text": "8 : update usluga.komentar"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3138,7 +3137,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51rx7sEQen5A="
 							},
-							"name": "dohvatiUslugeKorisnikaUpit",
+							"name": "dohvati usluge korisnika upit",
 							"source": {
 								"$ref": "AAAAAAF51uiC2kU4Fnw="
 							},
@@ -3183,7 +3182,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51rx7sEQen5A="
 							},
-							"name": "dugmeSacuvaj",
+							"name": "dugme Sacuvaj",
 							"source": {
 								"$ref": "AAAAAAF51r5bmEQ7SaY="
 							},
@@ -3197,7 +3196,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51rx7sEQen5A="
 							},
-							"name": "sacuvajKomentar",
+							"name": "sacuvaj komentar",
 							"source": {
 								"$ref": "AAAAAAF51uiC2kU4Fnw="
 							},
@@ -3211,7 +3210,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51rx7sEQen5A="
 							},
-							"name": "Greska duzinaKomentara",
+							"name": "Greska duzina komentara",
 							"source": {
 								"$ref": "AAAAAAF51uiC2kU4Fnw="
 							},
@@ -3226,7 +3225,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51rx7sEQen5A="
 							},
-							"name": "updateKomentar",
+							"name": "update usluga.komentar",
 							"source": {
 								"$ref": "AAAAAAF51uiC2kU4Fnw="
 							},
@@ -3421,7 +3420,7 @@
 									"font": "Arial;13;0",
 									"left": 8,
 									"width": 1329,
-									"height": 905,
+									"height": 665,
 									"nameLabel": {
 										"$ref": "AAAAAAF51vckikdZu/8="
 									},
@@ -3532,14 +3531,14 @@
 											"left": 124,
 											"top": 80,
 											"width": 1,
-											"height": 761
+											"height": 585
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 88,
 									"top": 40,
 									"width": 72.736328125,
-									"height": 801,
+									"height": 625,
 									"nameCompartment": {
 										"$ref": "AAAAAAF51vjpPUdt2Ys="
 									},
@@ -3648,14 +3647,14 @@
 											"left": 349,
 											"top": 80,
 											"width": 1,
-											"height": 769
+											"height": 585
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 288,
 									"top": 40,
 									"width": 121.11181640625,
-									"height": 809,
+									"height": 625,
 									"nameCompartment": {
 										"$ref": "AAAAAAF51vk0HEeP40Q="
 									},
@@ -3683,9 +3682,9 @@
 												"$ref": "AAAAAAF51vn4tEevXS4="
 											},
 											"font": "Arial;13;0",
-											"left": 164,
+											"left": 156,
 											"top": 106,
-											"width": 139.43896484375,
+											"width": 155.3525390625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -3693,7 +3692,7 @@
 												"$ref": "AAAAAAF51vn4tUewrH8="
 											},
 											"edgePosition": 1,
-											"text": "1 : prikazMajstoraAdmin"
+											"text": "1 : detaljan prikaz majstora"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3872,14 +3871,14 @@
 											"left": 592,
 											"top": 80,
 											"width": 1,
-											"height": 785
+											"height": 577
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 536,
 									"top": 40,
 									"width": 111.76171875,
-									"height": 825,
+									"height": 617,
 									"nameCompartment": {
 										"$ref": "AAAAAAF51vo+TUfJHxo="
 									},
@@ -3907,9 +3906,9 @@
 												"$ref": "AAAAAAF51vrZZUfo9rI="
 											},
 											"font": "Arial;13;0",
-											"left": 404,
+											"left": 371,
 											"top": 121,
-											"width": 132.95166015625,
+											"width": 198.732421875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -3917,7 +3916,7 @@
 												"$ref": "AAAAAAF51vrZZkfpV6I="
 											},
 											"edgePosition": 1,
-											"text": "2 : dohvatiMajstoraUpit"
+											"text": "2 : dohvati podatke o majstoru upit"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4018,9 +4017,9 @@
 												"$ref": "AAAAAAF51vsSEEf/A5Y="
 											},
 											"font": "Arial;13;0",
-											"left": 439,
+											"left": 409,
 											"top": 172,
-											"width": 60.68359375,
+											"width": 120.67529296875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -4028,7 +4027,7 @@
 												"$ref": "AAAAAAF51vsSEEgAQxk="
 											},
 											"edgePosition": 1,
-											"text": "3 : majstor"
+											"text": "3 : podaci o majstoru"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4130,9 +4129,9 @@
 												"$ref": "AAAAAAF51vtac0gVFl0="
 											},
 											"font": "Arial;13;0",
-											"left": 377,
+											"left": 373,
 											"top": 193,
-											"width": 187.154296875,
+											"width": 195.81884765625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -4140,7 +4139,7 @@
 												"$ref": "AAAAAAF51vtac0gWL7U="
 											},
 											"edgePosition": 1,
-											"text": "4 : dohvatiKomentarezaMajstora"
+											"text": "4 : dohvati komentare za majstora"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4456,7 +4455,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51vckikdWSMo="
 							},
-							"name": "prikazMajstoraAdmin",
+							"name": "detaljan prikaz majstora",
 							"source": {
 								"$ref": "AAAAAAF51vjpPEdr1ss="
 							},
@@ -4470,7 +4469,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51vckikdWSMo="
 							},
-							"name": "dohvatiMajstoraUpit",
+							"name": "dohvati podatke o majstoru upit",
 							"source": {
 								"$ref": "AAAAAAF51vk0HEeNFak="
 							},
@@ -4484,7 +4483,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51vckikdWSMo="
 							},
-							"name": "majstor",
+							"name": "podaci o majstoru",
 							"source": {
 								"$ref": "AAAAAAF51vo+TUfH99g="
 							},
@@ -4499,7 +4498,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51vckikdWSMo="
 							},
-							"name": "dohvatiKomentarezaMajstora",
+							"name": "dohvati komentare za majstora",
 							"source": {
 								"$ref": "AAAAAAF51vk0HEeNFak="
 							},
@@ -5049,9 +5048,9 @@
 												"$ref": "AAAAAAF51v8QP0jbnbE="
 											},
 											"font": "Arial;13;0",
-											"left": 201,
+											"left": 175,
 											"top": 112,
-											"width": 102.5908203125,
+											"width": 155.3525390625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -5059,7 +5058,7 @@
 												"$ref": "AAAAAAF51v8QP0jcZA0="
 											},
 											"edgePosition": 1,
-											"text": "1 : prikazMajstora"
+											"text": "1 : detaljan prikaz majstora"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -5160,9 +5159,9 @@
 												"$ref": "AAAAAAF51v9J8kjyKTc="
 											},
 											"font": "Arial;13;0",
-											"left": 499,
+											"left": 466,
 											"top": 128,
-											"width": 132.95166015625,
+											"width": 198.732421875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -5170,7 +5169,7 @@
 												"$ref": "AAAAAAF51v9J8kjzW7w="
 											},
 											"edgePosition": 1,
-											"text": "2 : dohvatiMajstoraUpit"
+											"text": "2 : dohvati podatke o majstoru upit"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -5271,9 +5270,9 @@
 												"$ref": "AAAAAAF51v+ABkkKyz0="
 											},
 											"font": "Arial;13;0",
-											"left": 534,
+											"left": 504,
 											"top": 188,
-											"width": 60.68359375,
+											"width": 120.67529296875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -5281,7 +5280,7 @@
 												"$ref": "AAAAAAF51v+ABkkL8rw="
 											},
 											"edgePosition": 1,
-											"text": "3 : majstor"
+											"text": "3 : podaci o majstoru"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -5383,9 +5382,9 @@
 												"$ref": "AAAAAAF51v+t40khZBE="
 											},
 											"font": "Arial;13;0",
-											"left": 472,
+											"left": 468,
 											"top": 216,
-											"width": 187.154296875,
+											"width": 195.81884765625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -5393,7 +5392,7 @@
 												"$ref": "AAAAAAF51v+t40kisDY="
 											},
 											"edgePosition": 1,
-											"text": "4 : dohvatiKomentarezaMajstora"
+											"text": "4 : dohvati komentare za majstora"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -5709,7 +5708,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51vzlLUhfXGs="
 							},
-							"name": "prikazMajstora",
+							"name": "detaljan prikaz majstora",
 							"source": {
 								"$ref": "AAAAAAF51v3Plkh2BTM="
 							},
@@ -5723,7 +5722,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51vzlLUhfXGs="
 							},
-							"name": "dohvatiMajstoraUpit",
+							"name": "dohvati podatke o majstoru upit",
 							"source": {
 								"$ref": "AAAAAAF51v6F5EiZddk="
 							},
@@ -5737,7 +5736,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51vzlLUhfXGs="
 							},
-							"name": "majstor",
+							"name": "podaci o majstoru",
 							"source": {
 								"$ref": "AAAAAAF51v7OA0i7lvc="
 							},
@@ -5752,7 +5751,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51vzlLUhfXGs="
 							},
-							"name": "dohvatiKomentarezaMajstora",
+							"name": "dohvati komentare za majstora",
 							"source": {
 								"$ref": "AAAAAAF51v6F5EiZddk="
 							},
