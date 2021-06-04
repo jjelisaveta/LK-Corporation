@@ -18,21 +18,18 @@ $klasa = "col-10 col-md-4 offset-1 offset-md-" . $num;
                         </h1>
                     </div>
                     <div class="col-lg-2 offset-lg-3 col-md-2 offset-md-0 col-sm-2 offset-sm-3 col-3 offset-2 ">
-                        <button class=" btn btn-danger  " id="btnD" onclick="ukloniMajstora('<?php echo $id; ?>')">
-                            &times;
-                        </button>
+                        <button  id="btnD" onclick="ukloniMajstora('<?php echo $id; ?>')">✖</button>
                     </div>
                     <div class="col-1"></div>
 
                 </div>
                 <div class="row no gutters">
                     <div class="col-5 ">
-
-                        <p class="mala">Procenat pozitivnih ocena:</p>
+                        <p class="mala">procenat pozitivnih ocena:</p>
                     </div>
                     <div class="col-lg-3 offset-lg-2 col-md-3 offset-md-0 col-sm-3 offset-sm-3 col-4 offset-2 ">
                         <button class=" btn btn-secondary btn-sm"
-                                onclick="mail('<?php echo $id; ?>','<?php echo $email; ?>')">Posalji mejl
+                                onclick="mail('<?php echo $id; ?>','<?php echo $email; ?>')">pošalji mejl
                         </button>
                     </div>
                     <div class="col-2"></div>

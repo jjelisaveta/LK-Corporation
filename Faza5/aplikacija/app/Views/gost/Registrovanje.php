@@ -90,7 +90,7 @@
                     <div class="row">
                         <div class="offset-2 col-8 offset-md-4 col-md-4">
                             <a href="<?php echo site_url("Gost/loginSubmit") ?>" ><p id="p1" >Već imate nalog? Prijavite se.</p></a> 
-                            <a href="<?php echo site_url("Klijent/pretrazivanje") ?>"><p id="p2">Nastavite kao gost.</p></a> 
+                            <a href="../pretrazivanje"><p id="p2">Nastavite kao gost.</p></a>
                         </div>
                     </div>  
                 </form>

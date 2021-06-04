@@ -6,8 +6,8 @@ $textId = "text" . $id;
     <div class="offset-1 col-10">
         <table class="majstor">
             <tr>
-                <td class="userimg"><img src="<?php echo base_url() . "/" . $slika ?>" ></td>
-                <td style="width:38%;">
+                <td class="userimg" style="width: 15%"><img src="<?php echo base_url() . "/" . $slika ?>" ></td>
+                <td style="width:40%;">
                     <h1>
                         <b> <?php echo $ime . " " . $prezime; ?> </b>
                     </h1>
@@ -18,7 +18,7 @@ $textId = "text" . $id;
                         <b>telefon: </b><?php echo $broj; ?>
                     </h3>
                 </td>
-                <td>
+                <td style="width: 45%">
                     <textarea name="emailArea" id="<?php echo $textId; ?>" class="emailArea" cols="50" rows="5"
                               placeholder="Posalji mejl:"></textarea>
                 </td>

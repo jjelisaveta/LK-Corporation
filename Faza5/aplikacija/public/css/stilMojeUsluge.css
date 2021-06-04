@@ -78,3 +78,8 @@ table {
     width:100%;
 }
 
+.cenaUsluge {
+    font-family: Arial;
+    font-size: 18px;
+    padding: 5px;
+}

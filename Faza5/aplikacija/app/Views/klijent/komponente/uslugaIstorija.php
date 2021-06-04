@@ -31,7 +31,7 @@
                                 }
                                 ?></textarea>
                         </div>
-                        <button class="komentardugme" type="SUBMIT">Sacuvaj komentar
+                        <button class="komentardugme" type="SUBMIT">sačuvaj komentar
                         </button>
                        
                         <form action="sacuvajOcenu" method="POST">

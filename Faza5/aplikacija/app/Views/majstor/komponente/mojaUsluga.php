@@ -12,6 +12,7 @@
                     <p>
                         <?= $opis ?>
                     </p>
+                    <p>cena: <b class="cenaUsluge"> <?= $cena ?> </b> </p>
                     <h5>
                         <?php 
                             $ispis = "";
@@ -24,6 +25,7 @@
                             }
                             echo $ispis;
                         ?>
+                        
                     </h5>
                     <button onclick="window.location='izmeniUslugu/'+<?= $id ?>;">
                         Izmeni

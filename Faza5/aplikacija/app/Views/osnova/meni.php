@@ -33,12 +33,15 @@
         <div class="padajuciMeni">
             <button class="padajuceDugme">Moj nalog</button>
             <div class="padajuciSadrzaj">
-                <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
-                <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguje se </a>
+                <?php if ($gost!== "gost") { ?><a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a> <?php } ?>
+                <?php if ($gost!== "gost") { ?>
+                <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a> <?php } else {?>
+                <a href="<?php echo site_url("Gost/loginSubmit") ?>"> Uloguj se </a>
+                 <?php } ?>
             </div>
         </div>
         <div id="korisnik">
-            <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika">
+            <?php if ($gost!== "gost") { ?> <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika"> <?php } ?>
             <a href="pretrazivanje.html"><?=$ime ?> <?=$prezime ?></a>
         </div>
     </div>

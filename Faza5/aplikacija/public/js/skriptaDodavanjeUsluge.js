@@ -3,29 +3,32 @@ $(document).ready(function() {
 
     $("#plus").click(function(){
         let izabrano = $("#selectId :selected");
-		if (izabrano.text()=="--Izaberi--") return;
-		
-        let novo = $("<button type='button'></button>");
-        novo.text(izabrano.val());
-		novo.addClass("plusTag");
-		novo.bind("click", izbaci);
-        $("#tagovi").append(novo);
-
-		let t = [];
-		if (localStorage.getItem("tagovi")!="null"){
-			t = JSON.parse(localStorage.getItem("tagovi"));
-		} 
-		t.push(izabrano.text());
-		let sadrzaj = "";
-		for (let i = 0; i < t.length; i++) {
-			if (sadrzaj == ""){
-				sadrzaj += t[i];
-			} else {
-				sadrzaj = sadrzaj + "#" + t[i];
-			}
-		}
-		localStorage.setItem("tagovi", JSON.stringify(t));
-		$("#izabraniTagovi").val(sadrzaj);
+	if (izabrano.text()=="--Izaberi--") return;
+        let t = [];
+        if (localStorage.getItem("tagovi")!="null"){
+            t = JSON.parse(localStorage.getItem("tagovi"));
+	} 
+        
+        if (!t.includes(izabrano.text())){
+            let novo = $("<button type='button'></button>");
+            novo.text(izabrano.val());
+            novo.addClass("plusTag");
+            novo.bind("click", izbaci);
+            $("#tagovi").append(novo);
+            
+            t.push(izabrano.text());
+            let sadrzaj = "";
+            for (let i = 0; i < t.length; i++) {
+                if (sadrzaj == ""){
+                        sadrzaj += t[i];
+                } else {
+                        sadrzaj = sadrzaj + "#" + t[i];
+                }
+            }
+            localStorage.setItem("tagovi", JSON.stringify(t));
+            $("#izabraniTagovi").val(sadrzaj);
+        }       
+       
     });
 	
 	function izbaci(){
