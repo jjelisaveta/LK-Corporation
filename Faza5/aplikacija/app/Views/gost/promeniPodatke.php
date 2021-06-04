@@ -30,6 +30,16 @@
                     <div class="row">
                          <input class="offset-xs-2 col-xs-12 offset-md-4 col-md-4 okvir" type="text" name="adresa" id="adresaId"  value="<?= set_value('adresa')?>" placeholder="Adresa" >
                     </div>  
+                    <div class="row">
+                         <input class="offset-xs-2 col-xs-12 offset-md-4 col-md-4 okvir" type="password" name="StaraLozinka" id="idpass" value="<?= set_value('password')?>" placeholder="Stara lozinka">
+                    </div>
+                    
+                    <font color='red'>
+                    <?php
+                        if(isset($LosePonovljenaLozinka))
+                            echo $LosePonovljenaLozinka;
+                    ?>
+                    </font>
                     
                     <div class="row">
                          <input class="offset-xs-2 col-xs-12 offset-md-4 col-md-4 okvir" type="password" name="lozinka" id="idpass" value="<?= set_value('password')?>" placeholder="Lozinka">

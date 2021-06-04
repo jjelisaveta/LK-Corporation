@@ -27,7 +27,7 @@
             </div>
             <div id="korisnik">
                 <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika">
-                <a href="pretrazivanje.html"><?=$ime ?> <?=$prezime ?></a>
+                <a><?=$ime ?> <?=$prezime ?></a>
             </div>
         </div>
         
@@ -46,7 +46,7 @@
             </div>
                 <div id="korisnik">
                 <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika">
-                <a href="pretrazivanje.html"><?=$ime ?> <?=$prezime ?></a>
+                <a><?=$ime ?> <?=$prezime ?></a>
             </div>
         </div>
         
