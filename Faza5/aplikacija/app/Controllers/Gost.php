@@ -228,10 +228,7 @@ class Gost extends BaseController
                 if ($_FILES["izaberiSliku"]["size"] != 0) {
                     $putanja = $this->uzmiPutanju($data);
                 }
-                if ($putanja == "") {
-                    $this->prikazi($stranica, $data);
-                    return;
-                }
+                
                 $uloga = $this->dodeliUlogu($this->request->getVar('uloga'));
                 $odobrenI = 0;
                 if ($this->request->getVar('uloga') == 'Korisnik') {
@@ -310,16 +307,20 @@ class Gost extends BaseController
             (!$this->validator->hasError('telefon') || $this->request->getVar('telefon') == null)) {
             $km = new KorisnikModel();
             $trenutni = $km->where('email', $this->session->get('Korisnik')->email)->findAll();
-            $putanja = 'slike/profilna.png';
+            if($this->request->getVar('StaraLozinka') != $trenutni[0]->lozinka){
+                $data['LosePonovljenaLozinka'] = 'Netacna lozinka!';
+                $this->prikaziSaMenijem($stranica, $data);
+                return ;
+            }
+            
+            $putanja = '';
             $deb = "";
             if ($_FILES["izaberiSliku"]["size"] != 0) {
                 $putanja = $this->uzmiPutanju($data);
                 $this->session->get('Korisnik')->slika = $putanja;
             }
-            if ($putanja == '') {
-                $this->prikaziSaMenijem($stranica, $data);
-                return;
-            }
+            $putanja = $this->session->get('Korisnik')->slika;
+            
             if ($this->request->getVar('telefon') != null) {
                 $this->session->get('Korisnik')->telefon = $this->request->getVar('telefon');
                 $trenutni[0]->brojTelefona = $this->request->getVar('telefon');
