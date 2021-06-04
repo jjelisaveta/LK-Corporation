@@ -19,6 +19,7 @@ class KlijentFilter implements FilterInterface {
                     || $metoda == "dohvatiIdentifikator")) {
                 return redirect()->to(site_url("Gost/neovlascen"));
             }
+            return;
         }
 
         if ($session->has("Korisnik")) {
@@ -28,7 +29,7 @@ class KlijentFilter implements FilterInterface {
                 case 2: return redirect()->to(site_url("Majstor"));
             }
         } else {
-            return redirect()->to(site_url("klijent"));
+            return;
         }
     }
 
