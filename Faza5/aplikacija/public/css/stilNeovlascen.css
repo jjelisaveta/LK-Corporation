@@ -1,0 +1,18 @@
+body {
+    background-color: #e8e6d9;
+    position: relative;
+    overflow: auto;
+}
+
+p {
+    font-size: 36px;
+    text-align: center;
+    font-family: Arial;
+}
+
+h1 {
+    margin-top: 20%;
+    font-size: 36px;
+    text-align: center;
+    font-family: Arial;
+}

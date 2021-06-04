@@ -253,9 +253,10 @@ class Klijent extends BaseController
 
     public function prikazMajstora()
     {
-       // $id = $this->request->getVar('id');
-        $id = 1;
-        echo $id;
+        $id = $this->request->getVar('id');
+//        //$id = 1;
+//        print_r($_REQUEST);
+//        return;
         $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->findBy(['idkor' => $id])[0];
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);

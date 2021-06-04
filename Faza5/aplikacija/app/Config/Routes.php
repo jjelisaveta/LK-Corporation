@@ -3,6 +3,8 @@
 namespace Config;
 
 // Create a new instance of our RouteCollection class.
+use App\Controllers\Klijent;
+
 $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
@@ -30,10 +32,20 @@ $routes->setAutoRoute(true);
 
 /*$routes->add('Majstor/promeniPodatke', "Gost::promeniPodatke");
 $routes->add('Klijent/promeniPodatke', "Gost::promeniPodatke");*/
+
+//$routes->add("Gost/izlogujSe", 'Klijent::izlogujSe');
+
+$routes->add('pretrazivanje','Klijent::pretrazivanje');
+$routes->add('/prikazUsluga/(:any)','Klijent::prikazUsluga/$1');
+
+$routes->add('Klijent/pretrazivanje','Klijent::pretrazivanje');
+$routes->add('Klijent/prikazUsluga/(:any)','Klijent::prikazUsluga/$1');
+
 // We get a performance increase by specifying the default
-// route since we don't have to scan directories.
-$routes->get('/', 'Gost::pretrazivanje');
-$routes->get('/Gost', 'Gost::pretrazivanje');
+// route since we don't have to scan directories .
+
+$routes->get('/', 'Klijent::pretrazivanje');
+$routes->get('/Gost', 'Klijent::pretrazivanje');
 $routes->get('/Klijent', 'Klijent::pretrazivanje');
 $routes->get('/Majstor', 'Majstor::mojeUsluge');
 $routes->get('/Admin', 'Admin::pregledMajstora');

@@ -24,7 +24,7 @@ $(document).ready(function () {
     console.log(terminiMapa);
     $("#dugmePosalji").click(function () {
         if (!unetiTermini) {
-           
+
             openNav();
             return;
         }
@@ -70,13 +70,15 @@ $(document).ready(function () {
                 kljuc: kljuc
             }
         }).done(function (result_html) {
+            //console.log(result_html);
             if (result_html === "OK")
+                //console.log(result_html);
                 window.location = '../pretrazivanje';
         });
     });
 
     $("#dugmePretrazi").click(function () {
-        
+
         if (!unetiTermini) {
             let oznaceni = $("input:checkbox:checked");
             if (oznaceni.length == 0) return;
@@ -123,9 +125,10 @@ function filter(oznaceni, cena, preporuka, vreme) {
         if (slobodan == null)
             return false;
         console.log(slobodan);
+        console.log(oznaceni);
         var x = false;
         for (let o of oznaceni) {
-            if (slobodan.find(obj => obj => date == o) != null) {
+            if (slobodan.find(obj => obj.date == o) != null) {
                 x = true;
                 break;
             }
@@ -179,7 +182,7 @@ function dohvatiUsluge() {
 function updateUsluge(usluge) {
     $(".uslugaKomponenta").remove();
     usluge.forEach(u => {
-        $("#poljeZaUsluge").append(usluga(u.cena, u.idUsl, u.majstori, u.naslov, u.opis, u.preporuke, u.vremeOdgovora, u.slika));
+        $("#poljeZaUsluge").append(usluga(u.cena, u.idUsl, u.majstor, u.naslov, u.opis, u.preporuke, u.vremeOdgovora, u.slika));
     });
 }
 
@@ -295,9 +298,12 @@ function usluga(cena, id, majstor, naslov, opis, preporuka, vremeOdgovora, slika
         '            <tr>\n' +
         '                <td colspan="3" width="100%">\n' +
         '                    <div class="detaljnijeMajstor" id="' + majstor + '">\n' +
-        '                        <button type="button" onclick="window.location=\'detaljnijiPrikazMajstora.html\';">\n' +
-        '                            Prikaži profil majstora\n' +
-        '                        </button>\n' +
+        '                      <form action="../prikazMajstora" method="POST">\n' +
+        '                           <input type="hidden" id="idUsluge" name="id" value="' + majstor + '">\n' +
+        '                           <button type="SUBMIT" id="" onClick="" formTarget="_blank" value="...">\n' +
+        '                               Prikaži profil majstora\n' +
+        '                           </button>\n' +
+        '                      </form>\n' +
         '                    </div>\n' +
         '                    <div class="odbij">\n' +
         '                        <button>\n' +

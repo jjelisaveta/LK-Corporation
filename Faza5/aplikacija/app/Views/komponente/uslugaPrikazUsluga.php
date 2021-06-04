@@ -1,4 +1,3 @@
-
 <div class="row uslugaKomponenta">
     <div class="offset-1 col-10 polje">
         <table class="uslugaTabela" id="<?= $idUsl ?>">
@@ -23,12 +22,13 @@
             </tr>
             <tr>
                 <td colspan="3" width="100%">
-                    <form action="../prikazMajstora" method="POST">
-                    <div class="detaljnijeMajstor" id="<?= $idMaj ?>"
+                    <div class="detaljnijeMajstor" id="<?= $idMaj ?>">
+                        <form action="../prikazMajstora" method="POST">
                             <input type="hidden" id="idUsluge" name="id" value="<?php echo $idMaj ?>">
                             <button type="SUBMIT" id="" onclick="" formtarget="_blank" value="...">
-                            Prikaži profil majstora
+                                Prikaži profil majstora
                             </button>
+                        </form>
                     </div>
                     <div class="odbij">
                         <button type="button">
@@ -36,7 +36,6 @@
                             <input type="checkbox" class="uslugaCB" id=<?php echo "cb" . $idUsl ?>>
                         </button>
                     </div>
-                    </form>
                 </td>
             </tr>
         </table>
