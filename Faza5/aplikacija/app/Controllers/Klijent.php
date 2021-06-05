@@ -70,12 +70,12 @@ class Klijent extends BaseController
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(7)->getUsluge();       
         return $usluge;
     }
-
+/*
     public function izlogujSe(){
         $this->session->destroy();
         return redirect()->to(site_url("Gost/loginSubmit"));
     }
-    
+    */
     public function prikazUsluga($trazeniTag){
         $tag = str_replace("_"," ",$trazeniTag);
 
