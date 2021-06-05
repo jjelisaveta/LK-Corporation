@@ -35,6 +35,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => 'SifraPopravi123',
+        'password' => '1234',
         'database' => 'popravi',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
