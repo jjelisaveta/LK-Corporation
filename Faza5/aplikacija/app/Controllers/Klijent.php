@@ -73,6 +73,7 @@ class Klijent extends BaseController
         }
     }
 
+
     /*
      * funkcija koja vrsi izlogovanje korisnika, unistavanjem trenutne sesije na serveru
      *
@@ -146,7 +147,7 @@ class Klijent extends BaseController
 
     }
 
-    /*
+    /**
      * funcija prikazuje aktivne usluge za ulogovanog korisnika
      *
      * @return void
