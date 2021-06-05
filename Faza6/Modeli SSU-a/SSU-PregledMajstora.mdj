@@ -1104,7 +1104,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51zJKGfr0u2w="
 							},
-							"name": "SequenceDiagram1",
+							"name": "pregled majstora",
 							"ownedViews": [
 								{
 									"_type": "UMLFrameView",
@@ -1125,9 +1125,9 @@
 											"font": "Arial;13;0",
 											"left": 24.72998046875,
 											"top": 5,
-											"width": 115.9052734375,
+											"width": 97.8271484375,
 											"height": 13,
-											"text": "SequenceDiagram1"
+											"text": "pregled majstora"
 										},
 										{
 											"_type": "LabelView",
@@ -1949,119 +1949,6 @@
 									}
 								},
 								{
-									"_type": "UMLSeqMessageView",
-									"_id": "AAAAAAF51zVmbfvZhWI=",
-									"_parent": {
-										"$ref": "AAAAAAF51zJKGfr1Wjk="
-									},
-									"model": {
-										"$ref": "AAAAAAF51zVmbfvY92U="
-									},
-									"subViews": [
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF51zVmbvvaC64=",
-											"_parent": {
-												"$ref": "AAAAAAF51zVmbfvZhWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF51zVmbfvY92U="
-											},
-											"font": "Arial;13;0",
-											"left": 183,
-											"top": 351,
-											"width": 136.58251953125,
-											"height": 13,
-											"alpha": -1.004067432800869,
-											"distance": 26.076809620810597,
-											"hostEdge": {
-												"$ref": "AAAAAAF51zVmbfvZhWI="
-											},
-											"edgePosition": 1,
-											"text": "5 : pregledMajstora.php"
-										},
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF51zVmbvvb5q0=",
-											"_parent": {
-												"$ref": "AAAAAAF51zVmbfvZhWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF51zVmbfvY92U="
-											},
-											"font": "Arial;13;0",
-											"left": 231,
-											"top": 384,
-											"width": 64.30810546875,
-											"height": 13,
-											"alpha": 1.3734017284836624,
-											"distance": 10.198039027185569,
-											"hostEdge": {
-												"$ref": "AAAAAAF51zVmbfvZhWI="
-											},
-											"edgePosition": 1,
-											"text": "«redirects»"
-										},
-										{
-											"_type": "EdgeLabelView",
-											"_id": "AAAAAAF51zVmbvvchQM=",
-											"_parent": {
-												"$ref": "AAAAAAF51zVmbfvZhWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF51zVmbfvY92U="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 265,
-											"top": 364,
-											"height": 13,
-											"alpha": -1.5707963267948966,
-											"distance": 10,
-											"hostEdge": {
-												"$ref": "AAAAAAF51zVmbfvZhWI="
-											},
-											"edgePosition": 1
-										},
-										{
-											"_type": "UMLActivationView",
-											"_id": "AAAAAAF51zVmbvvdfL8=",
-											"_parent": {
-												"$ref": "AAAAAAF51zVmbfvZhWI="
-											},
-											"model": {
-												"$ref": "AAAAAAF51zVmbfvY92U="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 108,
-											"top": 380,
-											"width": 14,
-											"height": 25
-										}
-									],
-									"font": "Arial;13;0",
-									"head": {
-										"$ref": "AAAAAAF51zKFf/sSv90="
-									},
-									"tail": {
-										"$ref": "AAAAAAF51zLnEfs1SS0="
-									},
-									"points": "422:380;108:380",
-									"nameLabel": {
-										"$ref": "AAAAAAF51zVmbvvaC64="
-									},
-									"stereotypeLabel": {
-										"$ref": "AAAAAAF51zVmbvvb5q0="
-									},
-									"propertyLabel": {
-										"$ref": "AAAAAAF51zVmbvvchQM="
-									},
-									"activation": {
-										"$ref": "AAAAAAF51zVmbvvdfL8="
-									}
-								},
-								{
 									"_type": "UMLCombinedFragmentView",
 									"_id": "AAAAAAF51zau8PwOqxE=",
 									"_parent": {
@@ -2162,6 +2049,342 @@
 								},
 								{
 									"_type": "UMLSeqMessageView",
+									"_id": "AAAAAAF52zbSVibJNZ4=",
+									"_parent": {
+										"$ref": "AAAAAAF51zJKGfr1Wjk="
+									},
+									"model": {
+										"$ref": "AAAAAAF52zbSVibIvEg="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF52zbSVibKVfI=",
+											"_parent": {
+												"$ref": "AAAAAAF52zbSVibJNZ4="
+											},
+											"model": {
+												"$ref": "AAAAAAF52zbSVibIvEg="
+											},
+											"font": "Arial;13;0",
+											"left": 502,
+											"top": 256,
+											"width": 250.0341796875,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 10,
+											"hostEdge": {
+												"$ref": "AAAAAAF52zbSVibJNZ4="
+											},
+											"edgePosition": 1,
+											"text": "5 : dohvati realizovane usluge majstora upit"
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF52zbSVybLg2c=",
+											"_parent": {
+												"$ref": "AAAAAAF52zbSVibJNZ4="
+											},
+											"model": {
+												"$ref": "AAAAAAF52zbSVibIvEg="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 627,
+											"top": 241,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 25,
+											"hostEdge": {
+												"$ref": "AAAAAAF52zbSVibJNZ4="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF52zbSVybMHO4=",
+											"_parent": {
+												"$ref": "AAAAAAF52zbSVibJNZ4="
+											},
+											"model": {
+												"$ref": "AAAAAAF52zbSVibIvEg="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 627,
+											"top": 276,
+											"height": 13,
+											"alpha": -1.5707963267948966,
+											"distance": 10,
+											"hostEdge": {
+												"$ref": "AAAAAAF52zbSVibJNZ4="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "UMLActivationView",
+											"_id": "AAAAAAF52zbSVybNBW8=",
+											"_parent": {
+												"$ref": "AAAAAAF52zbSVibJNZ4="
+											},
+											"model": {
+												"$ref": "AAAAAAF52zbSVibIvEg="
+											},
+											"font": "Arial;13;0",
+											"left": 813,
+											"top": 272,
+											"width": 14,
+											"height": 29
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAF51zOTMftvyLI="
+									},
+									"tail": {
+										"$ref": "AAAAAAF51zLnEfs1SS0="
+									},
+									"points": "442:272;813:272",
+									"nameLabel": {
+										"$ref": "AAAAAAF52zbSVibKVfI="
+									},
+									"stereotypeLabel": {
+										"$ref": "AAAAAAF52zbSVybLg2c="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAF52zbSVybMHO4="
+									},
+									"activation": {
+										"$ref": "AAAAAAF52zbSVybNBW8="
+									}
+								},
+								{
+									"_type": "UMLSeqMessageView",
+									"_id": "AAAAAAF52zdD1SbhRIc=",
+									"_parent": {
+										"$ref": "AAAAAAF51zJKGfr1Wjk="
+									},
+									"model": {
+										"$ref": "AAAAAAF52zdD1SbgkhQ="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF52zdD1Sbiivc=",
+											"_parent": {
+												"$ref": "AAAAAAF52zdD1SbhRIc="
+											},
+											"model": {
+												"$ref": "AAAAAAF52zdD1SbgkhQ="
+											},
+											"font": "Arial;13;0",
+											"left": 537,
+											"top": 300,
+											"width": 179.9306640625,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 10,
+											"hostEdge": {
+												"$ref": "AAAAAAF52zdD1SbhRIc="
+											},
+											"edgePosition": 1,
+											"text": "6 : realizovane usluge majstora"
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF52zdD1Sbj+1w=",
+											"_parent": {
+												"$ref": "AAAAAAF52zdD1SbhRIc="
+											},
+											"model": {
+												"$ref": "AAAAAAF52zdD1SbgkhQ="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 626,
+											"top": 315,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 25,
+											"hostEdge": {
+												"$ref": "AAAAAAF52zdD1SbhRIc="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF52zdD1SbkEpk=",
+											"_parent": {
+												"$ref": "AAAAAAF52zdD1SbhRIc="
+											},
+											"model": {
+												"$ref": "AAAAAAF52zdD1SbgkhQ="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 627,
+											"top": 280,
+											"height": 13,
+											"alpha": -1.5707963267948966,
+											"distance": 10,
+											"hostEdge": {
+												"$ref": "AAAAAAF52zdD1SbhRIc="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "UMLActivationView",
+											"_id": "AAAAAAF52zdD1SblpvE=",
+											"_parent": {
+												"$ref": "AAAAAAF52zdD1SbhRIc="
+											},
+											"model": {
+												"$ref": "AAAAAAF52zdD1SbgkhQ="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 429,
+											"top": 296,
+											"width": 14,
+											"height": 25
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAF51zLnEfs1SS0="
+									},
+									"tail": {
+										"$ref": "AAAAAAF51zOTMftvyLI="
+									},
+									"points": "813:296;442:296",
+									"nameLabel": {
+										"$ref": "AAAAAAF52zdD1Sbiivc="
+									},
+									"stereotypeLabel": {
+										"$ref": "AAAAAAF52zdD1Sbj+1w="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAF52zdD1SbkEpk="
+									},
+									"activation": {
+										"$ref": "AAAAAAF52zdD1SblpvE="
+									}
+								},
+								{
+									"_type": "UMLSeqMessageView",
+									"_id": "AAAAAAF51zVmbfvZhWI=",
+									"_parent": {
+										"$ref": "AAAAAAF51zJKGfr1Wjk="
+									},
+									"model": {
+										"$ref": "AAAAAAF51zVmbfvY92U="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF51zVmbvvaC64=",
+											"_parent": {
+												"$ref": "AAAAAAF51zVmbfvZhWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF51zVmbfvY92U="
+											},
+											"font": "Arial;13;0",
+											"left": 183,
+											"top": 351,
+											"width": 136.58251953125,
+											"height": 13,
+											"alpha": -1.004067432800869,
+											"distance": 26.076809620810597,
+											"hostEdge": {
+												"$ref": "AAAAAAF51zVmbfvZhWI="
+											},
+											"edgePosition": 1,
+											"text": "7 : pregledMajstora.php"
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF51zVmbvvb5q0=",
+											"_parent": {
+												"$ref": "AAAAAAF51zVmbfvZhWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF51zVmbfvY92U="
+											},
+											"font": "Arial;13;0",
+											"left": 231,
+											"top": 384,
+											"width": 64.30810546875,
+											"height": 13,
+											"alpha": 1.3734017284836624,
+											"distance": 10.198039027185569,
+											"hostEdge": {
+												"$ref": "AAAAAAF51zVmbfvZhWI="
+											},
+											"edgePosition": 1,
+											"text": "«redirects»"
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAF51zVmbvvchQM=",
+											"_parent": {
+												"$ref": "AAAAAAF51zVmbfvZhWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF51zVmbfvY92U="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 265,
+											"top": 364,
+											"height": 13,
+											"alpha": -1.5707963267948966,
+											"distance": 10,
+											"hostEdge": {
+												"$ref": "AAAAAAF51zVmbfvZhWI="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "UMLActivationView",
+											"_id": "AAAAAAF51zVmbvvdfL8=",
+											"_parent": {
+												"$ref": "AAAAAAF51zVmbfvZhWI="
+											},
+											"model": {
+												"$ref": "AAAAAAF51zVmbfvY92U="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 108,
+											"top": 380,
+											"width": 14,
+											"height": 25
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAF51zKFf/sSv90="
+									},
+									"tail": {
+										"$ref": "AAAAAAF51zLnEfs1SS0="
+									},
+									"points": "422:380;108:380",
+									"nameLabel": {
+										"$ref": "AAAAAAF51zVmbvvaC64="
+									},
+									"stereotypeLabel": {
+										"$ref": "AAAAAAF51zVmbvvb5q0="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAF51zVmbvvchQM="
+									},
+									"activation": {
+										"$ref": "AAAAAAF51zVmbvvdfL8="
+									}
+								},
+								{
+									"_type": "UMLSeqMessageView",
 									"_id": "AAAAAAF51zhHqPwzvvQ=",
 									"_parent": {
 										"$ref": "AAAAAAF51zJKGfr1Wjk="
@@ -2190,7 +2413,7 @@
 												"$ref": "AAAAAAF51zhHqPwzvvQ="
 											},
 											"edgePosition": 1,
-											"text": "6 : detaljan prikaz majstora"
+											"text": "8 : detaljan prikaz majstora"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2301,7 +2524,7 @@
 												"$ref": "AAAAAAF51zj3/fxLqO0="
 											},
 											"edgePosition": 1,
-											"text": "7 : dohvati podatke o majstoru upit"
+											"text": "9 : dohvati podatke o majstoru upit"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2402,9 +2625,9 @@
 												"$ref": "AAAAAAF51zoOdfxjjFc="
 											},
 											"font": "Arial;13;0",
-											"left": 561,
+											"left": 558,
 											"top": 572,
-											"width": 124.287109375,
+											"width": 131.51708984375,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -2412,7 +2635,7 @@
 												"$ref": "AAAAAAF51zoOdvxkUd4="
 											},
 											"edgePosition": 1,
-											"text": "8 : podatci o majstoru"
+											"text": "10 : podatci o majstoru"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2514,9 +2737,9 @@
 												"$ref": "AAAAAAF51zqWBPx94fg="
 											},
 											"font": "Arial;13;0",
-											"left": 176,
+											"left": 173,
 											"top": 591,
-											"width": 176.30615234375,
+											"width": 183.5361328125,
 											"height": 13,
 											"alpha": -1.508378139367057,
 											"distance": 16.0312195418814,
@@ -2524,7 +2747,7 @@
 												"$ref": "AAAAAAF51zqWBPx+lMY="
 											},
 											"edgePosition": 1,
-											"text": "9 : detaljnijiPrikazMajstora.php"
+											"text": "11 : detaljnijiPrikazMajstora.php"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2667,6 +2890,35 @@
 							"target": {
 								"$ref": "AAAAAAF51zLnEPsuhvw="
 							}
+						},
+						{
+							"_type": "UMLMessage",
+							"_id": "AAAAAAF52zbSVibIvEg=",
+							"_parent": {
+								"$ref": "AAAAAAF51zJKGfr0u2w="
+							},
+							"name": "dohvati realizovane usluge majstora upit",
+							"source": {
+								"$ref": "AAAAAAF51zLnEPsuhvw="
+							},
+							"target": {
+								"$ref": "AAAAAAF51zOTMPtogV8="
+							}
+						},
+						{
+							"_type": "UMLMessage",
+							"_id": "AAAAAAF52zdD1SbgkhQ=",
+							"_parent": {
+								"$ref": "AAAAAAF51zJKGfr0u2w="
+							},
+							"name": "realizovane usluge majstora",
+							"source": {
+								"$ref": "AAAAAAF51zOTMPtogV8="
+							},
+							"target": {
+								"$ref": "AAAAAAF51zLnEPsuhvw="
+							},
+							"messageSort": "reply"
 						},
 						{
 							"_type": "UMLMessage",
