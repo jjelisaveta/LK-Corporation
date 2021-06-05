@@ -6,6 +6,14 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
+
+/*
+ * klasa GostFilter poziva se kod svakog pristupa Gost kontroleru
+ *
+ * propusta svaki saobracaj zato sto svaki koriskik treba da ima mogucnosti gosta
+ *
+ * dodatne funkcije gosta se dalje filtriraju u klasi KlijentFilter
+ */
 class GostFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)

@@ -3,7 +3,14 @@
 
 namespace App\Models\Repositories;
 
-
+/*
+ * klasa se koristi kao repozitorijum za klasu Kjuc
+ *
+ *
+ * dohvata i inrekmentira kljuc iz baze
+ *
+ * @return int
+ */
 class KljucRepository extends \Doctrine\ORM\EntityRepository
 {
 

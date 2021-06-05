@@ -6,6 +6,14 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
+
+/*
+ * klasa MajstorFilter poziva se kod svakog pristupa Majstr kontroleru
+ *
+ * propusta sve korisnike tipa Majstor
+ * sve ostale preusmerava na njihove podrazumevane stranice
+ *
+ */
 class MajstorFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)

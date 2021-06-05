@@ -11,14 +11,8 @@
         <div class="maliMeniSadrzaj">
             <a href="<?php echo site_url("Admin/pregledMajstora") ?>" class=<?=$broj== 1 ? 'active':'' ?>>Pregled Majstora</a>
             <a href="<?php echo site_url("Admin/odobravanjeMajstora") ?>"  class=<?=$broj== 2 ? 'active':'' ?>>Zahtevi Majstora</a>
+            <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
 
-            <div class="padajuciMeni">
-                <button class="padajuceDugme">Moj nalog</button>
-                <div class="padajuciSadrzaj">
-                <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
-                    <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
-                </div>
-            </div>
         </div>
         <div id="korisnik">
         <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika">
@@ -31,15 +25,7 @@
 
         <a href="<?php echo site_url("Admin/pregledMajstora") ?>" class=<?=$broj== 1 ? 'active':'' ?> >Pregled Majstora</a>
         <a href="<?php echo site_url("Admin/odobravanjeMajstora") ?>"  class=<?=$broj== 2 ? 'active':'' ?>>Zahtevi Majstora</a>
-     
-        <div class="padajuciMeni">
-            <button class="padajuceDugme">Moj nalog</button>
-            <div class="padajuciSadrzaj">
-            <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
-            <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
-
-            </div>
-        </div>
+        <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
         <div id="korisnik">
         <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika">
             <a><?= $ime ?> <?= $prezime ?></a>

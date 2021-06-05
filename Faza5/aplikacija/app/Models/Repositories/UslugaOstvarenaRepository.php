@@ -3,9 +3,19 @@
 
 namespace App\Models\Repositories;
 
-
+/*
+ * ova klasa se koristi kao repozitorijum klasa za entitet OstvarenaUsluga
+ *
+ */
 class UslugaOstvarenaRepository extends \Doctrine\ORM\EntityRepository
 {
+    /*
+     * ova funkcija vraca sve ostvarene usluge majstora
+     *
+     * @param int $id
+     *
+     * @return OstvareneUsluge[]
+     */
     public function dohvatiOstvareneUslugeMajstora($id)
     {
         $upit = $this->getEntityManager()->createQueryBuilder();
@@ -16,6 +26,11 @@ class UslugaOstvarenaRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('idUsluge', $id);
         return $upit->getQuery()->getResult();
     }
+    /*
+     * ova funkcija vraca sve ostvarene usluge
+     *
+     * @return OstvareneUsluge[]
+     */
     public function dohvatiOstvareneUsluge()
     {
         $upit = $this->getEntityManager()->createQueryBuilder();
@@ -24,6 +39,14 @@ class UslugaOstvarenaRepository extends \Doctrine\ORM\EntityRepository
             ->join('App\Models\Entities\Usluga', 'u', 'idusl');
         return $upit->getQuery()->getResult();
     }
+
+    /*
+     * ova funkcija vraca sve ostvarene usluge korisnika
+     *
+     * @param int $id
+     *
+     * @return OstvareneUsluge[]
+     */
     public function dohvatiUslugeKorisnika($idKor)
     {
        $upit = $this->getEntityManager()->createQueryBuilder();

@@ -3,10 +3,21 @@
 
 namespace App\Models\Repositories;
 
-
+/*
+ * klasa koja se koristi kao repozitorijum za entitet tipa Kalendar
+ *
+ *
+ */
 class KalendarRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    /*
+     * funkcija vraca sve rezervacije majstora za odredjeni dan
+     *
+     * @param int $idMaj
+     * @param string date
+     *
+     * @return Kalendar[]
+     */
     public function dohvatiMajstorRezervisan($idMaj, $date)
     {
         $kraj = \DateTime::createFromFormat('Y-m-d H:i', $date . '23:59');
@@ -23,6 +34,14 @@ class KalendarRepository extends \Doctrine\ORM\EntityRepository
         return $upit->getQuery()->getResult();
     }
 
+    /*
+     * funkcija vraca sve slobodne termine majstora za zadati dan
+     *
+     * @param int $idMaj
+     * @param string date
+     *
+     * @return Kalendar[]
+     */
     public function dohvatiMajstorSlobodan($idMaj, $date)
     {
         $kraj = \DateTime::createFromFormat('Y-m-d H:i', $date . '23:59');
@@ -39,6 +58,13 @@ class KalendarRepository extends \Doctrine\ORM\EntityRepository
         return $upit->getQuery()->getResult();
     }
 
+    /*
+     * funkcija vraca sve slobodne termine majstora
+     *
+     * @param int $idMaj
+     *
+     * @return Kalendar[]
+     */
     public function dohvatiSveSlobodneZaMajstora($idMaj){
         $upit = $this->getEntityManager()->createQueryBuilder();
         $upit->select('k')

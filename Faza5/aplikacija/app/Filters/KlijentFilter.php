@@ -5,7 +5,14 @@ namespace App\Filters;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
-
+/*
+ * klasa Klijent poziva se kod svakog pristupa Klijent kontroleru
+ *
+ * korisnik koji nije ulogovan tj gost je ima pristup do odredjenih stranica
+ * korisnik tipa majstor i admin se preusmerava na svoje podrazumevane stranice
+ *
+ * koriskik tipa klijent se propusta u potpunosti
+ */
 class KlijentFilter implements FilterInterface
 {
 
