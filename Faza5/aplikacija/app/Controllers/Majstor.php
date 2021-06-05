@@ -48,21 +48,6 @@ class Majstor extends BaseController
 
 
     /*
-     * funckija se ne koristi nzm sto je ovde xD
-     *
-     * @return void
-     */
-//    public function pretrazivanje()
-//    {
-//        $stranica = 'pretrazivanje';
-//        $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
-//        if (!$_POST) {
-//            return $this->prikaz($stranica, ['tagovi' => $allTags], 0);
-//        }
-//    }
-
-
-    /*
      * funckija se koristi za prikaz ili dodavanje usluge u zavisnosti od tipa zahteva get ili post
      * prosledjuju joj se svi parametri potrebni za dodavanje nove usluge kroz post zahtev
      *
@@ -163,19 +148,6 @@ class Majstor extends BaseController
         $this->prikaz("mojeUsluge", ['usluge' => $usluge], 3);
     }
 
-
-    //test
-    public function dohvatiOStvareneUsluge($id)
-    {
-        $usluge = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
-        $naziv = [];
-//        foreach ($usluge as $usluga) {
-//            array_push($naziv, $usluga->getIdrez()->idRez->getOpis());
-//        }
-
-        return "poruka" . json_encode($naziv);
-    }
-
     /*
      * privatna funkcija, racuna prosecno vreme odgovra za ostvarene usluge majstora
      *
@@ -183,7 +155,7 @@ class Majstor extends BaseController
      *
      * @return float
      */
-    public function vremeOdgovora($ostvarene)
+    private function vremeOdgovora($ostvarene)
     {
         $ukupno = 0;
         foreach ($ostvarene as $ostvarena) {
@@ -202,7 +174,7 @@ class Majstor extends BaseController
      *
      * @return float
      */
-    public function preporuke($ostvarene)
+    private function preporuke($ostvarene)
     {
         $sum = 0;
         foreach ($ostvarene as $ostvarena) {
@@ -219,7 +191,7 @@ class Majstor extends BaseController
      *
      * @return float
      */
-    public function prosecnaCena($usluge)
+    private function prosecnaCena($usluge)
     {
         $ukupno = 0;
         foreach ($usluge as $usluga) {
@@ -227,35 +199,6 @@ class Majstor extends BaseController
         }
         return $ukupno / sizeof($usluge);
     }
-    /*
-     * ne koristi se ja msm
-     *
-     */
-//    public function prikazMajstora()
-//    {
-//        $id = $this->session->get('Korisnik')->idKor;
-//        $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
-//        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
-//        $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
-//
-//        $vreme = $this->vremeOdgovora($ostvarene);
-//        $preporuke = $this->preporuke($ostvarene);
-//        $cena = $this->prosecnaCena($usluge);
-//
-//        $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
-//            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena], 0);
-//
-//    }
-
-    /* public function obrisiKomentar()
-     {
-         $id = $this->request->getVar('idOstvUsl');
-         $ostvarena = $this->doctrine->em->getRepository(\App\Models\Entities\UslugaOstvarena::class)->find($id);
-         $ostvarena->setKomentar(null);
-         $this->doctrine->em->persist($ostvarena);
-         $this->doctrine->em->flush();
-     }
- */
     /*
      * funkcija sluzi za prikaz stranice kalendar za ulogovanog majstora
      *
@@ -728,17 +671,5 @@ class Majstor extends BaseController
         return "OK" . "\n" . $ret;
 
     }
-
-    //test
-    public function usluge()
-    {
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(10)->getUsluge();
-        $ret = [];
-        foreach ($usluge as $usluga) {
-            array_push($ret, $usluga->getIdusl());
-        }
-        return "poruka " . json_encode($ret);
-    }
-
 
 }

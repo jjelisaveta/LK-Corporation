@@ -74,26 +74,6 @@ class Klijent extends BaseController
     }
 
     /*
-     * test funkcija ne radi nista u aplikaciji xD
-     *
-     * @return void
-     */
-    public function a(){
-         $putanja = $_SERVER['REQUEST_URI'];
-         $metoda = explode("/",$putanja)[2];
-         echo $metoda;
-    }
-    /*
-     * test funkcija ne radi nista u aplikaciji xD
-     *
-     * @return array niz usluga
-     */
-    public function usluge()
-    {
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(7)->getUsluge();       
-        return $usluge;
-    }
-    /*
      * funkcija koja vrsi izlogovanje korisnika, unistavanjem trenutne sesije na serveru
      *
      *
@@ -326,7 +306,7 @@ class Klijent extends BaseController
      *
      * @return float
      */
-    public function preporuke($ostvarene)
+    private function preporuke($ostvarene)
     {
         $sum = 0;
         foreach ($ostvarene as $ostvarena) {
@@ -345,7 +325,7 @@ class Klijent extends BaseController
      *
      * @return float
      */
-    public function prosecnaCena($usluge)
+    private function prosecnaCena($usluge)
     {
         $ukupno = 0;
         foreach ($usluge as $usluga) {
