@@ -2292,9 +2292,9 @@
 												"$ref": "AAAAAAF511j0ROfsdyk="
 											},
 											"font": "Arial;13;0",
-											"left": 624,
+											"left": 621,
 											"top": 98,
-											"width": 237.0087890625,
+											"width": 242.0869140625,
 											"height": 13,
 											"alpha": -4.446137777387806,
 											"distance": 11.40175425099138,
@@ -2302,7 +2302,7 @@
 												"$ref": "AAAAAAF511j0ReftnMM="
 											},
 											"edgePosition": 1,
-											"text": "2 : dohvatiOstvareneUslugeKorisnikaUpit"
+											"text": "2 : dohvati ostvarene usluge korisnika upit"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2560,9 +2560,9 @@
 															"font": "Arial;13;0",
 															"left": 20,
 															"top": 302,
-															"width": 135.10986328125,
+															"width": 142.33349609375,
 															"height": 13,
-															"text": "[Dugme ukloniIzIstorije]"
+															"text": "[Dugme ukloni Iz Istorije]"
 														}
 													],
 													"font": "Arial;13;0",
@@ -2727,9 +2727,9 @@
 												"$ref": "AAAAAAF5114S4+hQSik="
 											},
 											"font": "Arial;13;0",
-											"left": 273,
+											"left": 244,
 											"top": 280,
-											"width": 87.419921875,
+											"width": 145.22802734375,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -2737,7 +2737,7 @@
 												"$ref": "AAAAAAF5114S4+hRQ2A="
 											},
 											"edgePosition": 1,
-											"text": "5 : obrisiIstorija"
+											"text": "5 : obrisi uslugu iz istorije"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2838,9 +2838,9 @@
 												"$ref": "AAAAAAF51157Dehnbvo="
 											},
 											"font": "Arial;13;0",
-											"left": 670,
+											"left": 669,
 											"top": 328,
-											"width": 151.04248046875,
+											"width": 153.22607421875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -2848,7 +2848,7 @@
 												"$ref": "AAAAAAF51157Dehoqow="
 											},
 											"edgePosition": 1,
-											"text": "6 : updateUslugaObrisano"
+											"text": "6 : update usluga.obrisano"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3271,9 +3271,9 @@
 												"$ref": "AAAAAAF512oZm+m+iDU="
 											},
 											"font": "Arial;13;0",
-											"left": 259,
+											"left": 258,
 											"top": 533,
-											"width": 114.17529296875,
+											"width": 116.34619140625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -3281,7 +3281,7 @@
 												"$ref": "AAAAAAF512oZm+m/M4g="
 											},
 											"edgePosition": 1,
-											"text": "9 : aktivnePopravke"
+											"text": "9 : aktivne popravke"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3382,17 +3382,17 @@
 												"$ref": "AAAAAAF512p8ROnVF+8="
 											},
 											"font": "Arial;13;0",
-											"left": 632,
-											"top": 547,
-											"width": 226.89697265625,
+											"left": 628,
+											"top": 543,
+											"width": 233.416015625,
 											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
+											"alpha": -4.635617853820839,
+											"distance": 13.038404810405298,
 											"hostEdge": {
 												"$ref": "AAAAAAF512p8ROnWQI8="
 											},
 											"edgePosition": 1,
-											"text": "10 : dohvatiAktivneUslugeKorisnikaUpit"
+											"text": "10 : dohvati aktivne usluge korisnika upit"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3721,7 +3721,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF510/HxedZkQ0="
 							},
-							"name": "dohvatiOstvareneUslugeKorisnikaUpit",
+							"name": "dohvati ostvarene usluge korisnika upit",
 							"source": {
 								"$ref": "AAAAAAF511CFtOeSeZg="
 							},
@@ -3766,7 +3766,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF510/HxedZkQ0="
 							},
-							"name": "obrisiIstorija",
+							"name": "obrisi uslugu iz istorije",
 							"source": {
 								"$ref": "AAAAAAF511APledwBN8="
 							},
@@ -3780,7 +3780,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF510/HxedZkQ0="
 							},
-							"name": "updateUslugaObrisano",
+							"name": "update usluga.obrisano",
 							"source": {
 								"$ref": "AAAAAAF511CFtOeSeZg="
 							},
@@ -3823,7 +3823,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF510/HxedZkQ0="
 							},
-							"name": "aktivnePopravke",
+							"name": "aktivne popravke",
 							"source": {
 								"$ref": "AAAAAAF511APledwBN8="
 							},
@@ -3837,7 +3837,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF510/HxedZkQ0="
 							},
-							"name": "dohvatiAktivneUslugeKorisnikaUpit",
+							"name": "dohvati aktivne usluge korisnika upit",
 							"source": {
 								"$ref": "AAAAAAF511CFtOeSeZg="
 							},
@@ -3932,7 +3932,7 @@
 										"$ref": "AAAAAAF511qOJ+gyfQw="
 									},
 									"name": "Operand1",
-									"guard": "Dugme ukloniIzIstorije"
+									"guard": "Dugme ukloni Iz Istorije"
 								}
 							]
 						},

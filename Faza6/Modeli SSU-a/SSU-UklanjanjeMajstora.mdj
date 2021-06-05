@@ -1809,7 +1809,7 @@
 									],
 									"font": "Arial;13;0",
 									"width": 1489,
-									"height": 937,
+									"height": 665,
 									"nameLabel": {
 										"$ref": "AAAAAAF50XUAeS1nTxU="
 									},
@@ -1920,14 +1920,14 @@
 											"left": 180,
 											"top": 80,
 											"width": 1,
-											"height": 553
+											"height": 585
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 144,
 									"top": 40,
 									"width": 72.736328125,
-									"height": 593,
+									"height": 625,
 									"nameCompartment": {
 										"$ref": "AAAAAAF50Xt7Di1+Oow="
 									},
@@ -2036,14 +2036,14 @@
 											"left": 414,
 											"top": 80,
 											"width": 1,
-											"height": 561
+											"height": 585
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 352,
 									"top": 40,
 									"width": 123.27001953125,
-									"height": 601,
+									"height": 625,
 									"nameCompartment": {
 										"$ref": "AAAAAAF50X4O8i2h5cg="
 									},
@@ -2071,9 +2071,9 @@
 												"$ref": "AAAAAAF50X5YbS3Awow="
 											},
 											"font": "Arial;13;0",
-											"left": 231,
+											"left": 229,
 											"top": 129,
-											"width": 111.28076171875,
+											"width": 114.892578125,
 											"height": 13,
 											"alpha": -4.101663687136736,
 											"distance": 12.206555615733702,
@@ -2081,7 +2081,7 @@
 												"$ref": "AAAAAAF50X5YbS3Byno="
 											},
 											"edgePosition": 1,
-											"text": "1 : pregledMajstora"
+											"text": "1 : pregled Majstora"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2182,9 +2182,9 @@
 												"$ref": "AAAAAAF51sKOgWWHBVE="
 											},
 											"font": "Arial;13;0",
-											"left": 508,
+											"left": 506,
 											"top": 136,
-											"width": 109.83349609375,
+											"width": 113.4453125,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -2192,7 +2192,7 @@
 												"$ref": "AAAAAAF51sKOgWWICqA="
 											},
 											"edgePosition": 1,
-											"text": "2 : dohvatiMajstore"
+											"text": "2 : dohvati Majstore"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2519,7 +2519,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 246,
-											"top": 232,
+											"top": 240,
 											"width": 95.37353515625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -2542,7 +2542,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 217,
+											"top": 225,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 25,
@@ -2563,7 +2563,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 293,
-											"top": 252,
+											"top": 260,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 10,
@@ -2583,7 +2583,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 407,
-											"top": 248,
+											"top": 256,
 											"width": 14,
 											"height": 29
 										}
@@ -2595,7 +2595,7 @@
 									"tail": {
 										"$ref": "AAAAAAF50Xt7Di2DVg8="
 									},
-									"points": "180:248;407:248",
+									"points": "180:256;407:256",
 									"nameLabel": {
 										"$ref": "AAAAAAF50YIjXS31/SU="
 									},
@@ -2710,14 +2710,14 @@
 											"left": 712,
 											"top": 80,
 											"width": 1,
-											"height": 561
+											"height": 585
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 632,
 									"top": 40,
 									"width": 160,
-									"height": 601,
+									"height": 625,
 									"nameCompartment": {
 										"$ref": "AAAAAAF50YQN9y6CrDk="
 									},
@@ -2858,7 +2858,7 @@
 												"$ref": "AAAAAAF50YO93y5l0GA="
 											},
 											"font": "Arial;13;0",
-											"left": 439,
+											"left": 445,
 											"top": 264,
 											"width": 98.97900390625,
 											"height": 13,
@@ -2881,7 +2881,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 468,
+											"left": 474,
 											"top": 283,
 											"height": 13,
 											"alpha": 1.5707963267948966,
@@ -2902,7 +2902,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 434,
+											"left": 440,
 											"top": 284,
 											"height": 13,
 											"alpha": -1.5707963267948966,
@@ -2935,7 +2935,7 @@
 									"tail": {
 										"$ref": "AAAAAAF50X4O8i2mrnA="
 									},
-									"points": "414:280;444:280;444:300;420:300",
+									"points": "420:280;450:280;450:300;420:300",
 									"nameLabel": {
 										"$ref": "AAAAAAF50YO93y5nBtk="
 									},
@@ -3090,7 +3090,7 @@
 												"$ref": "AAAAAAF50YX2pi7bgp8="
 											},
 											"edgePosition": 1,
-											"text": "8 : deleteCascade"
+											"text": "8 : obrisi kaskadno"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3517,7 +3517,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF50XUAdy1koK0="
 							},
-							"name": "pregledMajstora",
+							"name": "pregled Majstora",
 							"source": {
 								"$ref": "AAAAAAF50Xt7Di18zdw="
 							},
@@ -3531,7 +3531,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF50XUAdy1koK0="
 							},
-							"name": "dohvatiMajstore",
+							"name": "dohvati Majstore",
 							"source": {
 								"$ref": "AAAAAAF50X4O8i2fm6k="
 							},
@@ -3618,7 +3618,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF50XUAdy1koK0="
 							},
-							"name": "deleteCascade",
+							"name": "obrisi kaskadno",
 							"source": {
 								"$ref": "AAAAAAF50YQN9y6Aac0="
 							},

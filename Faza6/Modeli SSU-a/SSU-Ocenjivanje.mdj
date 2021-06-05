@@ -2181,9 +2181,9 @@
 												"$ref": "AAAAAAF51sD48kw4Pro="
 											},
 											"font": "Arial;13;0",
-											"left": 425,
+											"left": 424,
 											"top": 119,
-											"width": 139.46435546875,
+											"width": 141.64794921875,
 											"height": 13,
 											"alpha": -4.248742171384204,
 											"distance": 11.180339887498949,
@@ -2191,7 +2191,7 @@
 												"$ref": "AAAAAAF51sD480w5CF4="
 											},
 											"edgePosition": 1,
-											"text": "2 : upitOstvareneUsluge"
+											"text": "2 : upit ostvarene usluge"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2517,9 +2517,9 @@
 												"$ref": "AAAAAAF51m6F8Vz0s8g="
 											},
 											"font": "Arial;13;0",
-											"left": 191,
+											"left": 190,
 											"top": 198,
-											"width": 96.1162109375,
+											"width": 99.72802734375,
 											"height": 13,
 											"alpha": -4.6217299948233626,
 											"distance": 11.045361017187261,
@@ -2527,7 +2527,7 @@
 												"$ref": "AAAAAAF51m6F8Vz1fvk="
 											},
 											"edgePosition": 1,
-											"text": "5 : dugmeOcena"
+											"text": "5 : dugme Ocena"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2852,9 +2852,9 @@
 												"$ref": "AAAAAAF51neF2V1Ms9I="
 											},
 											"font": "Arial;13;0",
-											"left": 455,
+											"left": 434,
 											"top": 232,
-											"width": 96.12890625,
+											"width": 138.77880859375,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -2862,7 +2862,7 @@
 												"$ref": "AAAAAAF51neF2l1NYq0="
 											},
 											"edgePosition": 1,
-											"text": "7 : updateOcena"
+											"text": "7 : update usluga.ocena"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3191,7 +3191,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51mVDDVxotHs="
 							},
-							"name": "upitOstvareneUsluge",
+							"name": "upit ostvarene usluge",
 							"source": {
 								"$ref": "AAAAAAF51mnAQ1yk6YE="
 							},
@@ -3236,7 +3236,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51mVDDVxotHs="
 							},
-							"name": "dugmeOcena",
+							"name": "dugme Ocena",
 							"source": {
 								"$ref": "AAAAAAF51mXXFVyC+S8="
 							},
@@ -3264,7 +3264,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51mVDDVxotHs="
 							},
-							"name": "updateOcena",
+							"name": "update usluga.ocena",
 							"source": {
 								"$ref": "AAAAAAF51mnAQ1yk6YE="
 							},
@@ -3423,8 +3423,8 @@
 												"$ref": "AAAAAAF51s+cjXK8J6w="
 											},
 											"font": "Arial;13;0",
-											"left": 24.72998046875,
-											"top": 5,
+											"left": 32.72998046875,
+											"top": 45,
 											"width": 133.970703125,
 											"height": 13,
 											"text": "Prosecna ocena admin"
@@ -3436,16 +3436,18 @@
 												"$ref": "AAAAAAF51s+cjXK8J6w="
 											},
 											"font": "Arial;13;1",
-											"left": 5,
-											"top": 5,
+											"left": 13,
+											"top": 45,
 											"width": 14.72998046875,
 											"height": 13,
 											"text": "sd"
 										}
 									],
 									"font": "Arial;13;0",
+									"left": 8,
+									"top": 40,
 									"width": 1369,
-									"height": 889,
+									"height": 657,
 									"nameLabel": {
 										"$ref": "AAAAAAF51s+cjnK9VN0="
 									},
@@ -3817,9 +3819,9 @@
 												"$ref": "AAAAAAF51thZiHPwsMU="
 											},
 											"font": "Arial;13;0",
-											"left": 200,
+											"left": 192,
 											"top": 99,
-											"width": 139.43896484375,
+											"width": 155.3525390625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -3827,7 +3829,7 @@
 												"$ref": "AAAAAAF51thZiHPxP/s="
 											},
 											"edgePosition": 1,
-											"text": "1 : prikazMajstoraAdmin"
+											"text": "1 : detaljan prikaz majstora"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -3928,17 +3930,17 @@
 												"$ref": "AAAAAAF51tlQO3RJ1BA="
 											},
 											"font": "Arial;13;0",
-											"left": 518,
-											"top": 112,
-											"width": 132.95166015625,
+											"left": 479,
+											"top": 103,
+											"width": 198.732421875,
 											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
+											"alpha": -4.390638925988131,
+											"distance": 18.973665961010276,
 											"hostEdge": {
 												"$ref": "AAAAAAF51tlQO3RKMLY="
 											},
 											"edgePosition": 1,
-											"text": "2 : dohvatiMajstoraUpit"
+											"text": "2 : dohvati podatke o majstoru upit"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4039,9 +4041,9 @@
 												"$ref": "AAAAAAF51tmgS3RhR+I="
 											},
 											"font": "Arial;13;0",
-											"left": 553,
+											"left": 523,
 											"top": 176,
-											"width": 60.68359375,
+											"width": 120.67529296875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -4049,7 +4051,7 @@
 												"$ref": "AAAAAAF51tmgS3Ri9cE="
 											},
 											"edgePosition": 1,
-											"text": "3 : majstor"
+											"text": "3 : podaci o majstoru"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4365,7 +4367,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51s+cjXK6qhA="
 							},
-							"name": "prikazMajstoraAdmin",
+							"name": "detaljan prikaz majstora",
 							"source": {
 								"$ref": "AAAAAAF51tMwEHNgOHg="
 							},
@@ -4379,7 +4381,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51s+cjXK6qhA="
 							},
-							"name": "dohvatiMajstoraUpit",
+							"name": "dohvati podatke o majstoru upit",
 							"source": {
 								"$ref": "AAAAAAF51te7JHPQ/z8="
 							},
@@ -4393,7 +4395,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51s+cjXK6qhA="
 							},
-							"name": "majstor",
+							"name": "podaci o majstoru",
 							"source": {
 								"$ref": "AAAAAAF51tiigHQH4/E="
 							},
@@ -4958,9 +4960,9 @@
 												"$ref": "AAAAAAF51uEbSnX5tA8="
 											},
 											"font": "Arial;13;0",
-											"left": 209,
+											"left": 207,
 											"top": 120,
-											"width": 102.5908203125,
+											"width": 106.20263671875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -4968,7 +4970,7 @@
 												"$ref": "AAAAAAF51uEbSnX6SyI="
 											},
 											"edgePosition": 1,
-											"text": "1 : prikazMajstora"
+											"text": "1 : prikaz majstora"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -5069,17 +5071,17 @@
 												"$ref": "AAAAAAF51uFZZHYQHjQ="
 											},
 											"font": "Arial;13;0",
-											"left": 488,
-											"top": 118,
-											"width": 132.95166015625,
+											"left": 446,
+											"top": 117,
+											"width": 198.732421875,
 											"height": 13,
-											"alpha": -4.04409988578627,
-											"distance": 24.20743687382041,
+											"alpha": -3.8363311347045794,
+											"distance": 31.240998703626616,
 											"hostEdge": {
 												"$ref": "AAAAAAF51uFZZHYRLmw="
 											},
 											"edgePosition": 1,
-											"text": "2 : dohvatiMajstoraUpit"
+											"text": "2 : dohvati podatke o majstoru upit"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -5180,9 +5182,9 @@
 												"$ref": "AAAAAAF51uH3s3YqWB4="
 											},
 											"font": "Arial;13;0",
-											"left": 538,
+											"left": 508,
 											"top": 164,
-											"width": 60.68359375,
+											"width": 120.67529296875,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -5190,7 +5192,7 @@
 												"$ref": "AAAAAAF51uH3s3YrXPg="
 											},
 											"edgePosition": 1,
-											"text": "3 : majstor"
+											"text": "3 : podaci o majstoru"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -5506,7 +5508,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51txwsnUprgk="
 							},
-							"name": "prikazMajstora",
+							"name": "prikaz majstora",
 							"source": {
 								"$ref": "AAAAAAF51t4DuHWLE+E="
 							},
@@ -5520,7 +5522,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51txwsnUprgk="
 							},
-							"name": "dohvatiMajstoraUpit",
+							"name": "dohvati podatke o majstoru upit",
 							"source": {
 								"$ref": "AAAAAAF51t5mFHWuGoM="
 							},
@@ -5534,7 +5536,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF51txwsnUprgk="
 							},
-							"name": "majstor",
+							"name": "podaci o majstoru",
 							"source": {
 								"$ref": "AAAAAAF51t7QK3XQHuw="
 							},

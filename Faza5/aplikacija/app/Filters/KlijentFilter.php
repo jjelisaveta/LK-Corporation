@@ -40,7 +40,7 @@ class KlijentFilter implements FilterInterface
                     return redirect()->to(site_url("Majstor"));
             }
         } else {
-            return redirect()->to(site_url("klijent"));
+            return;
         }
     }
 
