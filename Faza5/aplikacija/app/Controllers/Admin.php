@@ -21,20 +21,22 @@ use phpDocumentor\Reflection\Types\Array_;
 
 class Admin extends BaseController
 {
+
+    /*
+     *Zasticena funkcija, sluzi  za prikaz zeljene stranice
+     *
+     * @param string $stranica naziv stranice koja se iscrtava
+     * @param array $podaci niz podataka koji su potrebni za pravilno iscrtavanje stranice
+     * @param int $broj redni broj stranice u meniju, potreban radi izdvajanja te stranice u meniju
+     *
+     * @return void
+     */
     protected function prikaz($stranica, $podaci, $broj)
     {
-        //TREBA DOHVATITI IZ SESIJE NE HARDKODOVATI
-//        $podaci['korisnik'] = $this->session->get('Korisnik');
-//        $podaci['ime'] = $this->session->get('Korisnik')->ime;
-//        $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
-//        $podaci['profilna'] = $this->session->get('Korisnik')->slika;
-//        $podaci['id'] = $this->session->get('Korisnik')->idKor;
-//        $podaci['broj']=$broj;
         $podaci['controller'] = "Admin";
         $podaci['ime'] = 'Admin';
         $podaci['prezime'] = 'Admin';
         $podaci['profilna'] = '#';
-//        $podaci['id'] = '0';
         $podaci['broj'] = $broj;
         echo view("osnova/header");
         echo view("admin/meni", $podaci);
@@ -42,6 +44,12 @@ class Admin extends BaseController
         echo view("osnova/footer");
     }
 
+    /*
+    * funcija koja obradjuje samo post zahtev. Koristi se za brisanje majstora iz baze.
+    *
+    * @uses int $_POST['id'] obavezno polje, id majstora koji se brise
+    * @return string ok-sve je bilo u redu, bilo sta drugo-doslo je do greske
+    */
     public function obrisiMajstora()
     {
 
@@ -61,6 +69,11 @@ class Admin extends BaseController
 
     }
 
+    /*
+     * prikazuje stranicu pregledMajstora, sve informacije za majstore i njihove usluge
+     *
+     * @return void
+     */
     public function pregledMajstora()
     {
         $uloga = 2;
@@ -70,6 +83,12 @@ class Admin extends BaseController
         return $this->prikaz('pregledMajstora', ['majstori' => $majstori, 'ostvarene' => $ostvarene], 1);
     }
 
+
+    /*
+     * prikazuje stranicu odobravanjeMajstora, sve neodobrene majstore
+     *
+     * @return void
+     */
     public function odobravanjeMajstora()
     {
         $uloga = 2;
@@ -77,6 +96,12 @@ class Admin extends BaseController
         return $this->prikaz('odobravanjeMajstora', ['majstori' => $majstori], 2);
     }
 
+    /*
+     * privatna funkcija, poziva se iz odobriMajstora, sluzi za odobravanje majstora u bazi
+     *
+     * @param string id id majstora koji treba da se odobri
+     * @return string ok-sve je bilo u redu, bilo sta drugo-doslo je do greske
+     */
     private function odobriMajstoraInternal($id)
     {
         $majstor = $this->doctrine->em->getRepository(Entities\Korisnik::class)->findBy(['idkor' => $id])[0];
@@ -84,7 +109,14 @@ class Admin extends BaseController
         $this->doctrine->em->flush();
         return "OK";
     }
-
+    /*
+     * funkcija obradjuje samo post zahteve, koristi se za odorbavanje majstora u bazi
+     * iz nje se poziva odobriMajstoraInternal
+     *
+     * $uses int $_POST['id'] obavezno polje, id majstra koji se odobrava
+     *
+     * @return string ok-sve je bilo u redu, bilo sta drugo-doslo je do greske
+     */
     public function odobriMajstora()
     {
         $var = $this->request->getMethod();
@@ -96,6 +128,12 @@ class Admin extends BaseController
         return $this->odobriMajstoraInternal($id);
     }
 
+    /*
+     * privatna funkcija, poziva se iz ukloniMajstora, sluzi za uklanjanje majstora iz baze
+     *
+     * @param string id id majstora koji treba da se ukloni
+     * @return string ok-sve je bilo u redu, bilo sta drugo-doslo je do greske
+     */
     private function ukloniMajstoraInternal($id)
     {
         $majstor = $this->doctrine->em->getRepository(Entities\Korisnik::class)->findBy(['idkor' => $id, 'odobren' => 0])[0];
@@ -104,6 +142,15 @@ class Admin extends BaseController
         return "OK";
     }
 
+
+    /*
+     * funkcija obradjuje samo post zahteve, koristi se za uklanjanje majstora iz baze
+     * iz nje se poziva ukloniMajstoraInternal
+     *
+     * $uses int $_POST['id'] obavezno polje, id majstra koji se brise
+     *
+     * @return string ok-sve je bilo u redu, bilo sta drugo-doslo je do greske
+     */
     public function ukloniMajstora()
     {
         $var = $this->request->getMethod();
@@ -115,7 +162,14 @@ class Admin extends BaseController
         return $this->ukloniMajstoraInternal($id);
     }
 
-    public function vremeOdgovora($ostvarene)
+    /*
+     * privatna funkcija, racuna prosecno vreme odgovra za ostvarene usluge majstora
+     *
+     * @param array $ostvarene niz ostvarenih usluga majstora
+     *
+     * @return float
+     */
+    private function vremeOdgovora($ostvarene)
     {
         $ukupno = 0;
         foreach ($ostvarene as $ostvarena) {
@@ -130,7 +184,14 @@ class Admin extends BaseController
         return $ukupno / sizeof($ostvarene);
     }
 
-    public function preporuke($ostvarene)
+    /*
+     * privatna funkcija, racuna procenat dobrih preporuka za majstora u odnosu na sve preporuke
+     *
+     * @param array $ostvarene sve ostvarene usluge majstora
+     *
+     * @return float
+     */
+    private function preporuke($ostvarene)
     {
         $sum = 0;
         foreach ($ostvarene as $ostvarena) {
@@ -142,8 +203,14 @@ class Admin extends BaseController
             return 0;
         return $sum / sizeof($ostvarene) * 100;
     }
-
-    public function prosecnaCena($usluge)
+    /*
+     * privatna funkcija, racuna prosecnu cenu usluge majstora
+     *
+     * @param array $usluge sve usluge majstora
+     *
+     * @return float
+     */
+    private function prosecnaCena($usluge)
     {
         $ukupno = 0;
         foreach ($usluge as $usluga) {
@@ -154,6 +221,14 @@ class Admin extends BaseController
         return $ukupno / sizeof($usluge);
     }
 
+
+    /*
+     * funkcija koja prikazuje majstora prosledjenog kroz post zahtev, obavezno post
+     *
+     * @uses int $_POST['id'] id majstora za prikaz
+     *
+     * @return void
+     */
     public function prikazMajstoraAdmin()
     {
         //print_r($_POST);
@@ -177,6 +252,13 @@ class Admin extends BaseController
             'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena], 1);
     }
 
+    /*
+     * funcija za brisanje komentara
+     *
+     * @uses int $_REQUEST['idOstvUsl'] id ostvarene usluge sa koje se brise komentar
+     *
+     * @return void
+     */
     public function obrisiKomentar()
     {
         $id = $this->request->getVar('idOstvUsl');

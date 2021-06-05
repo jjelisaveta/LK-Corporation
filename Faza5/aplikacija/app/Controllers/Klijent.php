@@ -21,12 +21,16 @@ use phpDocumentor\Reflection\Types\This;
 class Klijent extends BaseController
 {
 
-    /*public function index()
-    {
-        return view('welcome_message');
-    }
-*/
-
+    /*
+     * Zasticena funkcija, sluzi  za prikaz zeljene stranice
+     * funckija dodatno proverava da li je u pitanju korisnik ili gost i prikazuje meni u zavisnosti od toga
+     *
+     * @param string $stranica naziv stranice koja se iscrtava
+     * @param array $podaci niz podataka koji su potrebni za pravilno iscrtavanje stranice
+     * @param int $broj redni broj stranice u meniju, potreban radi izdvajanja te stranice u meniju
+     *
+     * @return void
+     */
     protected function prikaz($stranica, $podaci,$broj)
     {
 //        print_r($_SESSION);
@@ -52,6 +56,14 @@ class Klijent extends BaseController
         echo view("osnova/footer");
     }
 
+    /*
+     * funcija obradjuje stranicu za pretrazivanje
+     * dohvata sve tagove iz baze
+     * tagovi su potrebni javaskript funkcijama za pravilnu preporuku pretrage
+     * prikazuje stranicu ukoliko nije poslat post zahtev
+     *
+     * @return void
+     */
     public function pretrazivanje()
     {
         $stranica = 'pretrazivanje';
@@ -60,22 +72,45 @@ class Klijent extends BaseController
             return $this->prikaz($stranica, ['tagovi' => $allTags],1);
         }
     }
+
+    /*
+     * test funkcija ne radi nista u aplikaciji xD
+     *
+     * @return void
+     */
     public function a(){
          $putanja = $_SERVER['REQUEST_URI'];
          $metoda = explode("/",$putanja)[2];
          echo $metoda;
     }
+    /*
+     * test funkcija ne radi nista u aplikaciji xD
+     *
+     * @return array niz usluga
+     */
     public function usluge()
     {
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->find(7)->getUsluge();       
         return $usluge;
     }
-
+    /*
+     * funkcija koja vrsi izlogovanje korisnika, unistavanjem trenutne sesije na serveru
+     *
+     *
+     * @return void
+     */
     public function izlogujSe(){
         $this->session->destroy();
         return redirect()->to(site_url("Gost/loginSubmit"));
     }
-    
+
+    /*
+     * funckija koja prikazuje stranicu prikazUsluga kod korisnika
+     *
+     * @param string $trazeniTag tag po kojem se pretrazuju usluge
+     *
+     * @return void
+     */
     public function prikazUsluga($trazeniTag){
         $tag = str_replace("_"," ",$trazeniTag);
 
@@ -84,6 +119,15 @@ class Klijent extends BaseController
         return $this->prikaz('prikazUsluga', ['usluge' => $usluge, 'ostvarene' => $ostvarene],0);
     }
 
+    /*
+     * funckcija vraca json objekat sa svim slobodnim terminima trazenih majstora
+     * majstori se prosledjuju kao argument zahteva
+     *
+     * @uses array $_POST['majstori']
+     *
+     *
+     * @return json
+     */
     public function dohvatiSlobodneTermine()
     {
         $majstori = $this->request->getVar('majstori');
@@ -106,6 +150,11 @@ class Klijent extends BaseController
         return json_encode($zaSlanje);
     }
 
+    /*
+     * funcija prikazuje istoriju koriscenih usluga za ulogovanog korisnika
+     *
+     * @return void
+     */
     public function istorija()
     {
 
@@ -117,6 +166,11 @@ class Klijent extends BaseController
 
     }
 
+    /*
+     * funcija prikazuje aktivne usluge za ulogovanog korisnika
+     *
+     * @return void
+     */
     public function aktivnaPopravka()
     {
 
@@ -126,6 +180,14 @@ class Klijent extends BaseController
 
     }
 
+    /*
+     * funkcija koja sluzi za cuvanje komentara koji je korisnik ostavio na neku uslugu
+     *
+     * @uses int $_POST['hidden'] id usluge za koju se cuva komentar
+     * @uses string $_POST['komentar']
+     *
+     * @return redirect preusmerava korisnika nazad na stranicu istorija
+     */
     public function sacuvajKomentar()
     {
 
@@ -142,6 +204,15 @@ class Klijent extends BaseController
 
     }
 
+    /*
+     * funkcija koja sluzi za cuvanje ocene koji je korisnik ostavio na neku uslugu
+     * obevezno POST zahtev
+     *
+     * @uses int $_POST['id'] id usluge za koju se cuva ocena
+     * @uses int $_POST['ocena']
+     *
+     * @return redirect preusmerava korisnika nazad na stranicu istorija
+     */
     public function sacuvajOcenu()
     {
         $var = $this->request->getMethod();
@@ -161,6 +232,14 @@ class Klijent extends BaseController
 
     }
 
+    /*
+     * funkcija koja sluzi za brisanje usluge iz istorije ulogovanog korisnika
+     * obavezno POST zahtev
+     *
+     * @uses int $_POST['id'] id usluge koja se brise
+     *
+     * @return redirect preusmerava korisnika nazad na stranicu istorija
+     */
     public function obrisiIstorija()
     {
         $var = $this->request->getMethod();
@@ -176,15 +255,22 @@ class Klijent extends BaseController
         $uslugaOstvareneModel->update($id, $data);
 
         return redirect()->to(site_url("Klijent/istorija"));
-
-
     }
 
     public function dohvatiIdentifikator()
     {
         return "OK\n" . ($this->doctrine->em->getRepository(Entities\Kljuc::class)->dohvatiSledeci());
     }
-
+    /*
+     * funkcija koja sluzi za slanje zahteva majstorima za dogovor oko neke usluge
+     * obavezno POST zahtev
+     *
+     * @uses array $_POST['zahtevi'] niz zahteva koji se salju majstorima
+     * @uses string $_POST['opis']
+     * @uses int $_POST['kljuc'] kljuc koji se koristi za identifikaciju zahtevane rezervacije
+     *
+     * @return string ok-sve je bilo u redu, bilo sta drugo-doslo je do greske
+     */
     public function rezervacija()
     {
         $var = $this->request->getMethod();
@@ -212,7 +298,14 @@ class Klijent extends BaseController
         $this->doctrine->em->flush();
         return "OK";
     }
-    public function vremeOdgovora($ostvarene)
+    /*
+     * privatna funkcija, racuna prosecno vreme odgovra za ostvarene usluge majstora
+     *
+     * @param array $ostvarene niz ostvarenih usluga majstora
+     *
+     * @return float
+     */
+    private function vremeOdgovora($ostvarene)
     {
         $ukupno = 0;
         foreach ($ostvarene as $ostvarena) {
@@ -226,7 +319,13 @@ class Klijent extends BaseController
             return 0;
         return $ukupno / sizeof($ostvarene);
     }
-
+    /*
+     * privatna funkcija, racuna procenat dobrih preporuka za majstora u odnosu na sve preporuke
+     *
+     * @param array $ostvarene sve ostvarene usluge majstora
+     *
+     * @return float
+     */
     public function preporuke($ostvarene)
     {
         $sum = 0;
@@ -239,7 +338,13 @@ class Klijent extends BaseController
             return 0;
         return number_format($sum / sizeof($ostvarene) * 100, 2);
     }
-
+    /*
+     * privatna funkcija, racuna prosecnu cenu usluge majstora
+     *
+     * @param array $usluge sve usluge majstora
+     *
+     * @return float
+     */
     public function prosecnaCena($usluge)
     {
         $ukupno = 0;
@@ -250,7 +355,13 @@ class Klijent extends BaseController
             return 0;
         return $ukupno / sizeof($usluge);
     }
-
+    /*
+     * funkcija koja prikazuje majstora prosledjenog kroz post zahtev, obavezno post
+     *
+     * @uses int $_POST['id'] id majstora za prikaz
+     *
+     * @return void
+     */
     public function prikazMajstora()
     {
         $id = $this->request->getVar('id');

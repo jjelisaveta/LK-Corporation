@@ -6,6 +6,12 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
+/*
+ * klasa AdminFilter poziva se kod svakog pristupa Admin kontroleru
+ *
+ * pusta prolaz samo korisnicima tipa admin
+ * sve ostale preusmeri na njihove podrazumevane stranice
+ */
 class AdminFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)

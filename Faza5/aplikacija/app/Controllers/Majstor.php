@@ -23,6 +23,15 @@ use App\Models\Entities;
 
 class Majstor extends BaseController
 {
+    /*
+     * Zasticena funkcija, sluzi  za prikaz zeljene stranice
+     *
+     * @param string $stranica naziv stranice koja se iscrtava
+     * @param array $podaci niz podataka koji su potrebni za pravilno iscrtavanje stranice
+     * @param int $broj redni broj stranice u meniju, potreban radi izdvajanja te stranice u meniju
+     *
+     * @return void
+     */
     protected function prikaz($stranica, $podaci, $broj)
     {
         $podaci['controller'] = "Majstor";
@@ -37,15 +46,28 @@ class Majstor extends BaseController
         echo view("osnova/footer");
     }
 
-    public function pretrazivanje()
-    {
-        $stranica = 'pretrazivanje';
-        $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
-        if (!$_POST) {
-            return $this->prikaz($stranica, ['tagovi' => $allTags], 0);
-        }
-    }
 
+    /*
+     * funckija se ne koristi nzm sto je ovde xD
+     *
+     * @return void
+     */
+//    public function pretrazivanje()
+//    {
+//        $stranica = 'pretrazivanje';
+//        $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
+//        if (!$_POST) {
+//            return $this->prikaz($stranica, ['tagovi' => $allTags], 0);
+//        }
+//    }
+
+
+    /*
+     * funckija se koristi za prikaz ili dodavanje usluge u zavisnosti od tipa zahteva get ili post
+     * prosledjuju joj se svi parametri potrebni za dodavanje nove usluge kroz post zahtev
+     *
+     * @return void
+     */
     public function dodajUslugu()
     {
         $tagovi = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findAll();
@@ -119,13 +141,22 @@ class Majstor extends BaseController
         $tagovi = $u->getTagovi();
         return $tagovi;
     }
-
+    /*
+     * funkcija koja vrsi izlogovanje korisnika, unistavanjem trenutne sesije na serveru
+     *
+     *
+     * @return void
+     */
     public function odjava()
     {
         $this->session->destroy();
         return redirect()->to(site_url("Gost/loginSubmit"));
     }
-
+    /*
+     * funkcija za prikaz svih usluga majstora
+     *
+     * @return void
+     */
     public function mojeUsluge()
     {
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $this->session->get('Korisnik')->idKor]);
@@ -145,6 +176,13 @@ class Majstor extends BaseController
         return "poruka" . json_encode($naziv);
     }
 
+    /*
+     * privatna funkcija, racuna prosecno vreme odgovra za ostvarene usluge majstora
+     *
+     * @param array $ostvarene niz ostvarenih usluga majstora
+     *
+     * @return float
+     */
     public function vremeOdgovora($ostvarene)
     {
         $ukupno = 0;
@@ -157,7 +195,13 @@ class Majstor extends BaseController
         }
         return $ukupno / sizeof($ostvarene);
     }
-
+    /*
+     * privatna funkcija, racuna procenat dobrih preporuka za majstora u odnosu na sve preporuke
+     *
+     * @param array $ostvarene sve ostvarene usluge majstora
+     *
+     * @return float
+     */
     public function preporuke($ostvarene)
     {
         $sum = 0;
@@ -168,7 +212,13 @@ class Majstor extends BaseController
         }
         return number_format($sum / sizeof($ostvarene) * 100, 2);
     }
-
+    /*
+     * privatna funkcija, racuna prosecnu cenu usluge majstora
+     *
+     * @param array $usluge sve usluge majstora
+     *
+     * @return float
+     */
     public function prosecnaCena($usluge)
     {
         $ukupno = 0;
@@ -177,22 +227,25 @@ class Majstor extends BaseController
         }
         return $ukupno / sizeof($usluge);
     }
-
-    public function prikazMajstora()
-    {
-        $id = $this->session->get('Korisnik')->idKor;
-        $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
-        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
-        $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
-
-        $vreme = $this->vremeOdgovora($ostvarene);
-        $preporuke = $this->preporuke($ostvarene);
-        $cena = $this->prosecnaCena($usluge);
-
-        $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
-            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena], 0);
-
-    }
+    /*
+     * ne koristi se ja msm
+     *
+     */
+//    public function prikazMajstora()
+//    {
+//        $id = $this->session->get('Korisnik')->idKor;
+//        $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->find($id);
+//        $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
+//        $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
+//
+//        $vreme = $this->vremeOdgovora($ostvarene);
+//        $preporuke = $this->preporuke($ostvarene);
+//        $cena = $this->prosecnaCena($usluge);
+//
+//        $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
+//            'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena], 0);
+//
+//    }
 
     /* public function obrisiKomentar()
      {
@@ -203,6 +256,12 @@ class Majstor extends BaseController
          $this->doctrine->em->flush();
      }
  */
+    /*
+     * funkcija sluzi za prikaz stranice kalendar za ulogovanog majstora
+     *
+     *
+     * @return void
+     */
     public function kalendar($date = null)
     {
         if (!isset($date)) {
@@ -228,6 +287,13 @@ class Majstor extends BaseController
         $this->prikaz("kalendar", $data, 2);
     }
 
+    /*
+     * privatna funkcija sluzi kao pomocna za dohvatanje opisa rezervacije
+     *
+     * @param Rezervacija @rezervacija entitet rezervacije za koju se dohvata opis
+     *
+     * @return string ime+prezime+adresa korisnika koji je zakazao rezervaciju
+     */
     private function dohvatiOpisRezervacije($rezervacija)
     {
         $zahtev = $rezervacija->getIdrez();
@@ -240,7 +306,14 @@ class Majstor extends BaseController
         return $opis;
     }
 
-
+    /*
+     * privatna funkcija sluzi kao pomocna za dobhvatanje rezervacija jednog majstora za jedan dan
+     *
+     * @param int $idMaj
+     * @param DateTime @date;
+     *
+     * @return array vraca niz rezervacija
+     */
     private function dohvatiRezervacijeInternal($idMaj, $date)
     {
         $ret = array();
@@ -255,6 +328,17 @@ class Majstor extends BaseController
         return $ret;
     }
 
+
+
+    /*
+     * funckija koja dohvata sve rezervacije za odredjeni datum
+     * onavezno GET
+     * poziva dohvariRezervacijeInternal
+     *
+     * @param string $date
+     *
+     * return json
+     */
     public function dohvatiRezervacije($date)
     {
         $id = $this->session->get('Korisnik')->idKor;
@@ -267,6 +351,14 @@ class Majstor extends BaseController
         return json_encode($this->dohvatiRezervacijeInternal($id, $date));
     }
 
+    /*
+     * privatna funkcija sluzi kao pomocna za dobhvatanje radnih jednog majstora za jedan dan
+     *
+     * @param int $idMaj
+     * @param DateTime @date;
+     *
+     * @return array vraca niz kalendar objekata
+     */
     private function dohvatiRadneTermineInternal($idMaj, $date)
     {
         $ret = array();
@@ -281,6 +373,16 @@ class Majstor extends BaseController
         return $ret;
     }
 
+
+    /*
+     * funckija koja dohvata sve radne termine za odredjeni datum
+     * onavezno GET
+     * poziva dohvatiRadneTermineInternal
+     *
+     * @param string $date
+     *
+     * return json
+     */
     public function dohvatiRadneTermine($date)
     {
         $id = $this->session->get('Korisnik')->idKor;
@@ -293,6 +395,15 @@ class Majstor extends BaseController
         return json_encode($this->dohvatiRadneTermineInternal($id, $date));
     }
 
+    /*
+     * privatna funkcija sluzi kao pomocna za dodavanje radnog termina jednog majstora za jedan dan
+     *
+     * @param int $idMaj
+     * @param DateTime @date;
+     * @param int $id vreme dana u koje se dodaje termin
+     *
+     * @return string
+     */
     private function dodajRadniTerminInternal($idMaj, $date, $id)
     {
         $datumVreme = \DateTime::createFromFormat('Y-m-d H:i:s', $date . " " . $id . ":00:00");
@@ -319,6 +430,16 @@ class Majstor extends BaseController
         return "OK";
     }
 
+    /*
+     * funckija koja ddodaje jedan radni termin u kalendar za maajstora
+     * onavezno POST
+     * poziva dohvatiRadneTermineInternal
+     *
+     * @uses int $_POST['index'] vreme dana kada se dodaje termin
+     * @uses string $_POST['datum']
+     *
+     * return json
+     */
     public function dodajRadniTermin()
     {
         $var = $this->request->getMethod();
@@ -359,7 +480,17 @@ class Majstor extends BaseController
         $this->doctrine->em->flush();
         return "OK";
     }
-
+    /*
+     * funckija koja uklanja prosledjeni radni termin
+     * obavezno POST
+     *
+     * poziva skiniRadniTerminInternal
+     *
+     * @uses string $_POST['datum']
+     * @uses int $_POST['index']
+     *
+     * @return string
+     */
     public function skiniRadniTermin()
     {
         $var = $this->request->getMethod();
@@ -373,7 +504,13 @@ class Majstor extends BaseController
         return $this->skiniRadniTerminInternal($idMaj, $date, $id);
     }
 
-
+    /*
+     * funkcija prikazuje stranicu za izmenu uslge prosledjene kao parametar poziva
+     *
+     * @param int $id id usluge koja se menja
+     *
+     * @return void
+     */
     public function izmeniUslugu($id)
     {
         $tagModel = new TagModel();
@@ -392,6 +529,13 @@ class Majstor extends BaseController
         return $this->prikaz("izmenaUsluge", $podaci, 0);
     }
 
+    /*
+     * funckija koja vrsi izmenu usluge u bazi na osnovu parametara prosledjenih kroz zahtev
+     * obavezno POST
+     *
+     *
+     * @return string
+     */
     public function izmenaUsluge()
     {
         $var = $this->request->getMethod();
@@ -461,7 +605,12 @@ class Majstor extends BaseController
         }
     }
 
-
+    /*
+     * funkcija koja prikazuje stranicu sa svim zahtevima ulogovanog majstora
+     * stranica brise sve istekle zahteve iz baze
+     *
+     * @return void
+     */
     public function zahtevi()
     {
 
@@ -490,6 +639,15 @@ class Majstor extends BaseController
     }
 
 
+    /*
+     * funkcija koja se poziva kada majstor odabere opciju odbij zahtev
+     * brise zahtev iz baze
+     * obavezno POST
+     *
+     * @uses int $_POST['idZah']
+     *
+     * @return string
+     */
     public function odbijZahtev()
     {
         $var = $this->request->getMethod();
@@ -503,7 +661,16 @@ class Majstor extends BaseController
         $this->doctrine->em->flush();
         return "OK";
     }
-
+    /*
+     * funkcija koja se poziva kada majstor odabere opciju prihvati zahtev
+     * brise sve ostale zahteve sa istim kljucem iz baze
+     * takodje brise sve zahteve u terminu prihvacenog zahteva jednog majstora
+     * obavezno POST
+     *
+     * @uses int $_POST['idZah']
+     *
+     * @return string
+     */
     public function odobriZahtev()
     {
         $var = $this->request->getMethod();

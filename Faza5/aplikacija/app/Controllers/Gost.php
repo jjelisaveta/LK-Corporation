@@ -19,6 +19,14 @@ use App\Models\UlogaModel;
 
 class Gost extends BaseController
 {
+    /*
+     *Zasticena funkcija, sluzi  za prikaz zeljene stranice
+     *
+     * @param string $stranica naziv stranice koja se iscrtava
+     * @param array $greske niz podataka koji su potrebni za pravilno iscrtavanje stranice
+     *
+     * @return void
+     */
     protected function prikazi($stranica, $greske)
     {
         echo view("osnova/headerBezMenija");
@@ -26,6 +34,14 @@ class Gost extends BaseController
         echo view("osnova/footerBezMenija");
     }
 
+    /*
+     *Zasticena funkcija, sluzi  za prikaz zeljene stranice, zajedno sa menijem
+     *
+     * @param string $stranica naziv stranice koja se iscrtava
+     * @param array $podaci niz podataka koji su potrebni za pravilno iscrtavanje stranice
+     *
+     * @return void
+     */
     protected function prikaziSaMenijem($stranica, $podaci)
     {
         if ($this->session->get('Korisnik')->idUlo == 3) {
@@ -42,7 +58,7 @@ class Gost extends BaseController
         $podaci['profilna'] = $this->session->get('Korisnik')->slika;
         echo view("osnova/header");
         if ($podaci['controller'] == 'Korisnik') {
-            echo view("osnova/meni", $podaci);         // ovde kad bude za korisnika zavrsena strancia ubaci njegov link
+            echo view("osnova/meni", $podaci);
 
         } else {
             if($podaci['controller'] == 'Majstor'){
@@ -55,7 +71,13 @@ class Gost extends BaseController
         echo view("osnova/footer");
     }
 
-
+    /*
+     *zasticena funkcija za kopiranje korisnicke slike na server
+     *
+     *@param &array $greske niz gresaka, ukoliko nisu ispostovani zahtevi u taj niz se upisuje informacija o greski
+     *
+     * @return void
+     */
     protected function uzmiPutanju(&$greska): string
     {
         $target_dir = "slike/";
@@ -86,11 +108,24 @@ class Gost extends BaseController
         }
     }
 
+    /*
+     * funkcija za prikas stranice za neovlasceni pristup
+     *
+     * @return void
+     */
     public function neovlascen()
     {
         echo view("gost/neovlascen");
     }
 
+    /*
+     * funckija za logovanje, obavezno post zahtev
+     *
+     * @uses string $_POST['email'] e-mail korisnika
+     * @uses string $_POST['lozinka'] lozinka korisnika
+     *
+     * @return redirect preusmerava korisnika na stranicu u zavisnosti od tipa uloge ulogovanog korisnika, ili stranica sa greskama ukoliko nije uspesno logovanje
+     */
     public function loginSubmit()
     {
         $stranica = 'gost/Logovanje';
@@ -158,6 +193,13 @@ class Gost extends BaseController
         }
     }
 
+    /*
+     * zasticena funckija koja vraca id uloge koja odgovara prosledjenom stringu
+     *
+     * @param string $zanimanje
+     *
+     * @return int
+     */
     protected function dodeliUlogu($zanimanje): int
     {
         $um = new UlogaModel();
@@ -170,7 +212,11 @@ class Gost extends BaseController
             return $tmp[0]->idUlo;
         }
     }
-
+    /*
+     * funckija za prikazuje stranicu za registraciju ili registruje korisnika u zavisnosti od tipa zahteva (get, post)
+     *
+     * @return redirect preusmerava na stranicu u zavisnosti od tipa korisnika, ili prikazuje greske ukoliko nije ispostovan format polja za registraciju
+     */
     public function registrujSe()
     {                  //Zavrseno
         $stranica = 'gost/Registrovanje';
@@ -279,7 +325,12 @@ class Gost extends BaseController
             $this->prikazi($stranica, $data);
         }
     }
-
+    /*
+     * funckija za prikazuje stranicu za promenu podataka ili promenu podataka korisnika u zavisnosti od tipa zahteva (get, post)
+     * ukoliko su svi formati ispostovani stranica prikazuje obavestenje o uspesnoj promeni podataka, u suprotnom ispisuje gresku
+     *
+     * @return void
+     */
     public function promeniPodatke()
     {
         $stranica = 'gost/promeniPodatke';
@@ -356,6 +407,12 @@ class Gost extends BaseController
         }
     }
 
+    /*
+     * funkcija koja vrsi izlogovanje korisnika, unistavanjem trenutne sesije na serveru
+     *
+     *
+     * @return void
+     */
     public function izlogujSe()
     {
         $this->session->destroy();
