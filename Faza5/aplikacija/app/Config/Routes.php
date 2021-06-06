@@ -35,11 +35,15 @@ $routes->add('Klijent/promeniPodatke', "Gost::promeniPodatke");*/
 
 //$routes->add("Gost/izlogujSe", 'Klijent::izlogujSe');
 
+$routes->add('prikazMajstora','Klijent::prikazMajstora');
+
 $routes->add('pretrazivanje','Klijent::pretrazivanje');
 $routes->add('/prikazUsluga/(:any)','Klijent::prikazUsluga/$1');
+$routes->add('prikazMajstora','Klijent::prikazMajstora');
 
 $routes->add('Klijent/pretrazivanje','Klijent::pretrazivanje');
 $routes->add('Klijent/prikazUsluga/(:any)','Klijent::prikazUsluga/$1');
+$routes->add('Klijent/prikazMajstora','Klijent::prikazMajstora');
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories .

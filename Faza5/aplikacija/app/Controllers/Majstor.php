@@ -84,6 +84,7 @@ class Majstor extends BaseController
         if ($this->validate($rules)) {
             $t = $this->request->getVar('izabraniTagovi');
             $tagovi = explode("#", $t);
+           // return $this->ispis($tagovi);
             $novaUsluga = new Entities\Usluga();
             $novaUsluga->setNaziv($this->request->getVar('naslov'));
             $novaUsluga->setOpis($this->request->getVar('opis'));
@@ -92,12 +93,12 @@ class Majstor extends BaseController
 
             $novaUsluga->setIdmaj($majstor);
             $noviTagovi = [];
-            foreach ($tagovi as $tag) {
-                echo $tag;
-                array_push($noviTagovi, $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag]));
-                echo $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag])->getOpis();
+            if (sizeof($tagovi)>0){
+                foreach ($tagovi as $tag) {
+                    if ($tag!=null && $tag!="") array_push($noviTagovi, $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag]));
+                    //echo $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag])->getOpis();
+                }
             }
-
             $novaUsluga->setTagovi($noviTagovi);
             $this->doctrine->em->persist($novaUsluga);
             $this->doctrine->em->flush();
@@ -117,6 +118,11 @@ class Majstor extends BaseController
         }
     }
 
+    public function ispis($tagovi){
+    
+        print_r($tagovi);
+        echo "null";
+    }
 
     //test vrvtn???
     public function dohvatiTagove($idUsl)
@@ -642,7 +648,7 @@ class Majstor extends BaseController
         $rezervacija->setIdRez($zahtev);
         $rezervacija->setId($zahtev->getIdzah());
         $rezervacija->setIdmaj($zahtev->getIdusl()->getIdmaj());
-        $rezervacija->setVremeodgovora(\DateTime::createFromFormat('y-m-d h:i:s', date('y-m-d h:i:s')));
+        $rezervacija->setVremeodgovora(\DateTime::createFromFormat('y-m-d H:i:s', date('y-m-d H:i:s')));
 
 
         $this->doctrine->em->persist($zahtev);

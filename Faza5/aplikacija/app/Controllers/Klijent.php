@@ -13,6 +13,7 @@ use App\Models\Kalendar;
 use App\Models\KalendarModel;
 use App\Models\Repositories\UslugaOstvarenaRepository;
 use App\Models\Repositories\IstorijaRepository;
+use App\Validations\Pravila;
 use CodeIgniter\Model;
 use phpDocumentor\Reflection\Types\Array_;
 use App\Models\Entities;
@@ -31,15 +32,15 @@ class Klijent extends BaseController
      *
      * @return void
      */
-    protected function prikaz($stranica, $podaci,$broj)
+    protected function prikaz($stranica, $podaci, $broj)
     {
 //        print_r($_SESSION);
 //        return;
         $prenos['controller'] = 'Klijent';
-        if (!isset($_SESSION['Korisnik'])){
+        if (!isset($_SESSION['Korisnik'])) {
             $podaci['gost'] = "gost";
             $podaci['korisnik'] = "";
-            $podaci['ime'] ="";
+            $podaci['ime'] = "";
             $podaci['prezime'] = "";
             $podaci['profilna'] = "";
         } else {
@@ -49,7 +50,7 @@ class Klijent extends BaseController
             $podaci['prezime'] = $this->session->get('Korisnik')->prezime;
             $podaci['profilna'] = $this->session->get('Korisnik')->slika;
         }
-        $podaci['broj']=$broj;
+        $podaci['broj'] = $broj;
         echo view("osnova/header");
         echo view("osnova/meni", $podaci);
         echo view("klijent/$stranica", $podaci);
@@ -69,7 +70,7 @@ class Klijent extends BaseController
         $stranica = 'pretrazivanje';
         $allTags = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class);
         if (!$_POST) {
-            return $this->prikaz($stranica, ['tagovi' => $allTags],1);
+            return $this->prikaz($stranica, ['tagovi' => $allTags], 1);
         }
     }
 
@@ -80,7 +81,8 @@ class Klijent extends BaseController
      *
      * @return void
      */
-    public function izlogujSe(){
+    public function izlogujSe()
+    {
         $this->session->destroy();
         return redirect()->to(site_url("Gost/loginSubmit"));
     }
@@ -92,12 +94,13 @@ class Klijent extends BaseController
      *
      * @return void
      */
-    public function prikazUsluga($trazeniTag){
-        $tag = str_replace("_"," ",$trazeniTag);
+    public function prikazUsluga($trazeniTag)
+    {
+        $tag = str_replace("_", " ", $trazeniTag);
 
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->findAll();
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Tag::class)->findOneBy(['opis' => $tag])->getUsluge();
-        return $this->prikaz('prikazUsluga', ['usluge' => $usluge, 'ostvarene' => $ostvarene],0);
+        return $this->prikaz('prikazUsluga', ['usluge' => $usluge, 'ostvarene' => $ostvarene], 0);
     }
 
     /*
@@ -143,7 +146,7 @@ class Klijent extends BaseController
 
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
 
-        $this->prikaz("istorija", ["ostvarene" => $ostvarene],3);
+        $this->prikaz("istorija", ["ostvarene" => $ostvarene], 3);
 
     }
 
@@ -157,7 +160,7 @@ class Klijent extends BaseController
 
         $idkor = $podaci['ime'] = $this->session->get('Korisnik')->idKor;
         $aktivne = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiUslugeKorisnika($idkor);
-        $this->prikaz("aktivnePopravke", ["aktivne" => $aktivne],2);
+        $this->prikaz("aktivnePopravke", ["aktivne" => $aktivne], 2);
 
     }
 
@@ -242,6 +245,7 @@ class Klijent extends BaseController
     {
         return "OK\n" . ($this->doctrine->em->getRepository(Entities\Kljuc::class)->dohvatiSledeci());
     }
+
     /*
      * funkcija koja sluzi za slanje zahteva majstorima za dogovor oko neke usluge
      * obavezno POST zahtev
@@ -279,6 +283,7 @@ class Klijent extends BaseController
         $this->doctrine->em->flush();
         return "OK";
     }
+
     /*
      * privatna funkcija, racuna prosecno vreme odgovra za ostvarene usluge majstora
      *
@@ -300,6 +305,7 @@ class Klijent extends BaseController
             return 0;
         return $ukupno / sizeof($ostvarene);
     }
+
     /*
      * privatna funkcija, racuna procenat dobrih preporuka za majstora u odnosu na sve preporuke
      *
@@ -319,6 +325,7 @@ class Klijent extends BaseController
             return 0;
         return number_format($sum / sizeof($ostvarene) * 100, 2);
     }
+
     /*
      * privatna funkcija, racuna prosecnu cenu usluge majstora
      *
@@ -332,10 +339,11 @@ class Klijent extends BaseController
         foreach ($usluge as $usluga) {
             $ukupno += $usluga->getCena();
         }
-         if (sizeof($usluge) == 0)
+        if (sizeof($usluge) == 0)
             return 0;
         return $ukupno / sizeof($usluge);
     }
+
     /*
      * funkcija koja prikazuje majstora prosledjenog kroz post zahtev, obavezno post
      *
@@ -360,5 +368,16 @@ class Klijent extends BaseController
         return $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
             'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena], 1);
 
+    }
+
+    public function proba($id)
+    {
+        $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
+        $ret = [];
+
+        foreach ($ostvarene as $ost){
+            array_push($ret,$ost->getIdrez()->getIdrez()->getOpis());
+        }
+        return "poruka".json_encode($ret);
     }
 }
