@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `popravi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `popravi`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: popravi
@@ -67,7 +69,7 @@ CREATE TABLE `kljuc` (
 
 LOCK TABLES `kljuc` WRITE;
 /*!40000 ALTER TABLE `kljuc` DISABLE KEYS */;
-INSERT INTO `kljuc` VALUES (1,188);
+INSERT INTO `kljuc` VALUES (1,190);
 /*!40000 ALTER TABLE `kljuc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,7 +226,7 @@ CREATE TABLE `usluga` (
   PRIMARY KEY (`idUsl`),
   KEY `fkIdMajstrora_idx` (`idMaj`),
   CONSTRAINT `fk_idMaj_usluga` FOREIGN KEY (`idMaj`) REFERENCES `korisnik` (`idKor`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -233,7 +235,7 @@ CREATE TABLE `usluga` (
 
 LOCK TABLES `usluga` WRITE;
 /*!40000 ALTER TABLE `usluga` DISABLE KEYS */;
-INSERT INTO `usluga` VALUES (19,'Popravka dobro','Ja sam mnogo dobro',6000,1),(20,'Popravke 2','opis opis opis opis proba',3000,1),(34,'Nova usluga','Nova usluga',1900,1),(35,'Nova usluga 2','Nova usluga 2',1500,1),(37,'Vodoinstalacije','Povoljno vrsim poravke svih kvarova u vodoinstalacionoj mrezi vaseg doma.\r\nBrza i povoljna usluga na jedan klik od vas.\r\n\r\n',2000,16),(38,'Krecenje, moleraj','Sredjujemo zidove brzo i povoljno. Ulepsajte svoj dom najnovijim italijanskim farbama, sve boje i dezeni. Svaki 10ti kvadrat gratis',10000,16),(39,'Elektricar Nenad','Popravljam sporete, klime, frizidere, zamrzivace.\r\nDostupan 24/7\r\n',3500,15),(40,'Namestaj','Restauriram stari, poravljam i pravim novi namestaj od najkvalitetnijeg drveta.',8000,15),(41,'Opel fiat alfa','Sve vrste popravki za automobile marke opel, fiat ili alfa. Najpovoljniji u gradu.',6000,17);
+INSERT INTO `usluga` VALUES (19,'Popravka dobro','Necete se pokajati.',6000,1),(20,'Popravke 2','Sve porpavljam!',3000,1),(34,'Nova usluga','Nova usluga, stari majstor.',1900,1),(37,'Vodoinstalacije','Povoljno vrsim poravke svih kvarova u vodoinstalacionoj mrezi vaseg doma.\r\nBrza i povoljna usluga na jedan klik od vas.\r\n\r\n',2000,16),(38,'Krecenje, moleraj','Sredjujemo zidove brzo i povoljno. Ulepsajte svoj dom najnovijim italijanskim farbama, sve boje i dezeni. Svaki 10ti kvadrat gratis',10000,16),(39,'Elektricar Nenad','Popravljam sporete, klime, frizidere, zamrzivace.\r\nDostupan 24/7\r\n',3500,15),(40,'Namestaj','Restauriram stari, poravljam i pravim novi namestaj od najkvalitetnijeg drveta.',8000,15),(41,'Opel fiat alfa','Sve vrste popravki za automobile marke opel, fiat ili alfa. Najpovoljniji u gradu.',6000,17),(42,'Resavam probleme u kupatilu','Sve vrste popravki: bojler, tus, wc solja...',2000,1);
 /*!40000 ALTER TABLE `usluga` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,7 +267,7 @@ CREATE TABLE `uslugaostvarena` (
 
 LOCK TABLES `uslugaostvarena` WRITE;
 /*!40000 ALTER TABLE `uslugaostvarena` DISABLE KEYS */;
-INSERT INTO `uslugaostvarena` VALUES (2,19,'','1','0',1),(3,19,'kom','1','0',1),(4,19,'proba','0','0',2),(5,19,'kalina','0','1',3),(6,19,'dadaad','1','1',4),(7,19,NULL,'1','1',5),(12,19,NULL,'1','1',14),(13,20,NULL,'1','0',27),(18,20,NULL,NULL,'0',54),(19,20,NULL,NULL,'0',55),(20,41,NULL,NULL,'0',57),(21,38,NULL,NULL,'0',58),(22,41,NULL,NULL,'0',60);
+INSERT INTO `uslugaostvarena` VALUES (3,19,'Usluga je bila korekna.','1','0',1),(4,19,'Nije zadovoljavajuce.','0','0',2),(5,19,'Nije ispostovan dogovor.','0','1',3),(6,19,'Sve je OK bilo.','1','1',4),(7,19,NULL,'1','1',5),(12,19,NULL,'1','1',14),(13,20,NULL,'1','0',27),(18,20,NULL,NULL,'0',54),(19,20,NULL,NULL,'0',55),(20,41,NULL,NULL,'0',57),(21,38,NULL,NULL,'0',58),(22,41,NULL,NULL,'0',60);
 /*!40000 ALTER TABLE `uslugaostvarena` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +295,7 @@ CREATE TABLE `uslugatag` (
 
 LOCK TABLES `uslugatag` WRITE;
 /*!40000 ALTER TABLE `uslugatag` DISABLE KEYS */;
-INSERT INTO `uslugatag` VALUES (19,1),(19,9),(19,10),(20,1),(20,2),(20,3),(20,4),(20,5),(20,6),(20,7),(20,8),(20,9),(20,10),(34,2),(34,6),(34,7),(35,4),(35,7),(35,9),(37,4),(37,5),(37,9),(38,14),(39,2),(39,6),(39,10),(39,15),(39,16),(40,13),(41,11);
+INSERT INTO `uslugatag` VALUES (19,1),(19,9),(19,10),(20,1),(20,2),(20,3),(20,4),(20,5),(20,6),(20,7),(20,8),(20,9),(20,10),(34,2),(34,6),(34,7),(35,4),(35,7),(35,9),(37,4),(37,5),(37,9),(38,14),(39,2),(39,6),(39,10),(39,15),(39,16),(40,13),(41,11),(42,3),(42,6),(42,7);
 /*!40000 ALTER TABLE `uslugatag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +330,7 @@ CREATE TABLE `zahtev` (
 
 LOCK TABLES `zahtev` WRITE;
 /*!40000 ALTER TABLE `zahtev` DISABLE KEYS */;
-INSERT INTO `zahtev` VALUES (1,19,2,9,'Otpusi mi cev majstore','2021-05-22 22:00:00',-1),(2,19,2,10,'Majstore pomagaj','2021-05-22 22:00:00',-1),(3,19,2,21,'pomoc','2021-05-22 22:00:00',-1),(4,19,2,22,'super pomoc','2021-05-22 22:00:00',-1),(5,19,2,23,'U dnevnoj sobi ispod sudopere mi je pukla cev. hitno mi je potreban majstor da to sredi poplava je u kuci. Pomagajte','2021-05-22 22:00:00',-1),(11,20,2,32,'Nesto','2021-05-22 22:00:00',-1),(14,19,2,35,'OVAJ','2021-05-22 22:00:00',-1),(27,20,2,36,'U dnevnoj sobi ispod sudopere mi je pukla cev. hitno mi je potreban majstor da to sredi poplava je u kuci. Pomagajte','2021-05-22 22:00:00',-1),(54,20,2,65,'opis opis opis','2021-06-03 10:29:02',-1),(55,20,2,68,'imam problem nemam skim','2021-06-04 07:29:31',-1),(57,41,18,73,'Opel astra 2003\nNe vuce dobro plin','2021-06-05 17:22:23',-1),(58,38,18,110,'Krecenje sobe 22m2. U belo, sto pre. ','2021-06-05 17:24:58',-1),(60,41,19,72,'ne radi auto ne znam sta mu je nece da upali\nopel vectra 2006','2021-06-06 00:50:00',-1);
+INSERT INTO `zahtev` VALUES (1,19,2,9,'Cev je zapusena.','2021-05-22 22:00:00',-1),(2,19,2,10,'Majstore pomagaj','2021-05-22 22:00:00',-1),(3,19,2,21,'pomoc','2021-05-22 22:00:00',-1),(4,19,2,22,'super pomoc','2021-05-22 22:00:00',-1),(5,19,2,23,'U dnevnoj sobi ispod sudopere mi je pukla cev. hitno mi je potreban majstor da to sredi poplava je u kuci. Pomagajte','2021-05-22 22:00:00',-1),(11,20,2,32,'Nesto','2021-05-22 22:00:00',-1),(14,19,2,35,'OVAJ','2021-05-22 22:00:00',-1),(27,20,2,36,'U dnevnoj sobi ispod sudopere mi je pukla cev. hitno mi je potreban majstor da to sredi poplava je u kuci. Pomagajte','2021-05-22 22:00:00',-1),(54,20,2,65,'opis opis opis','2021-06-03 10:29:02',-1),(55,20,2,68,'imam problem nemam nacin da ga resim','2021-06-04 07:29:31',-1),(57,41,18,73,'Opel astra 2003\nNe vuce dobro plin','2021-06-05 17:22:23',-1),(58,38,18,110,'Krecenje sobe 22m2. U belo, sto pre. ','2021-06-05 17:24:58',-1),(60,41,19,72,'ne radi auto ne znam sta mu je nece da upali\nopel vectra 2006','2021-06-06 00:50:00',-1);
 /*!40000 ALTER TABLE `zahtev` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -341,4 +343,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-06  0:54:52
+-- Dump completed on 2021-06-06 22:51:38
