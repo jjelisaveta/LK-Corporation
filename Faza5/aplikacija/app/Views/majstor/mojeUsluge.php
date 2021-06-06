@@ -26,10 +26,15 @@
     <div class="row">
         <div id="usluga" class="offset-0 col-12 offset-md-2 col-md-10">
             <?php
+            if (sizeof($usluge) == 0) {
+                ?>
+                <span class="offset-md-5 offset-4 text-center nemaRezultata">Nemate ni jednu uslugu</span>
+                <?php
+            }
             foreach ($usluge as $usluga) {
-                echo view_cell("\App\Libraries\MojaUslugaMajstor::prikazUsluge", ['naslov' => $usluga->getNaziv(), 
+                echo view_cell("\App\Libraries\MojaUslugaMajstor::prikazUsluge", ['naslov' => $usluga->getNaziv(),
                     'opis' => $usluga->getOpis(), 'id' => $usluga->getIdusl(),
-                    'tagovi'=>$usluga->getTagovi(), 'majstor'=>$usluga->getIdmaj(), 'cena'=>$usluga->getCena()]);
+                    'tagovi' => $usluga->getTagovi(), 'majstor' => $usluga->getIdmaj(), 'cena' => $usluga->getCena()]);
             }
             ?>
         </div>

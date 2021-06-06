@@ -18,7 +18,7 @@
     <div class="sredina">
         <div id="zahtevi">
             <div class="row">
-                <span class="offset-6 col-2 text-center nemaRezultata" hidden>Nema rezultata pretrage</span>
+                <span class="offset-md-5 offset-4 text-center nemaRezultata" hidden>Nema rezultata pretrage</span>
                 <div id="zahtev" class="offset-0 col-12 offset-md-2 col-md-10">
                     <?php
                     foreach ($ostvarene as $ostvarena) {
