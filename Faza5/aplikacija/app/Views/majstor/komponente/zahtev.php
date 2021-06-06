@@ -3,7 +3,7 @@ $idrow = "row" . $id;
 ?>
 
 <div class="row" id="<?php echo $idrow ?>">
-    <div class="offset - 1 col - 10">
+    <div class="offset - 1 col - 10 jedanZahtev">
         <table>
             <tr>
                 <!-- ovde treba ubaciti da se ucitava korisnicka slika -->

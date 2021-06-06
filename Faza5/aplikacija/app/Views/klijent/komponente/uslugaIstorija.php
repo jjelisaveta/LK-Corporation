@@ -2,7 +2,7 @@
 <div class="row">
     <div class="offset-1 col-10">
 
-        <table class="prikazUslugaIstorija">
+        <table class="prikazUslugaIstorija istorija">
       
                 <tr>
     <!-- ovde treba ubaciti da se ucitava korisnicka slika -->
