@@ -1,0 +1,4 @@
+Korisnik Luka Lukic treba da bude neodobren da bi test odobravanje majstora radilo
+Potrebno je da ima bar 2 neodobrena majstora da bi test odbijanje masjstora radilo
+Da bi prihvatanje zahteva radilo potrebno je da postoji zahtev za bojler 30. juna
+
