@@ -2568,7 +2568,7 @@
 															"top": 47,
 															"width": 169.68798828125,
 															"height": 13,
-															"text": "DataAccessLayer: Usluge"
+															"text": "DataAccessLayer: Usluga"
 														},
 														{
 															"_type": "LabelView",
@@ -2684,7 +2684,7 @@
 															"top": 47,
 															"width": 170.36083984375,
 															"height": 13,
-															"text": "Pristup bazi: MySqlKernel"
+															"text": "BazaPodataka"
 														},
 														{
 															"_type": "LabelView",
@@ -6433,7 +6433,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF52Dnp99C2/8M="
 									},
-									"name": "Pristup bazi",
+									"name": "BazaPodataka",
 									"represent": {
 										"$ref": "AAAAAAF52Dye5dF/8tc="
 									},
@@ -6523,7 +6523,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF52Dnp99C1sN8="
 							},
-							"name": "Role2"
+							"name": "Role2",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6531,7 +6532,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF52Dnp99C1sN8="
 							},
-							"name": "Role3"
+							"name": "Role3",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6539,7 +6541,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF52Dnp99C1sN8="
 							},
-							"name": "Role4"
+							"name": "Role4",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6548,7 +6551,9 @@
 								"$ref": "AAAAAAF52Dnp99C1sN8="
 							},
 							"name": "Role5",
-							"type": "Usluge"
+							"type": {
+								"$ref": "AAAAAAF52F5L6dRrgLI="
+							}
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6556,8 +6561,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF52Dnp99C1sN8="
 							},
-							"name": "Role6",
-							"type": "MySqlKernel"
+							"name": "Role6"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6576,7 +6580,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF52Dnp99C1sN8="
 							},
-							"name": "Role8"
+							"name": "Role8",
+							"type": ""
 						}
 					]
 				},

@@ -3044,7 +3044,7 @@
 															"top": 47,
 															"width": 169.68798828125,
 															"height": 13,
-															"text": "DataAccessLayer: Usluge"
+															"text": "DataAccessLayer: Usluga"
 														},
 														{
 															"_type": "LabelView",
@@ -3160,7 +3160,7 @@
 															"top": 47,
 															"width": 170.36083984375,
 															"height": 13,
-															"text": "Pristup bazi: MySqlKernel"
+															"text": "BazaPodataka"
 														},
 														{
 															"_type": "LabelView",
@@ -3432,7 +3432,7 @@
 													"left": 388,
 													"top": 161,
 													"width": 14,
-													"height": 96
+													"height": 72
 												}
 											],
 											"font": "Arial;13;0",
@@ -3585,8 +3585,8 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
-													"left": 109.07177734375,
-													"top": 229,
+													"left": 101.07177734375,
+													"top": 245,
 													"width": 1,
 													"height": 13
 												},
@@ -3597,8 +3597,8 @@
 														"$ref": "AAAAAAF52D+4lNIRu5M="
 													},
 													"font": "Arial;13;1",
-													"left": 85,
-													"top": 229,
+													"left": 77,
+													"top": 245,
 													"width": 19.07177734375,
 													"height": 13,
 													"text": "opt"
@@ -3630,16 +3630,16 @@
 																		"$ref": "AAAAAAF52D+4ytIgSZo="
 																	},
 																	"font": "Arial;13;0",
-																	"left": 100,
-																	"top": 262,
+																	"left": 92,
+																	"top": 278,
 																	"width": 135.8525390625,
 																	"height": 13,
 																	"text": "[sviPodaciUneti==false]"
 																}
 															],
 															"font": "Arial;13;0",
-															"left": 80,
-															"top": 247,
+															"left": 72,
+															"top": 263,
 															"width": 601,
 															"height": 210,
 															"guardLabel": {
@@ -3648,15 +3648,15 @@
 														}
 													],
 													"font": "Arial;13;0",
-													"left": 80,
-													"top": 247,
+													"left": 72,
+													"top": 263,
 													"width": 601,
 													"height": 210
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 80,
-											"top": 224,
+											"left": 72,
+											"top": 240,
 											"width": 601,
 											"height": 233,
 											"nameLabel": {
@@ -3801,11 +3801,11 @@
 														"$ref": "AAAAAAF52ESmPdJYNXo="
 													},
 													"font": "Arial;13;0",
-													"left": 239,
-													"top": 232,
+													"left": 231,
+													"top": 207,
 													"width": 136.58251953125,
 													"height": 13,
-													"alpha": 4.331881741203657,
+													"alpha": -1.1902908117517947,
 													"distance": 10.770329614269007,
 													"hostEdge": {
 														"$ref": "AAAAAAF52ESmPdJZxjs="
@@ -3825,7 +3825,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": 302,
-													"top": 267,
+													"top": 243,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 25,
@@ -3846,7 +3846,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": 303,
-													"top": 232,
+													"top": 208,
 													"height": 13,
 													"alpha": -1.5707963267948966,
 													"distance": 10,
@@ -3867,7 +3867,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": 206,
-													"top": 248,
+													"top": 224,
 													"width": 14,
 													"height": 25
 												}
@@ -3879,7 +3879,7 @@
 											"tail": {
 												"$ref": "AAAAAAF52Ds3ttEV2i4="
 											},
-											"points": "388:248;219:248",
+											"points": "388:224;219:224",
 											"nameLabel": {
 												"$ref": "AAAAAAF52ESmPdJaJKE="
 											},
@@ -6538,7 +6538,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF52Dnp99C2/8M="
 									},
-									"name": "Pristup bazi",
+									"name": "BazaPodataka",
 									"represent": {
 										"$ref": "AAAAAAF52Dye5dF/8tc="
 									},
@@ -6617,7 +6617,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF52Dnp99C1sN8="
 							},
-							"name": "Role2"
+							"name": "Role2",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6625,7 +6626,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF52Dnp99C1sN8="
 							},
-							"name": "Role3"
+							"name": "Role3",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6643,7 +6645,9 @@
 								"$ref": "AAAAAAF52Dnp99C1sN8="
 							},
 							"name": "Role5",
-							"type": "Usluge"
+							"type": {
+								"$ref": "AAAAAAF52F5L6dRrgLI="
+							}
 						},
 						{
 							"_type": "UMLAttribute",
@@ -6651,8 +6655,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF52Dnp99C1sN8="
 							},
-							"name": "Role6",
-							"type": "MySqlKernel"
+							"name": "Role6"
 						},
 						{
 							"_type": "UMLAttribute",
