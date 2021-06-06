@@ -8,11 +8,9 @@ $(document).ready(function() {
         if (localStorage.getItem("tagovi")!="null"){
             t = JSON.parse(localStorage.getItem("tagovi"));
 	} 
-        alert("isao");
         if (!t.includes(izabrano.text())){
             let novo = $("<button type='button'></button>");
             novo.text(izabrano.val());
-            alert(izabrano.val());
             novo.addClass("plusTag");
             novo.bind("click", izbaci);
             $("#tagovi").append(novo);

@@ -31,9 +31,9 @@
                                 }
                                 ?></textarea>
                         </div>
-                        <button class="komentardugme" type="SUBMIT">sačuvaj komentar
+                        <button class="komentardugme" type="SUBMIT" style="margin-top:5px;">sačuvaj komentar
                         </button>
-                       
+                       </form>
                         <form action="sacuvajOcenu" method="POST">
                            
                         <input type="text" name="hidden2" class="hidden2" value= <?=$id?> style="display:none">
@@ -42,7 +42,7 @@
                         <button class="ocenaDugme" id="dugmeP" name="submit1"  onclick="myFunction(this)">+</button>
                         
                         <button class="ocenaDugme" id="dugmeM" name="submit2"  onclick="myFunction(this)">-</button>
-                      
+                      </form>
                         
                         <?php
                         if (isset($ocena)) {

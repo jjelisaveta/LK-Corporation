@@ -1,3 +1,10 @@
+$(document).ready(function (){
+    var zah = $(".gornja");
+    if (zah.length == 0) {
+        $(".nemaRezultata").prop('hidden', false);
+    }
+});
+
 function ukloniMajstora(id) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "obrisiMajstora", true);
