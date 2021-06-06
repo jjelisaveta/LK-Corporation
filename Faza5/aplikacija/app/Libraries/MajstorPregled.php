@@ -5,6 +5,6 @@ class MajstorPregled
 
     public function pregledMajstora($ime,$prezime,$email,$id,$num,$procenat,$slika,$ukupno)
     {
-        return view("admin/komponente/majstor2", ['ime'=>$ime,'prezime'=>$prezime,'email'=>$email,'id'=>$id,'num'=>$num,'procenat'=>$procenat,'slika'=>$slika,'ukupno'=>$ukupno]);
+        return view("admin/komponente/majstor", ['ime'=>$ime,'prezime'=>$prezime,'email'=>$email,'id'=>$id,'num'=>$num,'procenat'=>$procenat,'slika'=>$slika,'ukupno'=>$ukupno]);
     }
 }

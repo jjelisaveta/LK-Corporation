@@ -24,7 +24,7 @@
                 <div id="info" class="offset-1 col-10">
                     <table>
                         <tr>
-                            <td class="slikaMajstora"><img src="<?php echo base_url(); ?>/slike/covek1.webp"></td>
+                            <td class="slikaMajstora"><img src="<?php echo base_url() . "/" . $majstor->getSlika()?>" ></td>
                             <td class="podaci">
                                 <h1>
                                     <?= $majstor->getIme() ?> <?= $majstor->getPrezime() ?>
@@ -55,7 +55,7 @@
                 <div class="komentarii offset-1 col-10">
                     <?php
                     foreach ($ostvarene as $ostvarena) {
-                        if ($ostvarena->getKomentar() != "" && $ostvarena->getKomentar() != null) {
+                        if ($ostvarena->getKomentar() != "" && $ostvarena->getKomentar() != null &&$ostvarena->getKomentar()!="Komentar je obrisan od strane admina") {
                             echo view_cell("\App\Libraries\KomentarPrikazMajstoraLibBrisanje::prikazKomentara", ['komentar' => $ostvarena->getKomentar(),
                                 'korisnik' => $ostvarena->getIdrez()->getIdRez()->getIdkor(),
                                 'idOstvUsl' => $ostvarena->getIduslostv()]);
