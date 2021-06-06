@@ -84,7 +84,6 @@ $(document).ready(function () {
             if (oznaceni.length == 0) return;
             unetiTermini = true;
             $("#dugmePosalji").text("Rezerviši");
-            return;
             /*filtriranje i sortiranje*/
         }
         var o = $("#filteri input:checkbox:checked");

@@ -265,7 +265,7 @@ class Admin extends BaseController
     {
         $id = $this->request->getVar('idOstvUsl');
         $ostvarena = $this->doctrine->em->getRepository(\App\Models\Entities\UslugaOstvarena::class)->find($id);
-        $ostvarena->setKomentar(null);
+        $ostvarena->setKomentar("Komentar je obrisan od strane admina");
         $this->doctrine->em->persist($ostvarena);
         $this->doctrine->em->flush();
     }

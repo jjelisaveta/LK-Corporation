@@ -648,7 +648,7 @@ class Majstor extends BaseController
         $rezervacija->setIdRez($zahtev);
         $rezervacija->setId($zahtev->getIdzah());
         $rezervacija->setIdmaj($zahtev->getIdusl()->getIdmaj());
-        $rezervacija->setVremeodgovora(\DateTime::createFromFormat('y-m-d h:i:s', date('y-m-d h:i:s')));
+        $rezervacija->setVremeodgovora(\DateTime::createFromFormat('y-m-d H:i:s', date('y-m-d H:i:s')));
 
 
         $this->doctrine->em->persist($zahtev);

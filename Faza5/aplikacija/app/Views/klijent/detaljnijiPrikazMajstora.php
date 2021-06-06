@@ -54,7 +54,7 @@
                     <div class="komentarii offset-1 col-10">
                         <?php 
                             foreach ($ostvarene as $ostvarena){
-                                if ($ostvarena->getKomentar()!="" && $ostvarena->getKomentar()!=null){
+                                if ($ostvarena->getKomentar()!="" && $ostvarena->getKomentar()!=null&&$ostvarena->getKomentar()!="Komentar je obrisan od strane admina"){
                                 echo view_cell("\App\Libraries\KomentarPrikazMajstoraLib::prikazKomentara", ['komentar' => $ostvarena->getKomentar(), 
                                 'korisnik'=>$ostvarena->getIdrez()->getIdRez()->getIdkor()]);
                                 }

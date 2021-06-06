@@ -25,7 +25,7 @@ $paths = new Config\Paths();
 // Location of the framework bootstrap file.
 $bootstrap = rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
 $app       = require realpath($bootstrap) ?: $bootstrap;
-
+date_default_timezone_set('Europe/Belgrade');
 /*
  *---------------------------------------------------------------
  * LAUNCH THE APPLICATION
