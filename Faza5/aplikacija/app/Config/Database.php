@@ -34,7 +34,7 @@ class Database extends Config
         'DSN' => '',
         'hostname' => 'localhost',
         'username' => 'root',
-        'password' => '123',
+        'password' => '1234',
         'database' => 'popravi',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',

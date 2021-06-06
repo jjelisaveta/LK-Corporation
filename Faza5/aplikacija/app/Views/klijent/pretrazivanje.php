@@ -31,6 +31,9 @@
                     <a href="" target="_blank" hidden></a>
                     <input id = "poljePretraga" type="text" placeholder="Unesite pojam za pretragu..">
                 </div>
+                <div id = "nemaRez">
+                    Nema usluge!
+                </div>
             </div>
         </div>
         <div class="row">

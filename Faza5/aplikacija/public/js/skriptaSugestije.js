@@ -4,6 +4,7 @@ const suggBox = searchWrapper.querySelector(".autocom-box");
 const icon = searchWrapper.querySelector(".icon");
 let linkTag = searchWrapper.querySelector("a");
 let webLink;
+$("#nemaRez").hide();
 for (let i = 0; i < jArray.length; i++) {
     $("#tagovi").append('<button ' + " id=" + trim(jArray[i]) + '>' + jArray[i] + '</button>');
     $("#" + trim(jArray[i])).hide();
@@ -19,6 +20,12 @@ inputBox.onkeyup = (e) => {
         emptyArray = jArray.filter((data)=>{                        //ovde sad lista svih imena ekstrakuj u dugmad
             return data.toLocaleLowerCase().includes(userData.toLocaleLowerCase()); 
         });
+        if(userData.length != 0 && emptyArray.length == 0){
+            $("#nemaRez").text("usluga " + userData + " ne postoji");
+            $("#nemaRez").show();
+        }else{
+             $("#nemaRez").hide();
+        }
         for(let i = 0; i < emptyArray.length; i++){
             $("#" + trim(emptyArray[i])).show();
         }
@@ -26,7 +33,15 @@ inputBox.onkeyup = (e) => {
 }
 
 $("button").click(function(){
-    window.location.href = "prikazUsluga/" + $(this).attr("id");
+    let ok = false;
+    for (let i = 0; i < jArray.length; i++){
+        if(trim(jArray[i]) == $(this).attr("id")){
+            ok = true;
+            break;
+        }
+    }
+    if(ok)
+        window.location.href = "prikazUsluga/" + $(this).attr("id");
 })
 
 function trim(rec){
