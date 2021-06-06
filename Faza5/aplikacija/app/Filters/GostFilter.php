@@ -18,15 +18,20 @@ class GostFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-      /*  $session = session();
+        $session = session();
         if ($session->has("Korisnik")){
+            $putanja = $_SERVER['REQUEST_URI'];
+            $metoda = explode("/", $putanja)[1];
+            if ($metoda=="izlogujSe" || $metoda=="promeniPodatke"){
+                return;
+            }
             $ulogovan = $session->get('Korisnik')->idUlo;
             switch ($ulogovan){
                 case 1: return redirect()->to(site_url("Admin"));
                 case 2: return redirect()->to(site_url("Majstor"));
                 case 3: return redirect()->to(site_url("Klijent"));
             } 
-        }*/
+        }
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

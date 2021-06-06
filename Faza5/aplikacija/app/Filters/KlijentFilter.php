@@ -21,8 +21,9 @@ class KlijentFilter implements FilterInterface
         $session = session();
 
         $putanja = $_SERVER['REQUEST_URI'];
-        $metoda = explode("/", $putanja)[2];
-        if (!isset($_SESSION['Korisnik'])) {
+        $metoda = explode("/", $putanja);
+        if (!isset($_SESSION['Korisnik']) && sizeof($metoda)>2) {
+            $metoda = $metoda[2];
             if (!($metoda == "pretrazivanje" || $metoda == "prikazMajstora"
                 || $metoda == "prikazUsluga" || $metoda == "dohvatiSlobodneTermine"
                 || $metoda == "dohvatiIdentifikator")) {
