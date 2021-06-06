@@ -37,6 +37,7 @@ $routes->add('Klijent/promeniPodatke', "Gost::promeniPodatke");*/
 
 $routes->add('pretrazivanje','Klijent::pretrazivanje');
 $routes->add('/prikazUsluga/(:any)','Klijent::prikazUsluga/$1');
+$routes->add('prikazMajstora','Klijent::prikazMajstora');
 
 $routes->add('Klijent/pretrazivanje','Klijent::pretrazivanje');
 $routes->add('Klijent/prikazUsluga/(:any)','Klijent::prikazUsluga/$1');

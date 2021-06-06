@@ -24,7 +24,7 @@
                 <div id="info" class="offset-1 col-10">
                     <table>
                         <tr>
-                            <td class="slikaMajstora"><img src="<?php echo base_url(); ?>/slike/covek1.webp"></td>
+                            <td class="slikaMajstora"><img src="<?php echo base_url() . "/" . $majstor->getSlika(); ?>"></td>
                             <td class="podaci">
                                 <h1>
                                     <?= $majstor->getIme() ?> <?= $majstor->getPrezime() ?>

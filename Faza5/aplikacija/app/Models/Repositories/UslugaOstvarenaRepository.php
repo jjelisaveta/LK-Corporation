@@ -21,7 +21,7 @@ class UslugaOstvarenaRepository extends \Doctrine\ORM\EntityRepository
         $upit = $this->getEntityManager()->createQueryBuilder();
         $upit->select('o')
             ->from('App\Models\Entities\UslugaOstvarena', 'o')
-            ->join('App\Models\Entities\Usluga', 'u', 'idusl')
+            ->join('App\Models\Entities\Usluga', 'u','WITH', 'u.idusl=o.idusl')
             ->where($upit->expr()->eq('u.idmaj', ':idUsluge'))
             ->setParameter('idUsluge', $id);
         return $upit->getQuery()->getResult();

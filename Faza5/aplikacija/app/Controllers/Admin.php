@@ -183,7 +183,6 @@ class Admin extends BaseController
             return 0;
         return $ukupno / sizeof($ostvarene);
     }
-
     /*
      * privatna funkcija, racuna procenat dobrih preporuka za majstora u odnosu na sve preporuke
      *
@@ -238,19 +237,22 @@ class Admin extends BaseController
             return "zahtev mora biti post";
         }
         $id = $this->request->getVar('id');
+       
 
         $majstor = $this->doctrine->em->getRepository(\App\Models\Entities\Korisnik::class)->findBy(['idkor' => $id])[0];
-
         //$usluge = [];
+       
         $usluge = $this->doctrine->em->getRepository(\App\Models\Entities\Usluga::class)->findBy(['idmaj' => $id]);
         $ostvarene = $this->doctrine->em->getRepository(Entities\UslugaOstvarena::class)->dohvatiOstvareneUslugeMajstora($id);
-
+        
         $vreme = $this->vremeOdgovora($ostvarene);
         $preporuke = $this->preporuke($ostvarene);
         $cena = $this->prosecnaCena($usluge);
         return $this->prikaz("detaljnijiPrikazMajstora", ['majstor' => $majstor, 'usluge' => $usluge, 'ostvarene' => $ostvarene,
             'vreme' => $vreme, 'preporuke' => $preporuke, 'cena' => $cena], 1);
     }
+    
+   
 
     /*
      * funcija za brisanje komentara
