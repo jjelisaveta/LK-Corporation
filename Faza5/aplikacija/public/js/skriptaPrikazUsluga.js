@@ -5,8 +5,8 @@ $(document).ready(function () {
 
     uslugeSve = JSON.parse(localStorage.getItem('usluge'));
 
-    if (uslugeSve.length == 0){
-        $(".nemaRezultata").prop('hidden',false);
+    if (uslugeSve.length == 0) {
+        $(".nemaRezultata").prop('hidden', false);
     }
     terminiSvi = JSON.parse(localStorage.getItem('termini'));
     terminiMapa = new Map();
@@ -173,9 +173,12 @@ function sort(znak, usluge) {
         if (znak == 2)
             return b.cena - a.cena;
         if (znak == 3)
-            return a.preporuke - b.preporuke;
-        if (znak == 4)
-            return b.preporuke - a.preporuke;
+            return parseFloat(a.preporuke.substr(0, a.preporuke.length - 1))
+                - parseFloat(b.preporuke.substr(0, b.preporuke.length - 1));
+        if (znak == 4) {
+            return parseFloat(b.preporuke.substr(0, b.preporuke.length - 1))
+                - parseFloat(a.preporuke.substr(0, a.preporuke.length - 1));
+        }
         if (znak == 5)
             return vremeUSekunde(a.vremeOdgovora) - vremeUSekunde(b.vremeOdgovora);
         return vremeUSekunde(b.vremeOdgovora) - vremeUSekunde(a.vremeOdgovora);
@@ -190,9 +193,9 @@ function dohvatiUsluge() {
 function updateUsluge(usluge) {
     $(".uslugaKomponenta").remove();
     if (usluge.length == 0) {
-        $(".nemaRezultata").prop('hidden',false);
-    }else{
-        $(".nemaRezultata").prop('hidden',true);
+        $(".nemaRezultata").prop('hidden', false);
+    } else {
+        $(".nemaRezultata").prop('hidden', true);
     }
     usluge.forEach(u => {
         $("#poljeZaUsluge").append(usluga(u.cena, u.idUsl, u.majstor, u.naslov, u.opis, u.preporuke, u.vremeOdgovora, u.slika));
