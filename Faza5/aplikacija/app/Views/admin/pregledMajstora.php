@@ -16,7 +16,7 @@
   
 
         <div class="row">
-          
+           <span class="offset-0 col-12 offset-md-2 col-md-10 text-center  nemaRezultata" hidden>Odobreni majstori ne postoje</span>
             <?php
               $num = 3;
                 foreach ($majstori as $majstor) {

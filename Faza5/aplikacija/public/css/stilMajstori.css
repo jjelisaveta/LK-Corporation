@@ -19,6 +19,7 @@ body {
     background-color:#c8c6b9 ;
     position: relative;
     height: 200px;
+    z-index: 2;
 }
     
 
@@ -212,3 +213,6 @@ body {
 }
 
 
+.nemaRezultata{
+    font-size: 3vh;
+}

@@ -16,7 +16,7 @@
 <body>
 <div class="container-fluid">
     <div class="row zahtevi">
-        <span class="offset-md-5 offset-4 text-center nemaRezultata" hidden>Trenutno nemate aktivnih poravki</span>
+        <span class="offset-0 col-12 offset-md-2 col-md-10 text-center nemaRezultata" hidden>Trenutno nema usluga koje su u toku</span>
         <?php
         $num = 4;
         foreach ($aktivne as $aktivna) {
