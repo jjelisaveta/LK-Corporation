@@ -4,6 +4,10 @@ $(document).ready(function () {
     inicijalizacija();
 
     uslugeSve = JSON.parse(localStorage.getItem('usluge'));
+
+    if (uslugeSve.length == 0){
+        $(".nemaRezultata").prop('hidden',false);
+    }
     terminiSvi = JSON.parse(localStorage.getItem('termini'));
     terminiMapa = new Map();
     terminiSvi.forEach(t => {
@@ -186,7 +190,9 @@ function dohvatiUsluge() {
 function updateUsluge(usluge) {
     $(".uslugaKomponenta").remove();
     if (usluge.length == 0) {
-        $("#poljeZaUsluge").append('<span class="offset-5 col-2 text-center nemaRezultata">Nema rezultata pretrage</span>');
+        $(".nemaRezultata").prop('hidden',false);
+    }else{
+        $(".nemaRezultata").prop('hidden',true);
     }
     usluge.forEach(u => {
         $("#poljeZaUsluge").append(usluga(u.cena, u.idUsl, u.majstor, u.naslov, u.opis, u.preporuke, u.vremeOdgovora, u.slika));

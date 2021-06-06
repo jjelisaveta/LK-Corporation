@@ -152,11 +152,9 @@ $date = date("Y-m-d");
             <?php
             $ocene = [];
             $kasnjenje = [];
-            if (sizeof($usluge) == 0) {
-                ?>
-                <span class = "offset-5 col-2 text-center nemaRezultata">Nema rezultata pretrage</span>
-                <?php
-            }
+            ?>
+            <span class="offset-5 col-2 text-center nemaRezultata" hidden>Nema rezultata pretrage</span>
+            <?php
             foreach ($usluge as $usluga) {
                 if (!isset($ocene[$usluga->getIdmaj()->getIdkor()])) {
                     $ukupno = 0;
