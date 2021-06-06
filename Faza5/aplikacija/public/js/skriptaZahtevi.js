@@ -1,3 +1,9 @@
+$(document).ready(function (){
+    var zah = $(".jedanZahtev");
+    if (zah.length == 0) {
+        $(".nemaRezultata").prop('hidden', false);
+    }
+});
 function prihvati(id) {
     console.log("prihvati " + id);
     var xmlhttp = new XMLHttpRequest();
@@ -18,6 +24,10 @@ function prihvati(id) {
                     console.log('odgovor ' + idr);
                     $("#" + idr).remove();
                 });
+                var zah = $(".jedanZahtev");
+                if (zah.length == 0) {
+                    $(".nemaRezultata").prop('hidden', false);
+                }
             }
         }
     }
@@ -36,6 +46,10 @@ function odbij(id) {
                 var idr = "row" + id;
                 console.log('odgovor ' + idr);
                 $("#" + idr).remove();
+            }
+            var zah = $(".jedanZahtev");
+            if (zah.length == 0) {
+                $(".nemaRezultata").prop('hidden', false);
             }
         }
     }

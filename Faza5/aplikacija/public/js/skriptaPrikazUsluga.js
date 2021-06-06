@@ -4,6 +4,10 @@ $(document).ready(function () {
     inicijalizacija();
 
     uslugeSve = JSON.parse(localStorage.getItem('usluge'));
+
+    if (uslugeSve.length == 0){
+        $(".nemaRezultata").prop('hidden',false);
+    }
     terminiSvi = JSON.parse(localStorage.getItem('termini'));
     terminiMapa = new Map();
     terminiSvi.forEach(t => {
@@ -145,16 +149,21 @@ function filter(oznaceni, cena, preporuka, vreme) {
         return p >= preporuka;
     });
     usluge = usluge.filter(u => {
-        var vr = u.vremeOdgovora.split(":");
-        var sekunde = 0;
-        var mnozilac = 1;
-        for (i = vr.length - 1; i >= 0; i--) {
-            sekunde += parseInt(vr[i]) * mnozilac;
-            mnozilac *= 60;
-        }
+        var sekunde = vremeUSekunde(u.vremeOdgovora);
         return sekunde <= vreme;
     });
     return usluge;
+}
+
+function vremeUSekunde(vreme) {
+    var vr = vreme.split(":");
+    var sekunde = 0;
+    var mnozilac = 1;
+    for (i = vr.length - 1; i >= 0; i--) {
+        sekunde += parseInt(vr[i]) * mnozilac;
+        mnozilac *= 60;
+    }
+    return sekunde;
 }
 
 function sort(znak, usluge) {
@@ -168,8 +177,8 @@ function sort(znak, usluge) {
         if (znak == 4)
             return b.preporuke - a.preporuke;
         if (znak == 5)
-            return a.vremeOdgovora - b.vremeOdgovora;
-        return b.vremeOdgovora - a.vremeOdgovora;
+            return vremeUSekunde(a.vremeOdgovora) - vremeUSekunde(b.vremeOdgovora);
+        return vremeUSekunde(b.vremeOdgovora) - vremeUSekunde(a.vremeOdgovora);
     });
     updateUsluge(usluge);
 }
@@ -180,6 +189,11 @@ function dohvatiUsluge() {
 
 function updateUsluge(usluge) {
     $(".uslugaKomponenta").remove();
+    if (usluge.length == 0) {
+        $(".nemaRezultata").prop('hidden',false);
+    }else{
+        $(".nemaRezultata").prop('hidden',true);
+    }
     usluge.forEach(u => {
         $("#poljeZaUsluge").append(usluga(u.cena, u.idUsl, u.majstor, u.naslov, u.opis, u.preporuke, u.vremeOdgovora, u.slika));
     });
@@ -231,6 +245,7 @@ function dohvatiSlobodneTermine(nizMajstora) {
     $.ajax({
         type: "POST",
         url: "/Klijent/dohvatiSlobodneTermine",
+        async: false,
         data: {
             majstori: nizMajstora
         }
@@ -243,6 +258,7 @@ function dohvatiSlobodneTermine(nizMajstora) {
 function dohvatiKljuc() {
     $.ajax({
         type: "GET",
+        async: false,
         url: "/Klijent/dohvatiIdentifikator",
     }).done(function (result_html) {
         rez = result_html.split("\n")[1];

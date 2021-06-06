@@ -27,6 +27,7 @@ if (!isset($majstori))
     <div id="zahtevi">
         <div class="row">
             <div id="zahtev" class="offset-0 col-12 offset-md-2 col-md-10">
+                <span class="offset-5 col-1 nemaRezultata" hidden>Nema rezultata pretrage</span>
                 <?php
                 foreach ($majstori as $majstor) {
                     echo view_cell("\App\Libraries\OdobravanjeMajstora:odobravanjeMajstora",

@@ -9,40 +9,45 @@
     <div id="meniMali" class="d-block d-md-none overlay">
         <a href="javascript:void(0)" class="dugmeZatvori" onclick="zatvoriMeni()">&times;</a>
         <div class="maliMeniSadrzaj">
-            <a href="<?php echo site_url("Klijent/pretrazivanje") ?>" class=<?=$broj== 1 ? 'active':'' ?>>Rezerviši termin</a>
-            <a href="<?php echo site_url("Klijent/aktivnaPopravka") ?>" class=<?=$broj== 2 ? 'active':'' ?>>U toku</a>
-            <a href="<?php echo site_url("Klijent/istorija") ?>" class=<?=$broj== 3 ? 'active':'' ?>>Istorija</a>
+            <a href="<?php echo site_url("Klijent/pretrazivanje") ?>" class=<?= $broj == 1 ? 'active' : '' ?>>Rezerviši
+                termin</a>
+            <a href="<?php echo site_url("Klijent/aktivnaPopravka") ?>" class=<?= $broj == 2 ? 'active' : '' ?>>U
+                toku</a>
+            <a href="<?php echo site_url("Klijent/istorija") ?>" class=<?= $broj == 3 ? 'active' : '' ?>>Istorija</a>
             <div class="padajuciMeni">
-                <button class="padajuceDugme">Moj nalog</button>
+                <button href="" class="padajuceDugme">Moj nalog</button>
                 <div class="padajuciSadrzaj">
-                <a href="<?php echo site_url("Gost/promeniPodatke") ?>" >Promeni podatke</a>
+                    <a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a>
                     <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a>
                 </div>
             </div>
         </div>
         <div id="korisnik">
             <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika">
-            <a><?=$ime ?> <?=$prezime ?></a>
+            <a><?= $ime ?> <?= $prezime ?></a>
         </div>
     </div>
 
     <div id="meni" class="d-none d-md-block col-md-2">
-        <a href="<?php echo site_url("Klijent/pretrazivanje") ?>" class=<?=$broj== 1 ? 'active':'' ?>>Rezerviši termin</a>
-        <a href="<?php echo site_url("Klijent/aktivnaPopravka") ?>" class=<?=$broj== 2 ? 'active':'' ?>>U toku</a>
-        <a href="<?php echo site_url("Klijent/istorija") ?>" class=<?=$broj== 3 ? 'active':'' ?>>Istorija</a>
+        <a href="<?php echo site_url("Klijent/pretrazivanje") ?>" class=<?= $broj == 1 ? 'active' : '' ?>>Rezerviši
+            termin</a>
+        <a href="<?php echo site_url("Klijent/aktivnaPopravka") ?>" class=<?= $broj == 2 ? 'active' : '' ?>>U toku</a>
+        <a href="<?php echo site_url("Klijent/istorija") ?>" class=<?= $broj == 3 ? 'active' : '' ?>>Istorija</a>
         <div class="padajuciMeni">
-            <button class="padajuceDugme">Moj nalog</button>
+            <button href="" class="padajuceDugme">Moj nalog</button>
             <div class="padajuciSadrzaj">
-                <?php if ($gost!== "gost") { ?><a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni podatke</a> <?php } ?>
-                <?php if ($gost!== "gost") { ?>
-                <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a> <?php } else {?>
-                <a href="<?php echo site_url("Gost/loginSubmit") ?>"> Uloguj se </a>
-                 <?php } ?>
+                <?php if ($gost !== "gost") { ?><a href="<?php echo site_url("Gost/promeniPodatke") ?>">Promeni
+                    podatke</a> <?php } ?>
+                <?php if ($gost !== "gost") { ?>
+                    <a href="<?php echo site_url("Gost/izlogujSe") ?>"> Izloguj se </a> <?php } else { ?>
+                    <a href="<?php echo site_url("Gost/loginSubmit") ?>"> Uloguj se </a>
+                <?php } ?>
             </div>
         </div>
         <div id="korisnik">
-            <?php if ($gost!== "gost") { ?> <img src="<?php echo base_url() . "/" . $profilna; ?>" alt="korisnicka slika"> <?php } ?>
-            <a><?=$ime ?> <?=$prezime ?></a>
+            <?php if ($gost !== "gost") { ?> <img src="<?php echo base_url() . "/" . $profilna; ?>"
+                                                  alt="korisnicka slika"> <?php } ?>
+            <a><?= $ime ?> <?= $prezime ?></a>
         </div>
     </div>
 

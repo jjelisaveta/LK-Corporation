@@ -1,3 +1,9 @@
+$(document).ready(function (){
+    var zah = $(".majstor");
+    if (zah.length == 0) {
+        $(".nemaRezultata").prop('hidden', false);
+    }
+});
 function prihvati(id) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("POST", "odobriMajstora", true);
@@ -10,6 +16,10 @@ function prihvati(id) {
                 var idr = "red" + id;
                 console.log('odgovor ' + idr);
                 $("#" + idr).remove();
+                var zah = $(".majstor");
+                if (zah.length == 0) {
+                    $(".nemaRezultata").prop('hidden', false);
+                }
             }
         }
     }
@@ -27,6 +37,10 @@ function ukloni(id) {
                 var idr = "red" + id;
                 console.log('odgovor ' + idr);
                 $("#" + idr).remove();
+                var zah = $(".majstor");
+                if (zah.length == 0) {
+                    $(".nemaRezultata").prop('hidden', false);
+                }
             }
         }
     }
