@@ -1,0 +1,786 @@
+{
+  "id": "2e17e65a-d8f9-4c53-9e73-3cb19a13d7a6",
+  "version": "2.0",
+  "name": "Popravi",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "3dd8bf83-5543-4b49-88d2-b64a17fb15ff",
+    "name": "TP1 uspesan Pregled majstora",
+    "commands": [{
+      "id": "3aea3efd-18f6-47af-aa67-160b81419efd",
+      "comment": "",
+      "command": "open",
+      "target": "/Admin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "029a66c5-4bb7-4237-84ed-293e6d06c1d0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Pregled Majstora",
+      "targets": [
+        ["linkText=Pregled Majstora", "linkText"],
+        ["css=#meni > .active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Pregled Majstora')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Admin/pregledMajstora'])[2]", "xpath:href"],
+        ["xpath=//div[2]/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "444bd389-0247-4ade-ba8d-dd25cf980361",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//div[@id='1']/div/div/div[2]/div/div/h1",
+      "targets": [
+        ["xpath=//div[@id='1']/div/div/div[2]/div/div/h1", "xpath:idRelative"],
+        ["xpath=//h1", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7ad32b7e-ed2b-472a-8aba-6003687e4e60",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//button[@onclick=\"mail('1','pera123@gmail.com')\"]",
+      "targets": [
+        ["xpath=//button[@onclick=\"mail('1','pera123@gmail.com')\"]", "xpath:attributes"],
+        ["xpath=//div[@id='1']/div/div/div[2]/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'pošalji mejl')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0fdebf3c-e6be-4200-ba8a-fcfb40aad3f7",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//input[@value='...']",
+      "targets": [
+        ["xpath=//input[@value='...']", "xpath:attributes"],
+        ["xpath=//div[@id='1']/div/div/div[2]/div[3]/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0eaf999c-67b9-46d4-9de3-8971ebe8e6d2",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=btnD",
+      "targets": [
+        ["id=btnD", "id"],
+        ["xpath=//button[@id='btnD']", "xpath:attributes"],
+        ["xpath=//div[@id='1']/div/div/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'✖')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a7a45e2d-b813-494d-9d69-8dc40366ba91",
+    "name": "TP2 neuspesan Pregled majstora",
+    "commands": [{
+      "id": "dda42d22-f28d-4ce8-a424-986afc435607",
+      "comment": "",
+      "command": "open",
+      "target": "/Admin",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2ca47279-fa98-4586-a263-cc04a87f3a8e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Pregled Majstora",
+      "targets": [
+        ["linkText=Pregled Majstora", "linkText"],
+        ["css=#meni > .active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Pregled Majstora')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Admin/pregledMajstora'])[2]", "xpath:href"],
+        ["xpath=//div[2]/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4de122d7-7bd8-45b1-947e-006acf7bbc8f",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.offset-0",
+      "targets": [
+        ["css=.offset-0", "css:finder"],
+        ["xpath=//div[@id='con']/div/span", "xpath:idRelative"],
+        ["xpath=//span", "xpath:position"],
+        ["xpath=//span[contains(.,'Odobreni majstori ne postoje')]", "xpath:innerText"]
+      ],
+      "value": "Odobreni majstori ne postoje"
+    }]
+  }, {
+    "id": "978556d7-cc5f-4daf-b556-858eaa04efee",
+    "name": "TP5 neuspesan pregled usluga u toku",
+    "commands": [{
+      "id": "c1e5b933-250c-4fb6-932f-e9559d26eedb",
+      "comment": "",
+      "command": "open",
+      "target": "/Klijent",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e675d230-ef0f-49b9-b633-41f07258019a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=U toku",
+      "targets": [
+        ["linkText=U toku", "linkText"],
+        ["css=#meni > a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'U toku')]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Klijent/aktivnaPopravka'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'U toku')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "282dbc54-a2e9-4be1-9e11-46e3ec9398ff",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.offset-0",
+      "targets": [
+        ["css=.offset-0", "css:finder"],
+        ["xpath=//span", "xpath:position"],
+        ["xpath=//span[contains(.,'Trenutno nema usluga koje su u toku')]", "xpath:innerText"]
+      ],
+      "value": "Trenutno nema usluga koje su u toku"
+    }]
+  }, {
+    "id": "f34f27f4-ad87-436a-8a4d-a25acc6f4800",
+    "name": "TP4 uspesan pregled usluga u toku",
+    "commands": [{
+      "id": "8bc06ab4-abbb-4d53-92c7-85cee5a4adfe",
+      "comment": "",
+      "command": "open",
+      "target": "/Klijent",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9909e248-aa62-48a2-8cb0-24f26a0ff50d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=U toku",
+      "targets": [
+        ["linkText=U toku", "linkText"],
+        ["css=#meni > a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'U toku')]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[2]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Klijent/aktivnaPopravka'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'U toku')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9dcaa2ed-fe19-4600-8ca8-5cb3f7b48dbc",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.userimg > img",
+      "targets": [
+        ["css=.userimg > img", "css:finder"],
+        ["xpath=//img[contains(@src,'http://localhost:8080/slike/profilna.png')]", "xpath:img"],
+        ["xpath=//td/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fc1d0d8e-1fe2-469b-80d2-e270a7eaacb4",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "465d206f-fffc-498e-a647-27565baab425",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=h4:nth-child(2)",
+      "targets": [
+        ["css=h4:nth-child(2)", "css:finder"],
+        ["xpath=//h4", "xpath:position"],
+        ["xpath=//h4[contains(.,'2021-06-07 12:00:00')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "d6bc072c-6da0-4cea-9115-0ed72b2edb84",
+    "name": "TP6 uspesan pregled istorije",
+    "commands": [{
+      "id": "f4ac4233-b3ae-4a05-911c-2599defe7729",
+      "comment": "",
+      "command": "open",
+      "target": "/Klijent",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d52bf987-5656-4c74-9521-5eacfa3a14c1",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Istorija",
+      "targets": [
+        ["linkText=Istorija", "linkText"],
+        ["css=#meni > a:nth-child(3)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Istorija')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Klijent/istorija'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "03293e0d-509c-408f-bde3-f6bd97cddf88",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.row:nth-child(1) > .offset-1 img",
+      "targets": [
+        ["css=.row:nth-child(1) > .offset-1 img", "css:finder"],
+        ["xpath=//img[contains(@src,'http://localhost:8080/slike/profilna.png')]", "xpath:img"],
+        ["xpath=//td[@id='userimg']/img", "xpath:idRelative"],
+        ["xpath=//td/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c05e9c8a-dae6-41cd-989b-117a187efe1c",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.row:nth-child(1) > .offset-1 .ukloni > button",
+      "targets": [
+        ["css=.row:nth-child(1) > .offset-1 .ukloni > button", "css:finder"],
+        ["xpath=//button[@onclick='ukloniPopravku(this)']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr[2]/td/div/button", "xpath:idRelative"],
+        ["xpath=//td/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ukloni iz istorije')]", "xpath:innerText"]
+      ],
+      "value": "ukloni iz istorije"
+    }]
+  }, {
+    "id": "e28416c6-eaf6-416c-a5ab-6924d9f5b2cd",
+    "name": "TP7 neuspesan pregled istorije",
+    "commands": [{
+      "id": "7b40cf6a-0acb-4b49-956f-8d05f81acf50",
+      "comment": "",
+      "command": "open",
+      "target": "/Klijent",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a02fe964-8b69-4c11-844f-9c3dd787e4da",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Istorija",
+      "targets": [
+        ["linkText=Istorija", "linkText"],
+        ["css=#meni > a:nth-child(3)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Istorija')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Klijent/istorija'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9eca49cf-7838-4a09-a9e2-f86fedf2fb34",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.text-center",
+      "targets": [
+        ["css=.text-center", "css:finder"],
+        ["xpath=//div[@id='zahtevi']/div/span", "xpath:idRelative"],
+        ["xpath=//span", "xpath:position"],
+        ["xpath=//span[contains(.,'Istorija je prazna')]", "xpath:innerText"]
+      ],
+      "value": "Istorija je prazna"
+    }]
+  }, {
+    "id": "71ec3f87-4906-4dc8-b8a2-b3f77d97a7d0",
+    "name": "TP8 uspesno komentarisanje",
+    "commands": [{
+      "id": "d106ee54-57c3-4c55-9d62-94e89e6ec947",
+      "comment": "",
+      "command": "open",
+      "target": "/Klijent",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3877e507-26c8-4f6c-be45-0963f6725141",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Istorija",
+      "targets": [
+        ["linkText=Istorija", "linkText"],
+        ["css=#meni > a:nth-child(3)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Istorija')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Klijent/istorija'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5cdd68e5-f82b-4d5f-a710-803cfbafa9a5",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.komentartd:nth-child(4) > .komentardugme",
+      "targets": [
+        ["css=.komentartd:nth-child(4) > .komentardugme", "css:finder"],
+        ["xpath=//button[@type='SUBMIT']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr/td[3]/button", "xpath:idRelative"],
+        ["xpath=//td[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'sačuvaj komentar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a8f179b-e8a9-4630-b186-d6b61dbf59f5",
+      "comment": "",
+      "command": "click",
+      "target": "name=komentar",
+      "targets": [
+        ["name=komentar", "name"],
+        ["css=.komentartd:nth-child(4) .komentarinput", "css:finder"],
+        ["xpath=//textarea[@name='komentar']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr/td[3]/div/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9e552b03-58bc-4e8a-8b88-edecbfd02ce9",
+      "comment": "",
+      "command": "type",
+      "target": "name=komentar",
+      "targets": [
+        ["name=komentar", "name"],
+        ["css=.komentartd:nth-child(4) .komentarinput", "css:finder"],
+        ["xpath=//textarea[@name='komentar']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr/td[3]/div/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Majstor je uradio sve po dogovoru. Usluga je bila korektna."
+    }, {
+      "id": "1a8c76b1-9e97-49b7-a55c-2f3c5cb9cfe4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.komentartd:nth-child(4) > .komentardugme",
+      "targets": [
+        ["css=.komentartd:nth-child(4) > .komentardugme", "css:finder"],
+        ["xpath=//button[@type='SUBMIT']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr/td[3]/button", "xpath:idRelative"],
+        ["xpath=//td[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'sačuvaj komentar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "29cf5eb9-b1ba-498a-80c7-d49b46b4047c",
+      "comment": "",
+      "command": "verifyText",
+      "target": "name=komentar",
+      "targets": [
+        ["name=komentar", "name"],
+        ["css=.komentartd:nth-child(4) .komentarinput", "css:finder"],
+        ["xpath=//textarea[@name='komentar']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr/td[3]/div/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Majstor je uradio sve po dogovoru. Usluga je bila korektna."
+    }]
+  }, {
+    "id": "1c456c71-52d8-42bd-86e3-d95329983465",
+    "name": "TP11 uspesno negativno ocenjivanje",
+    "commands": [{
+      "id": "109c2391-feda-43dc-a03f-7b91c69ca283",
+      "comment": "",
+      "command": "open",
+      "target": "/Klijent",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5ed48476-a3e6-4808-beec-c21f794de65a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Istorija",
+      "targets": [
+        ["linkText=Istorija", "linkText"],
+        ["css=#meni > a:nth-child(3)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Istorija')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Klijent/istorija'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "49d99156-099c-4b47-8131-f9a5ffb05b93",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=dugmeP",
+      "targets": [
+        ["id=dugmeP", "id"],
+        ["name=submit1", "name"],
+        ["css=form:nth-child(2) > #dugmeP", "css:finder"],
+        ["xpath=//button[@id='dugmeP']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr/td[3]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "578d0a9b-aa04-4702-bcfe-afa450165ca0",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=dugmeM",
+      "targets": [
+        ["id=dugmeM", "id"],
+        ["name=submit2", "name"],
+        ["css=form:nth-child(2) > #dugmeM", "css:finder"],
+        ["xpath=//button[@id='dugmeM']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr/td[3]/form/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'-')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f276cae2-1070-4503-84ad-7515dca0e378",
+      "comment": "",
+      "command": "click",
+      "target": "id=dugmeM",
+      "targets": [
+        ["id=dugmeM", "id"],
+        ["name=submit2", "name"],
+        ["css=form:nth-child(2) > #dugmeM", "css:finder"],
+        ["xpath=//button[@id='dugmeM']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr/td[3]/form/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'-')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4076ceae-05d9-4082-b3d1-77264268c343",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=form:nth-child(2) > .ocenaLabel",
+      "targets": [
+        ["css=form:nth-child(2) > .ocenaLabel", "css:finder"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr/td[3]/form/label", "xpath:idRelative"],
+        ["xpath=//form/label", "xpath:position"],
+        ["xpath=//label[contains(.,'-')]", "xpath:innerText"]
+      ],
+      "value": "-"
+    }]
+  }, {
+    "id": "1cf301b4-8f17-42ea-96c7-19899f1533c9",
+    "name": "TP10 uspesno pozitivno ocenjivanje",
+    "commands": [{
+      "id": "724f4f3c-5767-4f82-b656-3cf0bad3c1f2",
+      "comment": "",
+      "command": "open",
+      "target": "/Klijent/istorija",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "21ea5c59-17a7-41ea-ad6d-e916bcbbbd95",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Istorija",
+      "targets": [
+        ["linkText=Istorija", "linkText"],
+        ["css=#meni > .active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Istorija')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Klijent/istorija'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cf5205cc-d6c3-4ff0-93e7-b9e5f0a08e73",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=dugmeP",
+      "targets": [
+        ["id=dugmeP", "id"],
+        ["name=submit1", "name"],
+        ["css=#dugmeP", "css:finder"],
+        ["xpath=//button[@id='dugmeP']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div[2]/div/table/tbody/tr/td[3]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "700775ba-51b3-41a9-aeb0-3edd3e93ab02",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "id=dugmeM",
+      "targets": [
+        ["id=dugmeM", "id"],
+        ["name=submit2", "name"],
+        ["css=#dugmeM", "css:finder"],
+        ["xpath=//button[@id='dugmeM']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div[2]/div/table/tbody/tr/td[3]/form/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'-')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7afbe6d3-d72f-4bc3-9be3-8daca131af66",
+      "comment": "",
+      "command": "click",
+      "target": "id=dugmeP",
+      "targets": [
+        ["id=dugmeP", "id"],
+        ["name=submit1", "name"],
+        ["css=#dugmeP", "css:finder"],
+        ["xpath=//button[@id='dugmeP']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div[2]/div/table/tbody/tr/td[3]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "41fd32f8-ddef-49c3-9044-8366410df980",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.row:nth-child(2) .ocenaLabel",
+      "targets": [
+        ["css=.row:nth-child(2) .ocenaLabel", "css:finder"],
+        ["xpath=//div[@id='zahtev']/div[2]/div/table/tbody/tr/td[3]/form/label", "xpath:idRelative"],
+        ["xpath=//div[2]/div/table/tbody/tr/td[3]/form/label", "xpath:position"],
+        ["xpath=//label[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": "+"
+    }]
+  }, {
+    "id": "756a73bf-1dc8-4f48-8c9c-1c556fa3d67b",
+    "name": "TP9 neuspesno komentarisanje",
+    "commands": [{
+      "id": "fc86f9ed-aef8-49cc-9251-67d78024b3d6",
+      "comment": "",
+      "command": "open",
+      "target": "/Klijent",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed58aa8a-e830-4416-85c7-e3532ce4886c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Istorija",
+      "targets": [
+        ["linkText=Istorija", "linkText"],
+        ["css=#meni > a:nth-child(3)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Istorija')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Klijent/istorija'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5108dc8-7483-4e13-84e9-a1ce535973ea",
+      "comment": "",
+      "command": "verifyElementNotPresent",
+      "target": "css=.komentardugme",
+      "targets": [
+        ["css=.komentardugme", "css:finder"],
+        ["xpath=//button[@type='SUBMIT']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr/td[3]/button", "xpath:idRelative"],
+        ["xpath=//td[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'sačuvaj komentar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "9a2364b5-3c77-41b1-931f-b448ed298262",
+    "name": "TP12 neuspesno ocenjivanje",
+    "commands": [{
+      "id": "70fb7be9-b415-4b39-b715-a9c8882d9faa",
+      "comment": "",
+      "command": "open",
+      "target": "/Klijent",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "52b867d1-83b8-475d-8d61-35492978b006",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Istorija",
+      "targets": [
+        ["linkText=Istorija", "linkText"],
+        ["css=#meni > a:nth-child(3)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Istorija')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Klijent/istorija'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d456ac5-a7ba-4e60-831c-fd939dd781cd",
+      "comment": "",
+      "command": "verifyElementNotPresent",
+      "target": "id=dugmeP",
+      "targets": [
+        ["id=dugmeP", "id"],
+        ["name=submit1", "name"],
+        ["css=#dugmeP", "css:finder"],
+        ["xpath=//button[@id='dugmeP']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div[2]/div/table/tbody/tr/td[3]/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1acc8035-a150-467d-a877-a6c52d29da49",
+      "comment": "",
+      "command": "verifyElementNotPresent",
+      "target": "id=dugmeM",
+      "targets": [
+        ["id=dugmeM", "id"],
+        ["name=submit2", "name"],
+        ["css=#dugmeM", "css:finder"],
+        ["xpath=//button[@id='dugmeM']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div[2]/div/table/tbody/tr/td[3]/form/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'-')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "f352a5ca-fc75-4d6f-a2dc-2af32ef29e36",
+    "name": "TP3 brisanje usluge iz istorije",
+    "commands": [{
+      "id": "5c74f9a8-b32c-4547-8b69-692aee7c3322",
+      "comment": "",
+      "command": "open",
+      "target": "/Klijent",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56226315-8996-42cc-a9fa-b4c1bf386e2a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Istorija",
+      "targets": [
+        ["linkText=Istorija", "linkText"],
+        ["css=#meni > a:nth-child(3)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Istorija')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Klijent/istorija'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2f316f41-fabb-4d79-962c-37b8cc4bd1bb",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.row:nth-child(1) > .offset-1 button",
+      "targets": [
+        ["css=.row:nth-child(1) > .offset-1 button", "css:finder"],
+        ["xpath=//button[@onclick='ukloniPopravku(this)']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr[2]/td/div/button", "xpath:idRelative"],
+        ["xpath=//td/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ukloni iz istorije')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "089197a2-73db-4c61-8903-3e410a74a316",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(1) > .offset-1 button",
+      "targets": [
+        ["css=.row:nth-child(1) > .offset-1 button", "css:finder"],
+        ["xpath=//button[@onclick='ukloniPopravku(this)']", "xpath:attributes"],
+        ["xpath=//div[@id='zahtev']/div/div/table/tbody/tr[2]/td/div/button", "xpath:idRelative"],
+        ["xpath=//td/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'ukloni iz istorije')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "58bdda7d-6f4d-4319-8c4a-120f31a04288",
+    "name": "TP13 uspesno brisanje majstora",
+    "commands": [{
+      "id": "88286729-c98d-477e-b23f-5db2e7db126c",
+      "comment": "",
+      "command": "open",
+      "target": "/Admin/pregledMajstora",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "115b1598-6c17-47c8-bb58-5916d34f713a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Pregled Majstora",
+      "targets": [
+        ["linkText=Pregled Majstora", "linkText"],
+        ["css=#meni > .active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Pregled Majstora')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Admin/pregledMajstora'])[2]", "xpath:href"],
+        ["xpath=//div[2]/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "12a0b967-500d-4f6b-8589-de2e964678c9",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=#\\32 0 h1",
+      "targets": [
+        ["css=#\\32 0 h1", "css:finder"],
+        ["xpath=//div[@id='20']/div/div/div[2]/div/div/h1", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/div/div/h1", "xpath:position"]
+      ],
+      "value": "Petar Petrovic"
+    }, {
+      "id": "f8972e55-ce54-46a9-b6fc-098679cdf15c",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=#\\32 0 #btnD",
+      "targets": [
+        ["css=#\\32 0 #btnD", "css:finder"],
+        ["xpath=(//button[@id='btnD'])[4]", "xpath:attributes"],
+        ["xpath=//div[@id='20']/div/div/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/div/div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e22f49c9-0ef2-446f-a61a-c15ae6ebacc2",
+      "comment": "",
+      "command": "click",
+      "target": "css=#\\32 0 #btnD",
+      "targets": [
+        ["css=#\\32 0 #btnD", "css:finder"],
+        ["xpath=(//button[@id='btnD'])[4]", "xpath:attributes"],
+        ["xpath=//div[@id='20']/div/div/div[2]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/div/div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a1405af9-8a5a-4889-a5f0-8c6cf9bbb959",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Pregled Majstora",
+      "targets": [
+        ["linkText=Pregled Majstora", "linkText"],
+        ["css=#meni > .active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Pregled Majstora')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Admin/pregledMajstora'])[2]", "xpath:href"],
+        ["xpath=//div[2]/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8dff6924-fc86-4c85-8d13-425744b2a813",
+      "comment": "",
+      "command": "verifyElementNotPresent",
+      "target": "css=#\\32 0 h1",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "26e3b63d-1e48-404b-ad38-79503027f24d",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["3dd8bf83-5543-4b49-88d2-b64a17fb15ff"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
