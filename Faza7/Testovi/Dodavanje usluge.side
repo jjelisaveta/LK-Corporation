@@ -1,0 +1,1135 @@
+{
+  "id": "386d45cb-0662-4e02-9ff4-95f8fb7a7c2b",
+  "version": "2.0",
+  "name": "Dodavanje usluge",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "f1be4dd4-c685-4eba-859f-995ba065f6e2",
+    "name": "Dodavanje Usluge bez naslova",
+    "commands": [{
+      "id": "95dba70a-6b42-4e61-a440-0a787d54c108",
+      "comment": "",
+      "command": "open",
+      "target": "/Majstor/mojeUsluge",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0cd373f7-6031-4da7-baf8-de32de30cf8d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "918137fd-d512-4c55-8152-ed1e59430726",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Dodaj uslugu",
+      "targets": [
+        ["linkText=Dodaj uslugu", "linkText"],
+        ["css=#meni > a:nth-child(4)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Dodaj uslugu')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[4]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Majstor/dodajUslugu'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0aa6db7d-a87c-479d-bca7-8a450bd4d9db",
+      "comment": "",
+      "command": "click",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae9ae0d9-3838-49d1-9cc0-7adf0f6ff4c2",
+      "comment": "",
+      "command": "type",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Ovo je primer naslova za majstora"
+    }, {
+      "id": "6fec00f7-3c89-438a-8fe9-d0893acae9c9",
+      "comment": "",
+      "command": "click",
+      "target": "id=opisId",
+      "targets": [
+        ["id=opisId", "id"],
+        ["name=opis", "name"],
+        ["css=#opisId", "css:finder"],
+        ["xpath=//textarea[@id='opisId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a3b726fe-2ef5-4d48-902e-80a51e291a23",
+      "comment": "",
+      "command": "click",
+      "target": "id=opisId",
+      "targets": [
+        ["id=opisId", "id"],
+        ["name=opis", "name"],
+        ["css=#opisId", "css:finder"],
+        ["xpath=//textarea[@id='opisId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "011d3d6a-ce75-4485-b4dc-1b332896b90d",
+      "comment": "",
+      "command": "type",
+      "target": "id=opisId",
+      "targets": [
+        ["id=opisId", "id"],
+        ["name=opis", "name"],
+        ["css=#opisId", "css:finder"],
+        ["xpath=//textarea[@id='opisId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Ovo je primer usluge za majstora"
+    }, {
+      "id": "4da4995b-6e12-4315-8dc8-58965604ef87",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b23fe1f6-9811-4156-b04a-133277f655bb",
+      "comment": "",
+      "command": "type",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "150"
+    }, {
+      "id": "0b257677-5351-48bf-823d-8eca4bd53314",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectId",
+      "targets": [
+        ["id=selectId", "id"],
+        ["name=t", "name"],
+        ["css=#selectId", "css:finder"],
+        ["xpath=//select[@id='selectId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "abfae2a3-4918-4c0c-b02f-0a1d2d950b8a",
+      "comment": "",
+      "command": "select",
+      "target": "id=selectId",
+      "targets": [],
+      "value": "label=parket"
+    }, {
+      "id": "ec9f5ee9-2f45-4810-9baf-e0a5ed8cb7d7",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectId",
+      "targets": [
+        ["id=selectId", "id"],
+        ["name=t", "name"],
+        ["css=#selectId", "css:finder"],
+        ["xpath=//select[@id='selectId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7113147c-2255-4a11-accc-ea291c6a01a8",
+      "comment": "",
+      "command": "click",
+      "target": "id=plus",
+      "targets": [
+        ["id=plus", "id"],
+        ["css=#plus", "css:finder"],
+        ["xpath=//button[@id='plus']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea7a3f88-f1f6-472f-a927-f3003a4414ab",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=plus",
+      "targets": [
+        ["id=plus", "id"],
+        ["css=#plus", "css:finder"],
+        ["xpath=//button[@id='plus']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "548c768f-d042-4b46-95ec-c3339c6c8238",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=plus",
+      "targets": [
+        ["id=plus", "id"],
+        ["css=#plus", "css:finder"],
+        ["xpath=//button[@id='plus']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4af3c912-a186-4f47-9e46-814152df3b24",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(2)",
+      "targets": [
+        ["css=.row:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='content']/div[2]", "xpath:idRelative"],
+        ["xpath=//form/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "62f00ffe-e4a3-4b19-a419-1ef50aba13f2",
+      "comment": "",
+      "command": "click",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cd9e5bfa-a99a-46ea-bef3-a0e707b795ed",
+      "comment": "",
+      "command": "click",
+      "target": "css=#content > .row:nth-child(1)",
+      "targets": [
+        ["css=#content > .row:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='content']/div", "xpath:idRelative"],
+        ["xpath=//form/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d9645eb2-38a8-4142-b024-3c86e920da69",
+      "comment": "",
+      "command": "type",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "101cb9a0-d472-4476-b471-e47a20e4710f",
+      "comment": "",
+      "command": "click",
+      "target": "id=idDugmeR",
+      "targets": [
+        ["id=idDugmeR", "id"],
+        ["css=#idDugmeR", "css:finder"],
+        ["xpath=//button[@id='idDugmeR']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[6]/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Dodaj')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2372e5bb-d0cf-4027-a8b3-15c7b2b8a869",
+      "comment": "",
+      "command": "type",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "200"
+    }, {
+      "id": "dd0a10c4-5a9b-43d8-afdf-5d2e0cfc1d2f",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f572f7e6-e7c3-47f3-a8e2-f5a768523a0b",
+      "comment": "",
+      "command": "click",
+      "target": "id=idDugmeR",
+      "targets": [
+        ["id=idDugmeR", "id"],
+        ["css=#idDugmeR", "css:finder"],
+        ["xpath=//button[@id='idDugmeR']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[6]/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Dodaj')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "47a34680-7afb-41cc-8999-fb8402828cb1",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.row:nth-child(1) > .greska",
+      "targets": [
+        ["css=.row:nth-child(1) > .greska", "css:finder"],
+        ["xpath=//form[@id='content']/div/div", "xpath:idRelative"],
+        ["xpath=//form/div/div", "xpath:position"]
+      ],
+      "value": "Naslov je obavezno polje!"
+    }]
+  }, {
+    "id": "98c9eeb2-e677-4366-b1cf-fdb21c86f4e5",
+    "name": "Dodavanje usluge bez postavljanja cene usluge",
+    "commands": [{
+      "id": "17a0666e-c529-4a43-a7a7-97bee54448c3",
+      "comment": "",
+      "command": "open",
+      "target": "/Majstor",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c67fc6ae-403c-42af-bbc9-4ef2130aa7ff",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5748a60a-3e3d-4b0b-a103-816487089bd9",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Dodaj uslugu",
+      "targets": [
+        ["linkText=Dodaj uslugu", "linkText"],
+        ["css=#meni > a:nth-child(4)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Dodaj uslugu')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[4]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Majstor/dodajUslugu'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3e88a03-1ed4-42bc-8cdd-3d3bd6bc3ec4",
+      "comment": "",
+      "command": "click",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d709cd7-d8d3-4eb0-94b8-a5dc16011294",
+      "comment": "",
+      "command": "type",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Primer jednog naslova"
+    }, {
+      "id": "79017356-0f51-4d4f-93f9-153779036bc2",
+      "comment": "",
+      "command": "click",
+      "target": "id=opisId",
+      "targets": [
+        ["id=opisId", "id"],
+        ["name=opis", "name"],
+        ["css=#opisId", "css:finder"],
+        ["xpath=//textarea[@id='opisId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2af8b02e-a1cb-4fcc-9d3e-e5f8ca710f4d",
+      "comment": "",
+      "command": "type",
+      "target": "id=opisId",
+      "targets": [
+        ["id=opisId", "id"],
+        ["name=opis", "name"],
+        ["css=#opisId", "css:finder"],
+        ["xpath=//textarea[@id='opisId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Primer jedne usluge"
+    }, {
+      "id": "82b4e14b-478a-4984-bcb0-c9731acc4522",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4ef4887-6a41-427c-aa0a-d8213e9cf87e",
+      "comment": "",
+      "command": "type",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "100"
+    }, {
+      "id": "1696749f-e801-499c-9c88-44457a8cacee",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d5f515db-cf9f-4731-a296-2f6a64e48a20",
+      "comment": "",
+      "command": "type",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "200"
+    }, {
+      "id": "efaabc15-46a2-4535-9228-fed6e219f3ce",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2ffa8591-1e00-47e8-adf6-ee686f3d0974",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "68e8a8bb-0c29-4c52-9e8b-f6c85c6f10d2",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectId",
+      "targets": [
+        ["id=selectId", "id"],
+        ["name=t", "name"],
+        ["css=#selectId", "css:finder"],
+        ["xpath=//select[@id='selectId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cd3062b2-d347-481a-b1bd-cf6584130946",
+      "comment": "",
+      "command": "select",
+      "target": "id=selectId",
+      "targets": [],
+      "value": "label=namestaj"
+    }, {
+      "id": "38f1fb57-910e-4582-9142-5597f86035d3",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectId",
+      "targets": [
+        ["id=selectId", "id"],
+        ["name=t", "name"],
+        ["css=#selectId", "css:finder"],
+        ["xpath=//select[@id='selectId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "589d9c06-e119-4d24-b33f-3e0251a3d5b9",
+      "comment": "",
+      "command": "click",
+      "target": "id=plus",
+      "targets": [
+        ["id=plus", "id"],
+        ["css=#plus", "css:finder"],
+        ["xpath=//button[@id='plus']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c1043b3c-5929-4e38-90d8-76957d952edf",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=plus",
+      "targets": [
+        ["id=plus", "id"],
+        ["css=#plus", "css:finder"],
+        ["xpath=//button[@id='plus']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "90b53f35-675c-43f1-a182-389ff24b5d06",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=plus",
+      "targets": [
+        ["id=plus", "id"],
+        ["css=#plus", "css:finder"],
+        ["xpath=//button[@id='plus']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e1d3381d-db55-4464-9542-874bf9a78f8a",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3c803ee7-08cb-43ad-98ee-771efdeea543",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "40530489-a7a1-490e-be44-cc7b8f3624b1",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2680fd5-5a9c-4c9d-aa07-0e70b62639c9",
+      "comment": "",
+      "command": "type",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "850b5fa4-9752-45ed-8b7a-1f8c1bfcd7bc",
+      "comment": "",
+      "command": "click",
+      "target": "id=idDugmeR",
+      "targets": [
+        ["id=idDugmeR", "id"],
+        ["css=#idDugmeR", "css:finder"],
+        ["xpath=//button[@id='idDugmeR']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[6]/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Dodaj')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e9879114-531c-4509-aa09-6fecaf5408a6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.col-5:nth-child(5)",
+      "targets": [
+        ["css=.col-5:nth-child(5)", "css:finder"],
+        ["xpath=//form[@id='content']/div[3]/div/div", "xpath:idRelative"],
+        ["xpath=//form/div[3]/div/div", "xpath:position"]
+      ],
+      "value": "Cena je obavezno polje!"
+    }]
+  }, {
+    "id": "b3f57900-a81a-4d3a-ad18-b9a4a55108e5",
+    "name": "Dodavanje usluge usluge bez opisa",
+    "commands": [{
+      "id": "42ae9185-44c4-476c-880a-e4c1d41efc90",
+      "comment": "",
+      "command": "open",
+      "target": "/Majstor",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bbb92673-410a-4ec3-86ce-5887bd0c83de",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4135f839-b242-4e72-b47e-d69ac305b095",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Dodaj uslugu",
+      "targets": [
+        ["linkText=Dodaj uslugu", "linkText"],
+        ["css=#meni > a:nth-child(4)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Dodaj uslugu')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[4]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Majstor/dodajUslugu'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "95b2b07e-4b08-4bbf-9af5-8b3fc717b0a6",
+      "comment": "",
+      "command": "click",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d018bd98-bd43-4f48-a09e-15a93192450f",
+      "comment": "",
+      "command": "type",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "primer"
+    }, {
+      "id": "496c51e5-e2ed-4489-814e-83c17179f809",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "44c97f37-2919-498b-95f1-fc2960e84e40",
+      "comment": "",
+      "command": "type",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "200"
+    }, {
+      "id": "6e7c8129-b8e2-4a80-8d99-9a25e58978d6",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectId",
+      "targets": [
+        ["id=selectId", "id"],
+        ["name=t", "name"],
+        ["css=#selectId", "css:finder"],
+        ["xpath=//select[@id='selectId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "26b15522-23e4-4485-81a8-cea2e27db817",
+      "comment": "",
+      "command": "select",
+      "target": "id=selectId",
+      "targets": [],
+      "value": "label=klima uredjaji"
+    }, {
+      "id": "5b3da563-d277-42a6-ad57-350977e075b5",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectId",
+      "targets": [
+        ["id=selectId", "id"],
+        ["name=t", "name"],
+        ["css=#selectId", "css:finder"],
+        ["xpath=//select[@id='selectId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac9e4c81-6309-477d-ac04-90456f1ed7b5",
+      "comment": "",
+      "command": "click",
+      "target": "id=idDugmeR",
+      "targets": [
+        ["id=idDugmeR", "id"],
+        ["css=#idDugmeR", "css:finder"],
+        ["xpath=//button[@id='idDugmeR']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[6]/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Dodaj')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b1000bd0-7ef0-41f5-8b79-586db30515c6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.row:nth-child(2) > .greska",
+      "targets": [
+        ["css=.row:nth-child(2) > .greska", "css:finder"],
+        ["xpath=//form[@id='content']/div[2]/div", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div", "xpath:position"]
+      ],
+      "value": "Opis usluge je obavezno polje!"
+    }]
+  }, {
+    "id": "47ae71f1-1d7c-41e4-b5e8-45a92d9b56f5",
+    "name": "Uspesno dodavanje usluge test moje usluge  ",
+    "commands": [{
+      "id": "0290ccb6-1409-434a-ab1f-8b624577ff58",
+      "comment": "",
+      "command": "open",
+      "target": "/Majstor",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04a05aa6-16d4-4d4d-b0ab-5c755a6b698a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "71590d86-ec2b-45a0-b042-ed7ef4ee4036",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Dodaj uslugu",
+      "targets": [
+        ["linkText=Dodaj uslugu", "linkText"],
+        ["css=#meni > a:nth-child(4)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Dodaj uslugu')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[4]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Majstor/dodajUslugu'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f18488e-9402-4401-86cc-8085978a0e3b",
+      "comment": "",
+      "command": "click",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a34e9cfa-db57-4259-98fa-268f833e2a4f",
+      "comment": "",
+      "command": "type",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Moje usluge"
+    }, {
+      "id": "a9699cc6-b127-433f-89c2-d6a52dfdfc2f",
+      "comment": "",
+      "command": "click",
+      "target": "id=opisId",
+      "targets": [
+        ["id=opisId", "id"],
+        ["name=opis", "name"],
+        ["css=#opisId", "css:finder"],
+        ["xpath=//textarea[@id='opisId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "06ea1e8d-6cd8-4eaf-b609-c75222967b5d",
+      "comment": "",
+      "command": "type",
+      "target": "id=opisId",
+      "targets": [
+        ["id=opisId", "id"],
+        ["name=opis", "name"],
+        ["css=#opisId", "css:finder"],
+        ["xpath=//textarea[@id='opisId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Moj tekst usluge"
+    }, {
+      "id": "403f5515-e77e-4cde-bda9-1f80d3d6c299",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e2334caa-169c-4935-b2f2-d89c7ef19c19",
+      "comment": "",
+      "command": "type",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "100"
+    }, {
+      "id": "2042b09f-29fe-438b-9ac3-38e60e432eda",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9c5b4de3-5c92-4929-aa4a-8ec3d2a60cf2",
+      "comment": "",
+      "command": "type",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "200"
+    }, {
+      "id": "947be101-b888-4f27-a8ed-dc21ff39afae",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d7c3dc9-5d20-4374-90d6-635af0b7991b",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e3b77f32-9a6e-4504-9b41-2253c262bc75",
+      "comment": "",
+      "command": "type",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "300"
+    }, {
+      "id": "7ea70bd3-18ce-4bf4-a0fb-e35856f70332",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e2eda75b-186d-4ae2-8b4a-6cd7a0285b1d",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectId",
+      "targets": [
+        ["id=selectId", "id"],
+        ["name=t", "name"],
+        ["css=#selectId", "css:finder"],
+        ["xpath=//select[@id='selectId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "28b6a45b-a92d-4c4a-a305-87a192381d72",
+      "comment": "",
+      "command": "select",
+      "target": "id=selectId",
+      "targets": [],
+      "value": "label=namestaj"
+    }, {
+      "id": "0d6cfcc8-1aa9-471b-a154-ab57b046e154",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectId",
+      "targets": [
+        ["id=selectId", "id"],
+        ["name=t", "name"],
+        ["css=#selectId", "css:finder"],
+        ["xpath=//select[@id='selectId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "458befca-2b0b-4f49-82cf-d40724ab834e",
+      "comment": "",
+      "command": "click",
+      "target": "id=plus",
+      "targets": [
+        ["id=plus", "id"],
+        ["css=#plus", "css:finder"],
+        ["xpath=//button[@id='plus']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a3dc6cc9-ffef-4f9e-b6d2-d5551691cb34",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=plus",
+      "targets": [
+        ["id=plus", "id"],
+        ["css=#plus", "css:finder"],
+        ["xpath=//button[@id='plus']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cfb612f6-c8ce-4647-a358-e00ad2650ee9",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=plus",
+      "targets": [
+        ["id=plus", "id"],
+        ["css=#plus", "css:finder"],
+        ["xpath=//button[@id='plus']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'+')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8eca2dbd-50b1-4a23-ae0a-31160a93083e",
+      "comment": "",
+      "command": "click",
+      "target": "id=idDugmeR",
+      "targets": [
+        ["id=idDugmeR", "id"],
+        ["css=#idDugmeR", "css:finder"],
+        ["xpath=//button[@id='idDugmeR']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[6]/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Dodaj')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4b035f71-9da7-43f0-a818-ed9103eb4227",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Moje usluge",
+      "targets": [
+        ["linkText=Moje usluge", "linkText"],
+        ["css=#meni > .active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Moje usluge')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a[3]", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Majstor/mojeUsluge'])[2]", "xpath:href"],
+        ["xpath=//div[2]/a[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9749dc8-7ead-4b34-9649-acd1221f53c1",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.row:nth-last-child(0) h1",
+      "targets": [
+        ["css=.row:nth-child(18) h1", "css:finder"],
+        ["xpath=//div[@id='usluga']/div[18]/div/table/tbody/tr/td[2]/h1", "xpath:idRelative"],
+        ["xpath=//div[18]/div/table/tbody/tr/td[2]/h1", "xpath:position"]
+      ],
+      "value": "Moje usluge"
+    }]
+  }],
+  "suites": [{
+    "id": "66fae85a-0111-4827-98b6-ef9565b8445f",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f1be4dd4-c685-4eba-859f-995ba065f6e2"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

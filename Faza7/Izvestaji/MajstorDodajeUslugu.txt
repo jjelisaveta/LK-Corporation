@@ -1,0 +1,38 @@
+TP1: Majstor dodaje usluge
+Preduslov: Majstor koji zeli da doda uslugu postoji u sistemu i 
+odobren je od strane administratora
+
+
+		1.Majstor bira opciju dodaj uslugu
+		2.Majstro unosi naslov usluge koju zeli da doda
+		3.Majstor unosi opis ulsuge 
+		4.Majstor unosi cenu usluge
+		5.Majstor dodaje tagove za koje vazi njegova usluga
+		6. Majstor dodaje uslugu klikom na dugme dodaj uslugu
+		
+VT:     7. Kada majstor ode na stranicu moje usluge prikazuje mu se dodata usluga
+
+			
+TP2: Neuspesno dodvanje usluge usled ne unosenja naslova usluge.
+	1.Majstor bira opciju dodaj uslugu
+	2.Majstor unosi opis ulsuge 
+	3.Majstor unosi cenu usluge
+	4.Majstor dodaje tagove za koje vazi njegova usluga
+	5. Majstor dodaje uslugu klikom na dugme dodaj uslugu
+VT   Majstor dobija poruku o gresci, fali naslov usluge
+
+TP3: Neuspesno dodvanje usluge usled ne unosenja opisa usluge.
+	1.Majstor bira opciju dodaj uslugu
+	2.Majstor unosi naslov ulsuge 
+	3.Majstor unosi cenu usluge
+	4.Majstor dodaje tagove za koje vazi njegova usluga
+	5. Majstor dodaje uslugu klikom na dugme dodaj uslugu
+VT   Majstor dobija poruku o gresci, fali opis usluge
+
+TP4: Neuspesno dodvanje usluge usled ne unosenja cene usluge.
+	1.Majstor bira opciju dodaj uslugu
+	2.Majstor unosi naslov usluge 
+	3.Majstor unosi opis usluge
+	4.Majstor dodaje tagove za koje vazi njegova usluga
+	5. Majstor dodaje uslugu klikom na dugme dodaj uslugu
+VT   Majstor dobija poruku o gresci, fali cena usluge

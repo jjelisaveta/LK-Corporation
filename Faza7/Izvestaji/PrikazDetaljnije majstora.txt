@@ -1,0 +1,13 @@
+Detaljniji prikaz majstora
+Preduslov: Korisnik se nalazi u sistemu i kada pretrazi odredjenu uslugu potrebno je da se vidi statistika majstora
+kao i da li su uspesno dodati komentari majstora.
+
+1.Korisnik vrsi pretragu usluge (vec testirana funkcionalnost)
+2.Prikazuju se usluge i korisnik bira da detaljnije pogleda profil majstora za neku od usluga 
+VT: na stranici se mora nalazati kartica sa statistikom majstora.
+
+Preduslov: Korisnik sistema je administror
+
+1.Administrator prikazuje majstore
+2. Administrator ulazi na profil majstora
+VT: na stranici se mora nalazati kartica sa statistikom majstora kao i komentari korisnika

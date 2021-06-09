@@ -1,0 +1,11 @@
+TP1: Majstor prikaz mojih usluga
+Preduslov: Majstor koji zeli da vidi svoje usluge je u sistemu i 
+odobren je od strane administratora. Za ovaj test cemo koristiti dodavanje usluge, dodajemo uslugu i ulazimo u 
+u moje usluge da vidimo da li je poslednje dodata usluga tu. Kako smo prethodno istestirali dodaj uslugu proces dodavanja
+usluge cemo samo navesti kao jedan korak.
+
+
+		1.Majstor bira opciju moje usluge
+		2.Majstor prelazi na stranicu moje usluge
+		3. Majstoru se prikazuju njegove usluge
+VT:		Novo dodata usluga mora da se nalazi medju mojim uslugama
