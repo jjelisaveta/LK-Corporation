@@ -1,0 +1,8 @@
+TP1: Admin brise komentare
+Preduslov: Admin je ulogovan u sistem.
+
+		1.Admin je kliknuo opciju pregled majstora
+		2.Admin je izabrao opciju da prikaze detaljnije profil majstora (...)
+		3.Administrator bira komentar koji oce da izbrise i to radi tako sto klikne na x
+		
+VT:		Izabrani komentar treba da se izbrise

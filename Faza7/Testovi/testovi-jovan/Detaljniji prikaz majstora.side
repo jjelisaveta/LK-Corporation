@@ -1,0 +1,243 @@
+{
+  "id": "539d07c0-3eaf-4e58-9484-7a4e13646649",
+  "version": "2.0",
+  "name": "Detaljniji prikaz majstora",
+  "url": "http://localhost:8080/Admin/odobravanjeMajstora",
+  "tests": [{
+    "id": "c62f855a-3818-410f-b70e-1a808c4dc166",
+    "name": "Prikaz majstora detaljnije od strane klijenta",
+    "commands": [{
+      "id": "48cb6258-6ee8-41a5-932f-2074bbd59319",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Klijent/pretrazivanje",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "deeb43fc-8c15-48b3-b1e8-3dc9808686c3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x696",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3221f20e-f4f6-460d-99c1-62136a06d730",
+      "comment": "",
+      "command": "click",
+      "target": "id=poljePretraga",
+      "targets": [
+        ["id=poljePretraga", "id"],
+        ["css=#poljePretraga", "css:finder"],
+        ["xpath=//input[@id='poljePretraga']", "xpath:attributes"],
+        ["xpath=//div[@id='sadrzaj']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7eb68148-bded-4e72-aca8-5851c27de27e",
+      "comment": "",
+      "command": "type",
+      "target": "id=poljePretraga",
+      "targets": [
+        ["id=poljePretraga", "id"],
+        ["css=#poljePretraga", "css:finder"],
+        ["xpath=//input[@id='poljePretraga']", "xpath:attributes"],
+        ["xpath=//div[@id='sadrzaj']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "boj"
+    }, {
+      "id": "2c6bf915-13aa-4a33-aadf-621050d5873f",
+      "comment": "",
+      "command": "click",
+      "target": "id=bojler",
+      "targets": [
+        ["id=bojler", "id"],
+        ["css=#bojler", "css:finder"],
+        ["xpath=//button[@id='bojler']", "xpath:attributes"],
+        ["xpath=//div[@id='tagovi']/button[6]", "xpath:idRelative"],
+        ["xpath=//button[6]", "xpath:position"],
+        ["xpath=//button[contains(.,'bojler')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b6718ef5-766c-47fa-aa26-3ec21f1f09ed",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[@id='']",
+      "targets": [
+        ["xpath=//button[@id='']", "xpath:attributes"],
+        ["xpath=//div[@id='1']/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Prikaži profil majstora')]", "xpath:innerText"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win4487",
+      "windowTimeout": 2000
+    }, {
+      "id": "0edf9471-4df4-413d-ae01-2f68dda15573",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win4487}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "edbf1a5f-1a49-46b8-95f6-9e523c503bc6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ocene > h3",
+      "targets": [
+        ["css=.ocene > h3", "css:finder"],
+        ["xpath=//div[@id='info']/table/tbody/tr/td[3]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "638a52bf-0f14-4d32-a03d-9f1f4f5b5168",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.ocene > h3",
+      "targets": [
+        ["css=.ocene > h3", "css:finder"],
+        ["xpath=//div[@id='info']/table/tbody/tr/td[3]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"]
+      ],
+      "value": "Majstora preporučuje: 55.56%\\nProsečno vreme odgovora: 09:38:47\\nProsečna cena svih usluga: 1477.7777777778"
+    }, {
+      "id": "0050712b-7921-42f1-957a-a308f1b3f7ff",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=p > b:nth-child(1)",
+      "targets": [
+        ["css=p > b:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='info']/table/tbody/tr/td[2]/p/b", "xpath:idRelative"],
+        ["xpath=//b", "xpath:position"],
+        ["xpath=//b[contains(.,'telefon: ')]", "xpath:innerText"]
+      ],
+      "value": "telefon:"
+    }]
+  }, {
+    "id": "d6b302f0-c509-4c2d-9fc1-5369febbb959",
+    "name": "Prikaz majstora detaljnije od strane admina",
+    "commands": [{
+      "id": "ff44755d-ce7a-4715-b861-875fba3b3763",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Admin/odobravanjeMajstora",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "50838e87-80c8-4afe-83e0-ccacd42dadb4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x696",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "345f5417-2321-4e50-81c2-ce74168ebaf8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Pregled Majstora",
+      "targets": [
+        ["linkText=Pregled Majstora", "linkText"],
+        ["css=#meni > a:nth-child(1)", "css:finder"],
+        ["xpath=(//a[contains(text(),'Pregled Majstora')])[2]", "xpath:link"],
+        ["xpath=//div[@id='meni']/a", "xpath:idRelative"],
+        ["xpath=(//a[@href='http://localhost:8080/Admin/pregledMajstora'])[2]", "xpath:href"],
+        ["xpath=//div[2]/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9998fe6b-489c-447b-819b-9d69607c4ba1",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='...']",
+      "targets": [
+        ["xpath=//input[@value='...']", "xpath:attributes"],
+        ["xpath=//div[@id='1']/div/div/div[2]/div[3]/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win5382",
+      "windowTimeout": 2000
+    }, {
+      "id": "55c9d242-c95e-4dec-ba7c-42f2bdc72946",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win5382}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "acf37a29-4ad0-47db-978b-f9d9ba4f0f90",
+      "comment": "",
+      "command": "click",
+      "target": "css=p > b:nth-child(1)",
+      "targets": [
+        ["css=p > b:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='info']/table/tbody/tr/td[2]/p/b", "xpath:idRelative"],
+        ["xpath=//b", "xpath:position"],
+        ["xpath=//b[contains(.,'telefon: ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "94241ea7-3948-4437-8b23-b5ee0b009055",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=p > b:nth-child(1)",
+      "targets": [
+        ["css=p > b:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='info']/table/tbody/tr/td[2]/p/b", "xpath:idRelative"],
+        ["xpath=//b", "xpath:position"],
+        ["xpath=//b[contains(.,'telefon: ')]", "xpath:innerText"]
+      ],
+      "value": "telefon:"
+    }, {
+      "id": "2f52237b-25ba-4155-80dc-d4e946663630",
+      "comment": "",
+      "command": "click",
+      "target": "css=p > b:nth-child(3)",
+      "targets": [
+        ["css=p > b:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='info']/table/tbody/tr/td[2]/p/b[2]", "xpath:idRelative"],
+        ["xpath=//b[2]", "xpath:position"],
+        ["xpath=//b[contains(.,'mejl: ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0816eb52-603d-488a-ad0d-f8666ab7ea34",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=p > b:nth-child(3)",
+      "targets": [
+        ["css=p > b:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='info']/table/tbody/tr/td[2]/p/b[2]", "xpath:idRelative"],
+        ["xpath=//b[2]", "xpath:position"],
+        ["xpath=//b[contains(.,'mejl: ')]", "xpath:innerText"]
+      ],
+      "value": "mejl:"
+    }, {
+      "id": "fb1cb7ff-51d2-4fc6-b32f-3848220cef0b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ocene > h3",
+      "targets": [
+        ["css=.ocene > h3", "css:finder"],
+        ["xpath=//div[@id='info']/table/tbody/tr/td[3]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "8ffa384f-687c-4757-b767-95fc1827b9cc",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:8080/Klijent/pretrazivanje", "http://localhost:8080/Admin/odobravanjeMajstora"],
+  "plugins": []
+}

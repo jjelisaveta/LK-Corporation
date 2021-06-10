@@ -1,0 +1,82 @@
+{
+  "id": "d0b6413b-580e-4e01-b11f-c4a2ed902d5b",
+  "version": "2.0",
+  "name": "Obrisi komentar",
+  "url": "http://localhost:8080/Admin/pregledMajstora",
+  "tests": [{
+    "id": "fc1deee5-caf4-4934-906b-a242954928a2",
+    "name": "Untitled",
+    "commands": []
+  }, {
+    "id": "0f75409b-760d-472b-8752-3075d535840a",
+    "name": "TestBrisanjeKomentara",
+    "commands": [{
+      "id": "f6c313d5-6279-4392-9ec7-f08a7382abe9",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Admin/pregledMajstora",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "02c77375-8d0a-4698-98c6-c04a4ad1af35",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f2291736-a087-47ef-a8db-e9fcd2ebf407",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//input[@value='...']",
+      "targets": [
+        ["xpath=//input[@value='...']", "xpath:attributes"],
+        ["xpath=//div[@id='1']/div/div/div[2]/div[3]/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win4885",
+      "windowTimeout": 2000
+    }, {
+      "id": "aefc8b16-9950-4e84-a536-9fd79058163e",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win4885}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5df69dbe-ef66-42a4-af31-e46c4ac68b70",
+      "comment": "",
+      "command": "click",
+      "target": "name=4",
+      "targets": [
+        ["css=table:nth-child(3) h1", "css:finder"],
+        ["xpath=//table[3]/tbody/tr/td[2]/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Sve je OK bilo.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1e2d41f7-433d-4427-8849-6ef47270d4a0",
+      "comment": "",
+      "command": "verifyElementNotPresent",
+      "target": "css=table:nth-child(5) h1",
+      "targets": [
+        ["css=table:nth-child(4) h1", "css:finder"],
+        ["xpath=//table[4]/tbody/tr/td[2]/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Sve je OK bilo.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "0b409989-eaaf-4b1e-a429-ae9c7187fe78",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["fc1deee5-caf4-4934-906b-a242954928a2"]
+  }],
+  "urls": ["http://localhost:8080/Admin/pregledMajstora"],
+  "plugins": []
+}

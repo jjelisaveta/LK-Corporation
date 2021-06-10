@@ -1,0 +1,180 @@
+{
+  "id": "0f40c83e-080b-42ff-86e2-056c1a234c69",
+  "version": "2.0",
+  "name": "Majstor prikaz usluga",
+  "url": "http://localhost:8080/Majstor/dodajUslugu",
+  "tests": [{
+    "id": "715442d1-3632-4253-aa6c-6c3501297dda",
+    "name": "MajstroPrikazUsluga",
+    "commands": [{
+      "id": "1b782cbd-8f1e-40eb-ad2f-101449ad878d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Majstor/dodajUslugu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f8c636b3-d3bb-4c0d-87d9-5426828e2042",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x696",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b251bf9e-b98a-423b-911f-64e9b0a0e67c",
+      "comment": "",
+      "command": "click",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d6956c8b-5fed-4339-bf4d-d7c8fe67eb78",
+      "comment": "",
+      "command": "type",
+      "target": "id=naslovId",
+      "targets": [
+        ["id=naslovId", "id"],
+        ["name=naslov", "name"],
+        ["css=#naslovId", "css:finder"],
+        ["xpath=//input[@id='naslovId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Test prikaz uzluga"
+    }, {
+      "id": "c50dc031-e4a9-45ba-bae1-fe78c22ff8be",
+      "comment": "",
+      "command": "click",
+      "target": "id=opisId",
+      "targets": [
+        ["id=opisId", "id"],
+        ["name=opis", "name"],
+        ["css=#opisId", "css:finder"],
+        ["xpath=//textarea[@id='opisId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0819399-5390-41aa-8d74-812088fa7d08",
+      "comment": "",
+      "command": "type",
+      "target": "id=opisId",
+      "targets": [
+        ["id=opisId", "id"],
+        ["name=opis", "name"],
+        ["css=#opisId", "css:finder"],
+        ["xpath=//textarea[@id='opisId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "test prikaz usluga"
+    }, {
+      "id": "98208d5b-3b6e-4003-907e-35460c0fc0e9",
+      "comment": "",
+      "command": "click",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f3c3992-c98b-4cf7-802a-5e658ea9f4bb",
+      "comment": "",
+      "command": "type",
+      "target": "id=cenaId",
+      "targets": [
+        ["id=cenaId", "id"],
+        ["name=cena", "name"],
+        ["css=#cenaId", "css:finder"],
+        ["xpath=//input[@id='cenaId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "10000"
+    }, {
+      "id": "d7b00c24-4730-42e5-b4c0-d6d711810407",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectId",
+      "targets": [
+        ["id=selectId", "id"],
+        ["name=t", "name"],
+        ["css=#selectId", "css:finder"],
+        ["xpath=//select[@id='selectId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "229ab6c7-ec92-4359-ac1c-ce17141fc12d",
+      "comment": "",
+      "command": "select",
+      "target": "id=selectId",
+      "targets": [],
+      "value": "label=automobil"
+    }, {
+      "id": "505b4a56-c527-4672-8d02-c6da3a58c9f5",
+      "comment": "",
+      "command": "click",
+      "target": "id=selectId",
+      "targets": [
+        ["id=selectId", "id"],
+        ["name=t", "name"],
+        ["css=#selectId", "css:finder"],
+        ["xpath=//select[@id='selectId']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[3]/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5209a446-8083-4abb-bd54-fa7659562eae",
+      "comment": "",
+      "command": "click",
+      "target": "id=idDugmeR",
+      "targets": [
+        ["id=idDugmeR", "id"],
+        ["css=#idDugmeR", "css:finder"],
+        ["xpath=//button[@id='idDugmeR']", "xpath:attributes"],
+        ["xpath=//form[@id='content']/div[6]/div/a/button", "xpath:idRelative"],
+        ["xpath=//a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Dodaj')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1c12d722-af7f-4d05-8960-4b42c1cbf0e7",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.row:nth-child(26) h1",
+      "targets": [
+        ["css=.row:nth-child(26) h1", "css:finder"],
+        ["xpath=//div[@id='usluga']/div[26]/div/table/tbody/tr/td[2]/h1", "xpath:idRelative"],
+        ["xpath=//div[26]/div/table/tbody/tr/td[2]/h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Test prikaz uzluga')]", "xpath:innerText"]
+      ],
+      "value": "Test prikaz uzluga"
+    }]
+  }],
+  "suites": [{
+    "id": "778a0c60-8b57-4a44-87b2-423afc8d47e3",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:8080/Majstor/dodajUslugu"],
+  "plugins": []
+}
