@@ -1614,7 +1614,7 @@
     }]
   }, {
     "id": "9d183585-8f92-400b-aa80-7583220e7c9e",
-    "name": "test izmena usluge uspesna",
+    "name": "test izmena podataka uspesna",
     "commands": [{
       "id": "517a2482-3582-47b1-b91b-292230aa833f",
       "comment": "",
@@ -1739,7 +1739,7 @@
     }]
   }, {
     "id": "0c2ff4db-cb7c-4d9b-a350-65f6fa082d55",
-    "name": "test izmena usluge neuspesna",
+    "name": "test izmena podataka neuspesna",
     "commands": [{
       "id": "7677a3c8-6396-4acd-a4db-6e115209c3ce",
       "comment": "",
